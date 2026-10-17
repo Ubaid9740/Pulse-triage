@@ -1,0 +1,4 @@
+id,name,zone,lat,lng,conditions,phone,consent_at
+R-0007,Demo Resident 7,,0.0123,0.0456,elderly;cannot_walk;oxygen;alone,+000 555 0107,2026-03-02T10:00:00Z
+R-0193,Demo Resident 193,,0.0201,0.0388,elderly;alone,,2026-04-11T09:30:00Z
+R-0310,Demo Resident 310,Old Market,,,dialysis,+000 555 0310,2026-05-20T14:00:00Z

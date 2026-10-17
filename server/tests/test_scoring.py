@@ -121,3 +121,11 @@ def test_nothing_urgent_reported(constants):
     s = scoring.score(state([report()], hours=24, text=None, conditions=[]), NOW, constants)
     assert s.reasons[0] == {"text": "No urgent signs reported", "points": 0, "kind": "time"}
     assert s.points == round(2 * 0.84)
+
+
+def test_server_made_reports_count_only_while_alone(constants):
+    silence = report("command_post", minutes_ago=30, accuracy=None, role="system", source="silence", reader="system")
+    alone = scoring.score(state([silence]), NOW, constants)
+    assert alone.confidence == 0.3 and alone.badges == []
+    joined = scoring.score(state([silence, report("dev_VOL07", trusted=True, accuracy=12)]), NOW, constants)
+    assert joined.confidence == 0.8 and joined.badges == []      # trust from the real report, no "2 reports"

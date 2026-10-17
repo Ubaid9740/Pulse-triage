@@ -77,7 +77,28 @@ CREATE INDEX IF NOT EXISTS ix_registry ON registry(zone);
 """
 
 # Columns added after the first release: (table, column, type). Applied to older database files.
-MIGRATIONS = [("cases", "hours_ref_at", "TEXT")]
+MIGRATIONS = [
+    ("cases", "hours_ref_at", "TEXT"),
+    ("reports", "registry_id", "TEXT"),       # the report is about this registered person
+    ("reports", "zone", "TEXT"),              # the zone its position is in
+    ("zones", "marked_at", "TEXT"),           # marked hard-hit by the dispatcher or the replay
+    ("zones", "hard_hit_since", "TEXT"),
+    ("zones", "rate", "REAL"),                # reports per 100 people used for 'expected'
+    ("zones", "quiet", "INT"),                # few reports for its size
+    ("zones", "unheard", "INT"),              # low warning coverage
+    ("zones", "silent_since", "TEXT"),
+]
+# Indexes on migrated columns, created after the migrations.
+LATE_INDEXES = """
+CREATE INDEX IF NOT EXISTS ix_reports_registry ON reports(registry_id);
+CREATE INDEX IF NOT EXISTS ix_reports_zone ON reports(zone);
+"""
+
+
+def setting(conn: sqlite3.Connection, key: str, default: Any = None) -> Any:
+    """Read a setting inside an open connection (Database.get_setting takes the lock itself)."""
+    row = conn.execute("SELECT value FROM settings WHERE key = ?", (key,)).fetchone()
+    return default if row is None else json.loads(row[0])
 
 
 class Database:
@@ -96,6 +117,7 @@ class Database:
                 have = {row[1] for row in self._conn.execute(f"PRAGMA table_info({table})")}
                 if column not in have:
                     self._conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {kind}")
+            self._conn.executescript(LATE_INDEXES)
 
     def close(self) -> None:
         with self._lock:

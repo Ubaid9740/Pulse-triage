@@ -52,3 +52,8 @@ def test_team_vocabularies_agree(constants):
     ping = json.loads((SHARED_DIR / "schemas" / "payloads" / "team_ping.schema.json").read_text(encoding="utf-8"))
     assert constants["teams"]["statuses"] == ping["properties"]["status"]["enum"]
     assert set(constants["teams"]["speed_kmh"]) == set(constants["teams"]["types"])
+
+
+def test_zones_example_matches_its_schema(schemas):
+    doc = json.loads((SHARED_DIR / "examples" / "zones.geojson").read_text(encoding="utf-8"))
+    assert schemas.errors("zones", doc) == []

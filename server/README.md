@@ -43,6 +43,14 @@ python -m pytest
 | `POST /api/cases/{id}/verify` `{"by"}` | Dispatcher confirmed it: confidence 1.0, status `verified` |
 | `POST /api/cases/{id}/split` `{"report_id", "by"}` | Undo a wrong merge; the report starts its own case |
 | `POST /api/devices/{id}/trust` `{"trusted", "by"}` | Known helper or team phone; its open cases are rescored |
+| `POST /api/settings/hazard` `{"hazard", "by"}` | Change the active hazard profile |
+| `POST /api/zones/import?by=` | Replace the zones with a GeoJSON file (`zones.schema.json`) |
+| `GET /api/zones` | Every zone with its Silent Zone numbers (`zone.schema.json`) |
+| `POST /api/zones/hard-hit` `{"zones", "hard_hit", "by"}` | Mark zones inside the hazard extent, or clear them |
+| `GET /api/zones/{name}` | Zone card: the numbers, the outreach list, the zone task (`zone_card.schema.json`) |
+| `POST /api/zones/{name}/task` `{"by"}` | "Send welfare-check team": one open zone task per zone |
+| `POST /api/registry/import?by=` | Add or update registered people from CSV (body `text/csv`) |
+| `GET /api/coverage` | Warning coverage per zone, alert timeouts, the outreach list (`coverage.schema.json`) |
 | `GET /docs` | Interactive API docs |
 
 Reject reasons: `invalid_wire`, `too_big`, `invalid_body`, `bad_signature`, `unsigned`, `not_allowed`,
@@ -71,14 +79,37 @@ hours left and confidence change even without new reports. All numbers are in
 Worked examples, checked by the tests: house 14 from two phones = 69 points (confidence 0.75);
 heatstroke from a trusted volunteer = 66 (0.8); the same volunteer before being trusted = 60.
 
+## Silent Zones and warning coverage
+
+Load the town first: `POST /api/zones/import` with `scenario/zones.geojson` (each feature needs
+`name` and `population`), then `POST /api/registry/import` with the registry CSV
+(`shared/examples/registry.csv` shows the columns; rows without `consent_at` are skipped). Every
+report is placed in the zone its position falls in.
+
+A zone is hard-hit when it is marked (`POST /api/zones/hard-hit`, by the dispatcher or the replay),
+or, for heat (`"affected": "alert_zones"`), when an active heat alert covers it. A hard-hit zone is
+Silent when it has under a quarter of the reports expected for its size (at least 8 expected;
+the rate is the median reports per 100 people of the other hard-hit zones), or when under 25% of
+its registered vulnerable people (at least 10) have confirmed. Ward 4 example: 2,000 people at a
+median 1.2 per 100 = 24 expected, 2 received, 9 of 41 confirmed: Silent.
+
+A registered person is confirmed by an alert reply, a welfare check, or a report that names them
+(`registry_id`). When an alert is older than 30 min (emergency) or 2 h (warning), everyone in its
+zones who has not confirmed since it was issued becomes an "unconfirmed" case at confidence 0.3.
+A report naming that person joins the same case and its trust replaces the 0.3; a "safe" reply
+or welfare check closes it. A zone task scores 60 points + 1 per registered person, capped at 90.
+
+The alerts table is filled by `alerts.py`, the next step; until then tests store alerts directly.
+
 ## Code map
 
 `app/main.py` routes · `config.py` settings · `db.py` schema and storage · `crypto.py` keys, signing,
 sealing · `schemas.py` shared-schema validation · `profiles.py` profile rules · `ingest.py` the packet
 pipeline · `merge.py` duplicate rules · `scoring.py` points, confidence, badges · `cases.py` attach,
-rebuild, rescore, verify, split, trust · `scheduler.py` background rescoring · `outbound.py` the queue
-to phones · `snapshot.py` the dashboard snapshot · `packets.py` packet and geohash helpers ·
-`devtools.py` phone-side packet builder (reference for the app).
+rebuild, rescore, verify, split, trust · `zones.py` zone shapes, the Silent Zone test, zone tasks ·
+`coverage.py` registry, confirmations, warning coverage, alert timeouts · `scheduler.py` timeouts,
+rescoring and zones every 30 s · `outbound.py` the queue to phones · `snapshot.py` the dashboard
+snapshot · `packets.py` packet and geohash helpers · `devtools.py` phone-side packet builder
+(reference for the app).
 
-Next: `zones.py`, `coverage.py`, `alerts.py`, `suggest.py`, `teams.py`, `supplies.py`
-(System Design 14.5).
+Next: `alerts.py`, `suggest.py`, `teams.py`, `supplies.py` (System Design 14.5).

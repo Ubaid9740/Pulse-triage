@@ -1,0 +1,20 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "Ward 4", "population": 2000 },
+      "geometry": { "type": "Polygon", "coordinates": [[[0.035, 0.010], [0.050, 0.010], [0.050, 0.025], [0.035, 0.025], [0.035, 0.010]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Riverside", "population": 1500 },
+      "geometry": { "type": "Polygon", "coordinates": [[[0.020, 0.010], [0.035, 0.010], [0.035, 0.025], [0.020, 0.025], [0.020, 0.010]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Old Market", "population": 1000 },
+      "geometry": { "type": "Polygon", "coordinates": [[[0.035, 0.025], [0.050, 0.025], [0.050, 0.040], [0.035, 0.040], [0.035, 0.025]]] }
+    }
+  ]
+}

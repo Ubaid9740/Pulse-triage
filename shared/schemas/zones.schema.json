@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/zones.schema.json",
+  "title": "Zones file (scenario/zones.geojson, POST /api/zones/import)",
+  "description": "The demo town's named zones as a GeoJSON FeatureCollection. Draw them at geojson.io, then add 'name' and 'population' to each feature's properties. Other properties are ignored.",
+  "type": "object",
+  "required": ["type", "features"],
+  "properties": {
+    "type": { "const": "FeatureCollection" },
+    "features": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "required": ["type", "properties", "geometry"],
+        "properties": {
+          "type": { "const": "Feature" },
+          "properties": {
+            "type": "object",
+            "required": ["name", "population"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1, "maxLength": 60, "pattern": "\\S" },
+              "population": { "type": "integer", "minimum": 0 }
+            }
+          },
+          "geometry": { "oneOf": [{ "$ref": "#/$defs/polygon" }, { "$ref": "#/$defs/multipolygon" }] }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "position": {
+      "type": "array", "minItems": 2, "maxItems": 3, "items": { "type": "number" },
+      "description": "[lng, lat] in WGS84, GeoJSON order."
+    },
+    "ring": { "type": "array", "minItems": 4, "items": { "$ref": "#/$defs/position" } },
+    "polygon": {
+      "type": "object",
+      "required": ["type", "coordinates"],
+      "properties": {
+        "type": { "const": "Polygon" },
+        "coordinates": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/ring" } }
+      }
+    },
+    "multipolygon": {
+      "type": "object",
+      "required": ["type", "coordinates"],
+      "properties": {
+        "type": { "const": "MultiPolygon" },
+        "coordinates": {
+          "type": "array", "minItems": 1,
+          "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/ring" } }
+        }
+      }
+    }
+  }
+}

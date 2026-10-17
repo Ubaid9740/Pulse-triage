@@ -1,4 +1,6 @@
+import json
 import sys
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import pytest
@@ -7,6 +9,7 @@ from nacl.signing import SigningKey
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from app import timeutil  # noqa: E402
 from app.config import SHARED_DIR, Settings, load_constants  # noqa: E402
 from app.devtools import load_example, phone_wire  # noqa: E402
 from app.main import create_app  # noqa: E402
@@ -75,3 +78,46 @@ class Phone:
 @pytest.fixture
 def phone(client) -> Phone:
     return Phone(client)
+
+
+# ---- zones, registry and alerts ----------------------------------------------------------------
+def load_zones(client: TestClient) -> dict:
+    """The three example zones: Ward 4 (2,000 people), Riverside (1,500), Old Market (1,000)."""
+    doc = json.loads((SHARED_DIR / "examples" / "zones.geojson").read_text(encoding="utf-8"))
+    resp = client.post("/api/zones/import", json=doc)
+    assert resp.status_code == 200, resp.text
+    return resp.json()
+
+
+def load_registry(client: TestClient, text: str | None = None) -> dict:
+    """The example registry (R-0007 and R-0193 in Ward 4, R-0310 in Old Market), or the given CSV."""
+    text = text if text is not None else (SHARED_DIR / "examples" / "registry.csv").read_text(encoding="utf-8")
+    resp = client.post("/api/registry/import", content=text.encode("utf-8"), headers={"Content-Type": "text/csv"})
+    assert resp.status_code == 200, resp.text
+    return resp.json()
+
+
+def registry_csv(people: list[tuple]) -> str:
+    """people: (id, zone, conditions 'a;b', lat, lng) -> registry CSV text."""
+    lines = ["id,name,zone,lat,lng,conditions,phone,consent_at"]
+    for pid, zone, conditions, lat, lng in people:
+        lines.append(f"{pid},Demo {pid},{zone},{'' if lat is None else lat},{'' if lng is None else lng},"
+                     f"{conditions},,2026-01-01T00:00:00Z")
+    return "\n".join(lines) + "\n"
+
+
+def add_alert(client: TestClient, alert_id: str = "A-0007", *, hazard: str = "flood", severity: str = "warning",
+              zones: tuple = ("Ward 4",), issued_at: datetime | None = None, valid_hours: float = 12,
+              cancel: bool = False, replaces: str | None = None) -> None:
+    """Store an alert the way alerts.py will (that module is the next build step)."""
+    issued = issued_at or timeutil.now()
+    until = issued + timedelta(hours=valid_hours)
+    payload = {"alert_id": alert_id, "hazard": hazard, "severity": severity, "zones": list(zones),
+               "headline": {"en": "Test alert"}, "do_now": {"en": []}, "places": [],
+               "issued_at": timeutil.iso(issued), "valid_until": timeutil.iso(until), "replaces": replaces,
+               "cancel": cancel}
+    with client.app.state.ctx.db.write() as conn:
+        conn.execute("INSERT INTO alerts(id, hazard, severity, zones, body, issued_at, valid_until, replaces, "
+                     "packet_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, NULL)",
+                     (alert_id, hazard, severity, json.dumps(list(zones)), json.dumps(payload),
+                      timeutil.iso(issued), timeutil.iso(until), replaces))

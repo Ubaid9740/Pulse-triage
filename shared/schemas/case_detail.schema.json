@@ -30,6 +30,8 @@
           "lng": { "type": ["number", "null"] },
           "accuracy_m": { "type": ["number", "null"] },
           "landmark": { "type": ["string", "null"] },
+          "zone": { "type": ["string", "null"] },
+          "registry_id": { "type": ["string", "null"], "description": "The registered person this report is about." },
           "created_at": { "type": "string" },
           "received_at": { "type": "string" },
           "trusted": { "type": "boolean", "description": "The sending phone is marked trusted by the dispatcher." }

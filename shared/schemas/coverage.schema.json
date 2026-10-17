@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/coverage.schema.json",
+  "title": "Warning coverage (GET /api/coverage)",
+  "description": "Confirmed / registered vulnerable people per zone and overall, the active alerts with the time their unconfirmed people become cases, and the outreach list.",
+  "type": "object",
+  "required": ["zones", "overall", "alerts", "unconfirmed"],
+  "additionalProperties": false,
+  "properties": {
+    "zones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "registered", "confirmed", "coverage"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "registered": { "type": "integer", "minimum": 1 },
+          "confirmed": { "type": "integer", "minimum": 0 },
+          "coverage": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    "overall": {
+      "type": "object",
+      "required": ["registered", "confirmed", "coverage"],
+      "additionalProperties": false,
+      "properties": {
+        "registered": { "type": "integer", "minimum": 0 },
+        "confirmed": { "type": "integer", "minimum": 0 },
+        "coverage": { "type": ["number", "null"] }
+      }
+    },
+    "alerts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "hazard", "severity", "zones", "issued_at", "timeout_at"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "hazard": { "type": "string" },
+          "severity": { "enum": ["watch", "warning", "emergency"] },
+          "zones": { "type": "array", "items": { "type": "string" } },
+          "issued_at": { "type": "string" },
+          "timeout_at": { "type": ["string", "null"], "description": "When unconfirmed people become cases; null for a watch." }
+        }
+      }
+    },
+    "unconfirmed": { "type": "array", "items": { "$ref": "zone_card.schema.json#/$defs/person" } }
+  }
+}

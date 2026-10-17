@@ -4,7 +4,8 @@ Planned layout (System Design 14.1):
 
 ```
 scenario/
-  zones.geojson            8 to 10 named zones of the demo town (draw at geojson.io)
+  zones.geojson            8 to 10 named zones of the demo town (draw at geojson.io; each
+                           feature needs "name" and "population"; shared/examples/zones.geojson)
   templates/               hand-written message templates per hazard
   packs/flood/ packs/heat/ packs/earthquake/
                            people.json registry.csv teams.json shelters.json supplies.json

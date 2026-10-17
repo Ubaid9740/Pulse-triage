@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/zone_card.schema.json",
+  "title": "Zone card (GET /api/zones/{name})",
+  "description": "What the dashboard shows when a zone is clicked: the numbers, the outreach list and the zone task. 'Send welfare-check team' is POST /api/zones/{name}/task.",
+  "type": "object",
+  "required": ["zone", "lines", "unconfirmed", "task"],
+  "additionalProperties": false,
+  "properties": {
+    "zone": { "$ref": "zone.schema.json" },
+    "lines": { "type": "array", "items": { "type": "string" } },
+    "unconfirmed": {
+      "type": "array", "items": { "$ref": "#/$defs/person" },
+      "description": "Outreach list: medical needs first, then people who live alone."
+    },
+    "task": {
+      "type": "object",
+      "required": ["case_id", "points", "reasons"],
+      "additionalProperties": false,
+      "properties": {
+        "case_id": { "type": ["integer", "null"] },
+        "points": { "type": "integer" },
+        "reasons": { "type": "array", "items": { "type": "object" } }
+      }
+    }
+  },
+  "$defs": {
+    "person": {
+      "type": "object",
+      "required": ["id", "name", "zone", "conditions", "phone", "lat", "lng", "confirmed_at", "priority"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "zone": { "type": ["string", "null"] },
+        "conditions": { "type": "array", "items": { "type": "string" } },
+        "phone": { "type": ["string", "null"] },
+        "lat": { "type": ["number", "null"] },
+        "lng": { "type": ["number", "null"] },
+        "confirmed_at": { "type": ["string", "null"], "description": "Last confirmation, if it was before the current alert." },
+        "priority": { "enum": ["medical", "alone", "other"] }
+      }
+    }
+  }
+}

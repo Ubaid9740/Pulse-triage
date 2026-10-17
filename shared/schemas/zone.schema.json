@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/zone.schema.json",
+  "title": "Zone (snapshot 'zones', GET /api/zones)",
+  "description": "One zone with its Silent Zone numbers. Fill the map shape by coverage; red when silent.",
+  "type": "object",
+  "required": ["name", "population", "hard_hit", "hard_hit_since", "silent", "silent_since", "quiet", "unheard",
+               "expected", "actual", "rate", "registered", "confirmed", "coverage", "lines", "task_case_id", "polygon"],
+  "additionalProperties": false,
+  "properties": {
+    "name": { "type": "string" },
+    "population": { "type": "integer", "minimum": 0 },
+    "hard_hit": { "type": "boolean", "description": "Marked by the dispatcher, or (heat) inside an active alert's zones." },
+    "hard_hit_since": { "type": ["string", "null"] },
+    "silent": { "type": "boolean", "description": "Hard-hit and (quiet or unheard)." },
+    "silent_since": { "type": ["string", "null"] },
+    "quiet": { "type": "boolean", "description": "Fewer than a quarter of the expected reports." },
+    "unheard": { "type": "boolean", "description": "Warning coverage under 25% of 10 or more registered people." },
+    "expected": { "type": ["number", "null"], "description": "Expected reports; null when not hard-hit." },
+    "actual": { "type": "integer", "minimum": 0, "description": "Reports placed in the zone (not the server's own)." },
+    "rate": { "type": ["number", "null"], "description": "Reports per 100 people used for 'expected'." },
+    "registered": { "type": "integer", "minimum": 0 },
+    "confirmed": { "type": "integer", "minimum": 0 },
+    "coverage": { "type": ["number", "null"], "minimum": 0, "maximum": 1, "description": "Null when nobody is registered." },
+    "lines": { "type": "array", "items": { "type": "string" }, "description": "The zone card's explanation, one fact per line." },
+    "task_case_id": { "type": ["integer", "null"], "description": "The open welfare-check zone task, if any." },
+    "polygon": { "type": "object", "description": "GeoJSON Polygon or MultiPolygon." }
+  }
+}

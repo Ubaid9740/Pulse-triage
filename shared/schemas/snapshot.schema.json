@@ -31,7 +31,7 @@
       }
     },
     "cases": { "type": "array", "items": { "$ref": "case.schema.json" } },
-    "zones": { "type": "array", "items": { "type": "object" } },
+    "zones": { "type": "array", "items": { "$ref": "zone.schema.json" } },
     "teams": { "type": "array", "items": { "type": "object" } },
     "shelters": { "type": "array", "items": { "type": "object" } },
     "supplies": { "type": "array", "items": { "type": "object" } }

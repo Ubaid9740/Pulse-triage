@@ -3,6 +3,10 @@
 Points = time points + "can't save themselves" points + window points + people points,
 then multiplied by trust = trust_base + trust_slope * confidence. Every part that scores
 becomes one line of the explanation card, so the dispatcher sees the real maths.
+
+Reports the server makes itself (an unconfirmed registered person, a zone task) only count
+while a case has nothing else: once a real report joins, trust and the report count come
+from the real reports.
 """
 from __future__ import annotations
 
@@ -11,6 +15,9 @@ from dataclasses import dataclass, field
 from datetime import datetime
 
 from .timeutil import hours_between
+
+SYSTEM_SOURCES = ("silence", "zone_task")
+SYSTEM_SQL = f"({', '.join(repr(s) for s in SYSTEM_SOURCES)})"
 
 
 @dataclass
@@ -96,6 +103,11 @@ def vulnerability_reasons(conditions: list[str] | set[str], constants: dict) -> 
     return out
 
 
+def counted(reports: list[ReportInfo]) -> list[ReportInfo]:
+    """The reports that count for trust: the real ones, or the system ones if that is all there is."""
+    return [r for r in reports if r.source not in SYSTEM_SOURCES] or reports
+
+
 def source_type(report: ReportInfo) -> str:
     """Which starting confidence a report earns (constants.confidence.start)."""
     if report.source == "silence":
@@ -119,7 +131,7 @@ def confidence(case: CaseState, now: datetime, constants: dict) -> tuple[float, 
     c = constants["confidence"]
     if not case.reports:
         return c["floor"], "no reports", False
-    reports = sorted(case.reports, key=lambda r: r.created_at)
+    reports = sorted(counted(case.reports), key=lambda r: r.created_at)
     first = reports[0]
     kind = source_type(first)
     value = c["start"][kind]
@@ -184,8 +196,9 @@ def score(case: CaseState, now: datetime, constants: dict) -> Score:
 
     c = constants["confidence"]
     badges = []
-    if len(case.reports) >= 2:
-        badges.append(f"{len(case.reports)} reports")
+    n = len(counted(case.reports))
+    if n >= 2:
+        badges.append(f"{n} reports")
     if case.verified:
         badges.append("verified")
     elif fake and len({r.device_id for r in case.reports}) == 1:
@@ -196,3 +209,15 @@ def score(case: CaseState, now: datetime, constants: dict) -> Score:
     if not case.verified and hours_between(case.last_update, now) >= c["recheck_hours"]:
         badges.append("re-check")
     return Score(points, reasons, conf, badges, None if left is None else round(left, 2), {"raw": raw})
+
+
+def zone_task_score(zone: str, registered: int, rules: dict) -> tuple[int, list[dict]]:
+    """'Send welfare-check team' (Team Brief 4.4 h): base points, plus some per registered
+    vulnerable person in the zone, capped. A dispatcher created it, so there is no trust factor."""
+    base, per, cap = rules["zone_task_base"], rules["zone_task_per_person"], rules["zone_task_max"]
+    extra = min(per * registered, cap - base)
+    people = f"{registered} registered vulnerable {'person' if registered == 1 else 'people'}"
+    return base + extra, [
+        {"text": f"Silent Zone welfare check: {zone}", "points": base, "kind": "zone"},
+        {"text": f"{people} (+{per} each, up to {cap})", "points": extra, "kind": "zone"},
+    ]

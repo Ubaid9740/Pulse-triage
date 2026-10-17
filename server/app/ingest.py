@@ -4,8 +4,9 @@ Steps (System Design 5.2): validate wire -> parse and validate body -> drop dupl
 verify signature -> pin the device key -> check times and rate limit -> open the payload ->
 validate the payload -> store and dispatch in one transaction.
 
-A report is stored, then CaseBook.attach_report merges it into a matching open case (or starts
-a new one) and rescores that case. Not built yet: zones, coverage, team tracking.
+A report is stored, placed in its zone and merged into a matching open case (or starts a new
+one), and that case is rescored. Alert replies and welfare checks update warning coverage; a
+welfare check that finds someone in need also becomes a report. Not built yet: team tracking.
 """
 from __future__ import annotations
 
@@ -17,12 +18,14 @@ from datetime import datetime, timedelta
 from . import timeutil
 from .cases import CaseBook
 from .config import Settings
+from .coverage import Coverage
 from .crypto import CommandPostKeys, b64d, verify
 from .db import Database
 from .outbound import COMMAND_POST
 from .packets import PUBLIC_KINDS
 from .profiles import Profiles
 from .schemas import Schemas
+from .zones import ZoneBook
 
 log = logging.getLogger("pulsetriage.ingest")
 
@@ -46,9 +49,11 @@ class Result:
 
 class Ingestor:
     def __init__(self, db: Database, keys: CommandPostKeys, schemas: Schemas, profiles: Profiles,
-                 settings: Settings, constants: dict, cases: CaseBook):
+                 settings: Settings, constants: dict, cases: CaseBook, coverage: Coverage, zones: ZoneBook):
         self.db = db
         self.cases = cases
+        self.coverage = coverage
+        self.zones = zones
         self.keys = keys
         self.schemas = schemas
         self.profiles = profiles
@@ -188,20 +193,27 @@ class Ingestor:
                 "pubkey = CASE WHEN devices.pubkey = '' OR devices.pubkey IS NULL THEN excluded.pubkey "
                 "ELSE devices.pubkey END",
                 (body["from_device"], body["pubkey"], now_iso, now_iso))
-            if body["kind"] == "report":
+            kind = body["kind"]
+            if kind == "report":
                 case_id = self._add_report(conn, body, payload, created, received_at)
-            # TODO next steps: alert_reply -> coverage, welfare_check -> coverage,
-            # volunteer -> teams, ack -> team tracker, team_ping -> team tracker.
+            elif kind == "alert_reply":
+                self.coverage.record_reply(conn, body, payload, created, received_at)
+            elif kind == "welfare_check":
+                case_id = self.coverage.record_check(conn, body, payload, created, received_at)
+            # TODO next steps: volunteer -> teams, ack -> team tracker, team_ping -> team tracker.
+        self.zones.mark_dirty()
         return Result("accepted", body["id"], case_id=case_id)
 
     def _add_report(self, conn, body: dict, payload: dict, created: datetime, received_at: datetime) -> int:
-        source = "alert_reply" if payload.get("alert_id") else "app"
-        conn.execute(
-            "INSERT INTO reports(id, packet_id, case_id, source, hazard, for_whom, people, conditions, details, "
-            "note, lat, lng, accuracy_m, landmark, device_id, reporter_role, reader, reader_conf, created_at, "
-            "received_at) VALUES(?, ?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'form', 1.0, ?, ?)",
-            (body["id"], body["id"], source, payload["hazard"], payload["for_whom"], payload["people"],
-             json.dumps(payload["conditions"]), json.dumps(payload["details"]), payload.get("note"),
-             payload.get("lat"), payload.get("lng"), payload.get("gps_accuracy_m"), payload.get("landmark"),
-             body["from_device"], payload["reporter_role"], timeutil.iso(created), timeutil.iso(received_at)))
-        return self.cases.attach_report(conn, body["id"], received_at)
+        device, rid = body["from_device"], payload.get("registry_id")
+        if rid:
+            self.coverage.confirm(conn, rid, created, f"report from {device}")
+        return self.cases.add_report(conn, {
+            "id": body["id"], "packet_id": body["id"],
+            "source": "alert_reply" if payload.get("alert_id") else "app",
+            "hazard": payload["hazard"], "for_whom": payload["for_whom"], "people": payload["people"],
+            "conditions": payload["conditions"], "details": payload["details"], "note": payload.get("note"),
+            "lat": payload.get("lat"), "lng": payload.get("lng"), "accuracy_m": payload.get("gps_accuracy_m"),
+            "landmark": payload.get("landmark"), "device_id": device, "reporter_role": payload["reporter_role"],
+            "reader": "form", "reader_conf": 1.0, "created_at": timeutil.iso(created),
+            "received_at": timeutil.iso(received_at), "registry_id": rid}, received_at)

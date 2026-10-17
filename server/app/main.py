@@ -14,7 +14,7 @@ from datetime import timedelta
 from typing import Any
 
 import qrcode
-from fastapi import FastAPI, Query, Request
+from fastapi import Body, FastAPI, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
@@ -23,6 +23,7 @@ from pydantic import BaseModel, Field
 from . import __version__, outbound, timeutil
 from .cases import CaseBook, NotFound
 from .config import Settings, load_constants
+from .coverage import MAX_REGISTRY_BYTES, Coverage
 from .crypto import CommandPostKeys
 from .db import Database
 from .ingest import Ingestor
@@ -31,6 +32,7 @@ from .profiles import Profiles
 from .scheduler import Scheduler
 from .schemas import Schemas
 from .snapshot import SnapshotBuilder
+from .zones import ZoneBook, ZoneMap
 
 log = logging.getLogger("pulsetriage")
 
@@ -44,6 +46,8 @@ class Context:
     db: Database
     keys: CommandPostKeys
     cases: CaseBook
+    coverage: Coverage
+    zones: ZoneBook
     ingestor: Ingestor
     snapshots: SnapshotBuilder
     scheduler: Scheduler
@@ -65,6 +69,15 @@ class TrustRequest(ByRequest):
     trusted: bool = True
 
 
+class HardHitRequest(ByRequest):
+    zones: list[str] = Field(min_length=1, max_length=50)
+    hard_hit: bool = True
+
+
+class HazardRequest(ByRequest):
+    hazard: str = Field(min_length=1, max_length=20)
+
+
 def create_app(settings: Settings | None = None) -> FastAPI:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     settings = settings or Settings.from_env()
@@ -73,10 +86,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     profiles = Profiles(settings.shared_dir, schemas)
     db = Database(settings.db_path)
     keys = CommandPostKeys.load_or_create(settings.keys_dir)
-    cases = CaseBook(db, profiles, constants)
-    ctx = Context(settings, constants, schemas, profiles, db, keys, cases,
-                  Ingestor(db, keys, schemas, profiles, settings, constants, cases),
-                  SnapshotBuilder(db, settings), Scheduler(cases, constants))
+    zone_map = ZoneMap.from_db(db)
+    cases = CaseBook(db, profiles, constants, zone_map)
+    coverage = Coverage(db, cases, zone_map, profiles, constants)
+    zones = ZoneBook(db, zone_map, cases, coverage, profiles, schemas, constants)
+    ctx = Context(settings, constants, schemas, profiles, db, keys, cases, coverage, zones,
+                  Ingestor(db, keys, schemas, profiles, settings, constants, cases, coverage, zones),
+                  SnapshotBuilder(db, settings, zones), Scheduler(cases, coverage, zones, constants))
     if not settings.require_signatures or not settings.require_sealing:
         log.warning("Development mode: unsigned=%s, unsealed=%s packets are accepted.",
                     not settings.require_signatures, not settings.require_sealing)
@@ -174,6 +190,56 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         req = req or TrustRequest()
         return {"device_id": device_id, "trusted": req.trusted,
                 "cases_rescored": cases.set_trusted(device_id, req.trusted, req.by)}
+
+    @app.post("/api/settings/hazard")
+    def set_hazard(req: HazardRequest) -> dict:
+        if req.hazard not in profiles.hazards:
+            raise ValueError(f"no profile for {req.hazard!r}; known: {', '.join(profiles.hazards)}")
+        with db.write() as conn:
+            conn.execute("INSERT INTO settings(key, value) VALUES('active_hazard', ?) "
+                         "ON CONFLICT(key) DO UPDATE SET value = excluded.value", (json.dumps(req.hazard),))
+            cases.audit(conn, timeutil.now(), req.by, "hazard", "settings", req.hazard)
+        zones.update()
+        return {"hazard": req.hazard}
+
+    # ---- zones, registry and coverage --------------------------------------------------------
+    @app.post("/api/zones/import")
+    def import_zones(geojson: dict[str, Any] = Body(...), by: str = Query("dispatcher", max_length=40)) -> dict:
+        return zones.import_geojson(geojson, by)
+
+    @app.get("/api/zones")
+    def get_zones() -> dict:
+        zones.refresh_if_dirty()
+        return {"zones": zones.views()}
+
+    @app.post("/api/zones/hard-hit")
+    def mark_hard_hit(req: HardHitRequest) -> dict:
+        return {"zones": zones.set_hard_hit(req.zones, req.hard_hit, req.by)}
+
+    @app.get("/api/zones/{name}")
+    def zone_card(name: str) -> dict:
+        return zones.card(name)
+
+    @app.post("/api/zones/{name}/task")
+    def zone_task(name: str, req: ByRequest | None = None) -> dict:
+        return zones.create_task(name, (req or ByRequest()).by)
+
+    @app.post("/api/registry/import")
+    async def import_registry(request: Request, by: str = Query("dispatcher", max_length=40)) -> dict:
+        raw = await request.body()
+        if len(raw) > MAX_REGISTRY_BYTES:
+            raise ValueError(f"registry file is over {MAX_REGISTRY_BYTES // 1_000_000} MB")
+        try:
+            text = raw.decode("utf-8-sig")
+        except UnicodeDecodeError as exc:
+            raise ValueError("registry file must be UTF-8 CSV") from exc
+        result = coverage.import_registry(text, by)
+        zones.update()
+        return result
+
+    @app.get("/api/coverage")
+    def get_coverage() -> dict:
+        return coverage.summary()
 
     @app.exception_handler(ValueError)
     def value_error(_: Request, exc: ValueError) -> JSONResponse:

@@ -44,7 +44,8 @@ Built: shared formats, examples, profiles (common, flood, heat, earthquake), ser
 (packet ingest with signatures and sealing, outbound queue, snapshot, setup QR) and the server core:
 duplicate reports merge into cases, every case has priority points with readable reasons and a
 confidence score, the scheduler rescores as time passes, and the dispatcher can verify, split and
-trust.
+trust. Zones, the opt-in registry, warning coverage and Silent Zones: unconfirmed registered people
+become cases after an alert's timeout, and a quiet hard-hit zone turns red with a zone task.
 
-Next (System Design 14.5, B): zones and Silent Zones, alerts and warning coverage, team tracker,
+Next (System Design 14.5, B): alerts (create, sign, send), team tracker, suggest and assign,
 supplies.

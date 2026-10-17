@@ -10,10 +10,13 @@ Everything the phone app, server and dashboard must agree on. Change nothing her
 | `schemas/payloads/<kind>.schema.json` | The payload inside each kind of packet |
 | `schemas/case.schema.json`, `snapshot.schema.json` | What the dashboard reads from `GET /api/snapshot` |
 | `schemas/case_detail.schema.json` | One case with its reports and history (`GET /api/cases/{id}`) |
+| `schemas/zone.schema.json`, `zone_card.schema.json`, `coverage.schema.json` | Zones in the snapshot, the zone card, warning coverage |
+| `schemas/zones.schema.json` | The zones file the scenario provides (`scenario/zones.geojson`) |
 | `schemas/setup_qr.schema.json` | What phones scan at setup |
 | `schemas/profile.schema.json` | Hazard profile format |
 | `profiles/*.json` | `common` plus one file per disaster: questions, rules, keywords, tips, alert templates |
 | `examples/*.json` | One valid example per packet kind, plus a snapshot and a setup QR |
+| `examples/zones.geojson`, `examples/registry.csv` | A three-zone town and a three-person registry, in the import formats |
 
 ## How a phone builds a packet
 
