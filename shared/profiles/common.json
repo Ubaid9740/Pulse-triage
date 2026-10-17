@@ -38,5 +38,24 @@
     "cond:no_food_water": ["no food", "no water", "nothing to eat", "no drinking water"],
     "power_out": ["no power", "power cut", "power gone", "no electricity", "blackout"]
   },
-  "supplies": ["drinking_water", "food_pack", "first_aid_kit", "oxygen_cylinder", "insulin", "blanket", "fuel"]
+  "supplies": ["drinking_water", "food_pack", "first_aid_kit", "oxygen_cylinder", "insulin", "blanket", "fuel"],
+  "all_clear": {
+    "en": {
+      "headline": "All clear for {zones}",
+      "do_now": [
+        "The danger has passed, but take care",
+        "Keep checking on neighbours who may need help",
+        "Report anyone who still needs help"
+      ]
+    }
+  },
+  "announcement": {
+    "en": {
+      "intro": "Attention {zones}: an official message from the command post.",
+      "place": "If you need to leave, go to {places}.",
+      "pass_on": "Please pass this on and check on your neighbours.",
+      "repeat": "Again: {headline}",
+      "and": "and"
+    }
+  }
 }

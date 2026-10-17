@@ -51,6 +51,10 @@ python -m pytest
 | `POST /api/zones/{name}/task` `{"by"}` | "Send welfare-check team": one open zone task per zone |
 | `POST /api/registry/import?by=` | Add or update registered people from CSV (body `text/csv`) |
 | `GET /api/coverage` | Warning coverage per zone, alert timeouts, the outreach list (`coverage.schema.json`) |
+| `POST /api/alerts` | Issue, update (`replaces`) or end (`replaces` + `cancel`) an alert; signs and queues it |
+| `POST /api/alerts/preview` | The payload `POST /api/alerts` would send, for the composer; nothing is queued |
+| `GET /api/alerts`, `/api/alerts/{id}` | Alerts with status, replies and coverage (`alert_summary.schema.json`) |
+| `POST /api/announcement` `{"alert_id", "languages"}` | Loudspeaker and radio script, about 20 s (`announcement.schema.json`) |
 | `GET /docs` | Interactive API docs |
 
 Reject reasons: `invalid_wire`, `too_big`, `invalid_body`, `bad_signature`, `unsigned`, `not_allowed`,
@@ -99,7 +103,28 @@ zones who has not confirmed since it was issued becomes an "unconfirmed" case at
 A report naming that person joins the same case and its trust replaces the 0.3; a "safe" reply
 or welfare check closes it. A zone task scores 60 points + 1 per registered person, capped at 90.
 
-The alerts table is filled by `alerts.py`, the next step; until then tests store alerts directly.
+An update keeps the clock of the alert it replaces: for each zone, waiting and confirmations
+count from the first alert in the chain that covered it.
+
+## Alerts
+
+`POST /api/alerts` with `hazard`, `severity` (`watch`, `warning`, `emergency`) and `zones` is
+enough: the headline and three steps come from the hazard profile's template (send `fill` for
+placeholders such as `{start}` and `{end}`, or write `headline` and `do_now` yourself), places
+default to the nearest shelters with space (cooling centres for heat), and it is valid for 12 h.
+
+```
+{"hazard": "heat", "severity": "warning", "zones": ["Ward 4", "Old Market"],
+ "fill": {"start": "12:00", "end": "17:00"}}
+{"replaces": "A-0001", "severity": "emergency"}     update: anything left out is kept
+{"replaces": "A-0002", "cancel": true}              all-clear, worded from common.json
+```
+
+Each alert is signed with the command post key and queued for `GET /api/outbound` at urgency 4,
+with `replace_key` `alert:<first alert ID>` so relays keep only the newest version; the packet
+expires with the alert. The scheduler marks alerts past `valid_until` as expired. The
+announcement frame (intro, places, pass it on, repeat) is per language in `common.json`; if a
+script runs past 20 s the closing repeat is left out.
 
 ## Code map
 
@@ -107,9 +132,10 @@ The alerts table is filled by `alerts.py`, the next step; until then tests store
 sealing · `schemas.py` shared-schema validation · `profiles.py` profile rules · `ingest.py` the packet
 pipeline · `merge.py` duplicate rules · `scoring.py` points, confidence, badges · `cases.py` attach,
 rebuild, rescore, verify, split, trust · `zones.py` zone shapes, the Silent Zone test, zone tasks ·
-`coverage.py` registry, confirmations, warning coverage, alert timeouts · `scheduler.py` timeouts,
+`coverage.py` registry, confirmations, warning coverage, alert timeouts · `alerts.py` create, update,
+cancel, expire and announce alerts · `scheduler.py` alert expiry, timeouts,
 rescoring and zones every 30 s · `outbound.py` the queue to phones · `snapshot.py` the dashboard
 snapshot · `packets.py` packet and geohash helpers · `devtools.py` phone-side packet builder
 (reference for the app).
 
-Next: `alerts.py`, `suggest.py`, `teams.py`, `supplies.py` (System Design 14.5).
+Next: `suggest.py`, `/api/assign`, `teams.py`, `supplies.py` with shelters (System Design 14.5).

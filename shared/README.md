@@ -12,6 +12,7 @@ Everything the phone app, server and dashboard must agree on. Change nothing her
 | `schemas/case_detail.schema.json` | One case with its reports and history (`GET /api/cases/{id}`) |
 | `schemas/zone.schema.json`, `zone_card.schema.json`, `coverage.schema.json` | Zones in the snapshot, the zone card, warning coverage |
 | `schemas/zones.schema.json` | The zones file the scenario provides (`scenario/zones.geojson`) |
+| `schemas/alert_summary.schema.json`, `announcement.schema.json` | Alerts in the snapshot and `GET /api/alerts`; the loudspeaker script |
 | `schemas/setup_qr.schema.json` | What phones scan at setup |
 | `schemas/profile.schema.json` | Hazard profile format |
 | `profiles/*.json` | `common` plus one file per disaster: questions, rules, keywords, tips, alert templates |

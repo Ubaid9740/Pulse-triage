@@ -21,7 +21,8 @@
         "scheduler_last_run": { "type": ["string", "null"] }
       }
     },
-    "alerts": { "type": "array", "items": { "type": "object" } },
+    "alerts": { "type": "array", "items": { "$ref": "alert_summary.schema.json" },
+                "description": "Active alerts and all-clears still in force, newest first." },
     "summary": {
       "type": "object",
       "properties": {

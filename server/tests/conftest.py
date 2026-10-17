@@ -106,18 +106,10 @@ def registry_csv(people: list[tuple]) -> str:
     return "\n".join(lines) + "\n"
 
 
-def add_alert(client: TestClient, alert_id: str = "A-0007", *, hazard: str = "flood", severity: str = "warning",
-              zones: tuple = ("Ward 4",), issued_at: datetime | None = None, valid_hours: float = 12,
-              cancel: bool = False, replaces: str | None = None) -> None:
-    """Store an alert the way alerts.py will (that module is the next build step)."""
+def add_alert(client: TestClient, *, hazard: str = "flood", severity: str = "warning", zones: tuple = ("Ward 4",),
+              issued_at: datetime | None = None, valid_hours: float = 12) -> str:
+    """Issue an alert through AlertBook as if at issued_at (the API always uses now). Returns its ID."""
     issued = issued_at or timeutil.now()
-    until = issued + timedelta(hours=valid_hours)
-    payload = {"alert_id": alert_id, "hazard": hazard, "severity": severity, "zones": list(zones),
-               "headline": {"en": "Test alert"}, "do_now": {"en": []}, "places": [],
-               "issued_at": timeutil.iso(issued), "valid_until": timeutil.iso(until), "replaces": replaces,
-               "cancel": cancel}
-    with client.app.state.ctx.db.write() as conn:
-        conn.execute("INSERT INTO alerts(id, hazard, severity, zones, body, issued_at, valid_until, replaces, "
-                     "packet_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, NULL)",
-                     (alert_id, hazard, severity, json.dumps(list(zones)), json.dumps(payload),
-                      timeutil.iso(issued), timeutil.iso(until), replaces))
+    req = {"hazard": hazard, "severity": severity, "zones": list(zones), "headline": {"en": "Test alert"},
+           "do_now": {"en": []}, "valid_until": timeutil.iso(issued + timedelta(hours=valid_hours))}
+    return client.app.state.ctx.alerts.issue(req, "test", now=issued)["alert_id"]

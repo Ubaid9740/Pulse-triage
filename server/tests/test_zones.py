@@ -161,7 +161,7 @@ def test_clearing_the_mark_ends_hard_hit(client):
 
 def test_heat_alert_zones_are_hard_hit(client):
     load_zones(client)
-    add_alert(client, "A-0001", hazard="heat", zones=("Ward 4", "Old Market"))
+    add_alert(client, hazard="heat", zones=("Ward 4", "Old Market"))
     ctx = client.app.state.ctx
     ctx.zones.update()
     assert not any(z["hard_hit"] for z in zones_by_name(client).values())   # flood profile: marks only
@@ -178,7 +178,7 @@ def test_heat_zone_with_low_coverage_is_silent(client):
     load_zones(client)
     load_registry(client, registry_csv([(f"R-{i:04d}", "Ward 4", "elderly", None, None) for i in range(12)]))
     client.post("/api/settings/hazard", json={"hazard": "heat"})
-    add_alert(client, "A-0002", hazard="heat", zones=("Ward 4",))
+    add_alert(client, hazard="heat", zones=("Ward 4",))
     client.app.state.ctx.zones.update()
     ward = zones_by_name(client)["Ward 4"]
     assert ward["unheard"] and ward["silent"] and ward["coverage"] == 0

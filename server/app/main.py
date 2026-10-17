@@ -11,7 +11,7 @@ import logging
 from contextlib import asynccontextmanager
 from dataclasses import dataclass
 from datetime import timedelta
-from typing import Any
+from typing import Any, Literal
 
 import qrcode
 from fastapi import Body, FastAPI, Query, Request
@@ -21,6 +21,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from . import __version__, outbound, timeutil
+from .alerts import AlertBook
 from .cases import CaseBook, NotFound
 from .config import Settings, load_constants
 from .coverage import MAX_REGISTRY_BYTES, Coverage
@@ -48,6 +49,7 @@ class Context:
     cases: CaseBook
     coverage: Coverage
     zones: ZoneBook
+    alerts: AlertBook
     ingestor: Ingestor
     snapshots: SnapshotBuilder
     scheduler: Scheduler
@@ -78,6 +80,26 @@ class HazardRequest(ByRequest):
     hazard: str = Field(min_length=1, max_length=20)
 
 
+class AlertRequest(ByRequest):
+    """A new alert; with 'replaces' an update (fields left out are kept); with 'cancel' the all-clear."""
+    hazard: str | None = None
+    severity: Literal["watch", "warning", "emergency"] | None = None
+    zones: list[str] | None = Field(None, min_length=1, max_length=50)
+    headline: dict[str, str] | None = None
+    do_now: dict[str, list[str]] | None = None
+    places: list[str] | None = Field(None, description="Place IDs; leave out to pick the nearest with space")
+    languages: list[str] | None = None
+    fill: dict[str, str] = Field(default_factory=dict, description="Template values, e.g. start and end")
+    valid_until: str | None = None
+    replaces: str | None = None
+    cancel: bool = False
+
+
+class AnnouncementRequest(BaseModel):
+    alert_id: str = Field(min_length=1, max_length=20)
+    languages: list[str] | None = None
+
+
 def create_app(settings: Settings | None = None) -> FastAPI:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     settings = settings or Settings.from_env()
@@ -90,9 +112,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     cases = CaseBook(db, profiles, constants, zone_map)
     coverage = Coverage(db, cases, zone_map, profiles, constants)
     zones = ZoneBook(db, zone_map, cases, coverage, profiles, schemas, constants)
-    ctx = Context(settings, constants, schemas, profiles, db, keys, cases, coverage, zones,
+    alerts = AlertBook(db, keys, schemas, profiles, zone_map, coverage, zones, cases, constants)
+    ctx = Context(settings, constants, schemas, profiles, db, keys, cases, coverage, zones, alerts,
                   Ingestor(db, keys, schemas, profiles, settings, constants, cases, coverage, zones),
-                  SnapshotBuilder(db, settings, zones), Scheduler(cases, coverage, zones, constants))
+                  SnapshotBuilder(db, settings, zones, alerts), Scheduler(cases, coverage, zones, alerts, constants))
     if not settings.require_signatures or not settings.require_sealing:
         log.warning("Development mode: unsigned=%s, unsealed=%s packets are accepted.",
                     not settings.require_signatures, not settings.require_sealing)
@@ -190,6 +213,27 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         req = req or TrustRequest()
         return {"device_id": device_id, "trusted": req.trusted,
                 "cases_rescored": cases.set_trusted(device_id, req.trusted, req.by)}
+
+    # ---- alerts -------------------------------------------------------------------------------
+    @app.post("/api/alerts")
+    def issue_alert(req: AlertRequest) -> dict:
+        return alerts.issue(req.model_dump(exclude={"by"}), req.by)
+
+    @app.post("/api/alerts/preview")
+    def preview_alert(req: AlertRequest) -> dict:
+        return alerts.preview(req.model_dump(exclude={"by"}))
+
+    @app.get("/api/alerts")
+    def list_alerts() -> dict:
+        return {"alerts": alerts.views()}
+
+    @app.get("/api/alerts/{alert_id}")
+    def get_alert(alert_id: str) -> dict:
+        return alerts.view(alert_id)
+
+    @app.post("/api/announcement")
+    def announcement(req: AnnouncementRequest) -> dict:
+        return alerts.announcement(req.alert_id, req.languages)
 
     @app.post("/api/settings/hazard")
     def set_hazard(req: HazardRequest) -> dict:

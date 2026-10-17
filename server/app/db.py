@@ -87,6 +87,8 @@ MIGRATIONS = [
     ("zones", "quiet", "INT"),                # few reports for its size
     ("zones", "unheard", "INT"),              # low warning coverage
     ("zones", "silent_since", "TEXT"),
+    ("alerts", "ended_at", "TEXT"),           # replaced, cancelled by an all-clear, or expired
+    ("alerts", "ended_why", "TEXT"),
 ]
 # Indexes on migrated columns, created after the migrations.
 LATE_INDEXES = """

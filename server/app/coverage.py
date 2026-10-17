@@ -8,8 +8,9 @@ Warning coverage = confirmed / registered, per zone. When an alert has been out 
 coverage_timeout_minutes[severity] (emergency 30 min, warning 2 h), everyone in its zones who
 is still unconfirmed becomes an "unconfirmed" case (source "silence", confidence 0.3).
 
-The alerts table is written by alerts.py (next build step); its body column holds the alert
-payload (payloads/alert.schema.json).
+An update replaces an alert but keeps its clock: for each zone, waiting and confirmations count
+from the first alert in the chain that covered that zone. The alerts table is written by
+alerts.py; its body column holds the alert payload (payloads/alert.schema.json).
 """
 from __future__ import annotations
 
@@ -57,26 +58,34 @@ class Coverage:
     # ---- alerts ------------------------------------------------------------------------------
     @staticmethod
     def active_alerts(conn: sqlite3.Connection, now: datetime) -> list[dict]:
-        """Alerts not replaced, not cancelled (all-clear) and not past valid_until."""
+        """Alerts not replaced, not cancelled (all-clear) and not past valid_until. Each carries
+        root_id (the first alert of its update chain) and since (zone -> when the chain first
+        covered it)."""
         rows = _rows(conn, "SELECT * FROM alerts ORDER BY issued_at")
+        by_id = {r["id"]: dict(r, zones=json.loads(r["zones"] or "[]")) for r in rows}
         replaced = {r["replaces"] for r in rows if r["replaces"]}
         out = []
-        for r in rows:
-            body = json.loads(r["body"] or "{}")
-            if r["id"] in replaced or body.get("cancel"):
+        for a in by_id.values():
+            body = json.loads(a["body"] or "{}")
+            if a["id"] in replaced or body.get("cancel"):
                 continue
-            if r["valid_until"] and timeutil.parse(r["valid_until"]) <= now:
+            if a["valid_until"] and timeutil.parse(a["valid_until"]) <= now:
                 continue
-            out.append(dict(r, zones=json.loads(r["zones"] or "[]")))
+            chain, seen = [a], {a["id"]}
+            while chain[-1]["replaces"] in by_id and chain[-1]["replaces"] not in seen:
+                chain.append(by_id[chain[-1]["replaces"]])
+                seen.add(chain[-1]["id"])
+            since = {zone: min(c["issued_at"] for c in chain if zone in c["zones"]) for zone in a["zones"]}
+            out.append(dict(a, root_id=chain[-1]["id"], since=since))
         return out
 
     @staticmethod
     def window_starts(alerts: list[dict]) -> dict[str, str]:
-        """Zone -> issue time of the earliest active alert covering it."""
+        """Zone -> when the earliest active alert chain covering it started."""
         starts: dict[str, str] = {}
         for a in alerts:
-            for zone in a["zones"]:
-                starts[zone] = min(starts.get(zone, a["issued_at"]), a["issued_at"])
+            for zone, since in a["since"].items():
+                starts[zone] = min(starts.get(zone, since), since)
         return starts
 
     @staticmethod
@@ -126,22 +135,23 @@ class Coverage:
             "overall": {"registered": registered, "confirmed": confirmed,
                         "coverage": round(confirmed / registered, 2) if registered else None},
             "alerts": [{"id": a["id"], "hazard": a["hazard"], "severity": a["severity"], "zones": a["zones"],
-                        "issued_at": a["issued_at"], "timeout_at": self._timeout_at(a)} for a in alerts],
+                        "issued_at": a["issued_at"], "timeout_at": self.timeout_at(a)} for a in alerts],
             "unconfirmed": waiting,
         }
 
-    def _timeout_at(self, alert: dict) -> str | None:
+    def timeout_at(self, alert: dict) -> str | None:
+        """When the first of the alert's zones runs out of waiting time."""
         wait = self.timeouts_min.get(alert["severity"])
-        if wait is None:
+        if wait is None or not alert["since"]:
             return None
-        return timeutil.iso(timeutil.parse(alert["issued_at"]) + timedelta(minutes=wait))
+        return timeutil.iso(timeutil.parse(min(alert["since"].values())) + timedelta(minutes=wait))
 
     # ---- the registry --------------------------------------------------------------------------
     def import_registry(self, text: str, by: str, now: datetime | None = None) -> dict:
         """Add or update people from a CSV file (columns: REGISTRY_COLUMNS; conditions separated
         by ';'). Confirmations already recorded are kept. Rows without consent are skipped."""
         now = now or timeutil.now()
-        reader = csv.DictReader(io.StringIO(text.lstrip("﻿")))
+        reader = csv.DictReader(io.StringIO(text.lstrip("\ufeff")))
         header = [h.strip() for h in reader.fieldnames or []]
         missing = [c for c in REQUIRED_COLUMNS if c not in header]
         if missing:
@@ -272,19 +282,21 @@ class Coverage:
             due = []
             for a in self.active_alerts(conn, now):
                 wait = self.timeouts_min.get(a["severity"])
-                if wait is not None and now - timeutil.parse(a["issued_at"]) >= timedelta(minutes=wait):
-                    due.append((a, wait))
+                if wait is None:
+                    continue
+                zones = [z for z, since in a["since"].items()
+                         if now - timeutil.parse(since) >= timedelta(minutes=wait)]
+                if zones:
+                    due.append((a, wait, zones))
         if not due:
             return 0
         made = 0
         with self.db.write() as conn:
-            for alert, wait in due:
-                if not alert["zones"]:
-                    continue
-                people = _rows(conn, f"SELECT * FROM registry WHERE zone IN ({','.join('?' * len(alert['zones']))})",
-                               tuple(alert["zones"]))
+            for alert, wait, zones in due:
+                people = _rows(conn, f"SELECT * FROM registry WHERE zone IN ({','.join('?' * len(zones))})",
+                               tuple(zones))
                 for p in people:
-                    if self._confirmed(p, alert["issued_at"]):
+                    if self._confirmed(p, alert["since"][p["zone"]]):
                         continue
                     made += self.cases.ensure_unconfirmed(conn, p, alert, wait, now) is not None
         return made

@@ -114,6 +114,27 @@
         "warning": { "$ref": "#/$defs/template" },
         "emergency": { "$ref": "#/$defs/template" }
       }
+    },
+    "all_clear": {
+      "$ref": "#/$defs/template",
+      "description": "Only in common.json: the wording of an all-clear, for every disaster."
+    },
+    "announcement": {
+      "type": "object",
+      "required": ["en"],
+      "description": "Only in common.json: the frame of the 20-second loudspeaker and radio script, per language. Placeholders: {zones}, {places}, {headline}.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["intro", "place", "pass_on", "repeat", "and"],
+        "additionalProperties": false,
+        "properties": {
+          "intro": { "type": "string" },
+          "place": { "type": "string" },
+          "pass_on": { "type": "string" },
+          "repeat": { "type": "string" },
+          "and": { "type": "string", "description": "The word that joins the last two zones or places." }
+        }
+      }
     }
   }
 }

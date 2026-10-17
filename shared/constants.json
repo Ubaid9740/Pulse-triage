@@ -67,6 +67,15 @@
     "watch": null
   },
 
+  "alerts": {
+    "default_valid_hours": 12,
+    "max_valid_hours": 72,
+    "all_clear_valid_hours": 12,
+    "max_places": 2,
+    "announcement_words_per_minute": 150,
+    "announcement_target_seconds": 20
+  },
+
   "teams": {
     "types": ["boat", "truck", "medic", "rescue", "fire", "welfare", "volunteer"],
     "needs": ["boat", "truck", "medic", "rescue", "fire", "evac", "welfare"],

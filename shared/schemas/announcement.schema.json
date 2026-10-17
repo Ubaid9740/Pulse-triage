@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/announcement.schema.json",
+  "title": "Loudspeaker and radio script (POST /api/announcement)",
+  "description": "One script per language for an alert, about 20 seconds read aloud. The wording around the alert text is in shared/profiles/common.json ('announcement').",
+  "type": "object",
+  "required": ["alert_id", "target_seconds", "scripts"],
+  "additionalProperties": false,
+  "properties": {
+    "alert_id": { "type": "string" },
+    "target_seconds": { "type": "integer", "minimum": 1 },
+    "scripts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["language", "text", "words", "seconds"],
+        "additionalProperties": false,
+        "properties": {
+          "language": { "type": "string" },
+          "text": { "type": "string" },
+          "words": { "type": "integer", "minimum": 0 },
+          "seconds": { "type": "integer", "minimum": 0, "description": "At constants alerts.announcement_words_per_minute." }
+        }
+      }
+    }
+  }
+}

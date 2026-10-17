@@ -46,6 +46,7 @@ duplicate reports merge into cases, every case has priority points with readable
 confidence score, the scheduler rescores as time passes, and the dispatcher can verify, split and
 trust. Zones, the opt-in registry, warning coverage and Silent Zones: unconfirmed registered people
 become cases after an alert's timeout, and a quiet hard-hit zone turns red with a zone task.
+Alerts: issued from templates, updated, ended with an all-clear, signed and queued for phones,
+with a loudspeaker script.
 
-Next (System Design 14.5, B): alerts (create, sign, send), team tracker, suggest and assign,
-supplies.
+Next (System Design 14.5, B): suggest and assign, team tracker, supplies and shelters.

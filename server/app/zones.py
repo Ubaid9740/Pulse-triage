@@ -104,6 +104,9 @@ class ZoneMap:
     def names(self) -> list[str]:
         return [name for name, _, _ in self._zones]
 
+    def geometry(self, name: str) -> dict | None:
+        return next((g for n, _, g in self._zones if n == name), None)
+
     def locate(self, lat: float | None, lng: float | None) -> str | None:
         """The zone a point is in (the first by name if shapes overlap), or None."""
         if lat is None or lng is None:

@@ -97,7 +97,7 @@ def test_coverage_timeout_makes_an_unconfirmed_case_at_0_3(client, phone, schema
     assert ctx.coverage.timeouts() == 1 and ctx.coverage.timeouts() == 0     # once per person and alert
     [case] = open_cases(client)
     assert (case["source"], case["reader"], case["confidence"], case["zone"]) == ("silence", "system", 0.3, "Ward 4")
-    assert case["note"] == "Registered, not confirmed 2 h after alert A-0007"
+    assert case["note"] == "Registered, not confirmed 2 h after alert A-0001"
     assert case["points"] == 55                     # oxygen 40 + cannot walk 15 + elderly 10 + alone 10 + 2, x 0.72
     detail = client.get(f"/api/cases/{case['id']}").json()
     assert schemas.errors("case_detail", detail) == [] and detail["reports"][0]["registry_id"] == "R-0007"
@@ -111,10 +111,10 @@ def test_a_late_safe_reply_closes_the_unconfirmed_case(client, phone):
     add_alert(client, issued_at=two_hours_ago())
     client.app.state.ctx.coverage.timeouts()
     case_id = next(c["id"] for c in open_cases(client) if c["people"] == 1 and "oxygen" in c["conditions"])
-    phone.send(phone.wire("alert_reply", payload=example("alert_reply", registry_id="R-0007")))
+    phone.send(phone.wire("alert_reply", payload=example("alert_reply", registry_id="R-0007", alert_id="A-0001")))
     assert case_id not in [c["id"] for c in open_cases(client)]
     detail = client.get(f"/api/cases/{case_id}").json()
-    assert detail["case"]["status"] == "closed" and detail["history"][-1]["detail"] == "alert reply: safe (A-0007)"
+    assert detail["case"]["status"] == "closed" and detail["history"][-1]["detail"] == "alert reply: safe (A-0001)"
 
 
 def test_a_report_naming_the_person_joins_their_case_and_takes_over_trust(client, phone):

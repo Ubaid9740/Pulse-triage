@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/alert_summary.schema.json",
+  "title": "Alert on the dashboard (snapshot 'alerts', GET /api/alerts)",
+  "description": "An alert as sent, plus where it stands: status, replies (counting earlier versions of the same alert) and warning coverage across its zones.",
+  "type": "object",
+  "required": ["id", "hazard", "severity", "zones", "headline", "do_now", "places", "issued_at", "valid_until",
+               "replaces", "cancel", "status", "ended_at", "packet_id", "replies", "coverage", "timeout_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^A-[0-9]{4,}$" },
+    "hazard": { "type": "string" },
+    "severity": { "enum": ["watch", "warning", "emergency"] },
+    "zones": { "type": "array", "items": { "type": "string" } },
+    "headline": { "type": "object", "additionalProperties": { "type": "string" } },
+    "do_now": { "type": "object", "additionalProperties": { "type": "array", "items": { "type": "string" } } },
+    "places": { "type": "array", "items": { "type": "object" } },
+    "issued_at": { "type": "string" },
+    "valid_until": { "type": "string" },
+    "replaces": { "type": ["string", "null"] },
+    "cancel": { "type": "boolean" },
+    "status": {
+      "enum": ["active", "all_clear", "replaced", "cancelled", "expired"],
+      "description": "all_clear: an all-clear that is still in force."
+    },
+    "ended_at": { "type": ["string", "null"] },
+    "packet_id": { "type": ["string", "null"] },
+    "replies": {
+      "type": "object",
+      "required": ["safe", "need_help", "helping", "total"],
+      "additionalProperties": false,
+      "properties": {
+        "safe": { "type": "integer", "minimum": 0 },
+        "need_help": { "type": "integer", "minimum": 0 },
+        "helping": { "type": "integer", "minimum": 0 },
+        "total": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "coverage": {
+      "type": ["object", "null"],
+      "description": "Registered vulnerable people in the alert's zones; null once the alert has ended.",
+      "required": ["registered", "confirmed", "coverage"],
+      "additionalProperties": false,
+      "properties": {
+        "registered": { "type": "integer", "minimum": 0 },
+        "confirmed": { "type": "integer", "minimum": 0 },
+        "coverage": { "type": ["number", "null"] }
+      }
+    },
+    "timeout_at": { "type": ["string", "null"], "description": "When unconfirmed people become cases; null for a watch or an ended alert." }
+  }
+}

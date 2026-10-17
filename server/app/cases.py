@@ -137,8 +137,8 @@ class CaseBook:
     def ensure_unconfirmed(self, conn: sqlite3.Connection, person: dict, alert: dict, wait_minutes: float,
                            now: datetime) -> int | None:
         """A registered person who has not confirmed the alert in time becomes a case (once per
-        alert, and not while they already have an open case). Returns the new case ID."""
-        report_id = f"unconfirmed:{alert['id']}:{person['id']}"
+        alert and its updates, and not while they already have an open case). Returns the case ID."""
+        report_id = f"unconfirmed:{alert.get('root_id', alert['id'])}:{person['id']}"
         if conn.execute("SELECT 1 FROM reports WHERE id = ?", (report_id,)).fetchone():
             return None
         if self.open_case_of(conn, person["id"]) is not None:

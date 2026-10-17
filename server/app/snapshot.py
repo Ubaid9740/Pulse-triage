@@ -10,6 +10,7 @@ import threading
 from datetime import timedelta
 
 from . import timeutil
+from .alerts import AlertBook
 from .cases import OPEN_STATUSES, case_view
 from .config import Settings
 from .db import Database
@@ -17,10 +18,11 @@ from .zones import ZoneBook
 
 
 class SnapshotBuilder:
-    def __init__(self, db: Database, settings: Settings, zones: ZoneBook):
+    def __init__(self, db: Database, settings: Settings, zones: ZoneBook, alerts: AlertBook):
         self.db = db
         self.settings = settings
         self.zones = zones
+        self.alerts = alerts
         self._lock = threading.Lock()
         self._key: tuple | None = None
         self._cached: dict | None = None
@@ -56,7 +58,7 @@ class SnapshotBuilder:
                 "require_sealing": self.settings.require_sealing,
                 "scheduler_last_run": self.db.get_setting("scheduler_last_run"),
             },
-            "alerts": [],
+            "alerts": self.alerts.views(now, current_only=True),
             "summary": {"open_cases": len(cases), "teams": {}, "warnings": warnings},
             "cases": cases,
             "zones": zones,
