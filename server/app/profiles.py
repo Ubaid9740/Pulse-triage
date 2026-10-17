@@ -119,6 +119,22 @@ class Profiles:
             found += [r["need"] for r in profile_rules if not r["all"]]
         return list(dict.fromkeys(found))
 
+    def check_details(self, hazard: str, details: dict) -> list[str]:
+        """Answers that do not fit the hazard's questions (unknown question, option or type)."""
+        questions = {q["id"]: q for q in self.questions(hazard)}
+        problems = []
+        for key, value in details.items():
+            q = questions.get(key)
+            if q is None:
+                problems.append(f"{hazard} has no question {key!r}")
+            elif q["type"] == "yesno" and not isinstance(value, bool):
+                problems.append(f"{key} is a yes/no answer")
+            elif q["type"] == "choice" and value not in q.get("options", []):
+                problems.append(f"{key} must be one of {', '.join(q.get('options', []))}")
+            elif q["type"] == "multi" and (not isinstance(value, list) or set(value) - set(q.get("options", []))):
+                problems.append(f"{key} takes a list of {', '.join(q.get('options', []))}")
+        return problems
+
     def supplies_needed(self, hazard: str, details: dict, conditions: list[str] | set[str]) -> list[str]:
         """Items from matching supply rules in common.json and the hazard profile."""
         conds = set(conditions)

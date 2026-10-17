@@ -15,7 +15,7 @@ from datetime import datetime, timedelta
 from typing import TYPE_CHECKING
 
 from . import merge, scoring, timeutil
-from .db import Database
+from .db import Database, setting
 from .outbound import COMMAND_POST
 from .profiles import Profiles
 from .scoring import SYSTEM_SOURCES, SYSTEM_SQL
@@ -243,6 +243,7 @@ class CaseBook:
 
     def rescore(self, conn: sqlite3.Connection, case_id: int, now: datetime,
                 reports: list[dict] | None = None) -> scoring.Score:
+        """Points from the rules (with the weights in force), then the dispatcher's override, if any."""
         case = self._case(conn, case_id)
         if case["source"] == "zone_task":
             registered = conn.execute("SELECT COUNT(*) FROM registry WHERE zone = ?", (case["zone"],)).fetchone()[0]
@@ -251,7 +252,13 @@ class CaseBook:
         else:
             if reports is None:
                 reports = self._reports(conn, "r.case_id = ?", (case_id,))
-            result = scoring.score(self._state(case, reports), now, self.constants)
+            result = scoring.score(self._state(case, reports), now, self.rules(conn))
+        override = json.loads(case["override"]) if case["override"] else None
+        if override and override.get("points") is not None:
+            result.reasons.append({"text": f"Changed by dispatcher: {override['reason']} (rules gave {result.points})",
+                                   "points": override["points"], "kind": "override"})
+            result.points = override["points"]
+            result.badges.append("override")
         conn.execute("UPDATE cases SET points = ?, reasons = ?, confidence = ?, badges = ? WHERE id = ?",
                      (result.points, json.dumps(result.reasons), result.confidence, json.dumps(result.badges),
                       case_id))
@@ -269,6 +276,64 @@ class CaseBook:
             conn.execute("INSERT INTO settings(key, value) VALUES('scheduler_last_run', ?) "
                          "ON CONFLICT(key) DO UPDATE SET value = excluded.value", (json.dumps(timeutil.iso(now)),))
         return len(by_case)
+
+    def rules(self, conn: sqlite3.Connection) -> dict:
+        """The constants, with the weights the dispatcher set (POST /api/settings/weights)."""
+        weights = setting(conn, "weights")
+        if not weights:
+            return self.constants
+        points = dict(self.constants["points"], weights=dict(self.constants["points"]["weights"], **weights))
+        return dict(self.constants, points=points)
+
+    def weights(self) -> dict:
+        with self.db.read() as conn:
+            current = self.rules(conn)["points"]["weights"]
+        return {"weights": current, "defaults": self.constants["points"]["weights"]}
+
+    def set_weights(self, weights: dict, reset: bool, by: str, now: datetime | None = None) -> dict:
+        """Tune the points (the weights panel). Every open case is rescored at once."""
+        now = now or timeutil.now()
+        defaults = self.constants["points"]["weights"]
+        unknown = sorted(set(weights) - set(defaults))
+        if unknown:
+            raise ValueError(f"unknown weights: {', '.join(unknown)} (known: {', '.join(defaults)})")
+        if any(not isinstance(v, (int, float)) or isinstance(v, bool) or not 0 <= v <= 200 for v in weights.values()):
+            raise ValueError("weights are numbers from 0 to 200")
+        with self.db.write() as conn:
+            current = {} if reset else dict(setting(conn, "weights") or {})
+            current.update(weights)
+            conn.execute("INSERT INTO settings(key, value) VALUES('weights', ?) "
+                         "ON CONFLICT(key) DO UPDATE SET value = excluded.value", (json.dumps(current),))
+            self.audit(conn, now, by, "weights", "settings", "reset to defaults" if reset and not weights
+                       else json.dumps(current))
+        return dict(self.weights(), cases_rescored=self.rescore_all(now))
+
+    def override(self, case_id: int, points: int | None, status: str | None, reason: str, by: str,
+                 now: datetime | None = None) -> dict:
+        """The dispatcher changes a case's points or status, with a reason. The rules' points stay on
+        the card ("rules gave 69") and in the audit log. points None clears a points override."""
+        now = now or timeutil.now()
+        if not reason or not reason.strip():
+            raise ValueError("an override needs a reason")
+        with self.db.write() as conn:
+            case = self._case(conn, case_id)
+            before = {"points": case["points"], "status": case["status"]}
+            if status is not None:
+                if status not in ("new", "verified", "closed", "done"):
+                    raise ValueError("status can be set to new, verified, closed or done; teams move the rest")
+                if case["team_id"] and case["status"] in ("assigned", "en_route", "on_scene"):
+                    raise ValueError(f"team {case['team_id']} is on this case; change the team's status first")
+                conn.execute("UPDATE cases SET status = ? WHERE id = ?", (status, case_id))
+            if points is not None or status is None:
+                value = None if points is None else {"points": int(points), "reason": reason.strip(), "by": by,
+                                                     "at": timeutil.iso(now)}
+                conn.execute("UPDATE cases SET override = ? WHERE id = ?", (json.dumps(value) if value else None, case_id))
+            self.rescore(conn, case_id, now)
+            after = self._case(conn, case_id)
+            self.audit(conn, now, by, "override", f"case:{case_id}",
+                       json.dumps({"reason": reason.strip(), "before": before,
+                                   "after": {"points": after["points"], "status": after["status"]}}))
+        return self.detail(case_id, now)
 
     # ---- dispatcher actions --------------------------------------------------------------------
     def verify(self, case_id: int, by: str, now: datetime | None = None) -> dict:

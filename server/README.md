@@ -64,6 +64,10 @@ python -m pytest
 | `GET /api/supplies`, `POST /api/supplies` `{"item", "warn_at", "unit"}` | Stock, use and run-out per item (`supply.schema.json`); set the warning level |
 | `POST /api/supplies/move` `{"kind", "item", "qty", "from", "to"}` | restock, load, unload, deliver, transfer or used |
 | `GET /api/resources/summary` | Team counters and warnings (overdue, none free, low stock, nearly full) |
+| `POST /api/intake` | A call, radio message or walk-in typed by a call-taker; a free-text note fills the rest |
+| `POST /api/paste` `{"text", "hazard"}` | A batch of forwarded messages: split, read by keywords, one report each |
+| `POST /api/cases/{id}/override` `{"points", "status", "reason", "by"}` | Change points or status with a reason; no points and no status clears it |
+| `GET /api/settings/weights`, `POST` `{"weights", "reset"}` | The points weights (sliders); every open case is rescored at once |
 | `GET /api/devices` | Phones heard from, with trust, revocation and team |
 | `POST /api/devices/{id}/revoke` `{"revoked", "reason", "by"}` | Refuse a phone (e.g. stolen) and send phones the signed list; `revoked: false` restores it |
 | `GET /api/demo/packs`, `POST /api/demo/reset` `{"pack"}` | Demo packs in `scenario/packs/`; reset a running server to one |
@@ -84,6 +88,26 @@ unsigned, plain-base64 packets. Switch both on once the app signs and seals (bui
 - `scripts/reset_demo.py --pack flood` (server stopped) or `--pack heat --keep-server` (server
   running), `--list`: end the incident and load a pack (see below)
 - `scripts/backup.py [--to E:\pulsetriage]`, `--list`, `--restore [FILE]` (server stopped): backups
+
+## Intake, paste box and the keyword reader
+
+The keyword reader (`reader.py`) turns free text into a report using the profiles' `keywords`:
+the disaster with the most matching tokens (else the dispatcher's choice, the newest active
+alert, then the active hazard), the answers, the conditions, a head count ("family of 5", "2
+adults and 3 kids") and a rough landmark ("behind the green mosque, house 14"). The most severe
+option wins (roof over knee) and "no" beats "yes". It does not understand negation ("not
+trapped"); the AI reader is still to come.
+
+Intake reports come from `call:<call-taker>`, source "call" (confidence 0.8); what the
+call-taker enters wins over what the note says, and answers are checked against the profile.
+Pasted messages come from `paste:<who>`, source "paste", read by keywords (confidence 0.4);
+a message with no keyword is skipped and listed, and the same message pasted twice is a
+duplicate. Without GPS these merge by landmark: "house 14" matches "behind the green mosque,
+house 14".
+
+An override keeps the rules' points on the card ("Changed by dispatcher: <reason> (rules gave
+65)") and both versions in the audit log. Weights change `constants.json` points.weights for
+this server only (stored in settings).
 
 ## Demo reset, backups, revoking
 
@@ -204,8 +228,8 @@ team checks every 30 s · `outbound.py` the queue to phones · `snapshot.py` the
 snapshot · `packets.py` packet and geohash helpers · `devtools.py` phone-side packet builder
 (reference for the app).
 
-`devices.py` the phones and revoking · `backups.py` database copies and restore · `demo.py` the
+`reader.py` keyword reader · `intake.py` intake form and paste box · `devices.py` the phones and revoking · `backups.py` database copies and restore · `demo.py` the
 reset per pack.
 
 The server steps of System Design 14.5 (B1 to B7) are built. Still open: the AI reader
-(`reader.py`), the call-taker intake and paste box, case overrides and weights, `scripts/purge.py`.
+(refining keyword reads in the background), `scripts/purge.py`.

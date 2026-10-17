@@ -20,10 +20,10 @@ from . import timeutil
 from .cases import CaseBook
 from .config import Settings
 from .coverage import Coverage
-from .crypto import CommandPostKeys, b64d, verify
+from .crypto import CommandPostKeys, b64d, b64e, verify
 from .db import Database
 from .outbound import COMMAND_POST
-from .packets import PUBLIC_KINDS
+from .packets import PUBLIC_KINDS, make_body, make_wire
 from .profiles import Profiles
 from .schemas import Schemas
 from .teams import TeamBook
@@ -87,6 +87,22 @@ class Ingestor:
         except Rejected as rej:
             log.info("rejected packet %s: %s %s", packet_id, rej.reason, rej.detail)
             return Result("rejected", packet_id, rej.reason, rej.detail)
+
+    def ingest_internal(self, payload: dict, *, source: str, reader: str, device: str,
+                        received_at: datetime | None = None, packet_id: str | None = None) -> Result:
+        """A report made at the command post (intake form, paste box): an unsigned packet built here,
+        so the signature and seal steps are skipped (System Design 5.2). Same ID twice is a duplicate."""
+        received_at = received_at or timeutil.now()
+        errors = self.schemas.errors("payloads/report", payload)
+        if errors:
+            raise ValueError("; ".join(errors[:3]))
+        sealed = b64e(json.dumps(payload, separators=(",", ":"), ensure_ascii=False).encode("utf-8"))
+        body = make_body("report", device, "", urgency=2, area="0", sealed=sealed, created=received_at,
+                         max_hops=0, packet_id=packet_id)
+        if self.db.scalar("SELECT 1 FROM packets WHERE id = ?", (body["id"],)):
+            return Result("duplicate", body["id"])
+        return self._store_and_dispatch(make_wire(body, None), body, payload, received_at, received_at,
+                                        source=source, reader=reader)
 
     # ---- steps ----------------------------------------------------------------------------
     def _parse(self, wire: object) -> dict:
@@ -186,7 +202,7 @@ class Ingestor:
         return Result("accepted", body["id"])
 
     def _store_and_dispatch(self, wire: dict, body: dict, payload: dict, created: datetime,
-                            received_at: datetime) -> Result:
+                            received_at: datetime, source: str | None = None, reader: str = "form") -> Result:
         now_iso = timeutil.iso(received_at)
         case_id = None
         with self.db.write() as conn:
@@ -199,7 +215,7 @@ class Ingestor:
                 (body["from_device"], body["pubkey"], now_iso, now_iso))
             kind = body["kind"]
             if kind == "report":
-                case_id = self._add_report(conn, body, payload, created, received_at)
+                case_id = self._add_report(conn, body, payload, created, received_at, source, reader)
             elif kind == "alert_reply":
                 self.coverage.record_reply(conn, body, payload, created, received_at)
             elif kind == "welfare_check":
@@ -213,16 +229,17 @@ class Ingestor:
         self.zones.mark_dirty()
         return Result("accepted", body["id"], case_id=case_id)
 
-    def _add_report(self, conn, body: dict, payload: dict, created: datetime, received_at: datetime) -> int:
+    def _add_report(self, conn, body: dict, payload: dict, created: datetime, received_at: datetime,
+                    source: str | None = None, reader: str = "form") -> int:
         device, rid = body["from_device"], payload.get("registry_id")
         if rid:
             self.coverage.confirm(conn, rid, created, f"report from {device}")
         return self.cases.add_report(conn, {
             "id": body["id"], "packet_id": body["id"],
-            "source": "alert_reply" if payload.get("alert_id") else "app",
+            "source": source or ("alert_reply" if payload.get("alert_id") else "app"),
             "hazard": payload["hazard"], "for_whom": payload["for_whom"], "people": payload["people"],
             "conditions": payload["conditions"], "details": payload["details"], "note": payload.get("note"),
             "lat": payload.get("lat"), "lng": payload.get("lng"), "accuracy_m": payload.get("gps_accuracy_m"),
             "landmark": payload.get("landmark"), "device_id": device, "reporter_role": payload["reporter_role"],
-            "reader": "form", "reader_conf": 1.0, "created_at": timeutil.iso(created),
+            "reader": reader, "reader_conf": 1.0 if reader == "form" else None, "created_at": timeutil.iso(created),
             "received_at": timeutil.iso(received_at), "registry_id": rid}, received_at)

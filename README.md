@@ -54,5 +54,7 @@ phone; shelters and supplies with burn rate and low-stock warnings.
 Operations: revoking a stolen phone, backups every 5 minutes with restore, and a demo reset per
 scenario pack that keeps phones working.
 
-Still open on the server: the AI reader, the intake form and paste box, overrides and weights,
-the data purge script.
+Intake form, paste box with the offline keyword reader, overrides with a reason, and tunable
+weights.
+
+Still open on the server: the AI reader and the data purge script.

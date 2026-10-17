@@ -1,7 +1,7 @@
 """Duplicate merging (System Design 9.4). Pure functions, no database.
 
 A report joins an open case when all of these hold:
-  place     within merge.distance_m (both have GPS) or the same landmark text
+  place     within merge.distance_m (both have GPS) or the same landmark (one may contain the other)
   time      within merge.window_hours of the case's latest report
   hazard    the same, or one side is "other"
   people    counts differ by at most merge.people_diff
@@ -59,9 +59,12 @@ def has_info(p: Place) -> bool:
 
 
 def same_landmark(a: Place, b: Place, min_chars: int) -> bool:
+    """The same place by name: equal, or one inside the other as whole words ('house 14' and
+    'behind the green mosque, house 14')."""
     left = {norm_landmark(x) for x in a.landmarks}
     right = {norm_landmark(x) for x in b.landmarks}
-    return any(len(x) >= min_chars for x in left & right)
+    return any(min(len(x), len(y)) >= min_chars and (f" {x} " in f" {y} " or f" {y} " in f" {x} ")
+               for x in left for y in right)
 
 
 def match_distance(case: Place, report: Place, rules: dict) -> float | None:

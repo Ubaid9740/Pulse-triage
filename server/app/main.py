@@ -31,8 +31,10 @@ from .db import Database
 from .demo import DemoReset
 from .devices import DeviceBook
 from .ingest import Ingestor
+from .intake import Desk
 from .net import lan_ipv4_addresses
 from .profiles import Profiles
+from .reader import KeywordReader
 from .scheduler import Scheduler
 from .schemas import Schemas
 from .snapshot import SnapshotBuilder
@@ -62,6 +64,7 @@ class Context:
     devices: DeviceBook
     backups: Backups
     demo: DemoReset
+    desk: Desk
     ingestor: Ingestor
     snapshots: SnapshotBuilder
     scheduler: Scheduler
@@ -169,6 +172,41 @@ class ResetRequest(ByRequest):
     pack: str = Field(min_length=1, max_length=40)
 
 
+HAZARDS = Literal["flood", "heat", "earthquake", "storm", "fire", "landslide", "other"]
+
+
+class IntakeRequest(ByRequest):
+    """A call, radio message or walk-in, typed by a call-taker. Anything left out is read from the note."""
+    hazard: HAZARDS | None = None
+    for_whom: Literal["self", "neighbour", "other"] | None = None
+    people: int | None = Field(None, ge=1, le=500)
+    conditions: list[str] = Field(default_factory=list)
+    details: dict[str, Any] = Field(default_factory=dict)
+    note: str | None = Field(None, max_length=500)
+    lat: float | None = Field(None, ge=-90, le=90)
+    lng: float | None = Field(None, ge=-180, le=180)
+    gps_accuracy_m: float | None = Field(None, ge=0)
+    landmark: str | None = Field(None, max_length=200)
+    contact: str | None = Field(None, max_length=40)
+    registry_id: str | None = Field(None, max_length=40)
+
+
+class PasteRequest(ByRequest):
+    text: str = Field(min_length=1)
+    hazard: HAZARDS | None = Field(None, description="Use this disaster when a message does not say")
+
+
+class OverrideRequest(ByRequest):
+    points: int | None = Field(None, ge=0, le=500, description="Leave out (with no status) to clear an override")
+    status: Literal["new", "verified", "closed", "done"] | None = None
+    reason: str = Field(min_length=1, max_length=200)
+
+
+class WeightsRequest(ByRequest):
+    weights: dict[str, float] = Field(default_factory=dict)
+    reset: bool = Field(False, description="Back to the defaults in constants.json, then apply 'weights'")
+
+
 class AnnouncementRequest(BaseModel):
     alert_id: str = Field(min_length=1, max_length=20)
     languages: list[str] | None = None
@@ -191,10 +229,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     teams = TeamBook(db, cases, supplies, constants)
     dispatch = Dispatch(db, keys, schemas, profiles, cases, teams, supplies, constants)
     backups = Backups(db, settings.backups_dir, constants)
+    ingestor = Ingestor(db, keys, schemas, profiles, settings, constants, cases, coverage, zones, teams)
     ctx = Context(settings, constants, schemas, profiles, db, keys, cases, coverage, zones, alerts, teams, supplies,
                   dispatch, DeviceBook(db, keys, schemas, cases, constants), backups,
                   DemoReset(db, backups, cases, zones, coverage, teams, supplies, profiles, settings),
-                  Ingestor(db, keys, schemas, profiles, settings, constants, cases, coverage, zones, teams),
+                  Desk(db, ingestor, cases, coverage, KeywordReader(profiles)), ingestor,
                   SnapshotBuilder(db, settings, zones, alerts, teams, supplies),
                   Scheduler(cases, coverage, zones, alerts, teams, backups, constants))
     if not settings.require_signatures or not settings.require_sealing:
@@ -306,6 +345,26 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.post("/api/demo/reset")
     def demo_reset(req: ResetRequest) -> dict:
         return ctx.demo.reset(req.pack, req.by)
+
+    @app.post("/api/cases/{case_id}/override")
+    def override_case(case_id: int, req: OverrideRequest) -> dict:
+        return cases.override(case_id, req.points, req.status, req.reason, req.by)
+
+    @app.post("/api/intake")
+    def intake(req: IntakeRequest) -> dict:
+        return ctx.desk.intake(req.model_dump(exclude={"by"}), req.by)
+
+    @app.post("/api/paste")
+    def paste(req: PasteRequest) -> dict:
+        return ctx.desk.paste(req.text, req.hazard, req.by)
+
+    @app.get("/api/settings/weights")
+    def get_weights() -> dict:
+        return cases.weights()
+
+    @app.post("/api/settings/weights")
+    def set_weights(req: WeightsRequest) -> dict:
+        return cases.set_weights(req.weights, req.reset, req.by)
 
     @app.post("/api/devices/{device_id}/trust")
     def trust_device(device_id: str, req: TrustRequest | None = None) -> dict:

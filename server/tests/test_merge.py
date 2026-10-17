@@ -58,3 +58,10 @@ def test_needs_a_shared_condition_or_word_unless_one_side_says_nothing(constants
 def test_key_words_keep_numbers_and_skip_filler():
     assert merge.key_words("behind the green mosque, house 14") == {"green", "mosque", "14"}
     assert merge.norm_landmark("  House 14,  Behind-the Mosque ") == "house 14 behind the mosque"
+
+
+def test_a_shorter_landmark_inside_a_longer_one_is_the_same_place(constants):
+    a = place(located=False, landmark="behind the green mosque, house 14")
+    b = place(located=False, landmark="House 14")
+    assert merge.match_distance(a, b, constants["merge"]) == 0.0
+    assert merge.match_distance(a, place(located=False, landmark="house 140"), constants["merge"]) is None

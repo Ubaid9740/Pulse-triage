@@ -30,7 +30,7 @@
         "properties": {
           "text": { "type": "string" },
           "points": { "type": "number", "description": "Points added, or a multiplier when 'kind' is 'trust'." },
-          "kind": { "enum": ["time", "vulnerability", "window", "people", "trust", "zone"] }
+          "kind": { "enum": ["time", "vulnerability", "window", "people", "trust", "zone", "override"] }
         }
       }
     },
