@@ -14,7 +14,7 @@ npm run dev          # while building: http://localhost:5173, API proxied to the
 To see data, run the server and `python server/scripts/send_example.py report report_heat`, or reset
 to a scenario pack (`python server/scripts/reset_demo.py --pack flood`).
 
-## What is built (System Design 6, Team Brief C1)
+## What is built (System Design 6, Team Brief C1 and C2)
 
 - **Polling**: `App.jsx` fetches `GET /api/snapshot` every 2 s into one state object; commands POST
   and refresh at once. A failed poll keeps the last snapshot and the top bar says "Server not reachable".
@@ -31,6 +31,16 @@ to a scenario pack (`python server/scripts/reset_demo.py --pack flood`).
 - **Zone card**: the explanation lines, coverage bar, "Send welfare-check team" (zone task), mark or
   clear hard-hit, and the outreach list (medical needs first, then people alone).
 - **Bottom strip**: the active alert, replies, coverage and when unconfirmed people become cases.
+- **New alert** (top bar): a new alert, an update or an all-clear for an active one; disaster,
+  severity, valid until, zones (hard-hit ticked), template placeholders such as start and end,
+  places (or the nearest with space). Headline and steps are filled by `POST /api/alerts/preview`,
+  so the phone preview beside the form is exactly what phones get; the text stays editable. After
+  sending, "Generate announcement script" shows the loudspeaker text and its length.
+- **Intake**: the report form built from the chosen disaster's questions in the profiles, the
+  conditions, a free-text note (read for anything not ticked), landmark, caller's number, registry
+  ID; shows the case it made or joined and opens it.
+- **Paste**: a box for forwarded messages and an optional disaster for unclear ones; lists the
+  reports made (with their case), the ones already seen and the chatter skipped.
 
 Offline base map: put `town.pmtiles` in `public/tiles/` (the scenario provides it); the map uses it
 through protomaps-leaflet if present, and shows the zones on a plain background if not. Nothing loads
@@ -38,6 +48,5 @@ from the internet.
 
 ## Next (System Design 14.5, C)
 
-- C2: AlertComposer (templates, zones, places, phone preview, announcement), IntakeForm, PasteBox.
 - C3: Teams and resources tab (counters, team table, status with a reason, supplies table and moves),
   WeightsPanel, ChaosPanel, SetupQR.

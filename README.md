@@ -66,5 +66,8 @@ Dashboard (C1): map with zones by coverage and Silent Zones in red, case pins, t
 ranked list; case card with the real maths, verify, override, split, suggest and assign; zone card
 with the outreach list and the welfare-check task. Built with `npm run build`, served at `/`.
 
-Next: dashboard C2 and C3 (alert composer, intake and paste dialogs, teams and resources tab),
+Dashboard (C2): alert composer with a live phone preview and the announcement script, the intake
+form built from the profiles, and the paste box.
+
+Next: dashboard C3 (teams and resources tab, weights, chaos panel, setup QR),
 scenario packs and replay (D), and the field app (A).

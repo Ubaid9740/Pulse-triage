@@ -3,7 +3,7 @@ import { post } from "../api.js";
 import { label } from "../format.js";
 
 // Active disaster (switches the profile), the offline banner, counters and the warnings.
-export default function TopBar({ snap, offline, profiles, refresh }) {
+export default function TopBar({ snap, offline, profiles, refresh, onOpen }) {
   const [error, setError] = useState(null);
   const hazards = profiles ? Object.keys(profiles.profiles).sort() : [snap.hazard];
   const teams = snap.summary.teams || {};
@@ -33,6 +33,11 @@ export default function TopBar({ snap, offline, profiles, refresh }) {
       </label>
       {offline && <span className="banner banner-red">Server not reachable: showing the last update</span>}
       {!offline && snap.status.banner && <span className="banner">{snap.status.banner}</span>}
+      <div className="tools">
+        <button onClick={() => onOpen("alert")}>New alert</button>
+        <button onClick={() => onOpen("intake")}>Intake</button>
+        <button onClick={() => onOpen("paste")}>Paste</button>
+      </div>
       <div className="counters">
         <span><b>{snap.summary.open_cases}</b> cases</span>
         <span className={silent ? "warn" : ""}><b>{silent}</b> silent zones</span>

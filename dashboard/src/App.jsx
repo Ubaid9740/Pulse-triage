@@ -6,6 +6,9 @@ import CaseList from "./components/CaseList.jsx";
 import CaseCard from "./components/CaseCard.jsx";
 import ZoneCard from "./components/ZoneCard.jsx";
 import BottomStrip from "./components/BottomStrip.jsx";
+import AlertComposer from "./components/AlertComposer.jsx";
+import IntakeForm from "./components/IntakeForm.jsx";
+import PasteBox from "./components/PasteBox.jsx";
 
 const POLL_MS = 2000;
 
@@ -16,6 +19,7 @@ export default function App() {
   const [offline, setOffline] = useState(false);
   const [profiles, setProfiles] = useState(null);
   const [selected, setSelected] = useState(null); // {kind: "case", id} or {kind: "zone", name}
+  const [dialog, setDialog] = useState(null);     // "alert" | "intake" | "paste"
   const busy = useRef(false);
 
   const refresh = useCallback(async () => {
@@ -53,10 +57,12 @@ export default function App() {
 
   const ranked = snap.cases;
   const rankOf = (id) => ranked.findIndex((c) => c.id === id) + 1;
+  const openCase = (id) => { setDialog(null); setSelected({ kind: "case", id }); };
+  const close = () => setDialog(null);
 
   return (
     <div className="app">
-      <TopBar snap={snap} offline={offline} profiles={profiles} refresh={refresh} />
+      <TopBar snap={snap} offline={offline} profiles={profiles} refresh={refresh} onOpen={setDialog} />
       <main className="main">
         <section className="map-pane">
           <MapView snap={snap} selected={selected} onSelect={setSelected} />
@@ -74,6 +80,9 @@ export default function App() {
         </aside>
       </main>
       <BottomStrip snap={snap} />
+      {dialog === "alert" && <AlertComposer snap={snap} profiles={profiles} refresh={refresh} onClose={close} />}
+      {dialog === "intake" && <IntakeForm snap={snap} profiles={profiles} refresh={refresh} onClose={close} onOpenCase={openCase} />}
+      {dialog === "paste" && <PasteBox snap={snap} profiles={profiles} refresh={refresh} onClose={close} onOpenCase={openCase} />}
     </div>
   );
 }

@@ -117,3 +117,65 @@ h3 { font-size: 1rem; margin: 18px 0 6px; }
   .side-pane { border-left: 0; border-top: 1px solid var(--line); }
   .bottom { gap: 4px 12px; font-size: 0.75rem; padding: 6px 12px; }
 }
+
+/* top bar tools */
+.tools { display: flex; gap: 6px; }
+.tools button { padding: 5px 12px; border-radius: 6px; border: 1px solid #56606b; background: #2c3546; color: #fff; font-weight: 600; }
+.tools button:hover { background: #3b4760; }
+
+/* dialogs */
+.overlay { position: fixed; inset: 0; background: rgba(20, 26, 38, 0.55); display: grid; place-items: center; z-index: 2000; padding: 16px; }
+.dialog { background: var(--panel); border-radius: 14px; width: min(640px, 100%); max-height: calc(100vh - 32px); display: flex; flex-direction: column; box-shadow: 0 12px 40px rgba(0,0,0,.3); }
+.dialog.wide { width: min(1040px, 100%); }
+.dialog-head { display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; border-bottom: 1px solid var(--line); }
+.dialog-head h2 { margin: 0; font-size: 1.25rem; }
+.dialog-body { padding: 14px 18px 18px; overflow-y: auto; }
+.dialog label { display: flex; flex-direction: column; gap: 3px; font-size: 0.85rem; color: var(--muted); }
+.dialog label.wide { margin-top: 8px; }
+.dialog input, .dialog select, .dialog textarea { font: inherit; font-size: 1rem; padding: 6px 8px; border: 1px solid #b9c1cc; border-radius: 6px; color: var(--ink); background: #fff; }
+.dialog textarea { width: 100%; resize: vertical; }
+.dialog label.check { flex-direction: row; align-items: center; gap: 6px; color: var(--ink); font-size: 0.95rem; }
+.dialog fieldset { border: 1px solid var(--line); border-radius: 10px; margin: 10px 0 0; padding: 8px 12px; display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.dialog legend { color: var(--muted); font-size: 0.85rem; padding: 0 4px; }
+.row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.row label { flex: 1 1 160px; }
+.dialog .actions button { padding: 8px 16px; border-radius: 8px; border: 1px solid #b9c1cc; background: #fff; font-weight: 600; }
+.dialog .actions button.primary { background: var(--red); color: #fff; border-color: var(--red); }
+.dialog .actions button:disabled { opacity: 0.5; cursor: default; }
+button.link { border: 0; background: none; color: var(--blue); padding: 4px 0; text-decoration: underline; font-size: 0.85rem; }
+
+/* alert composer and its phone preview */
+.composer { display: grid; grid-template-columns: 1fr 300px; gap: 20px; align-items: start; }
+.phone { position: sticky; top: 0; border: 10px solid #1d2433; border-radius: 30px; overflow: hidden; background: #fff; min-height: 520px; }
+.phone-band { color: #1d2433; font-weight: 800; padding: 14px 12px; letter-spacing: 0.03em; }
+.phone-body { padding: 12px 14px; font-size: 0.95rem; }
+.phone-headline { font-size: 1.15rem; font-weight: 700; margin: 4px 0 10px; }
+.phone-body ol { padding-left: 20px; margin: 0 0 12px; }
+.phone-body li { margin-bottom: 6px; }
+.phone-place { background: #eef7f1; border-radius: 8px; padding: 8px 10px; margin-bottom: 12px; font-weight: 600; }
+.phone-buttons { display: grid; gap: 6px; }
+.phone-buttons span { text-align: center; padding: 9px; border-radius: 10px; background: #e8f5ec; font-weight: 700; }
+.phone-buttons span.need { background: var(--red); color: #fff; }
+.phone-sig { color: var(--muted); font-size: 0.75rem; text-align: center; margin: 10px 0 0; }
+.sent p { margin: 6px 0; }
+.script { background: #f6f8fb; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-top: 10px; }
+.script p { margin: 6px 0 0; font-size: 1.05rem; line-height: 1.45; }
+
+/* intake */
+.question { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; width: 100%; padding: 4px 0; }
+.question > span:first-child { min-width: 220px; }
+.choices { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.intake-done { display: flex; gap: 14px; align-items: center; }
+.intake-done p { margin: 4px 0; }
+
+/* paste */
+.paste textarea { font-family: ui-monospace, Consolas, monospace; font-size: 0.9rem; }
+.paste-list { padding-left: 18px; font-size: 0.9rem; }
+.paste-list li { margin-bottom: 8px; display: flex; flex-direction: column; gap: 2px; align-items: flex-start; }
+
+@media (max-width: 900px) {
+  .composer { grid-template-columns: 1fr; }
+  .phone { position: static; min-height: 0; }
+  .tools button { padding: 4px 8px; font-size: 0.85rem; }
+}
+.phone-missing { background: #fff1d6; color: #6b4200; border-radius: 8px; padding: 8px 10px; font-size: 0.85rem; font-weight: 600; }
