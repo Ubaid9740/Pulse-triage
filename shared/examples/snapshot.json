@@ -1,0 +1,97 @@
+{
+  "rev": 812,
+  "now": "2026-10-18T15:31:00Z",
+  "hazard": "flood",
+  "status": {
+    "ai_online": false,
+    "packets_last_5_min": 37,
+    "require_signatures": false,
+    "require_sealing": false,
+    "scheduler_last_run": null
+  },
+  "alerts": [],
+  "summary": {
+    "open_cases": 1,
+    "teams": {},
+    "warnings": []
+  },
+  "cases": [
+    {
+      "id": 142,
+      "hazard": "flood",
+      "status": "new",
+      "zone": "Ward 4",
+      "lat": 0.0123,
+      "lng": 0.0456,
+      "accuracy_m": 15,
+      "landmark": "behind the green mosque, house 14",
+      "people": 1,
+      "conditions": [
+        "elderly",
+        "cannot_walk",
+        "oxygen",
+        "alone"
+      ],
+      "details": {
+        "water": "waist",
+        "rising": true,
+        "trapped": false
+      },
+      "hours_left": 3,
+      "window_closes_at": null,
+      "points": 69,
+      "reasons": [
+        {
+          "text": "Needs oxygen, about 3 h left",
+          "points": 40,
+          "kind": "time"
+        },
+        {
+          "text": "Cannot walk",
+          "points": 15,
+          "kind": "vulnerability"
+        },
+        {
+          "text": "Elderly",
+          "points": 10,
+          "kind": "vulnerability"
+        },
+        {
+          "text": "Lives alone",
+          "points": 10,
+          "kind": "vulnerability"
+        },
+        {
+          "text": "1 person",
+          "points": 2,
+          "kind": "people"
+        },
+        {
+          "text": "Trust 0.75: 2 reports from 2 phones, GPS 15 m",
+          "points": 0.9,
+          "kind": "trust"
+        }
+      ],
+      "confidence": 0.75,
+      "needs": [
+        "boat",
+        "medic"
+      ],
+      "badges": [
+        "2 reports"
+      ],
+      "team_id": null,
+      "shelter_id": null,
+      "report_count": 2,
+      "source": "app",
+      "reader": "form",
+      "note": "Old man alone, 2nd floor, oxygen tank half empty",
+      "reported_at": "2026-10-18T15:05:00Z",
+      "last_update": "2026-10-18T15:30:00Z"
+    }
+  ],
+  "zones": [],
+  "teams": [],
+  "shelters": [],
+  "supplies": []
+}

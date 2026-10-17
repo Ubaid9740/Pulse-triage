@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/payloads/alert.schema.json",
+  "title": "Alert payload (public, signed by the command post)",
+  "description": "Text is keyed by language code. 'en' is always present. An all-clear is an alert with cancel true and replaces set.",
+  "type": "object",
+  "required": ["alert_id", "hazard", "severity", "zones", "headline", "do_now", "places", "issued_at", "valid_until", "replaces", "cancel"],
+  "additionalProperties": false,
+  "properties": {
+    "alert_id": { "type": "string", "pattern": "^A-[0-9]{4,}$" },
+    "hazard": { "enum": ["flood", "heat", "earthquake", "storm", "fire", "landslide", "other"] },
+    "severity": { "enum": ["watch", "warning", "emergency"] },
+    "zones": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "headline": {
+      "type": "object",
+      "required": ["en"],
+      "additionalProperties": { "type": "string", "maxLength": 120 }
+    },
+    "do_now": {
+      "type": "object",
+      "required": ["en"],
+      "additionalProperties": { "type": "array", "items": { "type": "string", "maxLength": 140 }, "maxItems": 3 }
+    },
+    "places": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "type", "lat", "lng"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "type": { "enum": ["shelter", "cooling_centre", "hospital", "other"] },
+          "lat": { "type": "number" },
+          "lng": { "type": "number" },
+          "space_left": { "type": ["integer", "null"] }
+        }
+      }
+    },
+    "issued_at": { "type": "string" },
+    "valid_until": { "type": "string" },
+    "replaces": { "type": ["string", "null"] },
+    "cancel": { "type": "boolean", "description": "True for an all-clear that ends the alert named in 'replaces'." }
+  }
+}

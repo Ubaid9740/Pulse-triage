@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/profile.schema.json",
+  "title": "Hazard profile",
+  "description": "Everything disaster-specific. common.json (hazard 'common') holds the rules, questions and keywords that apply to every disaster. Rule tokens: 'x' = yes/no answer x is yes; '!x' = it is no or missing; 'x:a|b' = answer x is a or b (or, for multi, contains a or b); 'cond:a|b' = the person has condition a or b. A rule matches when all its tokens match; an empty list always matches.",
+  "type": "object",
+  "required": ["hazard", "label", "questions", "hours_rules", "needs_rules", "keywords"],
+  "additionalProperties": false,
+  "$defs": {
+    "text": {
+      "type": "object",
+      "required": ["en"],
+      "additionalProperties": { "type": "string" }
+    },
+    "textList": {
+      "type": "object",
+      "required": ["en"],
+      "additionalProperties": { "type": "array", "items": { "type": "string" } }
+    },
+    "tokens": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^(!?[a-z][a-z0-9_]*|[a-z][a-z0-9_]*:[a-z0-9_]+(\\|[a-z0-9_]+)*)$" }
+    },
+    "template": {
+      "type": "object",
+      "required": ["en"],
+      "description": "Language code -> {headline, do_now}. Placeholders: {zones}, {start}, {end}.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["headline", "do_now"],
+        "additionalProperties": false,
+        "properties": {
+          "headline": { "type": "string" },
+          "do_now": { "type": "array", "items": { "type": "string" }, "maxItems": 3 }
+        }
+      }
+    }
+  },
+  "properties": {
+    "hazard": { "enum": ["common", "flood", "heat", "earthquake", "storm", "fire", "landslide", "other"] },
+    "label": { "$ref": "#/$defs/text" },
+    "source_note": { "type": "string" },
+    "conditions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Only in common.json: the shared list of conditions about a person."
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "ask", "type"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+          "ask": { "$ref": "#/$defs/text" },
+          "type": { "enum": ["yesno", "choice", "multi"] },
+          "options": { "type": "array", "items": { "type": "string", "pattern": "^[a-z0-9_]+$" }, "minItems": 2 }
+        }
+      }
+    },
+    "hours_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["all", "hours", "text"],
+        "additionalProperties": false,
+        "properties": {
+          "all": { "$ref": "#/$defs/tokens" },
+          "hours": { "type": "number", "exclusiveMinimum": 0 },
+          "text": { "type": "string" }
+        }
+      }
+    },
+    "needs_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["all", "need"],
+        "additionalProperties": false,
+        "properties": {
+          "all": { "$ref": "#/$defs/tokens" },
+          "need": { "enum": ["boat", "truck", "medic", "rescue", "fire", "evac", "welfare"] }
+        }
+      }
+    },
+    "window": {
+      "type": "object",
+      "required": ["text", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "text": { "type": "string" },
+        "source": { "enum": ["scenario_windows", "alert_valid_until", "manual"] },
+        "only_if": { "$ref": "#/$defs/tokens" }
+      }
+    },
+    "affected": {
+      "enum": ["hazard_extent", "alert_zones"],
+      "description": "Which zones count as hard-hit for Silent Zones."
+    },
+    "keywords": {
+      "type": "object",
+      "description": "Offline keyword reader: token -> phrases. A phrase found in free text sets that token.",
+      "additionalProperties": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+    },
+    "supplies": { "type": "array", "items": { "type": "string", "pattern": "^[a-z0-9_]+$" } },
+    "tips": { "$ref": "#/$defs/textList" },
+    "first_aid": { "$ref": "#/$defs/textList" },
+    "alert_templates": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "watch": { "$ref": "#/$defs/template" },
+        "warning": { "$ref": "#/$defs/template" },
+        "emergency": { "$ref": "#/$defs/template" }
+      }
+    }
+  }
+}

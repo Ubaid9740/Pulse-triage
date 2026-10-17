@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/payloads/volunteer.schema.json",
+  "title": "Volunteer payload (sealed)",
+  "description": "Sent once at setup by volunteers and rescue teams, so the server knows the team and its skills.",
+  "type": "object",
+  "required": ["name", "role", "skills"],
+  "additionalProperties": false,
+  "properties": {
+    "name": { "type": "string", "maxLength": 60 },
+    "role": { "enum": ["volunteer", "rescue_team"] },
+    "team_type": { "enum": ["boat", "truck", "medic", "rescue", "fire", "welfare", "volunteer"] },
+    "skills": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "enum": ["boat", "4x4", "nurse_doctor", "first_aid", "swimmer", "search_rescue", "other"] }
+    },
+    "vehicle": { "type": "string", "maxLength": 60 },
+    "lat": { "type": ["number", "null"], "minimum": -90, "maximum": 90 },
+    "lng": { "type": ["number", "null"], "minimum": -180, "maximum": 180 }
+  }
+}

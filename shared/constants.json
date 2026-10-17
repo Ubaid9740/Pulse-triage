@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "_note": "Every tunable number lives here. All values are demo defaults, not medical or engineering facts. See System Design, Appendix A.",
+
+  "points": {
+    "time_bands_hours": [[1, 50], [3, 40], [6, 25], [12, 10], [null, 0]],
+    "weights": {
+      "cannot_walk": 15,
+      "elderly": 10,
+      "child": 10,
+      "alone": 10,
+      "window": 20,
+      "person": 2,
+      "people_max": 10
+    },
+    "window_hours": 3,
+    "trust_base": 0.6,
+    "trust_slope": 0.4
+  },
+
+  "confidence": {
+    "start": {
+      "rescue_team": 0.9,
+      "call_taker": 0.8,
+      "registered_helper": 0.7,
+      "ai": 0.6,
+      "unknown_phone": 0.5,
+      "keywords": 0.4,
+      "silence": 0.3
+    },
+    "match_bonus": 0.15,
+    "gps_bonus": 0.1,
+    "gps_good_m": 50,
+    "landmark_penalty": 0.1,
+    "decay_per_2h": 0.1,
+    "floor": 0.2,
+    "recheck_hours": 3,
+    "fake_people": 10
+  },
+
+  "rate_limit_reports_per_hour": 20,
+
+  "merge": {
+    "distance_m": 150,
+    "window_hours": 3,
+    "people_diff": 2
+  },
+
+  "silent": {
+    "ratio": 0.25,
+    "min_expected": 8,
+    "coverage": 0.25,
+    "min_registered": 10,
+    "default_rate_per_100": 1.0,
+    "zone_task_base": 60,
+    "zone_task_per_person": 1,
+    "zone_task_max": 90
+  },
+
+  "coverage_timeout_minutes": {
+    "emergency": 30,
+    "warning": 120,
+    "watch": null
+  },
+
+  "teams": {
+    "types": ["boat", "truck", "medic", "rescue", "fire", "welfare", "volunteer"],
+    "needs": ["boat", "truck", "medic", "rescue", "fire", "evac", "welfare"],
+    "statuses": ["available", "assigned", "en_route", "on_scene", "returning", "out_of_service"],
+    "speed_kmh": {
+      "boat": 10,
+      "truck": 25,
+      "medic": 25,
+      "rescue": 20,
+      "fire": 25,
+      "welfare": 20,
+      "volunteer": 4
+    },
+    "detour": 1.4
+  },
+
+  "tracker": {
+    "arrival_radius_m": 100,
+    "overdue_factor": 1.5,
+    "overdue_min_minutes": 10,
+    "not_heard_minutes": 15,
+    "stale_icon_minutes": 10,
+    "trail": 5,
+    "ping_job_minutes": 2,
+    "ping_idle_minutes": 10
+  },
+
+  "supplies": {
+    "burn_window_hours": 3
+  },
+
+  "mesh": {
+    "max_hops": 12,
+    "expiry_hours": 24,
+    "batch_kb": 30,
+    "reconnect_wait_s": 15,
+    "store_max_packets": 2000,
+    "qr_packets": 10,
+    "qr_cycle_s": 2,
+    "service_id": "pulsetriage",
+    "advertise_name": "PT1|{mode}|{device}"
+  },
+
+  "connection": {
+    "check_offline_s": 10,
+    "check_online_s": 30,
+    "status_timeout_s": 2,
+    "online_after_ok": 1,
+    "offline_after_fails": 2,
+    "upload_batch": 100,
+    "outbound_poll_s": 10,
+    "backoff_s": [10, 20, 30],
+    "help_offline_neighbours_default": true
+  },
+
+  "urgency": {
+    "alert": 4,
+    "revoke": 4,
+    "job": 3,
+    "need_help_reply": 3,
+    "ack": 2,
+    "team_ping": 1,
+    "other": 1
+  },
+
+  "server": {
+    "max_body_bytes": 8192,
+    "max_packets_per_upload": 100,
+    "dashboard_poll_s": 2,
+    "scheduler_s": 30,
+    "backup_minutes": 5,
+    "clock_skew_hours": 1,
+    "future_limit_minutes": 10
+  },
+
+  "ai": {
+    "model": "claude-haiku-5-5",
+    "timeout_s": 4,
+    "workers": 4
+  }
+}

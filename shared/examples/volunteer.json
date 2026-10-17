@@ -1,0 +1,27 @@
+{
+  "body": {
+    "v": 1,
+    "id": "1a2b3c4d-5e6f-4a7b-8c9d-0e1f2a3b4c5d",
+    "kind": "volunteer",
+    "from_device": "dev_BOAT2",
+    "pubkey": "",
+    "created_at": "2026-10-18T13:00:00Z",
+    "expires_at": "2026-10-19T13:00:00Z",
+    "max_hops": 12,
+    "area": "s0000",
+    "urgency": 1
+  },
+  "payload": {
+    "name": "Boat 2",
+    "role": "rescue_team",
+    "team_type": "boat",
+    "skills": [
+      "boat",
+      "first_aid",
+      "nurse_doctor"
+    ],
+    "vehicle": "Inflatable boat, 6 seats",
+    "lat": 0.005,
+    "lng": 0.03
+  }
+}

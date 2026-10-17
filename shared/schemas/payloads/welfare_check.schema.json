@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/payloads/welfare_check.schema.json",
+  "title": "Welfare check payload (sealed)",
+  "description": "A helper checked on someone. Identify them by registry_id, a landmark, or a position.",
+  "type": "object",
+  "required": ["result"],
+  "additionalProperties": false,
+  "anyOf": [
+    { "required": ["registry_id"] },
+    { "required": ["landmark"] },
+    { "required": ["lat", "lng"] }
+  ],
+  "properties": {
+    "registry_id": { "type": ["string", "null"] },
+    "landmark": { "type": "string", "maxLength": 200 },
+    "result": { "enum": ["safe", "needs_help", "not_found"] },
+    "note": { "type": "string", "maxLength": 500 },
+    "lat": { "type": ["number", "null"], "minimum": -90, "maximum": 90 },
+    "lng": { "type": ["number", "null"], "minimum": -180, "maximum": 180 }
+  }
+}

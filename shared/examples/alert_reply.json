@@ -1,0 +1,21 @@
+{
+  "body": {
+    "v": 1,
+    "id": "5d4c3b2a-1f0e-4d9c-8b7a-6f5e4d3c2b1a",
+    "kind": "alert_reply",
+    "from_device": "dev_SAM01",
+    "pubkey": "",
+    "created_at": "2026-10-18T07:04:00Z",
+    "expires_at": "2026-10-19T07:04:00Z",
+    "max_hops": 12,
+    "area": "s0000",
+    "urgency": 1
+  },
+  "payload": {
+    "alert_id": "A-0007",
+    "status": "safe",
+    "registry_id": null,
+    "lat": 0.0123,
+    "lng": 0.0456
+  }
+}

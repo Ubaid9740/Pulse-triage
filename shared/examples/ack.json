@@ -1,0 +1,27 @@
+{
+  "body": {
+    "v": 1,
+    "id": "3c4d5e6f-7a8b-4c9d-0e1f-2a3b4c5d6e7f",
+    "kind": "ack",
+    "from_device": "dev_BOAT2",
+    "pubkey": "",
+    "created_at": "2026-10-18T16:05:00Z",
+    "expires_at": "2026-10-19T16:05:00Z",
+    "max_hops": 12,
+    "area": "s0000",
+    "urgency": 2
+  },
+  "payload": {
+    "team_id": "boat_2",
+    "job_id": "J-031",
+    "status": "done",
+    "outcome": {
+      "people_helped": 1,
+      "taken_to": "shelter_school",
+      "supplies_used": {
+        "oxygen_cylinder": 1
+      }
+    },
+    "reason": ""
+  }
+}

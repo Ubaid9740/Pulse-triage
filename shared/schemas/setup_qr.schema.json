@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/setup_qr.schema.json",
+  "title": "Setup QR payload (GET /api/setup-qr)",
+  "description": "Scanned once by every phone at setup. Phones try 'servers' in order: local first, then the public tunnel if there is one.",
+  "type": "object",
+  "required": ["v", "servers", "sign_pk", "box_pk", "time"],
+  "additionalProperties": false,
+  "properties": {
+    "v": { "const": 1 },
+    "servers": { "type": "array", "items": { "type": "string", "pattern": "^https?://" }, "minItems": 1 },
+    "sign_pk": { "type": "string", "description": "Base64 Ed25519 public key that signs alerts, jobs and revocations." },
+    "box_pk": { "type": "string", "description": "Base64 X25519 public key that reports are sealed to." },
+    "time": { "type": "string", "description": "Server time (ISO 8601 UTC) so phones can correct their clocks." },
+    "zones": { "type": "array", "items": { "type": "string" } }
+  }
+}

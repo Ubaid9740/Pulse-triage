@@ -1,0 +1,31 @@
+# Secrets and local state
+server/keys/
+server/backups/
+server/logs/
+*.db
+*.db-wal
+*.db-shm
+.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node / dashboard
+node_modules/
+dashboard/dist/
+
+# Flutter / Android
+field/build/
+field/.dart_tool/
+field/.flutter-plugins
+field/.flutter-plugins-dependencies
+*.apk
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

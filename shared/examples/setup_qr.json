@@ -1,0 +1,15 @@
+{
+  "v": 1,
+  "servers": [
+    "http://192.168.0.10:8000",
+    "https://example-words.trycloudflare.com"
+  ],
+  "sign_pk": "<base64 Ed25519 public key>",
+  "box_pk": "<base64 X25519 public key>",
+  "time": "2026-10-18T13:00:00Z",
+  "zones": [
+    "Riverside",
+    "Ward 4",
+    "Old Market"
+  ]
+}

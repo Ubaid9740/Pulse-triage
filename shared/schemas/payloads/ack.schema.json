@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/payloads/ack.schema.json",
+  "title": "Ack payload (sealed)",
+  "description": "A team phone's update on a job, or on its own availability (ready, out_of_service).",
+  "type": "object",
+  "required": ["team_id", "status"],
+  "additionalProperties": false,
+  "properties": {
+    "team_id": { "type": "string" },
+    "job_id": { "type": ["string", "null"] },
+    "status": { "enum": ["en_route", "arrived", "done", "cant_reach", "ready", "out_of_service"] },
+    "outcome": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "people_helped": { "type": "integer", "minimum": 0 },
+        "taken_to": { "type": ["string", "null"], "description": "A shelter id, 'hospital', or 'stayed'." },
+        "supplies_used": { "type": "object", "additionalProperties": { "type": "number", "minimum": 0 } }
+      }
+    },
+    "reason": { "type": "string", "maxLength": 200 }
+  }
+}

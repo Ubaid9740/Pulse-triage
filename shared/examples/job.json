@@ -1,0 +1,47 @@
+{
+  "_note": "Job for Boat 2. Signed by the command post; only dev_BOAT2 shows it, every phone relays it.",
+  "body": {
+    "v": 1,
+    "id": "2b3c4d5e-6f7a-4b8c-9d0e-1f2a3b4c5d6e",
+    "kind": "job",
+    "from_device": "command_post",
+    "pubkey": "",
+    "created_at": "2026-10-18T15:33:00Z",
+    "expires_at": "2026-10-19T15:33:00Z",
+    "max_hops": 12,
+    "area": "s0000",
+    "urgency": 3,
+    "to_device": "dev_BOAT2"
+  },
+  "payload": {
+    "job_id": "J-031",
+    "case_id": 142,
+    "team_id": "boat_2",
+    "hazard": "flood",
+    "summary": "1 person, elderly, cannot walk, needs oxygen; water at waist and rising",
+    "lat": 0.0123,
+    "lng": 0.0456,
+    "landmark": "behind the green mosque, house 14",
+    "people": 1,
+    "conditions": [
+      "elderly",
+      "cannot_walk",
+      "oxygen",
+      "alone"
+    ],
+    "needs": [
+      "boat",
+      "medic"
+    ],
+    "first_aid": [
+      "Keep the person warm and dry"
+    ],
+    "eta": "2026-10-18T15:46:00Z",
+    "place": {
+      "id": "shelter_school",
+      "name": "School shelter",
+      "lat": 0.009,
+      "lng": 0.035
+    }
+  }
+}

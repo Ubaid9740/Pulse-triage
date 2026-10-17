@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/body.schema.json",
+  "title": "Packet body",
+  "description": "The signed part of every packet. Alerts, jobs and revocations carry a readable 'public' payload signed by the command post. Everything else carries a 'sealed' payload that only the command post can open. Payload shapes are in payloads/<kind>.schema.json.",
+  "type": "object",
+  "required": ["v", "id", "kind", "from_device", "pubkey", "created_at", "expires_at", "max_hops", "area", "urgency"],
+  "additionalProperties": false,
+  "properties": {
+    "v": { "const": 1 },
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F-]{8,64}$",
+      "description": "UUID v4 made by the sender. The server drops repeats by this ID."
+    },
+    "kind": {
+      "enum": ["report", "alert", "alert_reply", "welfare_check", "volunteer", "job", "ack", "team_ping", "revoke"]
+    },
+    "from_device": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{3,40}$",
+      "description": "Short device ID, or 'command_post' for packets made by the server."
+    },
+    "pubkey": {
+      "type": "string",
+      "description": "Base64 Ed25519 public key of the sender (32 bytes). May be empty only while signatures are switched off."
+    },
+    "created_at": { "type": "string", "description": "ISO 8601 UTC, phone time corrected by the offset from the setup QR." },
+    "expires_at": { "type": "string", "description": "ISO 8601 UTC. Phones drop the packet after this; default created_at + 24 h." },
+    "max_hops": { "type": "integer", "minimum": 0, "maximum": 64 },
+    "area": {
+      "type": "string",
+      "pattern": "^[0-9b-hjkmnp-z]{1,12}$",
+      "description": "Geohash, normally 5 characters (about a 5 km box). The only location outside the seal."
+    },
+    "urgency": { "type": "integer", "minimum": 0, "maximum": 4, "description": "Mesh send order: alerts 4 first." },
+    "replace_key": {
+      "type": ["string", "null"],
+      "description": "Optional. Phones keep only the newest packet with the same key, e.g. 'ping:boat_2'."
+    },
+    "to_device": { "type": ["string", "null"], "description": "Optional. For jobs: the only device that shows it." },
+    "sealed": {
+      "type": "string",
+      "description": "Base64 libsodium sealed box of the payload JSON, sealed to the command post box key. While sealing is off in development: base64 of the plain payload JSON."
+    },
+    "public": { "type": "object", "description": "Readable payload, only for alert, job and revoke." }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "enum": ["alert", "job", "revoke"] } } },
+      "then": { "required": ["public"], "not": { "required": ["sealed"] } },
+      "else": { "required": ["sealed"], "not": { "required": ["public"] } }
+    }
+  ]
+}

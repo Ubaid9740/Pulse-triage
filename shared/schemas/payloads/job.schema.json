@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/payloads/job.schema.json",
+  "title": "Job payload (public, signed by the command post)",
+  "description": "Signed but not sealed, so the team phone reads it without a key exchange. Carries only what the team needs: no registry names.",
+  "type": "object",
+  "required": ["job_id", "case_id", "team_id", "hazard", "summary", "lat", "lng", "people", "conditions", "needs", "eta"],
+  "additionalProperties": false,
+  "properties": {
+    "job_id": { "type": "string", "pattern": "^J-[0-9]{3,}$" },
+    "case_id": { "type": "integer", "minimum": 1 },
+    "team_id": { "type": "string" },
+    "hazard": { "enum": ["flood", "heat", "earthquake", "storm", "fire", "landslide", "other"] },
+    "summary": { "type": "string", "maxLength": 200 },
+    "lat": { "type": ["number", "null"] },
+    "lng": { "type": ["number", "null"] },
+    "landmark": { "type": "string", "maxLength": 200 },
+    "people": { "type": "integer", "minimum": 1 },
+    "conditions": { "type": "array", "items": { "type": "string" } },
+    "needs": { "type": "array", "items": { "enum": ["boat", "truck", "medic", "rescue", "fire", "evac", "welfare"] } },
+    "first_aid": { "type": "array", "items": { "type": "string" } },
+    "eta": { "type": "string" },
+    "place": {
+      "type": ["object", "null"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" }
+      }
+    }
+  }
+}

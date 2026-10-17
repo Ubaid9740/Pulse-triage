@@ -1,0 +1,58 @@
+{
+  "hazard": "earthquake",
+  "label": { "en": "Earthquake" },
+  "source_note": "Demo defaults. Replace tips and first aid with your national disaster agency's wording before real use.",
+  "questions": [
+    { "id": "trapped", "ask": { "en": "Is anyone trapped under rubble?" }, "type": "yesno" },
+    { "id": "building", "ask": { "en": "How damaged is the building?" }, "type": "choice",
+      "options": ["none", "cracks", "badly_damaged", "collapsed"] },
+    { "id": "gas_or_fire", "ask": { "en": "Smell of gas, or fire?" }, "type": "yesno" },
+    { "id": "outside", "ask": { "en": "Are the people outside now?" }, "type": "yesno" }
+  ],
+  "hours_rules": [
+    { "all": ["trapped"], "hours": 1, "text": "Trapped under rubble" },
+    { "all": ["gas_or_fire"], "hours": 1, "text": "Smell of gas, or fire" },
+    { "all": ["building:badly_damaged|collapsed", "!outside"], "hours": 2, "text": "Inside a badly damaged building" },
+    { "all": ["building:cracks|badly_damaged|collapsed", "outside"], "hours": 12, "text": "Building damaged, people outside" }
+  ],
+  "needs_rules": [
+    { "all": ["trapped"], "need": "rescue" },
+    { "all": ["building:badly_damaged|collapsed", "!outside"], "need": "rescue" },
+    { "all": ["gas_or_fire"], "need": "fire" },
+    { "all": [], "need": "welfare" }
+  ],
+  "window": { "text": "Night falls or rain arrives", "source": "scenario_windows" },
+  "affected": "hazard_extent",
+  "keywords": {
+    "trapped": ["trapped", "under rubble", "buried", "stuck under", "hear voices"],
+    "building:collapsed": ["collapsed", "fell down", "flattened"],
+    "building:badly_damaged": ["badly damaged", "walls fell", "roof fell", "wall fell"],
+    "building:cracks": ["cracks", "cracked"],
+    "gas_or_fire": ["gas", "smell of gas", "fire", "smoke"],
+    "outside": ["we are outside", "on the street", "outside now", "in the open"]
+  },
+  "supplies": ["first_aid_kit", "blanket", "tarpaulin", "drinking_water", "torch"],
+  "tips": { "en": [
+    "Drop, cover and hold on until the shaking stops",
+    "After the shaking, leave damaged buildings carefully and expect aftershocks",
+    "If you smell gas, do not use flames or switches; leave and report it",
+    "Do not use lifts"
+  ] },
+  "first_aid": { "en": [
+    "Do not move someone with a possible neck or back injury unless they are in danger",
+    "Press firmly on bleeding wounds with a clean cloth",
+    "Keep trapped people talking and report their exact location"
+  ] },
+  "alert_templates": {
+    "warning": { "en": {
+      "headline": "Strong earthquake in {zones}: aftershocks likely",
+      "do_now": ["Stay out of damaged buildings",
+                 "Check on neighbours who live alone",
+                 "Report anyone trapped with I need help"] } },
+    "emergency": { "en": {
+      "headline": "Earthquake emergency in {zones}",
+      "do_now": ["Move to open ground away from buildings",
+                 "Report people trapped or smells of gas now",
+                 "Help neighbours who cannot move"] } }
+  }
+}

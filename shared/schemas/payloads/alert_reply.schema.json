@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/payloads/alert_reply.schema.json",
+  "title": "Alert reply payload (sealed)",
+  "type": "object",
+  "required": ["alert_id", "status"],
+  "additionalProperties": false,
+  "properties": {
+    "alert_id": { "type": "string" },
+    "status": { "enum": ["safe", "need_help", "helping"] },
+    "registry_id": { "type": ["string", "null"] },
+    "lat": { "type": ["number", "null"], "minimum": -90, "maximum": 90 },
+    "lng": { "type": ["number", "null"], "minimum": -180, "maximum": 180 }
+  }
+}

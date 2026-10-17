@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/payloads/team_ping.schema.json",
+  "title": "Team ping payload (sealed)",
+  "description": "Location and condition of a team phone. Sent every 2 min on a job, every 10 min idle. The body's replace_key is 'ping:<team_id>'.",
+  "type": "object",
+  "required": ["team_id", "lat", "lng", "at", "status"],
+  "additionalProperties": false,
+  "properties": {
+    "team_id": { "type": "string" },
+    "lat": { "type": "number", "minimum": -90, "maximum": 90 },
+    "lng": { "type": "number", "minimum": -180, "maximum": 180 },
+    "gps_accuracy_m": { "type": ["number", "null"], "minimum": 0 },
+    "at": { "type": "string", "description": "When the position was taken (not when the packet arrived)." },
+    "status": { "enum": ["available", "assigned", "en_route", "on_scene", "returning", "out_of_service"] },
+    "case_id": { "type": ["integer", "null"] },
+    "battery": { "type": ["integer", "null"], "minimum": 0, "maximum": 100 },
+    "fuel": { "enum": ["full", "half", "low", null] }
+  }
+}

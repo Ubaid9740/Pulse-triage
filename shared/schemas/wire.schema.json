@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/wire.schema.json",
+  "title": "Wire packet",
+  "description": "What travels between phones and to the server. The signed fields travel as one JSON string so every language signs and verifies the same bytes. Only hops sits outside the signature, because relays must change it.",
+  "type": "object",
+  "required": ["body", "sig", "hops"],
+  "additionalProperties": false,
+  "properties": {
+    "body": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 8192,
+      "description": "JSON text of the packet body (body.schema.json), exactly as signed."
+    },
+    "sig": {
+      "type": "string",
+      "description": "Base64 Ed25519 signature of the UTF-8 bytes of body. Empty only while signatures are switched off for development."
+    },
+    "hops": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 255,
+      "description": "How many times the packet has been passed on. +1 per relay."
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/snapshot.schema.json",
+  "title": "Dashboard snapshot (GET /api/snapshot)",
+  "description": "Everything the dashboard needs in one response, polled every 2 s. Sections not built yet are empty arrays.",
+  "type": "object",
+  "required": ["rev", "now", "status", "hazard", "alerts", "summary", "cases", "zones", "teams", "shelters", "supplies"],
+  "additionalProperties": false,
+  "properties": {
+    "rev": { "type": "integer", "minimum": 0, "description": "Increases whenever anything changes." },
+    "now": { "type": "string" },
+    "hazard": { "type": "string", "description": "Active hazard profile, e.g. 'flood'." },
+    "status": {
+      "type": "object",
+      "required": ["ai_online", "packets_last_5_min", "require_signatures", "require_sealing"],
+      "properties": {
+        "ai_online": { "type": "boolean" },
+        "packets_last_5_min": { "type": "integer" },
+        "require_signatures": { "type": "boolean" },
+        "require_sealing": { "type": "boolean" },
+        "scheduler_last_run": { "type": ["string", "null"] }
+      }
+    },
+    "alerts": { "type": "array", "items": { "type": "object" } },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "open_cases": { "type": "integer" },
+        "teams": { "type": "object" },
+        "warnings": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "cases": { "type": "array", "items": { "$ref": "case.schema.json" } },
+    "zones": { "type": "array", "items": { "type": "object" } },
+    "teams": { "type": "array", "items": { "type": "object" } },
+    "shelters": { "type": "array", "items": { "type": "object" } },
+    "supplies": { "type": "array", "items": { "type": "object" } }
+  }
+}
