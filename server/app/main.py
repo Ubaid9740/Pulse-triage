@@ -22,11 +22,14 @@ from pydantic import BaseModel, Field
 
 from . import __version__, outbound, timeutil
 from .alerts import AlertBook
+from .backups import Backups
 from .cases import CaseBook, NotFound
 from .config import Settings, load_constants
 from .coverage import MAX_REGISTRY_BYTES, Coverage
 from .crypto import CommandPostKeys
 from .db import Database
+from .demo import DemoReset
+from .devices import DeviceBook
 from .ingest import Ingestor
 from .net import lan_ipv4_addresses
 from .profiles import Profiles
@@ -56,6 +59,9 @@ class Context:
     teams: TeamBook
     supplies: SupplyBook
     dispatch: Dispatch
+    devices: DeviceBook
+    backups: Backups
+    demo: DemoReset
     ingestor: Ingestor
     snapshots: SnapshotBuilder
     scheduler: Scheduler
@@ -154,6 +160,15 @@ class MoveRequest(ByRequest):
     job_id: str | None = None
 
 
+class RevokeRequest(ByRequest):
+    revoked: bool = True
+    reason: str = Field("revoked by the dispatcher", max_length=200)
+
+
+class ResetRequest(ByRequest):
+    pack: str = Field(min_length=1, max_length=40)
+
+
 class AnnouncementRequest(BaseModel):
     alert_id: str = Field(min_length=1, max_length=20)
     languages: list[str] | None = None
@@ -175,10 +190,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     supplies = SupplyBook(db, cases, constants)
     teams = TeamBook(db, cases, supplies, constants)
     dispatch = Dispatch(db, keys, schemas, profiles, cases, teams, supplies, constants)
+    backups = Backups(db, settings.backups_dir, constants)
     ctx = Context(settings, constants, schemas, profiles, db, keys, cases, coverage, zones, alerts, teams, supplies,
-                  dispatch, Ingestor(db, keys, schemas, profiles, settings, constants, cases, coverage, zones, teams),
+                  dispatch, DeviceBook(db, keys, schemas, cases, constants), backups,
+                  DemoReset(db, backups, cases, zones, coverage, teams, supplies, profiles, settings),
+                  Ingestor(db, keys, schemas, profiles, settings, constants, cases, coverage, zones, teams),
                   SnapshotBuilder(db, settings, zones, alerts, teams, supplies),
-                  Scheduler(cases, coverage, zones, alerts, teams, constants))
+                  Scheduler(cases, coverage, zones, alerts, teams, backups, constants))
     if not settings.require_signatures or not settings.require_sealing:
         log.warning("Development mode: unsigned=%s, unsealed=%s packets are accepted.",
                     not settings.require_signatures, not settings.require_sealing)
@@ -210,6 +228,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             "require_signatures": settings.require_signatures,
             "require_sealing": settings.require_sealing,
             "scheduler_last_run": db.get_setting("scheduler_last_run"),
+            "last_backup": backups.latest(),
         }
 
     def setup_payload(request: Request) -> dict:
@@ -270,6 +289,23 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.post("/api/cases/{case_id}/split")
     def split_case(case_id: int, req: SplitRequest) -> dict:
         return cases.split(case_id, req.report_id, req.by)
+
+    @app.get("/api/devices")
+    def get_devices() -> dict:
+        return {"devices": ctx.devices.views()}
+
+    @app.post("/api/devices/{device_id}/revoke")
+    def revoke_device(device_id: str, req: RevokeRequest | None = None) -> dict:
+        req = req or RevokeRequest()
+        return ctx.devices.revoke(device_id, req.revoked, req.reason, req.by)
+
+    @app.get("/api/demo/packs")
+    def demo_packs() -> dict:
+        return {"packs": ctx.demo.packs()}
+
+    @app.post("/api/demo/reset")
+    def demo_reset(req: ResetRequest) -> dict:
+        return ctx.demo.reset(req.pack, req.by)
 
     @app.post("/api/devices/{device_id}/trust")
     def trust_device(device_id: str, req: TrustRequest | None = None) -> dict:

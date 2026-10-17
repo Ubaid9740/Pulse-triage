@@ -12,7 +12,6 @@ expires when the alert does. Phones show only alerts whose signature matches the
 from __future__ import annotations
 
 import json
-import re
 import sqlite3
 import string
 from datetime import datetime, timedelta
@@ -21,7 +20,7 @@ from . import outbound, timeutil
 from .cases import CaseBook, NotFound
 from .coverage import Coverage
 from .crypto import CommandPostKeys
-from .db import Database
+from .db import Database, next_number
 from .packets import distance_m, geohash
 from .profiles import Profiles
 from .schemas import Schemas
@@ -100,7 +99,7 @@ class AlertBook:
         """The payload POST /api/alerts would send, for the composer's phone preview. Nothing is queued."""
         now = now or timeutil.now()
         with self.db.read() as conn:
-            payload, _, _ = self._build(conn, req, self._next_id(conn), now)
+            payload, _, _ = self._build(conn, req, self._next_id(conn, store=False), now)
         return payload
 
     def expire(self, now: datetime | None = None) -> int:
@@ -316,10 +315,8 @@ class AlertBook:
         return geohash(*centre, 5) if centre else "0"
 
     @staticmethod
-    def _next_id(conn: sqlite3.Connection) -> str:
-        numbers = [int(m.group(1)) for (alert_id,) in conn.execute("SELECT id FROM alerts")
-                   if (m := re.fullmatch(r"A-(\d+)", alert_id))]
-        return f"A-{max(numbers, default=0) + 1:04d}"
+    def _next_id(conn: sqlite3.Connection, store: bool = True) -> str:
+        return f"A-{next_number(conn, 'alert_number', 'alerts', 'A', store):04d}"
 
     @staticmethod
     def _root(conn: sqlite3.Connection, alert_id: str) -> str:

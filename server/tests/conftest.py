@@ -29,8 +29,9 @@ def constants() -> dict:
 
 
 def make_settings(tmp_path: Path, **overrides) -> Settings:
-    return Settings(db_path=tmp_path / "test.db", keys_dir=tmp_path / "keys",
-                    dashboard_dir=tmp_path / "no-dashboard", **overrides)
+    overrides.setdefault("scenario_dir", tmp_path / "scenario")
+    return Settings(db_path=tmp_path / "test.db", keys_dir=tmp_path / "keys", dashboard_dir=tmp_path / "no-dashboard",
+                    backups_dir=tmp_path / "backups", **overrides)
 
 
 @pytest.fixture

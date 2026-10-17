@@ -15,6 +15,12 @@ scenario/
   simulate.py              first come first served vs PulseTriage chart
 ```
 
+Packs are loaded by `server/scripts/reset_demo.py --pack <name>`. It reads `pack.json`
+(`{"hazard": "flood", "hard_hit": [...]}`), `zones.geojson` (in the pack or in `scenario/`),
+`registry.csv`, `shelters.json`, `teams.json` and `supplies.json`; the formats are in the
+server README ("Demo reset, backups, revoking"). The other files are yours for generate.py and
+replay.py.
+
 Use the server venv (`pip install matplotlib shapely`). Until `replay.py` exists,
 `python server/scripts/send_example.py report report_heat` puts example cases on the dashboard.
 

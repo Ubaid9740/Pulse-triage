@@ -48,6 +48,7 @@ def enqueue(conn: sqlite3.Connection, keys: CommandPostKeys, constants: dict, ki
 
 
 def since(db: Database, cursor: int, limit: int = 500) -> dict:
+    """Packets after the cursor. A demo reset leaves one empty row (wire NULL) so seq carries on."""
     rows = db.all("SELECT seq, wire FROM outbound WHERE seq > ? ORDER BY seq LIMIT ?", (cursor, limit))
     new_cursor = rows[-1]["seq"] if rows else cursor
-    return {"cursor": new_cursor, "packets": [json.loads(r["wire"]) for r in rows]}
+    return {"cursor": new_cursor, "packets": [json.loads(r["wire"]) for r in rows if r["wire"]]}

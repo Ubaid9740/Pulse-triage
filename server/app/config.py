@@ -36,6 +36,8 @@ class Settings:
     keys_dir: Path
     shared_dir: Path = SHARED_DIR
     dashboard_dir: Path = REPO_DIR / "dashboard" / "dist"
+    backups_dir: Path = SERVER_DIR / "backups"
+    scenario_dir: Path = REPO_DIR / "scenario"
     port: int = 8000
     public_url: str | None = None
     # Development switches. Both become true once phones sign and seal (build hours 28-33).
@@ -49,6 +51,8 @@ class Settings:
         return cls(
             db_path=Path(os.environ.get("PT_DB_PATH", SERVER_DIR / "pulsetriage.db")),
             keys_dir=Path(os.environ.get("PT_KEYS_DIR", SERVER_DIR / "keys")),
+            backups_dir=Path(os.environ.get("PT_BACKUPS_DIR", SERVER_DIR / "backups")),
+            scenario_dir=Path(os.environ.get("PT_SCENARIO_DIR", REPO_DIR / "scenario")),
             port=int(os.environ.get("PT_PORT", "8000")),
             public_url=os.environ.get("PT_PUBLIC_URL") or None,
             require_signatures=_flag("PT_REQUIRE_SIGNATURES", False),

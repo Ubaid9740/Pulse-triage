@@ -14,14 +14,13 @@ post, addressed to the team's phone (to_device). It carries only what the team n
 from __future__ import annotations
 
 import json
-import re
 import sqlite3
 from datetime import datetime, timedelta
 
 from . import outbound, timeutil
 from .cases import OPEN_SQL, OPEN_STATUSES, CaseBook, NotFound, case_view, rank_key
 from .crypto import CommandPostKeys
-from .db import Database
+from .db import Database, next_number
 from .packets import distance_m, geohash
 from .profiles import Profiles
 from .schemas import Schemas
@@ -260,9 +259,7 @@ class Dispatch:
 
     @staticmethod
     def _next_job_id(conn: sqlite3.Connection) -> str:
-        numbers = [int(m.group(1)) for (job_id,) in conn.execute("SELECT id FROM jobs")
-                   if (m := re.fullmatch(r"J-(\d+)", job_id))]
-        return f"J-{max(numbers, default=0) + 1:03d}"
+        return f"J-{next_number(conn, 'job_number', 'jobs', 'J'):03d}"
 
 
 def _public(option: dict | None) -> dict | None:

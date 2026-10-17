@@ -173,6 +173,7 @@
     "dashboard_poll_s": 2,
     "scheduler_s": 30,
     "backup_minutes": 5,
+    "backups_kept": 24,
     "clock_skew_hours": 1,
     "future_limit_minutes": 10
   },

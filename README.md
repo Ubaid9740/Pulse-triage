@@ -51,4 +51,8 @@ with a loudspeaker script. Teams: setup from the phone, pings and acks, automati
 outcome, overdue flags; suggestions with the trade-off; assign with a signed job for the team's
 phone; shelters and supplies with burn rate and low-stock warnings.
 
-Next (System Design 14.5, B7): revoking devices, demo reset per pack, database backups.
+Operations: revoking a stolen phone, backups every 5 minutes with restore, and a demo reset per
+scenario pack that keeps phones working.
+
+Still open on the server: the AI reader, the intake form and paste box, overrides and weights,
+the data purge script.

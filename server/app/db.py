@@ -6,6 +6,7 @@ Times are ISO 8601 UTC strings; coordinates are WGS84 decimal degrees.
 from __future__ import annotations
 
 import json
+import re
 import sqlite3
 import threading
 from contextlib import contextmanager
@@ -114,6 +115,18 @@ def setting(conn: sqlite3.Connection, key: str, default: Any = None) -> Any:
     return default if row is None else json.loads(row[0])
 
 
+def next_number(conn: sqlite3.Connection, key: str, table: str, prefix: str, store: bool = True) -> int:
+    """The next number for an alert (A-0007) or a job (J-031). It counts on from the highest ever
+    issued, which a demo reset keeps in settings, so a phone never sees the same ID twice."""
+    numbers = [int(m.group(1)) for (ident,) in conn.execute(f"SELECT id FROM {table}")
+               if (m := re.fullmatch(rf"{prefix}-(\d+)", ident))]
+    n = max(max(numbers, default=0), setting(conn, key, 0)) + 1
+    if store:
+        conn.execute("INSERT INTO settings(key, value) VALUES(?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+                     (key, json.dumps(n)))
+    return n
+
+
 class Database:
     def __init__(self, path: Path):
         self.path = Path(path)
@@ -170,6 +183,16 @@ class Database:
             except BaseException:
                 self._conn.execute("ROLLBACK")
                 raise
+
+    def backup_to(self, path: Path) -> None:
+        """A consistent copy of the whole database (SQLite backup API), safe while the server runs."""
+        path.parent.mkdir(parents=True, exist_ok=True)
+        dest = sqlite3.connect(path)
+        try:
+            with self._lock:
+                self._conn.backup(dest)
+        finally:
+            dest.close()
 
     def get_setting(self, key: str, default: Any = None) -> Any:
         value = self.scalar("SELECT value FROM settings WHERE key = ?", (key,))

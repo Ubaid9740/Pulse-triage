@@ -2,12 +2,12 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://pulsetriage.local/schemas/payloads/revoke.schema.json",
   "title": "Revoke payload (public, signed by the command post)",
-  "description": "Devices that must no longer be trusted, e.g. a stolen team phone.",
+  "description": "Devices that must no longer be trusted, e.g. a stolen team phone. Always the full current list (body replace_key 'revoke'), so a phone keeps only the newest; an empty list means none.",
   "type": "object",
   "required": ["device_ids", "reason"],
   "additionalProperties": false,
   "properties": {
-    "device_ids": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "device_ids": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
     "reason": { "type": "string", "maxLength": 200 }
   }
 }
