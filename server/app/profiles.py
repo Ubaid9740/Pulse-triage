@@ -119,6 +119,12 @@ class Profiles:
             found += [r["need"] for r in profile_rules if not r["all"]]
         return list(dict.fromkeys(found))
 
+    def supplies_needed(self, hazard: str, details: dict, conditions: list[str] | set[str]) -> list[str]:
+        """Items from matching supply rules in common.json and the hazard profile."""
+        conds = set(conditions)
+        rules = self.common.get("supply_rules", []) + self.get(hazard).get("supply_rules", [])
+        return list(dict.fromkeys(r["item"] for r in rules if rule_matches(r["all"], details, conds)))
+
     def as_dict(self) -> dict:
         return {"common": self.common, "profiles": self.by_hazard}
 
@@ -158,7 +164,7 @@ class Profiles:
                     if bad:
                         problems.append(f"{name}.json {where}: unknown option(s) {bad} for {token.key!r}")
 
-        for section in ("hours_rules", "needs_rules"):
+        for section in ("hours_rules", "needs_rules", "supply_rules"):
             for i, rule in enumerate(doc.get(section, [])):
                 for t in rule["all"]:
                     check(t, f"{section}[{i}]")

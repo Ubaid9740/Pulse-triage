@@ -33,6 +33,9 @@ from .profiles import Profiles
 from .scheduler import Scheduler
 from .schemas import Schemas
 from .snapshot import SnapshotBuilder
+from .suggest import Dispatch
+from .supplies import SupplyBook
+from .teams import TeamBook
 from .zones import ZoneBook, ZoneMap
 
 log = logging.getLogger("pulsetriage")
@@ -50,6 +53,9 @@ class Context:
     coverage: Coverage
     zones: ZoneBook
     alerts: AlertBook
+    teams: TeamBook
+    supplies: SupplyBook
+    dispatch: Dispatch
     ingestor: Ingestor
     snapshots: SnapshotBuilder
     scheduler: Scheduler
@@ -95,6 +101,59 @@ class AlertRequest(ByRequest):
     cancel: bool = False
 
 
+class TeamRequest(ByRequest):
+    id: str | None = Field(None, pattern=r"^[a-z0-9_]{1,40}$")
+    name: str | None = Field(None, min_length=1, max_length=60)
+    type: str | None = None
+    capabilities: list[str] | None = Field(None, description="Replaces what the type and skills give")
+    skills: list[str] | None = None
+    device_id: str | None = Field(None, max_length=64)
+    lat: float | None = Field(None, ge=-90, le=90)
+    lng: float | None = Field(None, ge=-180, le=180)
+    base: bool = Field(False, description="Also make (lat, lng) the team's base")
+    fuel: Literal["full", "half", "low"] | None = None
+    battery: int | None = Field(None, ge=0, le=100)
+    speed_kmh: float | None = Field(None, gt=0, le=200)
+
+
+class TeamStatusRequest(ByRequest):
+    status: str = Field(min_length=1, max_length=20)
+    reason: str | None = Field(None, max_length=200)
+
+
+class AssignRequest(ByRequest):
+    case_id: int
+    team_id: str = Field(min_length=1, max_length=40)
+    place: str | None = Field(None, description="Shelter or cooling centre to take people to")
+    reassign: bool = False
+    eta_min: float | None = Field(None, gt=0, le=1440, description="Needed when the case or team has no position")
+
+
+class ShelterRequest(ByRequest):
+    id: str = Field(pattern=r"^[a-z0-9_]{1,40}$")
+    name: str | None = Field(None, min_length=1, max_length=60)
+    type: Literal["shelter", "cooling_centre", "hospital", "other"] | None = None
+    lat: float | None = Field(None, ge=-90, le=90)
+    lng: float | None = Field(None, ge=-180, le=180)
+    capacity: int | None = Field(None, ge=0)
+    occupancy: int | None = Field(None, ge=0)
+
+
+class SupplyLevelRequest(ByRequest):
+    item: str = Field(pattern=r"^[a-z0-9_]{1,40}$")
+    warn_at: float | None = Field(None, ge=0)
+    unit: str | None = Field(None, min_length=1, max_length=10)
+
+
+class MoveRequest(ByRequest):
+    kind: Literal["restock", "used", "load", "unload", "deliver", "transfer"]
+    item: str = Field(pattern=r"^[a-z0-9_]{1,40}$")
+    qty: float = Field(gt=0)
+    from_place: str | None = Field(None, alias="from")
+    to: str | None = None
+    job_id: str | None = None
+
+
 class AnnouncementRequest(BaseModel):
     alert_id: str = Field(min_length=1, max_length=20)
     languages: list[str] | None = None
@@ -113,9 +172,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     coverage = Coverage(db, cases, zone_map, profiles, constants)
     zones = ZoneBook(db, zone_map, cases, coverage, profiles, schemas, constants)
     alerts = AlertBook(db, keys, schemas, profiles, zone_map, coverage, zones, cases, constants)
-    ctx = Context(settings, constants, schemas, profiles, db, keys, cases, coverage, zones, alerts,
-                  Ingestor(db, keys, schemas, profiles, settings, constants, cases, coverage, zones),
-                  SnapshotBuilder(db, settings, zones, alerts), Scheduler(cases, coverage, zones, alerts, constants))
+    supplies = SupplyBook(db, cases, constants)
+    teams = TeamBook(db, cases, supplies, constants)
+    dispatch = Dispatch(db, keys, schemas, profiles, cases, teams, supplies, constants)
+    ctx = Context(settings, constants, schemas, profiles, db, keys, cases, coverage, zones, alerts, teams, supplies,
+                  dispatch, Ingestor(db, keys, schemas, profiles, settings, constants, cases, coverage, zones, teams),
+                  SnapshotBuilder(db, settings, zones, alerts, teams, supplies),
+                  Scheduler(cases, coverage, zones, alerts, teams, constants))
     if not settings.require_signatures or not settings.require_sealing:
         log.warning("Development mode: unsigned=%s, unsealed=%s packets are accepted.",
                     not settings.require_signatures, not settings.require_sealing)
@@ -234,6 +297,60 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.post("/api/announcement")
     def announcement(req: AnnouncementRequest) -> dict:
         return alerts.announcement(req.alert_id, req.languages)
+
+    # ---- teams, suggestions and jobs ------------------------------------------------------------
+    @app.get("/api/teams")
+    def get_teams() -> dict:
+        return {"teams": teams.views()}
+
+    @app.post("/api/teams")
+    def save_team(req: TeamRequest) -> dict:
+        return teams.save(req.model_dump(exclude={"by"}), req.by)
+
+    @app.post("/api/teams/{team_id}/status")
+    def team_status(team_id: str, req: TeamStatusRequest) -> dict:
+        return teams.set_status(team_id, req.status, req.reason, req.by)
+
+    @app.get("/api/suggest")
+    def suggest(case_id: int) -> dict:
+        return dispatch.suggest(case_id)
+
+    @app.get("/api/suggest/all")
+    def suggest_all() -> dict:
+        return dispatch.suggest_all()
+
+    @app.post("/api/assign")
+    def assign(req: AssignRequest) -> dict:
+        return dispatch.assign(req.model_dump(exclude={"by"}), req.by)
+
+    # ---- places and supplies ---------------------------------------------------------------------
+    @app.get("/api/shelters")
+    def get_shelters() -> dict:
+        return {"shelters": supplies.shelters()}
+
+    @app.post("/api/shelters")
+    def save_shelter(req: ShelterRequest) -> dict:
+        return supplies.save_shelter(req.model_dump(exclude={"by"}), req.by)
+
+    @app.get("/api/supplies")
+    def get_supplies() -> dict:
+        return {"supplies": supplies.views()}
+
+    @app.post("/api/supplies")
+    def supply_level(req: SupplyLevelRequest) -> dict:
+        return supplies.set_level(req.item, req.warn_at, req.unit, req.by)
+
+    @app.post("/api/supplies/move")
+    def supply_move(req: MoveRequest) -> dict:
+        body = req.model_dump(exclude={"by", "from_place"})
+        return supplies.move(dict(body, **{"from": req.from_place}), req.by)
+
+    @app.get("/api/resources/summary")
+    def resources_summary() -> dict:
+        views = teams.views()
+        counts, warnings = teams.summary(views)
+        shelters = supplies.shelters()
+        return {"teams": counts, "warnings": warnings + supplies.warnings(supplies.views(), shelters)}
 
     @app.post("/api/settings/hazard")
     def set_hazard(req: HazardRequest) -> dict:

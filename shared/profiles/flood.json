@@ -19,6 +19,9 @@
     { "all": ["trapped"], "need": "rescue" },
     { "all": [], "need": "truck" }
   ],
+  "supply_rules": [
+    { "all": ["water:chest|roof"], "item": "life_jacket" }
+  ],
   "window": { "text": "Road floods", "source": "scenario_windows" },
   "affected": "hazard_extent",
   "keywords": {

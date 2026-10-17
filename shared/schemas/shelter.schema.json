@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/shelter.schema.json",
+  "title": "Place (snapshot 'shelters', GET /api/shelters)",
+  "description": "A shelter, cooling centre or hospital with its head count. 'next' is the nearest other place with space once this one is nearly full.",
+  "type": "object",
+  "required": ["id", "name", "type", "lat", "lng", "capacity", "occupancy", "space_left", "nearly_full", "next", "updated_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "type": { "enum": ["shelter", "cooling_centre", "hospital", "other"] },
+    "lat": { "type": ["number", "null"] },
+    "lng": { "type": ["number", "null"] },
+    "capacity": { "type": ["integer", "null"] },
+    "occupancy": { "type": "integer", "minimum": 0 },
+    "space_left": { "type": ["integer", "null"] },
+    "nearly_full": { "type": "boolean" },
+    "next": {
+      "type": ["object", "null"],
+      "required": ["id", "name"],
+      "additionalProperties": false,
+      "properties": { "id": { "type": "string" }, "name": { "type": "string" } }
+    },
+    "updated_at": { "type": ["string", "null"] }
+  }
+}

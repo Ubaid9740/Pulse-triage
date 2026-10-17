@@ -47,6 +47,8 @@ confidence score, the scheduler rescores as time passes, and the dispatcher can 
 trust. Zones, the opt-in registry, warning coverage and Silent Zones: unconfirmed registered people
 become cases after an alert's timeout, and a quiet hard-hit zone turns red with a zone task.
 Alerts: issued from templates, updated, ended with an all-clear, signed and queued for phones,
-with a loudspeaker script.
+with a loudspeaker script. Teams: setup from the phone, pings and acks, automatic arrival,
+outcome, overdue flags; suggestions with the trade-off; assign with a signed job for the team's
+phone; shelters and supplies with burn rate and low-stock warnings.
 
-Next (System Design 14.5, B): suggest and assign, team tracker, supplies and shelters.
+Next (System Design 14.5, B7): revoking devices, demo reset per pack, database backups.

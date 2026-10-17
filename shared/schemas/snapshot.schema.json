@@ -27,14 +27,28 @@
       "type": "object",
       "properties": {
         "open_cases": { "type": "integer" },
-        "teams": { "type": "object" },
+        "teams": {
+          "type": "object",
+          "description": "Teams per status, and per capability how many there are and how many are free.",
+          "properties": {
+            "by_capability": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "required": ["total", "free"],
+                "properties": { "total": { "type": "integer" }, "free": { "type": "integer" } }
+              }
+            }
+          },
+          "additionalProperties": { "type": ["integer", "object"] }
+        },
         "warnings": { "type": "array", "items": { "type": "string" } }
       }
     },
     "cases": { "type": "array", "items": { "$ref": "case.schema.json" } },
     "zones": { "type": "array", "items": { "$ref": "zone.schema.json" } },
-    "teams": { "type": "array", "items": { "type": "object" } },
-    "shelters": { "type": "array", "items": { "type": "object" } },
-    "supplies": { "type": "array", "items": { "type": "object" } }
+    "teams": { "type": "array", "items": { "$ref": "team.schema.json" } },
+    "shelters": { "type": "array", "items": { "$ref": "shelter.schema.json" } },
+    "supplies": { "type": "array", "items": { "$ref": "supply.schema.json" } }
   }
 }

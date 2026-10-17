@@ -78,6 +78,11 @@ def case_view(row: dict, now: datetime) -> dict:
     }
 
 
+def rank_key(view: dict) -> tuple:
+    """The ranked list: most points first; ties go to less time left, then the older report."""
+    return (-view["points"], view["hours_left"] if view["hours_left"] is not None else 99, view["reported_at"])
+
+
 def report_view(r: dict) -> dict:
     return {k: r[k] for k in (
         "id", "source", "device_id", "reporter_role", "reader", "hazard", "people", "conditions", "details",

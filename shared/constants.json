@@ -89,7 +89,30 @@
       "welfare": 20,
       "volunteer": 4
     },
-    "detour": 1.4
+    "detour": 1.4,
+    "_capabilities": "Which needs a team can meet, from its type and its crew's skills. Every team can do a welfare check.",
+    "capabilities_by_type": {
+      "boat": ["boat"],
+      "truck": ["truck", "evac"],
+      "medic": ["medic"],
+      "rescue": ["rescue"],
+      "fire": ["fire", "evac"],
+      "welfare": ["welfare"],
+      "volunteer": ["welfare"]
+    },
+    "capabilities_by_skill": {
+      "boat": ["boat"],
+      "4x4": ["truck"],
+      "nurse_doctor": ["medic"],
+      "search_rescue": ["rescue"]
+    }
+  },
+
+  "suggest": {
+    "top_cases": 10,
+    "alternatives": 2,
+    "soon_free_minutes": 10,
+    "on_scene_minutes": 20
   },
 
   "tracker": {
@@ -104,7 +127,10 @@
   },
 
   "supplies": {
-    "burn_window_hours": 3
+    "burn_window_hours": 3,
+    "units": { "drinking_water": "L", "fuel": "L" },
+    "default_unit": "pcs",
+    "shelter_nearly_full": 0.9
   },
 
   "mesh": {

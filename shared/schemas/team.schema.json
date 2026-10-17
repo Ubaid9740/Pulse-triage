@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/team.schema.json",
+  "title": "Team (snapshot 'teams', GET /api/teams)",
+  "description": "A team as the tracker sees it. Show it at (lat, lng) 'as of ping_at'; grey when stale.",
+  "type": "object",
+  "required": ["id", "name", "type", "capabilities", "device_id", "status", "status_since", "flags", "case_id", "job_id",
+               "eta", "arrived_at", "lat", "lng", "accuracy_m", "ping_at", "ping_received_at", "last_contact", "stale",
+               "battery", "fuel", "speed_kmh", "distance_to_case_m", "trail", "load"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "type": { "enum": ["boat", "truck", "medic", "rescue", "fire", "welfare", "volunteer"] },
+    "capabilities": { "type": "array", "items": { "enum": ["boat", "truck", "medic", "rescue", "fire", "evac", "welfare"] } },
+    "device_id": { "type": ["string", "null"], "description": "The team's phone; null for a team reached by radio." },
+    "status": { "enum": ["available", "assigned", "en_route", "on_scene", "returning", "out_of_service"] },
+    "status_since": { "type": ["string", "null"] },
+    "flags": { "type": "array", "items": { "enum": ["overdue", "not_heard_from"] } },
+    "case_id": { "type": ["integer", "null"] },
+    "job_id": { "type": ["string", "null"] },
+    "eta": { "type": ["string", "null"] },
+    "arrived_at": { "type": ["string", "null"] },
+    "lat": { "type": ["number", "null"] },
+    "lng": { "type": ["number", "null"] },
+    "accuracy_m": { "type": ["number", "null"] },
+    "ping_at": { "type": ["string", "null"], "description": "When the last position was taken." },
+    "ping_received_at": { "type": ["string", "null"] },
+    "last_contact": { "type": ["string", "null"], "description": "Last upload from the team's phone." },
+    "stale": { "type": "boolean", "description": "No position for over tracker.stale_icon_minutes." },
+    "battery": { "type": ["integer", "null"] },
+    "fuel": { "enum": ["full", "half", "low", null] },
+    "speed_kmh": { "type": ["number", "null"] },
+    "distance_to_case_m": { "type": ["integer", "null"] },
+    "trail": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["lat", "lng", "at"],
+        "additionalProperties": false,
+        "properties": { "lat": { "type": "number" }, "lng": { "type": "number" }, "at": { "type": "string" } }
+      }
+    },
+    "load": { "type": "object", "additionalProperties": { "type": "number" }, "description": "Item -> quantity carried." }
+  }
+}

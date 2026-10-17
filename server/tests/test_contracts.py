@@ -57,3 +57,12 @@ def test_team_vocabularies_agree(constants):
 def test_zones_example_matches_its_schema(schemas):
     doc = json.loads((SHARED_DIR / "examples" / "zones.geojson").read_text(encoding="utf-8"))
     assert schemas.errors("zones", doc) == []
+
+
+def test_team_capability_tables_agree(constants):
+    teams = constants["teams"]
+    assert set(teams["capabilities_by_type"]) == set(teams["types"])
+    assert {n for caps in teams["capabilities_by_type"].values() for n in caps} <= set(teams["needs"])
+    volunteer = json.loads((SHARED_DIR / "schemas" / "payloads" / "volunteer.schema.json").read_text(encoding="utf-8"))
+    assert set(teams["capabilities_by_skill"]) <= set(volunteer["properties"]["skills"]["items"]["enum"])
+    assert {n for caps in teams["capabilities_by_skill"].values() for n in caps} <= set(teams["needs"])

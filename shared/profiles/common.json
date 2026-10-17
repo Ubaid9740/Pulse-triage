@@ -20,6 +20,12 @@
   "needs_rules": [
     { "all": ["cond:oxygen|bleeding|unconscious|injured"], "need": "medic" }
   ],
+  "supply_rules": [
+    { "all": ["cond:oxygen"], "item": "oxygen_cylinder" },
+    { "all": ["cond:insulin"], "item": "insulin" },
+    { "all": ["cond:bleeding|injured"], "item": "first_aid_kit" },
+    { "all": ["cond:no_food_water"], "item": "drinking_water" }
+  ],
   "keywords": {
     "cond:elderly": ["elderly", "old man", "old woman", "old lady", "grandmother", "grandfather", "grandma", "grandpa", "aged"],
     "cond:child": ["child", "children", "kid", "kids", "son", "daughter"],

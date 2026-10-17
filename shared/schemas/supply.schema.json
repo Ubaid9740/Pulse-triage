@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/supply.schema.json",
+  "title": "Supply item (snapshot 'supplies', GET /api/supplies)",
+  "description": "Where an item is, how much was used, and how long it lasts at the current rate. Places: 'command_post', 'shelter:<id>', 'team:<id>'.",
+  "type": "object",
+  "required": ["item", "unit", "command_post", "shelters", "teams", "places", "warn_at", "used_today", "left",
+               "per_hour", "runs_out_in_hours", "low"],
+  "additionalProperties": false,
+  "properties": {
+    "item": { "type": "string" },
+    "unit": { "type": "string" },
+    "command_post": { "type": "number" },
+    "shelters": { "type": "number" },
+    "teams": { "type": "number" },
+    "places": { "type": "object", "additionalProperties": { "type": "number" } },
+    "warn_at": { "type": ["number", "null"] },
+    "used_today": { "type": "number" },
+    "left": { "type": "number" },
+    "per_hour": { "type": "number", "description": "Used per hour over the last supplies.burn_window_hours." },
+    "runs_out_in_hours": { "type": ["number", "null"] },
+    "low": { "type": "boolean" }
+  }
+}

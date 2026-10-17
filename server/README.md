@@ -55,6 +55,15 @@ python -m pytest
 | `POST /api/alerts/preview` | The payload `POST /api/alerts` would send, for the composer; nothing is queued |
 | `GET /api/alerts`, `/api/alerts/{id}` | Alerts with status, replies and coverage (`alert_summary.schema.json`) |
 | `POST /api/announcement` `{"alert_id", "languages"}` | Loudspeaker and radio script, about 20 s (`announcement.schema.json`) |
+| `GET /api/teams`, `POST /api/teams` | Teams (`team.schema.json`); add one or change its details, position, fuel |
+| `POST /api/teams/{id}/status` `{"status", "reason", "by"}` | Set a status by hand, e.g. after a radio call |
+| `GET /api/suggest?case_id=` | Best team, alternatives, trade-off, teams about to be free, place (`suggestion.schema.json`) |
+| `GET /api/suggest/all` | Each unassigned case, down the ranked list, with its fastest free team (each team once) |
+| `POST /api/assign` `{"case_id", "team_id", "place", "reassign", "eta_min"}` | Confirm a team: makes the job, signs it, queues it for the team's phone |
+| `GET /api/shelters`, `POST /api/shelters` | Shelters and cooling centres; head count updates (`shelter.schema.json`) |
+| `GET /api/supplies`, `POST /api/supplies` `{"item", "warn_at", "unit"}` | Stock, use and run-out per item (`supply.schema.json`); set the warning level |
+| `POST /api/supplies/move` `{"kind", "item", "qty", "from", "to"}` | restock, load, unload, deliver, transfer or used |
+| `GET /api/resources/summary` | Team counters and warnings (overdue, none free, low stock, nearly full) |
 | `GET /docs` | Interactive API docs |
 
 Reject reasons: `invalid_wire`, `too_big`, `invalid_body`, `bad_signature`, `unsigned`, `not_allowed`,
@@ -126,6 +135,34 @@ expires with the alert. The scheduler marks alerts past `valid_until` as expired
 announcement frame (intro, places, pass it on, repeat) is per language in `common.json`; if a
 script runs past 20 s the closing repeat is left out.
 
+## Teams, suggestions and supplies
+
+A team comes from `POST /api/teams` (the scenario's teams) or from a phone's volunteer packet,
+which links the phone to the team of that name or makes a new one. Pings and acks count only
+from the phone linked to a team. What a team can do comes from its type and its crew's skills
+(`constants.json` teams.capabilities_*); anyone can do a welfare check.
+
+```
+available -> assigned (POST /api/assign) -> en_route (ack) -> on_scene (ping within 100 m, or ack
+"arrived") -> returning (ack "done" + outcome) -> available (ack "ready", or a ping back at base)
+```
+
+"Done" closes the case, adds the people to the place they were taken to, and takes the supplies
+used off the team's load. "Can't reach" and "out of service" put the case back in the queue. A
+late ack never moves a team backwards. The scheduler flags a team overdue at ETA + 50% of the
+travel time (at least 10 min) and not heard from after 15 min without a ping while en route.
+
+Suggestions use teams that are available, not low on fuel, can do everything the case needs, and
+carry or can fetch from the command post the supplies the case needs (profile `supply_rules`;
+items nobody has entered yet do not block). Travel = distance x 1.4 / speed: a boat 1.5 km away
+takes about 13 min. The trade-off checks the top 10 cases: "Boat 2 is also best for case #1. If
+it goes here, #1 waits about 7 more min (next best: Boat 3)". A team on scene for more than 10 of
+its expected 20 minutes shows as soon free. A job goes only to the team's phone (`to_device`); a
+team without a phone gets a "tell them by radio" warning.
+
+Supplies sit at `command_post`, `shelter:<id>` and `team:<id>`. Left is the sum; the burn rate
+is "used" over the last 3 hours.
+
 ## Code map
 
 `app/main.py` routes · `config.py` settings · `db.py` schema and storage · `crypto.py` keys, signing,
@@ -133,9 +170,11 @@ sealing · `schemas.py` shared-schema validation · `profiles.py` profile rules 
 pipeline · `merge.py` duplicate rules · `scoring.py` points, confidence, badges · `cases.py` attach,
 rebuild, rescore, verify, split, trust · `zones.py` zone shapes, the Silent Zone test, zone tasks ·
 `coverage.py` registry, confirmations, warning coverage, alert timeouts · `alerts.py` create, update,
-cancel, expire and announce alerts · `scheduler.py` alert expiry, timeouts,
-rescoring and zones every 30 s · `outbound.py` the queue to phones · `snapshot.py` the dashboard
+cancel, expire and announce alerts · `teams.py` team tracker: setup, pings, acks, arrival,
+outcome, overdue · `suggest.py` suggestions, trade-off, assign and job packets · `supplies.py`
+shelters, stock, moves, burn rate · `scheduler.py` alert expiry, timeouts, rescoring, zones and
+team checks every 30 s · `outbound.py` the queue to phones · `snapshot.py` the dashboard
 snapshot · `packets.py` packet and geohash helpers · `devtools.py` phone-side packet builder
 (reference for the app).
 
-Next: `suggest.py`, `/api/assign`, `teams.py`, `supplies.py` with shelters (System Design 14.5).
+Next: revoking devices, `scripts/reset_demo.py` per pack, database backups (System Design 14.5, B7).

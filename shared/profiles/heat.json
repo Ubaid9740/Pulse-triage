@@ -20,6 +20,9 @@
     { "all": ["signs:confused|fainted|hot_dry_skin|vomiting|dizzy|cramps"], "need": "medic" },
     { "all": [], "need": "welfare" }
   ],
+  "supply_rules": [
+    { "all": ["signs:vomiting|dizzy|cramps|headache"], "item": "oral_rehydration_salts" }
+  ],
   "window": { "text": "Hottest hours start", "source": "scenario_windows", "only_if": ["!cooling"] },
   "affected": "alert_zones",
   "keywords": {

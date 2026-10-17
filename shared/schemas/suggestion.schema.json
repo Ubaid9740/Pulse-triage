@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/suggestion.schema.json",
+  "title": "Suggestion (GET /api/suggest?case_id=)",
+  "description": "The fastest free team that can help, the next ones, the trade-off with other cases, teams about to be free, and a place to go. A person confirms with POST /api/assign.",
+  "type": "object",
+  "required": ["case_id", "rank", "needs", "supplies", "best", "alternatives", "tradeoff", "tradeoff_case_id",
+               "soon_free", "place", "why_none"],
+  "additionalProperties": false,
+  "$defs": {
+    "option": {
+      "type": "object",
+      "required": ["team_id", "name", "type", "travel_min", "distance_km", "fetch"],
+      "additionalProperties": false,
+      "properties": {
+        "team_id": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "travel_min": { "type": "integer", "minimum": 0 },
+        "distance_km": { "type": "number" },
+        "fetch": { "type": "array", "items": { "type": "string" }, "description": "Supplies to pick up at the command post first." }
+      }
+    }
+  },
+  "properties": {
+    "case_id": { "type": "integer" },
+    "rank": { "type": ["integer", "null"] },
+    "needs": { "type": "array", "items": { "type": "string" } },
+    "supplies": { "type": "array", "items": { "type": "string" } },
+    "best": { "oneOf": [{ "$ref": "#/$defs/option" }, { "type": "null" }] },
+    "alternatives": { "type": "array", "items": { "$ref": "#/$defs/option" } },
+    "tradeoff": { "type": ["string", "null"] },
+    "tradeoff_case_id": { "type": ["integer", "null"] },
+    "soon_free": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["team_id", "name", "free_in_min", "travel_min"],
+        "additionalProperties": false,
+        "properties": {
+          "team_id": { "type": "string" },
+          "name": { "type": "string" },
+          "free_in_min": { "type": "integer", "minimum": 0 },
+          "travel_min": { "type": ["integer", "null"] }
+        }
+      }
+    },
+    "place": {
+      "type": ["object", "null"],
+      "required": ["id", "name", "type", "lat", "lng", "space_left", "distance_km"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" },
+        "space_left": { "type": ["integer", "null"] },
+        "distance_km": { "type": "number" }
+      }
+    },
+    "why_none": { "type": ["string", "null"] }
+  }
+}

@@ -6,7 +6,8 @@ validate the payload -> store and dispatch in one transaction.
 
 A report is stored, placed in its zone and merged into a matching open case (or starts a new
 one), and that case is rescored. Alert replies and welfare checks update warning coverage; a
-welfare check that finds someone in need also becomes a report. Not built yet: team tracking.
+welfare check that finds someone in need also becomes a report. Volunteer packets, acks and
+location pings go to the team tracker.
 """
 from __future__ import annotations
 
@@ -25,6 +26,7 @@ from .outbound import COMMAND_POST
 from .packets import PUBLIC_KINDS
 from .profiles import Profiles
 from .schemas import Schemas
+from .teams import TeamBook
 from .zones import ZoneBook
 
 log = logging.getLogger("pulsetriage.ingest")
@@ -49,11 +51,13 @@ class Result:
 
 class Ingestor:
     def __init__(self, db: Database, keys: CommandPostKeys, schemas: Schemas, profiles: Profiles,
-                 settings: Settings, constants: dict, cases: CaseBook, coverage: Coverage, zones: ZoneBook):
+                 settings: Settings, constants: dict, cases: CaseBook, coverage: Coverage, zones: ZoneBook,
+                 teams: TeamBook):
         self.db = db
         self.cases = cases
         self.coverage = coverage
         self.zones = zones
+        self.teams = teams
         self.keys = keys
         self.schemas = schemas
         self.profiles = profiles
@@ -200,7 +204,12 @@ class Ingestor:
                 self.coverage.record_reply(conn, body, payload, created, received_at)
             elif kind == "welfare_check":
                 case_id = self.coverage.record_check(conn, body, payload, created, received_at)
-            # TODO next steps: volunteer -> teams, ack -> team tracker, team_ping -> team tracker.
+            elif kind == "volunteer":
+                self.teams.upsert_volunteer(conn, body, payload, created, received_at)
+            elif kind == "ack":
+                case_id = self.teams.on_ack(conn, body, payload, created, received_at)
+            elif kind == "team_ping":
+                case_id = self.teams.on_ping(conn, body, payload, created, received_at)
         self.zones.mark_dirty()
         return Result("accepted", body["id"], case_id=case_id)
 

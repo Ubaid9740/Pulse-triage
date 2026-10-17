@@ -84,6 +84,19 @@
         }
       }
     },
+    "supply_rules": {
+      "type": "array",
+      "description": "Supplies a case needs: a team is suggested only if it carries them or the command post has them.",
+      "items": {
+        "type": "object",
+        "required": ["all", "item"],
+        "additionalProperties": false,
+        "properties": {
+          "all": { "$ref": "#/$defs/tokens" },
+          "item": { "type": "string", "pattern": "^[a-z0-9_]+$" }
+        }
+      }
+    },
     "window": {
       "type": "object",
       "required": ["text", "source"],

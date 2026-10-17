@@ -89,6 +89,17 @@ MIGRATIONS = [
     ("zones", "silent_since", "TEXT"),
     ("alerts", "ended_at", "TEXT"),           # replaced, cancelled by an all-clear, or expired
     ("alerts", "ended_why", "TEXT"),
+    ("teams", "job_id", "TEXT"),              # the open job, if any
+    ("teams", "base_lat", "REAL"),            # where 'returning' ends
+    ("teams", "base_lng", "REAL"),
+    ("teams", "accuracy_m", "REAL"),
+    ("teams", "ping_received_at", "TEXT"),    # ping_at is when the position was taken
+    ("team_pings", "received_at", "TEXT"),
+    ("jobs", "travel_min", "REAL"),
+    ("jobs", "place_id", "TEXT"),
+    ("jobs", "arrived_at", "TEXT"),
+    ("jobs", "arrived_by", "TEXT"),           # ping, team, or both
+    ("jobs", "done_at", "TEXT"),
 ]
 # Indexes on migrated columns, created after the migrations.
 LATE_INDEXES = """
