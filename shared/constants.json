@@ -38,7 +38,9 @@
     "fake_people": 10,
     "fake_start": 0.3,
     "verify_fast_hours": 1,
-    "verify_fast_below": 0.5
+    "verify_fast_below": 0.5,
+    "location_check_m": 1000,
+    "location_penalty": 0.1
   },
 
   "rate_limit_reports_per_hour": 20,

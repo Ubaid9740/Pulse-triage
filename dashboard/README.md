@@ -14,7 +14,7 @@ npm run dev          # while building: http://localhost:5173, API proxied to the
 To see data: with the server running, `python server/scripts/reset_demo.py --pack flood --keep-server`
 (the Karachi flood pack) then `python scenario/demo_reports.py` (15 reports from phones).
 
-## What is built (System Design 6, Team Brief C1 and C2)
+## What is built (System Design 6, Team Brief C1, C2 and C3)
 
 - **Polling**: `App.jsx` fetches `GET /api/snapshot` every 2 s into one state object; commands POST
   and refresh at once. A failed poll keeps the last snapshot and the top bar says "Server not reachable".
@@ -42,6 +42,18 @@ To see data: with the server running, `python server/scripts/reset_demo.py --pac
 - **Paste**: a box for forwarded messages and an optional disaster for unclear ones; lists the
   reports made (with their case), the ones already seen and the chatter skipped.
 
+- **Teams** (top bar) switches the main area to Teams and resources: the warnings, counters per
+  status and per capability ("Boats: 1 of 2 free", red when none), the team table (status with
+  its reason, overdue and not-heard-from flags, job, ETA or arrival, "as of" last position,
+  battery, fuel, load; Status sets one by hand, out of service needs a reason), supplies (command
+  post, places, teams, used today, left, runs out in, LOW) with Move stock (restock, load,
+  unload, deliver, used, transfer) and the places' head counts.
+- **Weights** opens a slider per weight above the ranked list; each change is saved after a short
+  pause, every open case is rescored and the list re-ranks. "Back to defaults" resets them.
+- **Chaos** (demo only): inject a duplicate, a fake report or a wrong location, or start and end
+  an AI outage; each shows its badge or the banner within one refresh.
+- **Phone setup**: the setup QR code with the server addresses it carries.
+
 Base map: if `public/tiles/town.pmtiles` exists (the scenario provides it), the map uses it through
 protomaps-leaflet and nothing loads from the internet. Without it, the map shows OpenStreetMap's
 street tiles (online, no key; the credit stays in the corner, as their tile policy asks). With
@@ -49,7 +61,6 @@ neither (no file, no internet) the zones and pins sit on a plain background and 
 For a Karachi map that works offline, cut `town.pmtiles` from a Protomaps build (`pmtiles extract`
 with `--bbox=66.9,24.75,67.3,25.05`).
 
-## Next (System Design 14.5, C)
+## Next
 
-- C3: Teams and resources tab (counters, team table, status with a reason, supplies table and moves),
-  WeightsPanel, ChaosPanel, SetupQR.
+- Replay (top bar) once `scenario/replay.py` exists; projector polish.

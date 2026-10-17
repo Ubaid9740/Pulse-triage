@@ -66,6 +66,7 @@ class AIReader:
         self.last_check: datetime | None = None
         self.last_error: str | None = "not checked yet" if enabled else "turned off (PT_AI=off)"
         self.read_count = 0
+        self.simulated_outage = False       # chaos panel: act as if the API were unreachable
         self._queue: queue.Queue = queue.Queue()
         self._queued: set[str] = set()
         self._lock = threading.Lock()
@@ -142,7 +143,10 @@ class AIReader:
         cached = self.db.scalar("SELECT answer FROM ai_cache WHERE hash = ?", (key,))
         if cached:
             return json.loads(cached)
-        prompt = f"Message:\n<message>\n{text}\n</message>"
+        if self.simulated_outage:
+            self._went_offline("simulated outage (chaos panel)")
+            return None
+        prompt =f"Message:\n<message>\n{text}\n</message>"
         if hint:
             prompt += f"\nIf the message does not say which disaster, it is about: {hint}"
         try:
@@ -191,6 +195,9 @@ class AIReader:
         now = now or timeutil.now()
         if not self.enabled:
             return False
+        if self.simulated_outage:
+            self._went_offline("simulated outage (chaos panel)")
+            return False
         if self.last_check and now - self.last_check < timedelta(seconds=self.rules["health_check_s"]):
             return self.online
         self.last_check = now
@@ -211,11 +218,21 @@ class AIReader:
                            f"ORDER BY r.received_at LIMIT ?", OPEN_STATUSES + (self.rules["backlog"],))
         return sum(self.enqueue(r["id"], r["note"], r["hazard"]) for r in rows)
 
+    def outage(self, on: bool) -> bool:
+        """Start or end a simulated outage. Ending it checks the API at once and queues the backlog."""
+        self.simulated_outage = on
+        if on:
+            self._went_offline("simulated outage (chaos panel)")
+            return False
+        self.last_check = None
+        return self.check()
+
     def status(self) -> dict:
         return {"enabled": self.enabled, "online": self.enabled and self.online, "provider": self.backend.name,
                 "model": self.backend.model,
                 "last_check": timeutil.iso(self.last_check) if self.last_check else None,
-                "last_error": self.last_error, "queued": len(self._queued), "read": self.read_count}
+                "last_error": self.last_error, "queued": len(self._queued), "read": self.read_count,
+                "simulated_outage": self.simulated_outage}
 
     def _went_offline(self, why: str) -> None:
         if self.online:

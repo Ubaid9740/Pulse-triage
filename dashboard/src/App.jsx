@@ -9,6 +9,10 @@ import BottomStrip from "./components/BottomStrip.jsx";
 import AlertComposer from "./components/AlertComposer.jsx";
 import IntakeForm from "./components/IntakeForm.jsx";
 import PasteBox from "./components/PasteBox.jsx";
+import TeamsPanel from "./components/TeamsPanel.jsx";
+import WeightsPanel from "./components/WeightsPanel.jsx";
+import ChaosPanel from "./components/ChaosPanel.jsx";
+import SetupQR from "./components/SetupQR.jsx";
 
 const POLL_MS = 2000;
 
@@ -19,15 +23,25 @@ export default function App() {
   const [offline, setOffline] = useState(false);
   const [profiles, setProfiles] = useState(null);
   const [selected, setSelected] = useState(null); // {kind: "case", id} or {kind: "zone", name}
-  const [dialog, setDialog] = useState(null);     // "alert" | "intake" | "paste"
+  const [dialog, setDialog] = useState(null);     // "alert" | "intake" | "paste" | "chaos" | "setup"
+  const [view, setView] = useState("map");        // "map" or "teams" (Teams and resources)
+  const [weightsOpen, setWeightsOpen] = useState(false);
   const busy = useRef(false);
 
+  const again = useRef(false);
+
   const refresh = useCallback(async () => {
-    if (busy.current) return;
+    if (busy.current) {               // a poll is on its way: fetch once more when it lands,
+      again.current = true;           // so a command's change shows at once, not 2 s later
+      return;
+    }
     busy.current = true;
     try {
-      setSnap(await get("/api/snapshot"));
-      setOffline(false);
+      do {
+        again.current = false;
+        setSnap(await get("/api/snapshot"));
+        setOffline(false);
+      } while (again.current);
     } catch {
       setOffline(true);
     } finally {
@@ -57,12 +71,23 @@ export default function App() {
 
   const ranked = snap.cases;
   const rankOf = (id) => ranked.findIndex((c) => c.id === id) + 1;
-  const openCase = (id) => { setDialog(null); setSelected({ kind: "case", id }); };
+  const openCase = (id) => { setDialog(null); setView("map"); setSelected({ kind: "case", id }); };
+  const onOpen = (what) => {
+    if (what === "teams") setView((v) => (v === "teams" ? "map" : "teams"));
+    else if (what === "weights") { setView("map"); setSelected(null); setWeightsOpen((o) => !o); }
+    else setDialog(what);
+  };
   const close = () => setDialog(null);
 
   return (
     <div className="app">
-      <TopBar snap={snap} offline={offline} profiles={profiles} refresh={refresh} onOpen={setDialog} />
+      <TopBar snap={snap} offline={offline} profiles={profiles} refresh={refresh} onOpen={onOpen}
+              view={view} weightsOpen={weightsOpen} />
+      {view === "teams" ? (
+        <main className="resources-pane">
+          <TeamsPanel snap={snap} profiles={profiles} refresh={refresh} onOpenCase={openCase} />
+        </main>
+      ) : (
       <main className="main">
         <section className="map-pane">
           <MapView snap={snap} selected={selected} onSelect={setSelected} />
@@ -76,13 +101,17 @@ export default function App() {
             <ZoneCard name={selected.name} rev={snap.rev} onClose={() => setSelected(null)}
                       onOpenCase={(id) => setSelected({ kind: "case", id })} refresh={refresh} />
           )}
+          {!selected && weightsOpen && <WeightsPanel refresh={refresh} onClose={() => setWeightsOpen(false)} />}
           {!selected && <CaseList cases={ranked} onSelect={(id) => setSelected({ kind: "case", id })} />}
         </aside>
       </main>
+      )}
       <BottomStrip snap={snap} />
       {dialog === "alert" && <AlertComposer snap={snap} profiles={profiles} refresh={refresh} onClose={close} />}
       {dialog === "intake" && <IntakeForm snap={snap} profiles={profiles} refresh={refresh} onClose={close} onOpenCase={openCase} />}
       {dialog === "paste" && <PasteBox snap={snap} profiles={profiles} refresh={refresh} onClose={close} onOpenCase={openCase} />}
+      {dialog === "chaos" && <ChaosPanel refresh={refresh} onClose={close} onOpenCase={openCase} />}
+      {dialog === "setup" && <SetupQR onClose={close} />}
     </div>
   );
 }

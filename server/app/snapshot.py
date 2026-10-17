@@ -37,7 +37,8 @@ class SnapshotBuilder:
     def get(self) -> dict:
         self.zones.refresh_if_dirty()
         now = timeutil.now()
-        key = (self.db.rev(), now.strftime("%Y%m%d%H%M"))
+        # The AI's state is in the key: the offline banner must show on the next poll, not next minute.
+        key = (self.db.rev(), now.strftime("%Y%m%d%H%M"), self.ai.status()["online"])
         with self._lock:
             if key != self._key:
                 self._cached = self._build(now, key[0])

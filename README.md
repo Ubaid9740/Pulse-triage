@@ -72,5 +72,8 @@ form built from the profiles, and the paste box.
 Demo city: Karachi. The map shows real streets (OpenStreetMap, or an offline `town.pmtiles`), with
 8 zones on real neighbourhoods and a flood pack (`scenario/packs/flood`, `scenario/demo_reports.py`).
 
-Next: dashboard C3 (teams and resources tab, weights, chaos panel, setup QR),
-scenario packs and replay (D), and the field app (A).
+Dashboard (C3): Teams and resources view (counters, team table with status changes, supplies with
+stock moves, places), weights sliders that re-rank the list, the chaos panel (duplicate, fake,
+wrong location, AI outage) and the phone setup QR.
+
+Next: scenario generate.py and replay.py (D), and the field app (A).

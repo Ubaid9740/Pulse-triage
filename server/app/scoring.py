@@ -45,6 +45,7 @@ class CaseState:
     verified: bool = False
     has_location: bool = True
     window_closes_at: datetime | None = None
+    landmark_twin: tuple[int, float] | None = None   # (case ID, metres): an earlier case, same landmark, far away
 
 
 @dataclass
@@ -151,6 +152,9 @@ def confidence(case: CaseState, now: datetime, constants: dict) -> tuple[float, 
     elif not case.has_location:
         value -= c["landmark_penalty"]
         parts.append("landmark only")
+    if case.landmark_twin and case.landmark_twin[1] > c["location_check_m"]:
+        value -= c["location_penalty"]
+        parts.append(f"same landmark as case #{case.landmark_twin[0]}, {case.landmark_twin[1] / 1000:.1f} km away")
     if fake:
         parts.append(f"unknown phone claims {case.people} people")
 
@@ -206,6 +210,8 @@ def score(case: CaseState, now: datetime, constants: dict) -> Score:
     if (not case.verified and left is not None and left <= c["verify_fast_hours"]
             and conf < c["verify_fast_below"]):
         badges.append("verify fast")
+    if not case.verified and case.landmark_twin and case.landmark_twin[1] > c["location_check_m"]:
+        badges.append("check location")
     if not case.verified and hours_between(case.last_update, now) >= c["recheck_hours"]:
         badges.append("re-check")
     return Score(points, reasons, conf, badges, None if left is None else round(left, 2), {"raw": raw})

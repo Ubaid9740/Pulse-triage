@@ -17,6 +17,7 @@ from typing import TYPE_CHECKING
 from . import merge, scoring, timeutil
 from .db import Database, setting
 from .outbound import COMMAND_POST
+from .packets import distance_m
 from .profiles import Profiles
 from .scoring import SYSTEM_SOURCES, SYSTEM_SQL
 
@@ -252,7 +253,9 @@ class CaseBook:
         else:
             if reports is None:
                 reports = self._reports(conn, "r.case_id = ?", (case_id,))
-            result = scoring.score(self._state(case, reports), now, self.rules(conn))
+            state = self._state(case, reports)
+            state.landmark_twin = self._landmark_twin(conn, case)
+            result = scoring.score(state, now, self.rules(conn))
         override = json.loads(case["override"]) if case["override"] else None
         if override and override.get("points") is not None:
             result.reasons.append({"text": f"Changed by dispatcher: {override['reason']} (rules gave {result.points})",
@@ -446,6 +449,23 @@ class CaseBook:
                            landmarks=[t["landmark"] for t in texts if t["landmark"]],
                            conditions=set(json.loads(case["conditions"])),
                            words=merge.key_words(*(x for t in texts for x in (t["note"], t["landmark"]))))
+
+    def _landmark_twin(self, conn: sqlite3.Connection, case: dict) -> tuple[int, float] | None:
+        """The nearest earlier open case with the same landmark, when it is further than
+        confidence.location_check_m: one of the two GPS fixes is probably wrong (merging keeps them apart)."""
+        if not case["landmark"] or case["lat"] is None:
+            return None
+        rules = self.constants["merge"]
+        here = merge.Place(case["hazard"], case["people"], timeutil.now(), landmarks=[case["landmark"]])
+        twins = []
+        for other in conn.execute(f"SELECT id, lat, lng, landmark FROM cases WHERE {OPEN_SQL} AND id != ? "
+                                  f"AND reported_at <= ? AND landmark IS NOT NULL AND lat IS NOT NULL",
+                                  OPEN_STATUSES + (case["id"], case["reported_at"])):
+            there = merge.Place(case["hazard"], case["people"], here.at, landmarks=[other["landmark"]])
+            if merge.same_landmark(here, there, rules["min_landmark_chars"]):
+                twins.append((other["id"], distance_m(case["lat"], case["lng"], other["lat"], other["lng"])))
+        far = [t for t in twins if t[1] > self.constants["confidence"]["location_check_m"]]
+        return min(far, key=lambda t: t[1]) if far and len(far) == len(twins) else None
 
     @staticmethod
     def _state(case: dict, reports: list[dict]) -> scoring.CaseState:

@@ -25,6 +25,7 @@ from .ai_reader import AIReader
 from .alerts import AlertBook
 from .backups import Backups
 from .cases import CaseBook, NotFound
+from .chaos import KINDS as CHAOS_KINDS, Chaos
 from .config import Settings, load_constants
 from .coverage import MAX_REGISTRY_BYTES, Coverage
 from .crypto import CommandPostKeys
@@ -174,6 +175,10 @@ class ResetRequest(ByRequest):
     pack: str = Field(min_length=1, max_length=40)
 
 
+class ChaosRequest(ByRequest):
+    on: bool = Field(True, description="ai_down only: false ends the simulated outage")
+
+
 HAZARDS = Literal["flood", "heat", "earthquake", "storm", "fire", "landslide", "other"]
 
 
@@ -252,6 +257,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         finally:
             ctx.scheduler.stop()
             ctx.ai.stop()
+
+    chaos = Chaos(db, keys, ingestor, lambda: ctx.ai)
 
     app = FastAPI(title="PulseTriage command server", version=__version__, lifespan=lifespan)
     app.state.ctx = ctx
@@ -351,6 +358,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.post("/api/demo/reset")
     def demo_reset(req: ResetRequest) -> dict:
         return ctx.demo.reset(req.pack, req.by)
+
+    @app.post("/api/chaos/{kind}")
+    def chaos_inject(kind: Literal[CHAOS_KINDS], req: ChaosRequest | None = None) -> dict:
+        return chaos.run(kind, on=req.on if req else True)
 
     @app.post("/api/cases/{case_id}/override")
     def override_case(case_id: int, req: OverrideRequest) -> dict:

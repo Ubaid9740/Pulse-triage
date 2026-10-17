@@ -71,6 +71,7 @@ python -m pytest
 | `GET /api/devices` | Phones heard from, with trust, revocation and team |
 | `POST /api/devices/{id}/revoke` `{"revoked", "reason", "by"}` | Refuse a phone (e.g. stolen) and send phones the signed list; `revoked: false` restores it |
 | `GET /api/demo/packs`, `POST /api/demo/reset` `{"pack"}` | Demo packs in `scenario/packs/`; reset a running server to one |
+| `POST /api/chaos/{kind}` `{"on"}` | Demo only: `duplicate`, `fake`, `wrong_location` (real signed reports from a new phone) or `ai_down` (`on: false` ends it) |
 | `GET /docs` | Interactive API docs |
 
 Reject reasons: `invalid_wire`, `too_big`, `invalid_body`, `bad_signature`, `unsigned`, `not_allowed`,
@@ -164,6 +165,18 @@ a server answers on `PT_PORT`.
 
 A revoked phone's packets are refused at once. Each revoke packet carries the full list
 (`replace_key` "revoke"), so phones keep only the newest and stop relaying for those phones.
+
+## Chaos panel
+
+`POST /api/chaos/{kind}` (`app/chaos.py`) puts the problems of a real incident into the live one,
+each through the normal ingest path: a signed, sealed report from a phone the server has never
+seen. `duplicate` repeats the top case 20 m away (it merges: "2 reports"); `fake` claims 50 people
+at the stadium in the busiest hard-hit zone (trust 0.3, "verify"); `wrong_location` gives the top
+case's landmark with GPS 2 km off. Merging keeps those apart (same words far apart may be another
+house 14), so the new case gets lower trust and "check location": its landmark matches an earlier
+open case over `confidence.location_check_m` (1 km) away, and only that case is near. `ai_down`
+makes the AI reader act unreachable until `{"on": false}`: the offline banner shows on the next
+poll and keyword rules carry on.
 
 ## How cases are built
 
@@ -263,7 +276,7 @@ team checks every 30 s · `outbound.py` the queue to phones · `snapshot.py` the
 snapshot · `packets.py` packet and geohash helpers · `devtools.py` phone-side packet builder
 (reference for the app).
 
-`reader.py` keyword reader · `ai_reader.py` the AI reader · `ai_backends.py` Gemini and Claude · `intake.py` intake form and paste box · `devices.py` the phones and revoking · `backups.py` database copies and restore · `demo.py` the
+`chaos.py` the chaos panel's problems · `reader.py` keyword reader · `ai_reader.py` the AI reader · `ai_backends.py` Gemini and Claude · `intake.py` intake form and paste box · `devices.py` the phones and revoking · `backups.py` database copies and restore · `demo.py` the
 reset per pack · `purge.py` data retention and the after-action counts.
 
 The server steps of System Design 14.5 (B1 to B7) are built. Every server part of System Design 14.5 and 10.4 is built.

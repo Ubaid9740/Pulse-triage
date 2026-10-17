@@ -304,6 +304,9 @@ class TeamBook:
             cases = {c["id"]: c for c in _rows(conn, "SELECT id, lat, lng, landmark, zone FROM cases WHERE id IN "
                                                      "(SELECT case_id FROM teams WHERE case_id IS NOT NULL)")}
             loads = self.supplies.loads(conn)
+            reasons = {r["team_id"]: r["reason"] for r in _rows(
+                conn, "SELECT team_id, reason FROM team_status_log WHERE id IN "
+                      "(SELECT MAX(id) FROM team_status_log GROUP BY team_id)")}
         stale_after = timedelta(minutes=self.rules["stale_icon_minutes"])
         out = []
         for t in teams:
@@ -315,8 +318,8 @@ class TeamBook:
             out.append({
                 "id": t["id"], "name": t["name"], "type": t["type"],
                 "capabilities": json.loads(t["capabilities"] or "[]"), "device_id": t["device_id"],
-                "status": t["status"], "status_since": t["status_since"], "flags": json.loads(t["flags"] or "[]"),
-                "case_id": t["case_id"], "job_id": t["job_id"], "eta": t["eta"],
+                "status": t["status"], "status_since": t["status_since"], "status_reason": reasons.get(t["id"]),
+                "flags": json.loads(t["flags"] or "[]"), "case_id": t["case_id"], "job_id": t["job_id"], "eta": t["eta"],
                 "arrived_at": job["arrived_at"] if job else None, "lat": t["lat"], "lng": t["lng"],
                 "accuracy_m": t["accuracy_m"], "ping_at": t["ping_at"], "ping_received_at": t["ping_received_at"],
                 "last_contact": t["last_upload_at"],
