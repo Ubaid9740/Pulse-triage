@@ -8,6 +8,7 @@ from __future__ import annotations
 import io
 import json
 import logging
+from contextlib import asynccontextmanager
 from dataclasses import dataclass
 from datetime import timedelta
 from typing import Any
@@ -20,12 +21,14 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from . import __version__, outbound, timeutil
+from .cases import CaseBook, NotFound
 from .config import Settings, load_constants
 from .crypto import CommandPostKeys
 from .db import Database
 from .ingest import Ingestor
 from .net import lan_ipv4_addresses
 from .profiles import Profiles
+from .scheduler import Scheduler
 from .schemas import Schemas
 from .snapshot import SnapshotBuilder
 
@@ -40,12 +43,26 @@ class Context:
     profiles: Profiles
     db: Database
     keys: CommandPostKeys
+    cases: CaseBook
     ingestor: Ingestor
     snapshots: SnapshotBuilder
+    scheduler: Scheduler
 
 
 class UploadRequest(BaseModel):
     packets: list[dict[str, Any]] = Field(default_factory=list, max_length=100)
+
+
+class ByRequest(BaseModel):
+    by: str = Field("dispatcher", min_length=1, max_length=40)
+
+
+class SplitRequest(ByRequest):
+    report_id: str = Field(min_length=1, max_length=64)
+
+
+class TrustRequest(ByRequest):
+    trusted: bool = True
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
@@ -56,14 +73,23 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     profiles = Profiles(settings.shared_dir, schemas)
     db = Database(settings.db_path)
     keys = CommandPostKeys.load_or_create(settings.keys_dir)
-    ctx = Context(settings, constants, schemas, profiles, db, keys,
-                  Ingestor(db, keys, schemas, profiles, settings, constants),
-                  SnapshotBuilder(db, settings))
+    cases = CaseBook(db, profiles, constants)
+    ctx = Context(settings, constants, schemas, profiles, db, keys, cases,
+                  Ingestor(db, keys, schemas, profiles, settings, constants, cases),
+                  SnapshotBuilder(db, settings), Scheduler(cases, constants))
     if not settings.require_signatures or not settings.require_sealing:
         log.warning("Development mode: unsigned=%s, unsealed=%s packets are accepted.",
                     not settings.require_signatures, not settings.require_sealing)
 
-    app = FastAPI(title="PulseTriage command server", version=__version__)
+    @asynccontextmanager
+    async def lifespan(_: FastAPI):
+        ctx.scheduler.start()        # tests that use TestClient without "with" skip this
+        try:
+            yield
+        finally:
+            ctx.scheduler.stop()
+
+    app = FastAPI(title="PulseTriage command server", version=__version__, lifespan=lifespan)
     app.state.ctx = ctx
     app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
@@ -81,6 +107,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 "SELECT COUNT(*) FROM packets WHERE received_at >= ? AND result = 'accepted'", (five_min_ago,)),
             "require_signatures": settings.require_signatures,
             "require_sealing": settings.require_sealing,
+            "scheduler_last_run": db.get_setting("scheduler_last_run"),
         }
 
     def setup_payload(request: Request) -> dict:
@@ -130,9 +157,31 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     def snapshot() -> dict:
         return ctx.snapshots.get()
 
+    @app.get("/api/cases/{case_id}")
+    def case_detail(case_id: int) -> dict:
+        return cases.detail(case_id)
+
+    @app.post("/api/cases/{case_id}/verify")
+    def verify_case(case_id: int, req: ByRequest | None = None) -> dict:
+        return cases.verify(case_id, (req or ByRequest()).by)
+
+    @app.post("/api/cases/{case_id}/split")
+    def split_case(case_id: int, req: SplitRequest) -> dict:
+        return cases.split(case_id, req.report_id, req.by)
+
+    @app.post("/api/devices/{device_id}/trust")
+    def trust_device(device_id: str, req: TrustRequest | None = None) -> dict:
+        req = req or TrustRequest()
+        return {"device_id": device_id, "trusted": req.trusted,
+                "cases_rescored": cases.set_trusted(device_id, req.trusted, req.by)}
+
     @app.exception_handler(ValueError)
     def value_error(_: Request, exc: ValueError) -> JSONResponse:
         return JSONResponse({"error": "invalid", "detail": str(exc)}, status_code=400)
+
+    @app.exception_handler(NotFound)
+    def not_found(_: Request, exc: NotFound) -> JSONResponse:
+        return JSONResponse({"error": "not_found", "detail": str(exc)}, status_code=404)
 
     if settings.dashboard_dir.exists():
         app.mount("/", StaticFiles(directory=settings.dashboard_dir, html=True), name="dashboard")

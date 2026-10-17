@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS reports (
 CREATE TABLE IF NOT EXISTS cases (
     id INTEGER PRIMARY KEY, hazard TEXT, zone TEXT, lat REAL, lng REAL, accuracy_m REAL,
     landmark TEXT, people INT, conditions TEXT, details TEXT, hours_at_report REAL,
-    hours_text TEXT, reported_at TEXT, window_closes_at TEXT, points REAL, reasons TEXT,
+    hours_text TEXT, hours_ref_at TEXT, reported_at TEXT, window_closes_at TEXT, points REAL, reasons TEXT,
     confidence REAL, needs TEXT, badges TEXT, status TEXT, team_id TEXT, shelter_id TEXT,
     source TEXT, reader TEXT, report_count INT, note TEXT, verified INT DEFAULT 0,
     last_update TEXT, override TEXT);
@@ -76,6 +76,9 @@ CREATE INDEX IF NOT EXISTS ix_replies ON alert_replies(alert_id);
 CREATE INDEX IF NOT EXISTS ix_registry ON registry(zone);
 """
 
+# Columns added after the first release: (table, column, type). Applied to older database files.
+MIGRATIONS = [("cases", "hours_ref_at", "TEXT")]
+
 
 class Database:
     def __init__(self, path: Path):
@@ -89,6 +92,10 @@ class Database:
             self._conn.execute("PRAGMA synchronous=NORMAL")
             self._conn.execute("PRAGMA foreign_keys=ON")
             self._conn.executescript(SCHEMA)
+            for table, column, kind in MIGRATIONS:
+                have = {row[1] for row in self._conn.execute(f"PRAGMA table_info({table})")}
+                if column not in have:
+                    self._conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {kind}")
 
     def close(self) -> None:
         with self._lock:
@@ -107,6 +114,12 @@ class Database:
         with self._lock:
             row = self._conn.execute(sql, params).fetchone()
             return row[0] if row else None
+
+    @contextmanager
+    def read(self) -> Iterator[sqlite3.Connection]:
+        """Several reads under the lock, with no transaction and no revision bump."""
+        with self._lock:
+            yield self._conn
 
     @contextmanager
     def write(self) -> Iterator[sqlite3.Connection]:

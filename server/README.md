@@ -39,6 +39,10 @@ python -m pytest
 | `POST /api/packets` | Upload up to 100 wire packets; returns accepted, duplicate, rejected (with reason) |
 | `GET /api/outbound?since=&device=` | Alerts, jobs and revocations after a cursor |
 | `GET /api/snapshot` | Everything the dashboard shows |
+| `GET /api/cases/{id}` | One case with every merged report and its history (`case_detail.schema.json`) |
+| `POST /api/cases/{id}/verify` `{"by"}` | Dispatcher confirmed it: confidence 1.0, status `verified` |
+| `POST /api/cases/{id}/split` `{"report_id", "by"}` | Undo a wrong merge; the report starts its own case |
+| `POST /api/devices/{id}/trust` `{"trusted", "by"}` | Known helper or team phone; its open cases are rescored |
 | `GET /docs` | Interactive API docs |
 
 Reject reasons: `invalid_wire`, `too_big`, `invalid_body`, `bad_signature`, `unsigned`, `not_allowed`,
@@ -54,12 +58,27 @@ unsigned, plain-base64 packets. Switch both on once the app signs and seals (bui
 - `scripts/make_keys.py [--force]`: create or rotate the command post keys
 - `scripts/send_example.py report report_heat [--unsigned] [--plain]`: send examples like a phone
 
+## How cases are built
+
+Each report is stored, then joins the closest open case that is within 150 m (or has the same
+landmark), within 3 hours, the same hazard (or "other"), within 2 people, and shares a condition or
+a key word. Otherwise it starts a new case. The case is then rebuilt from all its reports and
+rescored: points = time + can't-save-themselves + window + people, times trust
+`0.6 + 0.4 x confidence`. Every part is one line of `reasons`. The scheduler rescores every 30 s, so
+hours left and confidence change even without new reports. All numbers are in
+`shared/constants.json` (System Design 9.1 to 9.4).
+
+Worked examples, checked by the tests: house 14 from two phones = 69 points (confidence 0.75);
+heatstroke from a trusted volunteer = 66 (0.8); the same volunteer before being trusted = 60.
+
 ## Code map
 
 `app/main.py` routes · `config.py` settings · `db.py` schema and storage · `crypto.py` keys, signing,
 sealing · `schemas.py` shared-schema validation · `profiles.py` profile rules · `ingest.py` the packet
-pipeline · `outbound.py` the queue to phones · `snapshot.py` the dashboard snapshot · `packets.py` packet
-and geohash helpers · `devtools.py` phone-side packet builder (reference for the app).
+pipeline · `merge.py` duplicate rules · `scoring.py` points, confidence, badges · `cases.py` attach,
+rebuild, rescore, verify, split, trust · `scheduler.py` background rescoring · `outbound.py` the queue
+to phones · `snapshot.py` the dashboard snapshot · `packets.py` packet and geohash helpers ·
+`devtools.py` phone-side packet builder (reference for the app).
 
-Next: `merge.py`, `scoring.py`, `zones.py`, `coverage.py`, `alerts.py`, `suggest.py`, `teams.py`,
-`supplies.py`, `scheduler.py` (System Design 14.5).
+Next: `zones.py`, `coverage.py`, `alerts.py`, `suggest.py`, `teams.py`, `supplies.py`
+(System Design 14.5).

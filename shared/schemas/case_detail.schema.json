@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pulsetriage.local/schemas/case_detail.schema.json",
+  "title": "Case detail (GET /api/cases/{id})",
+  "description": "One case with every report merged into it and its history (merges, splits, verify). The dashboard opens this when a card is clicked; 'Split' sends POST /api/cases/{id}/split with a report_id from here.",
+  "type": "object",
+  "required": ["case", "reports", "history"],
+  "additionalProperties": false,
+  "properties": {
+    "case": { "$ref": "case.schema.json" },
+    "reports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "source", "device_id", "reporter_role", "reader", "hazard", "people", "conditions",
+                     "details", "created_at", "received_at", "trusted"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "source": { "type": "string" },
+          "device_id": { "type": "string" },
+          "reporter_role": { "type": "string" },
+          "reader": { "enum": ["form", "ai", "keywords", "system"] },
+          "hazard": { "type": "string" },
+          "people": { "type": "integer", "minimum": 1 },
+          "conditions": { "type": "array", "items": { "type": "string" } },
+          "details": { "type": "object" },
+          "note": { "type": ["string", "null"] },
+          "lat": { "type": ["number", "null"] },
+          "lng": { "type": ["number", "null"] },
+          "accuracy_m": { "type": ["number", "null"] },
+          "landmark": { "type": ["string", "null"] },
+          "created_at": { "type": "string" },
+          "received_at": { "type": "string" },
+          "trusted": { "type": "boolean", "description": "The sending phone is marked trusted by the dispatcher." }
+        }
+      }
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["at", "actor", "action"],
+        "additionalProperties": false,
+        "properties": {
+          "at": { "type": "string" },
+          "actor": { "type": "string" },
+          "action": { "type": "string" },
+          "detail": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

@@ -4,8 +4,8 @@ Steps (System Design 5.2): validate wire -> parse and validate body -> drop dupl
 verify signature -> pin the device key -> check times and rate limit -> open the payload ->
 validate the payload -> store and dispatch in one transaction.
 
-Not built yet (next steps): merging, scoring, zones, coverage, team tracking. For now each
-report becomes its own case with hours-to-critical and needs from the hazard profile.
+A report is stored, then CaseBook.attach_report merges it into a matching open case (or starts
+a new one) and rescores that case. Not built yet: zones, coverage, team tracking.
 """
 from __future__ import annotations
 
@@ -15,6 +15,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 
 from . import timeutil
+from .cases import CaseBook
 from .config import Settings
 from .crypto import CommandPostKeys, b64d, verify
 from .db import Database
@@ -45,8 +46,9 @@ class Result:
 
 class Ingestor:
     def __init__(self, db: Database, keys: CommandPostKeys, schemas: Schemas, profiles: Profiles,
-                 settings: Settings, constants: dict):
+                 settings: Settings, constants: dict, cases: CaseBook):
         self.db = db
+        self.cases = cases
         self.keys = keys
         self.schemas = schemas
         self.profiles = profiles
@@ -193,33 +195,13 @@ class Ingestor:
         return Result("accepted", body["id"], case_id=case_id)
 
     def _add_report(self, conn, body: dict, payload: dict, created: datetime, received_at: datetime) -> int:
-        hazard = payload["hazard"]
-        conditions = payload["conditions"]
-        details = payload["details"]
-        hours, hours_text = self.profiles.hours_to_critical(hazard, details, conditions)
-        needs = self.profiles.needs(hazard, details, conditions)
-        role = payload["reporter_role"]
-        start = self.constants["confidence"]["start"]
-        confidence = start.get(role, start["unknown_phone"])
         source = "alert_reply" if payload.get("alert_id") else "app"
-        created_iso, received_iso = timeutil.iso(created), timeutil.iso(received_at)
-        cur = conn.execute(
-            "INSERT INTO cases(hazard, zone, lat, lng, accuracy_m, landmark, people, conditions, details, "
-            "hours_at_report, hours_text, reported_at, window_closes_at, points, reasons, confidence, needs, "
-            "badges, status, team_id, shelter_id, source, reader, report_count, note, verified, last_update) "
-            "VALUES(?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, 0, '[]', ?, ?, '[]', 'new', NULL, NULL, ?, "
-            "'form', 1, ?, 0, ?)",
-            (hazard, payload.get("lat"), payload.get("lng"), payload.get("gps_accuracy_m"),
-             payload.get("landmark"), payload["people"], json.dumps(conditions), json.dumps(details),
-             hours, hours_text, created_iso, confidence, json.dumps(needs), source,
-             payload.get("note"), received_iso))
-        case_id = cur.lastrowid
         conn.execute(
             "INSERT INTO reports(id, packet_id, case_id, source, hazard, for_whom, people, conditions, details, "
             "note, lat, lng, accuracy_m, landmark, device_id, reporter_role, reader, reader_conf, created_at, "
-            "received_at) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'form', 1.0, ?, ?)",
-            (body["id"], body["id"], case_id, source, hazard, payload["for_whom"], payload["people"],
-             json.dumps(conditions), json.dumps(details), payload.get("note"), payload.get("lat"),
-             payload.get("lng"), payload.get("gps_accuracy_m"), payload.get("landmark"), body["from_device"],
-             role, created_iso, received_iso))
-        return case_id
+            "received_at) VALUES(?, ?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'form', 1.0, ?, ?)",
+            (body["id"], body["id"], source, payload["hazard"], payload["for_whom"], payload["people"],
+             json.dumps(payload["conditions"]), json.dumps(payload["details"]), payload.get("note"),
+             payload.get("lat"), payload.get("lng"), payload.get("gps_accuracy_m"), payload.get("landmark"),
+             body["from_device"], payload["reporter_role"], timeutil.iso(created), timeutil.iso(received_at)))
+        return self.cases.attach_report(conn, body["id"], received_at)

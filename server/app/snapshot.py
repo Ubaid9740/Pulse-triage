@@ -1,19 +1,18 @@
 """GET /api/snapshot: everything the dashboard shows, in one response (snapshot.schema.json).
 
-Cached per database revision and per minute (hours left shrink as time passes).
+Cached per database revision and per minute (hours left shrink as time passes). Points are
+recomputed at ingest and by the scheduler every server.scheduler_s seconds.
 Sections not built yet return empty lists.
 """
 from __future__ import annotations
 
-import json
 import threading
 from datetime import timedelta
 
 from . import timeutil
+from .cases import OPEN_STATUSES, case_view
 from .config import Settings
 from .db import Database
-
-OPEN_STATUSES = ("new", "verified", "assigned", "en_route", "on_scene")
 
 
 class SnapshotBuilder:
@@ -34,9 +33,9 @@ class SnapshotBuilder:
             return self._cached
 
     def _build(self, now, rev: int) -> dict:
-        cases = [self._case(row, now) for row in self.db.all(
+        cases = [case_view(row, now) for row in self.db.all(
             f"SELECT * FROM cases WHERE status IN ({','.join('?' * len(OPEN_STATUSES))})", OPEN_STATUSES)]
-        # Until scoring is built, points are 0, so time left decides the order.
+        # Most points first; ties go to less time left, then the older report.
         cases.sort(key=lambda c: (-c["points"], c["hours_left"] if c["hours_left"] is not None else 99,
                                   c["reported_at"]))
         five_min_ago = timeutil.iso(now - timedelta(minutes=5))
@@ -50,7 +49,7 @@ class SnapshotBuilder:
                     "SELECT COUNT(*) FROM packets WHERE received_at >= ? AND result = 'accepted'", (five_min_ago,)),
                 "require_signatures": self.settings.require_signatures,
                 "require_sealing": self.settings.require_sealing,
-                "scheduler_last_run": None,
+                "scheduler_last_run": self.db.get_setting("scheduler_last_run"),
             },
             "alerts": [],
             "summary": {"open_cases": len(cases), "teams": {}, "warnings": []},
@@ -59,39 +58,4 @@ class SnapshotBuilder:
             "teams": [],
             "shelters": [],
             "supplies": [],
-        }
-
-    @staticmethod
-    def _case(row: dict, now) -> dict:
-        hours_left = None
-        if row["hours_at_report"] is not None:
-            elapsed = timeutil.hours_between(timeutil.parse(row["reported_at"]), now)
-            hours_left = round(max(0.0, row["hours_at_report"] - elapsed), 2)
-        return {
-            "id": row["id"],
-            "hazard": row["hazard"],
-            "status": row["status"],
-            "zone": row["zone"],
-            "lat": row["lat"],
-            "lng": row["lng"],
-            "accuracy_m": row["accuracy_m"],
-            "landmark": row["landmark"],
-            "people": row["people"],
-            "conditions": json.loads(row["conditions"]),
-            "details": json.loads(row["details"]),
-            "hours_left": hours_left,
-            "window_closes_at": row["window_closes_at"],
-            "points": int(round(row["points"] or 0)),
-            "reasons": json.loads(row["reasons"] or "[]"),
-            "confidence": row["confidence"],
-            "needs": json.loads(row["needs"] or "[]"),
-            "badges": json.loads(row["badges"] or "[]"),
-            "team_id": row["team_id"],
-            "shelter_id": row["shelter_id"],
-            "report_count": row["report_count"],
-            "source": row["source"],
-            "reader": row["reader"],
-            "note": row["note"],
-            "reported_at": row["reported_at"],
-            "last_update": row["last_update"],
         }

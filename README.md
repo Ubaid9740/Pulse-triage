@@ -41,8 +41,10 @@ They appear at http://localhost:8000/api/snapshot. Tests: `cd server` then `pyth
 ## Status
 
 Built: shared formats, examples, profiles (common, flood, heat, earthquake), server skeleton
-(packet ingest with signatures and sealing, one case per report with hours-to-critical and needs,
-outbound queue, snapshot, setup QR).
+(packet ingest with signatures and sealing, outbound queue, snapshot, setup QR) and the server core:
+duplicate reports merge into cases, every case has priority points with readable reasons and a
+confidence score, the scheduler rescores as time passes, and the dispatcher can verify, split and
+trust.
 
-Next (System Design 14.5, B): merging, priority points and confidence, zones and Silent Zones,
-alerts and warning coverage, team tracker, supplies.
+Next (System Design 14.5, B): zones and Silent Zones, alerts and warning coverage, team tracker,
+supplies.

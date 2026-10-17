@@ -9,6 +9,7 @@ Everything the phone app, server and dashboard must agree on. Change nothing her
 | `schemas/body.schema.json` | The signed packet body |
 | `schemas/payloads/<kind>.schema.json` | The payload inside each kind of packet |
 | `schemas/case.schema.json`, `snapshot.schema.json` | What the dashboard reads from `GET /api/snapshot` |
+| `schemas/case_detail.schema.json` | One case with its reports and history (`GET /api/cases/{id}`) |
 | `schemas/setup_qr.schema.json` | What phones scan at setup |
 | `schemas/profile.schema.json` | Hazard profile format |
 | `profiles/*.json` | `common` plus one file per disaster: questions, rules, keywords, tips, alert templates |

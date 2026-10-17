@@ -124,12 +124,6 @@ def test_snapshot_and_setup_qr_match_the_shared_schemas(client, phone, schemas):
     assert png.status_code == 200 and png.content[:8] == b"\x89PNG\r\n\x1a\n"
 
 
-def test_heatstroke_ranks_above_flood_until_scoring_exists(client, phone):
-    phone.send(phone.wire("report"), phone.wire("report_heat"))
-    cases = client.get("/api/snapshot").json()["cases"]
-    assert [c["hazard"] for c in cases] == ["heat", "flood"]
-
-
 def test_status_and_profiles(client):
     status = client.get("/api/status").json()
     assert status["ok"] is True and status["require_signatures"] is False

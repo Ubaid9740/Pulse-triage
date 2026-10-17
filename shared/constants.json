@@ -35,7 +35,10 @@
     "decay_per_2h": 0.1,
     "floor": 0.2,
     "recheck_hours": 3,
-    "fake_people": 10
+    "fake_people": 10,
+    "fake_start": 0.3,
+    "verify_fast_hours": 1,
+    "verify_fast_below": 0.5
   },
 
   "rate_limit_reports_per_hour": 20,
@@ -43,7 +46,8 @@
   "merge": {
     "distance_m": 150,
     "window_hours": 3,
-    "people_diff": 2
+    "people_diff": 2,
+    "min_landmark_chars": 5
   },
 
   "silent": {
