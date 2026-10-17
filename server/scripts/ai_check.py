@@ -1,10 +1,10 @@
-"""Check the AI reader against the real Claude API: one message in, the reading out.
+"""Check the AI reader against the real API (Gemini or Claude): one message in, the reading out.
 
     python server/scripts/ai_check.py
     python server/scripts/ai_check.py "Family of 6 on the roof near the old bridge, water rising"
 
-Needs ANTHROPIC_API_KEY (in the environment or server/.env). Uses a throwaway database, so the
-server's data is untouched. One call to the model in constants.json ai.model.
+Needs GEMINI_API_KEY (or ANTHROPIC_API_KEY with PT_AI_PROVIDER=claude) in the environment or
+server/.env. Uses a throwaway database, so the server's data is untouched. One call.
 """
 import json
 import sys
@@ -26,12 +26,13 @@ SAMPLE = "Old man alone behind the green mosque, house 14. Water up to his chest
 
 def main(argv: list[str] | None = None) -> int:
     text = " ".join(argv if argv is not None else sys.argv[1:]) or SAMPLE
-    Settings.from_env()                                  # loads server/.env into the environment
+    settings = Settings.from_env()                       # loads server/.env into the environment
     constants = load_constants(SHARED_DIR)
     profiles = Profiles(SHARED_DIR, Schemas(SHARED_DIR))
     with tempfile.TemporaryDirectory() as folder:
         db = Database(Path(folder) / "check.db")
-        ai = AIReader(db, profiles, CaseBook(db, profiles, constants), constants)
+        ai = AIReader(db, profiles, CaseBook(db, profiles, constants), constants, provider=settings.ai_provider)
+        print(f"Provider: {ai.backend.name} ({ai.backend.model})")
         print("Keywords:", json.dumps(KeywordReader(profiles).read(text).__dict__, default=str))
         print("Health:  ", "online" if ai.check() else f"offline ({ai.last_error})")
         answer = ai.read(text)

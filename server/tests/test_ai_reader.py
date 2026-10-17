@@ -1,4 +1,5 @@
-"""The AI reader with a fake Claude client: refine, cache, timeout, refusal, health, banner (System Design 5.3)."""
+"""The AI reader with a fake Claude client: refine, cache, timeout, refusal, health, banner (System Design 5.3).
+The Gemini backend has its own tests in test_ai_gemini.py."""
 import json
 from datetime import timedelta
 from types import SimpleNamespace
@@ -9,6 +10,7 @@ import pytest
 from jsonschema import Draft202012Validator
 
 from app import timeutil
+from app.ai_backends import ClaudeBackend
 from app.ai_reader import AIReader
 
 HOUSE_14 = "Old man alone behind the green mosque, house 14, water at his waist and rising, needs oxygen"
@@ -52,7 +54,8 @@ def ai(client):
     """Swap the server's AI reader for one that talks to a fake client."""
     ctx = client.app.state.ctx
     def make(fake: FakeClient) -> AIReader:
-        reader = AIReader(ctx.db, ctx.profiles, ctx.cases, ctx.constants, client=fake, enabled=True)
+        reader = AIReader(ctx.db, ctx.profiles, ctx.cases, ctx.constants,
+                          backend=ClaudeBackend(ctx.constants["ai"], client=fake), enabled=True)
         ctx.ai = ctx.desk.ai = ctx.snapshots.ai = reader
         return reader
     return make

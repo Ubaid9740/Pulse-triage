@@ -179,7 +179,12 @@
   },
 
   "ai": {
-    "model": "claude-haiku-5-5",
+    "_provider": "gemini (GEMINI_API_KEY) or claude (ANTHROPIC_API_KEY); PT_AI_PROVIDER overrides",
+    "provider": "gemini",
+    "gemini_model": "gemini-2.5-flash",
+    "gemini_thinking_budget": 0,
+    "gemini_min_deadline_s": 10,
+    "claude_model": "claude-haiku-5-5",
     "timeout_s": 4,
     "workers": 4,
     "effort": "low",

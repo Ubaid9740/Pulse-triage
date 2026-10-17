@@ -45,6 +45,7 @@ class Settings:
     require_sealing: bool = False
     anthropic_api_key: str | None = None
     ai_enabled: bool = True                     # PT_AI=off: keyword rules only, never call the API
+    ai_provider: str | None = None              # PT_AI_PROVIDER=gemini|claude; else constants ai.provider
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -60,6 +61,7 @@ class Settings:
             require_sealing=_flag("PT_REQUIRE_SEALING", False),
             anthropic_api_key=os.environ.get("ANTHROPIC_API_KEY") or None,
             ai_enabled=_flag("PT_AI", True),
+            ai_provider=os.environ.get("PT_AI_PROVIDER") or None,
         )
 
 

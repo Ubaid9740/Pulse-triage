@@ -1,8 +1,9 @@
-"""The AI reader: read fast with keywords, refine later with Claude (System Design 5.3; Team Brief 3.9 a).
+"""The AI reader: read fast with keywords, refine later with an AI (System Design 5.3; Team Brief 3.9 a).
 
 Free text (a pasted message, a call-taker's note) is read by the keyword reader inside ingest,
 so it is ranked at once, online or offline. If the AI is on, the report also goes on a queue.
-Workers (ai.workers at a time) ask Claude (ai.model) for the fields of the profiles, with a
+Workers (ai.workers at a time) ask the AI (ai.provider: Gemini or Claude, see ai_backends.py)
+for the fields of the profiles, with a
 fixed instruction and a JSON schema built from the profiles, so the answer always parses. A
 call that takes over ai.timeout_s seconds, or fails, leaves the keyword reading in place. The
 answer is checked against the profile, cached by a hash of the text (a replayed or duplicate
@@ -10,7 +11,7 @@ message costs nothing), and replaces the keyword reading: AI wins for the fields
 says reader "ai" (confidence 0.6 instead of 0.4) and its case is rebuilt and rescored.
 
 The AI only reads. All ranking stays plain rules. Every ai.health_check_s seconds the scheduler
-checks that the API answers (GET /v1/models/<model>, no tokens); the dashboard banner follows
+checks that the API answers (a model lookup, no tokens); the dashboard banner follows
 it ("Offline: keyword rules active"). When the AI comes back, keyword-read reports of open cases
 are queued again.
 """
@@ -24,6 +25,7 @@ import threading
 from datetime import datetime, timedelta
 
 from . import timeutil
+from .ai_backends import Offline, make_backend
 from .cases import OPEN_SQL, OPEN_STATUSES, CaseBook
 from .db import Database
 from .profiles import Profiles
@@ -53,13 +55,13 @@ def text_hash(text: str) -> str:
 
 class AIReader:
     def __init__(self, db: Database, profiles: Profiles, cases: CaseBook, constants: dict,
-                 client=None, enabled: bool = True):
+                 backend=None, enabled: bool = True, provider: str | None = None):
         self.db = db
         self.profiles = profiles
         self.cases = cases
         self.rules = constants["ai"]
         self.enabled = enabled
-        self._client = client
+        self.backend = backend or make_backend(self.rules, provider)
         self.online = False
         self.last_check: datetime | None = None
         self.last_error: str | None = "not checked yet" if enabled else "turned off (PT_AI=off)"
@@ -71,20 +73,6 @@ class AIReader:
         self._stop = threading.Event()
         self.schema = self._schema()
         self.system = INSTRUCTION.format(questions=self._questions())
-
-    # ---- the client ------------------------------------------------------------------------------
-    @property
-    def client(self):
-        """The Anthropic client, made on first use. Credentials come from the environment
-        (ANTHROPIC_API_KEY, or an `ant auth login` profile)."""
-        if self._client is None:
-            import anthropic
-            self._client = anthropic.Anthropic()
-        return self._client
-
-    def _fast(self):
-        """One try, ai.timeout_s seconds: a slow answer is worth less than the keyword reading."""
-        return self.client.with_options(timeout=float(self.rules["timeout_s"]), max_retries=0)
 
     # ---- queue and workers -----------------------------------------------------------------------
     def enqueue(self, report_id: str, text: str, hint: str | None) -> bool:
@@ -148,58 +136,35 @@ class AIReader:
 
     # ---- reading ---------------------------------------------------------------------------------------
     def read(self, text: str, hint: str | None = None) -> dict | None:
-        """Claude's reading of one message, checked against the profiles; cached by text. None
+        """The AI's reading of one message, checked against the profiles; cached by text. None
         when the AI is unreachable, too slow, declines, or answers nothing usable."""
         key = text_hash(text)
         cached = self.db.scalar("SELECT answer FROM ai_cache WHERE hash = ?", (key,))
         if cached:
             return json.loads(cached)
-        import anthropic
         prompt = f"Message:\n<message>\n{text}\n</message>"
         if hint:
             prompt += f"\nIf the message does not say which disaster, it is about: {hint}"
         try:
-            fast = self._fast()
-        except Exception as exc:                          # e.g. no credentials configured
-            self._went_offline(f"{type(exc).__name__}: {exc}"[:200])
-            return None
-        try:
-            response = fast.messages.create(
-                model=self.rules["model"], max_tokens=self.rules["max_tokens"],
-                system=self.system, messages=[{"role": "user", "content": prompt}],
-                output_config={"effort": self.rules["effort"], "format": {"type": "json_schema", "schema": self.schema}},
-            )
-        except (anthropic.APITimeoutError, anthropic.APIConnectionError) as exc:
-            self._went_offline(f"{type(exc).__name__}: no answer in {self.rules['timeout_s']} s")
-            return None
-        except anthropic.AuthenticationError:
-            self._went_offline("the API key was refused")
-            return None
-        except anthropic.RateLimitError:
-            self._went_offline("rate limited")
-            return None
-        except anthropic.APIStatusError as exc:
-            log.warning("AI reader: API error %s: %s", exc.status_code, exc.message)
-            if exc.status_code >= 500:
-                self._went_offline(f"API error {exc.status_code}")
-            return None
-        except Exception as exc:                          # no credentials: the SDK raises TypeError here
-            self._went_offline(f"{type(exc).__name__}: {exc}"[:200])
+            text_out = self.backend.answer(self.system, prompt, self.schema)
+        except Offline as exc:
+            self._went_offline(str(exc))
             return None
         self.online, self.last_error = True, None
-        if response.stop_reason != "end_turn":           # refusal or cut off: keep the keyword reading
-            log.info("AI reader: no reading (stop_reason %s)", response.stop_reason)
+        if not text_out:                                  # declined or cut off: keep the keyword reading
             return None
         try:
-            raw = json.loads(next(b.text for b in response.content if b.type == "text"))
-        except (StopIteration, json.JSONDecodeError):
+            raw = json.loads(text_out)
+        except json.JSONDecodeError:
+            return None
+        if not isinstance(raw, dict):
             return None
         answer = self._clean(raw)
         if answer is None:
             return None
         with self.db.write() as conn:
             conn.execute("INSERT OR REPLACE INTO ai_cache(hash, answer, model, at) VALUES(?, ?, ?, ?)",
-                         (key, json.dumps(answer), self.rules["model"], timeutil.iso(timeutil.now())))
+                         (key, json.dumps(answer), self.backend.model, timeutil.iso(timeutil.now())))
         return answer
 
     def apply(self, report_id: str, answer: dict, now: datetime | None = None) -> int | None:
@@ -229,15 +194,12 @@ class AIReader:
         if self.last_check and now - self.last_check < timedelta(seconds=self.rules["health_check_s"]):
             return self.online
         self.last_check = now
-        import anthropic
         was_online = self.online
         try:
-            self._fast().models.retrieve(self.rules["model"])
+            self.backend.health()
             self.online, self.last_error = True, None
-        except anthropic.APIError as exc:
-            self._went_offline(f"{type(exc).__name__}")
-        except Exception as exc:                          # e.g. no credentials configured
-            self._went_offline(f"{type(exc).__name__}: {exc}"[:200])
+        except Offline as exc:
+            self._went_offline(str(exc))
         if self.online and not was_online:
             self.requeue()
         return self.online
@@ -250,7 +212,8 @@ class AIReader:
         return sum(self.enqueue(r["id"], r["note"], r["hazard"]) for r in rows)
 
     def status(self) -> dict:
-        return {"enabled": self.enabled, "online": self.enabled and self.online, "model": self.rules["model"],
+        return {"enabled": self.enabled, "online": self.enabled and self.online, "provider": self.backend.name,
+                "model": self.backend.model,
                 "last_check": timeutil.iso(self.last_check) if self.last_check else None,
                 "last_error": self.last_error, "queued": len(self._queued), "read": self.read_count}
 

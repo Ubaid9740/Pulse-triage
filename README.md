@@ -57,7 +57,7 @@ scenario pack that keeps phones working.
 Intake form, paste box with the offline keyword reader, overrides with a reason, and tunable
 weights.
 
-The AI reader refines free text in the background (Claude, cached, 4 s timeout) and falls back to
+The AI reader refines free text in the background (Gemini by default, or Claude; cached, 4 s timeout) and falls back to
 keywords, with an offline banner.
 
 After an incident, `scripts/purge.py` deletes the personal data and keeps anonymous counts.

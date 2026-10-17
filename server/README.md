@@ -81,7 +81,8 @@ Reject reasons: `invalid_wire`, `too_big`, `invalid_body`, `bad_signature`, `uns
 `PT_REQUIRE_SIGNATURES` and `PT_REQUIRE_SEALING` default to off, so the phone app can start with
 unsigned, plain-base64 packets. Switch both on once the app signs and seals (build hours 28 to 33).
 
-The AI reader uses `ANTHROPIC_API_KEY` (environment or `server/.env`). Without it, or with `PT_AI=off`,
+The AI reader uses Gemini with `GEMINI_API_KEY` (environment or `server/.env`); `PT_AI_PROVIDER=claude`
+switches to Claude with `ANTHROPIC_API_KEY`. Without a key, or with `PT_AI=off`,
 keyword rules do the reading and the dashboard shows "Offline: keyword rules active".
 
 ## Scripts
@@ -118,14 +119,14 @@ this server only (stored in settings).
 ## The AI reader
 
 Free text read by keywords (pasted messages, a call-taker's note when the form was left empty)
-is also queued for the AI reader (`ai_reader.py`): 4 workers ask `claude-haiku-5-5` (constants
-`ai`) for the profile's fields with a fixed instruction and a JSON schema built from the
+is also queued for the AI reader (`ai_reader.py`): 4 workers ask the provider in constants `ai`
+(`gemini-2.5-flash` by default, or `claude-haiku-5-5`; `ai_backends.py`) for the profile's fields with a fixed instruction and a JSON schema built from the
 profiles, so the answer always parses. One try, 4 s: a slow or failed call leaves the keyword
 reading. The answer is checked against the profile, cached by a hash of the text (`ai_cache`
 table; a replayed or duplicate message costs nothing), and replaces the keyword reading: the
 report says `ai` (confidence 0.6 instead of 0.4) and its case is rescored. The AI never ranks.
 
-Every 60 s the scheduler checks the API (`GET /v1/models/<model>`, no tokens). `/api/status`
+Every 60 s the scheduler checks the API (a model lookup, no tokens). `/api/status`
 shows `ai` (online, last error, queued, read); the snapshot's `status.banner` is "Offline:
 keyword rules active" while it is down. When it comes back, keyword-read reports of open cases
 are queued again. `python server/scripts/ai_check.py "<message>"` tries one message against the
@@ -262,7 +263,7 @@ team checks every 30 s · `outbound.py` the queue to phones · `snapshot.py` the
 snapshot · `packets.py` packet and geohash helpers · `devtools.py` phone-side packet builder
 (reference for the app).
 
-`reader.py` keyword reader · `ai_reader.py` the AI reader · `intake.py` intake form and paste box · `devices.py` the phones and revoking · `backups.py` database copies and restore · `demo.py` the
+`reader.py` keyword reader · `ai_reader.py` the AI reader · `ai_backends.py` Gemini and Claude · `intake.py` intake form and paste box · `devices.py` the phones and revoking · `backups.py` database copies and restore · `demo.py` the
 reset per pack · `purge.py` data retention and the after-action counts.
 
 The server steps of System Design 14.5 (B1 to B7) are built. Every server part of System Design 14.5 and 10.4 is built.

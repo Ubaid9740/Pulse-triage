@@ -232,7 +232,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     dispatch = Dispatch(db, keys, schemas, profiles, cases, teams, supplies, constants)
     backups = Backups(db, settings.backups_dir, constants)
     ingestor = Ingestor(db, keys, schemas, profiles, settings, constants, cases, coverage, zones, teams)
-    ai = AIReader(db, profiles, cases, constants, enabled=settings.ai_enabled)
+    ai = AIReader(db, profiles, cases, constants, enabled=settings.ai_enabled, provider=settings.ai_provider)
     ctx = Context(settings, constants, schemas, profiles, db, keys, cases, coverage, zones, alerts, teams, supplies,
                   dispatch, DeviceBook(db, keys, schemas, cases, constants), backups,
                   DemoReset(db, backups, cases, zones, coverage, teams, supplies, profiles, settings),
