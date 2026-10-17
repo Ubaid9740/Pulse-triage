@@ -44,6 +44,7 @@ class Settings:
     require_signatures: bool = False
     require_sealing: bool = False
     anthropic_api_key: str | None = None
+    ai_enabled: bool = True                     # PT_AI=off: keyword rules only, never call the API
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -58,6 +59,7 @@ class Settings:
             require_signatures=_flag("PT_REQUIRE_SIGNATURES", False),
             require_sealing=_flag("PT_REQUIRE_SEALING", False),
             anthropic_api_key=os.environ.get("ANTHROPIC_API_KEY") or None,
+            ai_enabled=_flag("PT_AI", True),
         )
 
 

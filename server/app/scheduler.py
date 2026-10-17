@@ -4,13 +4,14 @@ Hours left shrink and confidence decays as time passes, so points must be recomp
 when no new report arrives. Each run: alerts past valid_until end, coverage timeouts
 (unconfirmed registered people become cases), rescoring, then zones (hard-hit by alerts,
 expected vs actual, the Silent flag), team checks (overdue, not heard from), and a database
-backup every server.backup_minutes.
+backup every server.backup_minutes, and the AI health check every ai.health_check_s.
 """
 from __future__ import annotations
 
 import logging
 import threading
 
+from .ai_reader import AIReader
 from .alerts import AlertBook
 from .backups import Backups
 from .cases import CaseBook
@@ -23,10 +24,10 @@ log = logging.getLogger("pulsetriage.scheduler")
 
 class Scheduler:
     def __init__(self, cases: CaseBook, coverage: Coverage, zones: ZoneBook, alerts: AlertBook, teams: TeamBook,
-                 backups: Backups, constants: dict):
+                 backups: Backups, ai: AIReader, constants: dict):
         self.jobs = [("alerts", alerts.expire), ("coverage timeouts", coverage.timeouts),
                      ("rescore", cases.rescore_all), ("zones", zones.update), ("teams", teams.checks),
-                     ("backup", backups.run)]
+                     ("backup", backups.run), ("ai health", ai.check)]
         self.interval_s = constants["server"]["scheduler_s"]
         self._stop = threading.Event()
         self._thread: threading.Thread | None = None

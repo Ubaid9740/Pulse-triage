@@ -20,6 +20,7 @@ import uuid
 from datetime import datetime
 
 from . import timeutil
+from .ai_reader import AIReader
 from .cases import CaseBook
 from .coverage import Coverage
 from .db import Database, setting
@@ -46,12 +47,14 @@ def split_messages(text: str) -> list[str]:
 
 
 class Desk:
-    def __init__(self, db: Database, ingestor: Ingestor, cases: CaseBook, coverage: Coverage, reader: KeywordReader):
+    def __init__(self, db: Database, ingestor: Ingestor, cases: CaseBook, coverage: Coverage, reader: KeywordReader,
+                 ai: AIReader):
         self.db = db
         self.ingestor = ingestor
         self.cases = cases
         self.coverage = coverage
         self.reader = reader
+        self.ai = ai
 
     def intake(self, req: dict, by: str, now: datetime | None = None) -> dict:
         now = now or timeutil.now()
@@ -74,8 +77,11 @@ class Desk:
                     "contact": req.get("contact"), "registry_id": req.get("registry_id")}
         payload.update({k: v for k, v in optional.items() if v})
         typed = bool(req.get("details") or req.get("conditions"))
-        result = self.ingestor.ingest_internal(payload, source="call", reader="form" if typed or not filled else "keywords",
+        reader = "form" if typed or not filled else "keywords"
+        result = self.ingestor.ingest_internal(payload, source="call", reader=reader,
                                                device=f"call:{slug(by)}", received_at=now)
+        if reader == "keywords":                          # the AI refines it in the background
+            self.ai.enqueue(result.id, req["note"], req.get("hazard"))
         detail = self.cases.detail(result.case_id, now)
         return {"report_id": result.id, "case_id": result.case_id, "case": detail["case"],
                 "read": self._public(reading)}
@@ -103,6 +109,8 @@ class Desk:
                                                    device=f"paste:{slug(by)}", received_at=now, packet_id=packet_id)
             case_id = result.case_id if result.status == "accepted" else self.db.scalar(
                 "SELECT case_id FROM reports WHERE id = ?", (packet_id,))
+            if result.status == "accepted":
+                self.ai.enqueue(result.id, message, hazard or (reading.hazard if reading.hazard_from != "text" else None))
             reports.append({"text": message[:120], "report_id": result.id, "case_id": case_id,
                             "duplicate": result.status == "duplicate", "read": self._public(reading)})
         return {"messages": len(messages), "reports": reports, "skipped": skipped}

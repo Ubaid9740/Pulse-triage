@@ -10,6 +10,7 @@ import threading
 from datetime import timedelta
 
 from . import timeutil
+from .ai_reader import AIReader
 from .alerts import AlertBook
 from .cases import OPEN_STATUSES, case_view, rank_key
 from .config import Settings
@@ -21,13 +22,14 @@ from .zones import ZoneBook
 
 class SnapshotBuilder:
     def __init__(self, db: Database, settings: Settings, zones: ZoneBook, alerts: AlertBook, teams: TeamBook,
-                 supplies: SupplyBook):
+                 supplies: SupplyBook, ai: AIReader):
         self.db = db
         self.settings = settings
         self.zones = zones
         self.alerts = alerts
         self.teams = teams
         self.supplies = supplies
+        self.ai = ai
         self._lock = threading.Lock()
         self._key: tuple | None = None
         self._cached: dict | None = None
@@ -59,7 +61,8 @@ class SnapshotBuilder:
             "now": timeutil.iso(now),
             "hazard": self.db.get_setting("active_hazard", "flood"),
             "status": {
-                "ai_online": False,
+                "ai_online": self.ai.status()["online"],
+                "banner": None if self.ai.status()["online"] else "Offline: keyword rules active",
                 "packets_last_5_min": self.db.scalar(
                     "SELECT COUNT(*) FROM packets WHERE received_at >= ? AND result = 'accepted'", (five_min_ago,)),
                 "require_signatures": self.settings.require_signatures,

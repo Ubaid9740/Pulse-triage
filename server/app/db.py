@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS outbound (
 CREATE TABLE IF NOT EXISTS audit_log (
     id INTEGER PRIMARY KEY, at TEXT, actor TEXT, action TEXT, target TEXT, detail TEXT);
 CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT);
+CREATE TABLE IF NOT EXISTS ai_cache (hash TEXT PRIMARY KEY, answer TEXT, model TEXT, at TEXT);
 CREATE INDEX IF NOT EXISTS ix_packets_device ON packets(from_device, kind, received_at);
 CREATE INDEX IF NOT EXISTS ix_reports_case ON reports(case_id);
 CREATE INDEX IF NOT EXISTS ix_cases_open ON cases(status, points);

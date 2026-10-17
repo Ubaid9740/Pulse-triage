@@ -21,6 +21,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from . import __version__, outbound, timeutil
+from .ai_reader import AIReader
 from .alerts import AlertBook
 from .backups import Backups
 from .cases import CaseBook, NotFound
@@ -65,6 +66,7 @@ class Context:
     backups: Backups
     demo: DemoReset
     desk: Desk
+    ai: AIReader
     ingestor: Ingestor
     snapshots: SnapshotBuilder
     scheduler: Scheduler
@@ -230,23 +232,26 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     dispatch = Dispatch(db, keys, schemas, profiles, cases, teams, supplies, constants)
     backups = Backups(db, settings.backups_dir, constants)
     ingestor = Ingestor(db, keys, schemas, profiles, settings, constants, cases, coverage, zones, teams)
+    ai = AIReader(db, profiles, cases, constants, enabled=settings.ai_enabled)
     ctx = Context(settings, constants, schemas, profiles, db, keys, cases, coverage, zones, alerts, teams, supplies,
                   dispatch, DeviceBook(db, keys, schemas, cases, constants), backups,
                   DemoReset(db, backups, cases, zones, coverage, teams, supplies, profiles, settings),
-                  Desk(db, ingestor, cases, coverage, KeywordReader(profiles)), ingestor,
-                  SnapshotBuilder(db, settings, zones, alerts, teams, supplies),
-                  Scheduler(cases, coverage, zones, alerts, teams, backups, constants))
+                  Desk(db, ingestor, cases, coverage, KeywordReader(profiles), ai), ai, ingestor,
+                  SnapshotBuilder(db, settings, zones, alerts, teams, supplies, ai),
+                  Scheduler(cases, coverage, zones, alerts, teams, backups, ai, constants))
     if not settings.require_signatures or not settings.require_sealing:
         log.warning("Development mode: unsigned=%s, unsealed=%s packets are accepted.",
                     not settings.require_signatures, not settings.require_sealing)
 
     @asynccontextmanager
     async def lifespan(_: FastAPI):
-        ctx.scheduler.start()        # tests that use TestClient without "with" skip this
+        ctx.ai.start()               # tests that use TestClient without "with" skip both
+        ctx.scheduler.start()
         try:
             yield
         finally:
             ctx.scheduler.stop()
+            ctx.ai.stop()
 
     app = FastAPI(title="PulseTriage command server", version=__version__, lifespan=lifespan)
     app.state.ctx = ctx
@@ -261,7 +266,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             "version": __version__,
             "time": timeutil.iso(timeutil.now()),
             "hazard": db.get_setting("active_hazard", "flood"),
-            "ai_online": False,
+            "ai_online": ctx.ai.status()["online"],
+            "ai": ctx.ai.status(),
             "packets_last_5_min": db.scalar(
                 "SELECT COUNT(*) FROM packets WHERE received_at >= ? AND result = 'accepted'", (five_min_ago,)),
             "require_signatures": settings.require_signatures,

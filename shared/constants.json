@@ -181,6 +181,10 @@
   "ai": {
     "model": "claude-haiku-5-5",
     "timeout_s": 4,
-    "workers": 4
+    "workers": 4,
+    "effort": "low",
+    "max_tokens": 2048,
+    "health_check_s": 60,
+    "backlog": 50
   }
 }
