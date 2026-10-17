@@ -2,6 +2,7 @@
 server/keys/
 server/backups/
 server/logs/
+server/after_action/
 *.db
 *.db-wal
 *.db-shm

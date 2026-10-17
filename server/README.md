@@ -90,6 +90,8 @@ keyword rules do the reading and the dashboard shows "Offline: keyword rules act
 - `scripts/send_example.py report report_heat [--unsigned] [--plain]`: send examples like a phone
 - `scripts/reset_demo.py --pack flood` (server stopped) or `--pack heat --keep-server` (server
   running), `--list`: end the incident and load a pack (see below)
+- `scripts/purge.py [--yes] [--keep-backups]` (server stopped): after an incident, delete the
+  personal data and keep anonymous counts (dry run without `--yes`)
 - `scripts/ai_check.py "<message>"`: one message through the real AI reader
 - `scripts/backup.py [--to E:\pulsetriage]`, `--list`, `--restore [FILE]` (server stopped): backups
 
@@ -128,6 +130,18 @@ shows `ai` (online, last error, queued, read); the snapshot's `status.banner` is
 keyword rules active" while it is down. When it comes back, keyword-read reports of open cases
 are queued again. `python server/scripts/ai_check.py "<message>"` tries one message against the
 real API with a throwaway database.
+
+## After the incident: purge
+
+`scripts/purge.py` (System Design 10.4) first writes `server/after_action/after-action-<time>.json`:
+counts only (reports by source and hazard, cases by status and zone, merges, unconfirmed
+registered people, jobs, people helped, median minutes to arrive, alerts and replies, registry
+confirmed of registered, zones that went silent, supplies used, dispatcher overrides). Per-zone
+counts below 5 show as "<5". Then it deletes reports, cases, the registry, replies, pings, jobs,
+raw packets, devices, supply moves, the audit log and the AI cache; clears each team's phone and
+position; vacuums the database so nothing stays in free pages; and deletes the backups (they
+hold the same data; `--keep-backups` to keep them). Zones, alerts, places, stock, settings and
+the keys stay. Without `--yes` it only shows what would go. It refuses while a server runs.
 
 ## Demo reset, backups, revoking
 
@@ -249,6 +263,6 @@ snapshot · `packets.py` packet and geohash helpers · `devtools.py` phone-side 
 (reference for the app).
 
 `reader.py` keyword reader · `ai_reader.py` the AI reader · `intake.py` intake form and paste box · `devices.py` the phones and revoking · `backups.py` database copies and restore · `demo.py` the
-reset per pack.
+reset per pack · `purge.py` data retention and the after-action counts.
 
-The server steps of System Design 14.5 (B1 to B7) are built. Still open: `scripts/purge.py`.
+The server steps of System Design 14.5 (B1 to B7) are built. Every server part of System Design 14.5 and 10.4 is built.

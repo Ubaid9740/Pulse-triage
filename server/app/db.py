@@ -195,6 +195,12 @@ class Database:
         finally:
             dest.close()
 
+    def vacuum(self) -> None:
+        """Rewrite the file so deleted rows do not stay in free pages or the write-ahead log."""
+        with self._lock:
+            self._conn.execute("VACUUM")
+            self._conn.execute("PRAGMA wal_checkpoint(TRUNCATE)")
+
     def get_setting(self, key: str, default: Any = None) -> Any:
         value = self.scalar("SELECT value FROM settings WHERE key = ?", (key,))
         return default if value is None else json.loads(value)

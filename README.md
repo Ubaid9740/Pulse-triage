@@ -60,4 +60,4 @@ weights.
 The AI reader refines free text in the background (Claude, cached, 4 s timeout) and falls back to
 keywords, with an offline banner.
 
-Still open on the server: the data purge script.
+After an incident, `scripts/purge.py` deletes the personal data and keeps anonymous counts.
