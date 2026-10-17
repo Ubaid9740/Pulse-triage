@@ -61,3 +61,10 @@ The AI reader refines free text in the background (Gemini by default, or Claude;
 keywords, with an offline banner.
 
 After an incident, `scripts/purge.py` deletes the personal data and keeps anonymous counts.
+
+Dashboard (C1): map with zones by coverage and Silent Zones in red, case pins, teams and places;
+ranked list; case card with the real maths, verify, override, split, suggest and assign; zone card
+with the outreach list and the welfare-check task. Built with `npm run build`, served at `/`.
+
+Next: dashboard C2 and C3 (alert composer, intake and paste dialogs, teams and resources tab),
+scenario packs and replay (D), and the field app (A).
