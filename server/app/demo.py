@@ -6,7 +6,7 @@ A pack is a folder scenario/packs/<name>/:
   registry.csv    the opt-in registry (columns as shared/examples/registry.csv)
   shelters.json   [POST /api/shelters bodies]
   teams.json      [POST /api/teams bodies]
-  supplies.json   [{"item", "qty", "place" (default command_post), "warn_at", "unit"}]
+  supplies.json   [{"item", "qty", "place" (command_post, shelter:<id> or team:<id>; default command_post), "warn_at", "unit"}]
 Other files (people.json, messages.json, windows.json) are for generate.py and replay.py.
 
 A reset ends the incident on this server and starts the pack's. Cleared: reports, cases, alerts,

@@ -179,3 +179,5 @@ button.link { border: 0; background: none; color: var(--blue); padding: 4px 0; t
   .tools button { padding: 4px 8px; font-size: 0.85rem; }
 }
 .phone-missing { background: #fff1d6; color: #6b4200; border-radius: 8px; padding: 8px 10px; font-size: 0.85rem; font-weight: 600; }
+.leaflet-control-attribution { font-size: 0.7rem; }
+.street-tiles { filter: saturate(0.45) brightness(1.04); }

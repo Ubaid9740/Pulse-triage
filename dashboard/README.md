@@ -11,8 +11,8 @@ npm run build        # writes dist/; the server then serves it at http://localho
 npm run dev          # while building: http://localhost:5173, API proxied to the server on :8000
 ```
 
-To see data, run the server and `python server/scripts/send_example.py report report_heat`, or reset
-to a scenario pack (`python server/scripts/reset_demo.py --pack flood`).
+To see data: with the server running, `python server/scripts/reset_demo.py --pack flood --keep-server`
+(the Karachi flood pack) then `python scenario/demo_reports.py` (15 reports from phones).
 
 ## What is built (System Design 6, Team Brief C1 and C2)
 
@@ -42,9 +42,12 @@ to a scenario pack (`python server/scripts/reset_demo.py --pack flood`).
 - **Paste**: a box for forwarded messages and an optional disaster for unclear ones; lists the
   reports made (with their case), the ones already seen and the chatter skipped.
 
-Offline base map: put `town.pmtiles` in `public/tiles/` (the scenario provides it); the map uses it
-through protomaps-leaflet if present, and shows the zones on a plain background if not. Nothing loads
-from the internet.
+Base map: if `public/tiles/town.pmtiles` exists (the scenario provides it), the map uses it through
+protomaps-leaflet and nothing loads from the internet. Without it, the map shows OpenStreetMap's
+street tiles (online, no key; the credit stays in the corner, as their tile policy asks). With
+neither (no file, no internet) the zones and pins sit on a plain background and everything still works.
+For a Karachi map that works offline, cut `town.pmtiles` from a Protomaps build (`pmtiles extract`
+with `--bbox=66.9,24.75,67.3,25.05`).
 
 ## Next (System Design 14.5, C)
 

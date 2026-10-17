@@ -1,0 +1,7 @@
+[
+  {"id": "s_kashmir_road", "name": "Sports complex, Kashmir Road", "type": "shelter", "lat": 24.8775, "lng": 67.0605, "capacity": 400, "occupancy": 120},
+  {"id": "s_nazimabad", "name": "Govt school, North Nazimabad", "type": "shelter", "lat": 24.9405, "lng": 67.0455, "capacity": 250, "occupancy": 40},
+  {"id": "s_malir_hall", "name": "Community hall, Malir", "type": "shelter", "lat": 24.9010, "lng": 67.1950, "capacity": 200, "occupancy": 185},
+  {"id": "s_clifton", "name": "Community centre, Clifton", "type": "shelter", "lat": 24.8150, "lng": 67.0260, "capacity": 150, "occupancy": 30},
+  {"id": "h_central", "name": "Central hospital, Saddar", "type": "hospital", "lat": 24.8525, "lng": 67.0440}
+]

@@ -1,0 +1,24 @@
+id,name,zone,lat,lng,conditions,phone,consent_at
+R-0001,Demo Resident 1,,24.87453,67.15311,elderly;alone,+000 555 0001,2026-06-15T10:00:00Z
+R-0002,Demo Resident 2,,24.87101,67.1585,pregnant,+000 555 0002,2026-06-15T10:00:00Z
+R-0003,Demo Resident 3,,24.87816,67.16374,oxygen;elderly,,2026-06-15T10:00:00Z
+R-0004,Demo Resident 4,,24.87052,67.15707,elderly;cannot_walk,+000 555 0004,2026-06-15T10:00:00Z
+R-0005,Demo Resident 5,,24.87337,67.15871,elderly;alone,+000 555 0005,2026-06-15T10:00:00Z
+R-0006,Demo Resident 6,,24.88158,67.15273,oxygen;elderly,,2026-06-15T10:00:00Z
+R-0007,Demo Resident 7,,24.87883,67.15916,elderly;alone,+000 555 0007,2026-06-15T10:00:00Z
+R-0008,Demo Resident 8,,24.87808,67.15655,oxygen;elderly,+000 555 0008,2026-06-15T10:00:00Z
+R-0009,Demo Resident 9,,24.87065,67.16302,disabled;cannot_walk,,2026-06-15T10:00:00Z
+R-0010,Demo Resident 10,,24.87587,67.15857,disabled;cannot_walk,+000 555 0010,2026-06-15T10:00:00Z
+R-0011,Demo Resident 11,,24.87784,67.16055,elderly;cannot_walk,+000 555 0011,2026-06-15T10:00:00Z
+R-0012,Demo Resident 12,,24.87814,67.15994,pregnant,,2026-06-15T10:00:00Z
+R-0013,Demo Resident 13,,24.86236,67.00497,elderly;alone,+000 555 0013,2026-06-15T10:00:00Z
+R-0014,Demo Resident 14,,24.86967,67.00195,disabled,+000 555 0014,2026-06-15T10:00:00Z
+R-0015,Demo Resident 15,,24.86699,66.9994,elderly;alone;cannot_walk,,2026-06-15T10:00:00Z
+R-0016,Demo Resident 16,,24.86606,66.99848,dialysis,+000 555 0016,2026-06-15T10:00:00Z
+R-0017,Demo Resident 17,,24.87079,66.99842,disabled;cannot_walk,+000 555 0017,2026-06-15T10:00:00Z
+R-0018,Demo Resident 18,,24.83335,67.13325,elderly;alone;cannot_walk,,2026-06-15T10:00:00Z
+R-0019,Demo Resident 19,,24.83003,67.13472,elderly;cannot_walk,+000 555 0019,2026-06-15T10:00:00Z
+R-0020,Demo Resident 20,,24.83317,67.12331,pregnant,+000 555 0020,2026-06-15T10:00:00Z
+R-0021,Demo Resident 21,,24.82813,67.12785,elderly;alone,,2026-06-15T10:00:00Z
+R-0022,Demo Resident 22,,24.86347,67.02409,disabled,+000 555 0022,2026-06-15T10:00:00Z
+R-0023,Demo Resident 23,,24.85802,67.03526,pregnant,+000 555 0023,2026-06-15T10:00:00Z

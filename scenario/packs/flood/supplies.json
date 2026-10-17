@@ -1,0 +1,8 @@
+[
+  {"item": "drinking_water", "qty": 2000, "warn_at": 400, "unit": "L"},
+  {"item": "drinking_water", "qty": 300, "place": "shelter:s_malir_hall"},
+  {"item": "life_jacket", "qty": 40, "warn_at": 10},
+  {"item": "fuel", "qty": 300, "warn_at": 80, "unit": "L"},
+  {"item": "blanket", "qty": 500, "warn_at": 100},
+  {"item": "first_aid_kit", "qty": 60, "warn_at": 15}
+]

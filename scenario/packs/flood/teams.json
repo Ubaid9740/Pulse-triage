@@ -1,0 +1,8 @@
+[
+  {"id": "boat_1", "name": "Boat 1", "type": "boat", "lat": 24.8640, "lng": 67.0120, "fuel": "full"},
+  {"id": "boat_2", "name": "Boat 2", "type": "boat", "lat": 24.8420, "lng": 67.1150, "fuel": "half"},
+  {"id": "truck_1", "name": "Truck 1", "type": "truck", "lat": 24.8600, "lng": 67.0420, "fuel": "full"},
+  {"id": "medic_1", "name": "Medic 1", "type": "medic", "lat": 24.8525, "lng": 67.0440},
+  {"id": "rescue_1", "name": "Rescue 1", "type": "rescue", "lat": 24.8830, "lng": 67.1420},
+  {"id": "welfare_1", "name": "Welfare 1", "type": "welfare", "lat": 24.9400, "lng": 67.0400}
+]

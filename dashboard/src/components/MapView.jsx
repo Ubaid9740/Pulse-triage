@@ -4,6 +4,11 @@ import { CircleMarker, GeoJSON, MapContainer, Marker, Polyline, Tooltip, useMap 
 import { caseTitle, hhmm, hoursLeft, pointsColour, TEAM_COLOURS, TEAM_LETTER } from "../format.js";
 
 const TILES = "/tiles/town.pmtiles";
+// Online street map: OpenStreetMap's own tiles (no key; light use with the credit shown), faded in
+// styles.css so the zones and pins stand out on a projector.
+const ONLINE = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+const ONLINE_CREDIT = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+const KARACHI = [24.88, 67.07];
 
 // Zones: outline, fill by warning coverage, red when silent. Cases: pins by points, sized by
 // people. Teams: icon by type, colour by status, grey when stale, a line to the case and the
@@ -19,8 +24,8 @@ export default function MapView({ snap, selected, onSelect }) {
     + (selected?.kind === "zone" ? `#${selected.name}` : "");
 
   return (
-    <MapContainer center={[0.02, 0.04]} zoom={14} className="map" zoomControl={true} attributionControl={false}>
-      <OfflineTiles />
+    <MapContainer center={KARACHI} zoom={12} className="map" zoomControl={true}>
+      <BaseMap />
       <FitOnce snap={snap} />
       <GeoJSON key={zonesKey} data={zonesDoc} style={(f) => zoneStyle(f.properties, selected)}
                onEachFeature={(f, layer) => {
@@ -125,8 +130,9 @@ function FitOnce({ snap }) {
   return null;
 }
 
-// The offline base map (dashboard/public/tiles/town.pmtiles), if the scenario provides one.
-function OfflineTiles() {
+// The base map: the offline file (dashboard/public/tiles/town.pmtiles) if the scenario provides one,
+// otherwise the online street map. Without either (offline, no file) the shapes sit on grey.
+function BaseMap() {
   const map = useMap();
   useEffect(() => {
     let layer = null;
@@ -134,10 +140,15 @@ function OfflineTiles() {
     fetch(TILES, { method: "HEAD" })
       .then(async (res) => {
         // Missing file: 404 from the server, or the dev server's HTML fallback page.
-        if (!res.ok || gone || (res.headers.get("content-type") || "").includes("html")) return;
-        const { leafletLayer } = await import("protomaps-leaflet");
+        const offline = res.ok && !(res.headers.get("content-type") || "").includes("html");
         if (gone) return;
-        layer = leafletLayer({ url: TILES, flavor: "light", lang: "en" });
+        if (offline) {
+          const { leafletLayer } = await import("protomaps-leaflet");
+          if (gone) return;
+          layer = leafletLayer({ url: TILES, flavor: "light", lang: "en", attribution: "&copy; OpenStreetMap contributors" });
+        } else {
+          layer = L.tileLayer(ONLINE, { attribution: ONLINE_CREDIT, maxZoom: 19, className: "street-tiles" });
+        }
         layer.addTo(map);
       })
       .catch(() => {});
