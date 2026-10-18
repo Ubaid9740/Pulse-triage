@@ -1,92 +1,129 @@
-# PulseTriage
+# Pulse
 
-Disaster warning and triage for any disaster type, built to keep working with no internet.
-CODE//CONNECT'26, Problem 01. Design: `System Design.pdf` and `PulseTriage-Team-Brief.pdf` (one folder up).
+**Disaster warning, triage, and coordinated emergency dispatch — built to keep working with zero internet.**
 
-| Folder | What | Owner |
-| --- | --- | --- |
-| `shared/` | The contract: formats (JSON Schemas), examples, hazard profiles, constants | Everyone |
-| `server/` | Command server: FastAPI + SQLite on the command-post laptop | B |
-| `dashboard/` | Dispatcher dashboard: React + Vite + Leaflet | C |
-| `field/` | Field app: React Native (Expo), Android first | A |
-| `scenario/` | Demo packs, replay, simulation | D |
+*CODE//CONNECT'26 — Problem 01.*  
+Architecture & System Design: [`System Design.pdf`](./System%20Design.pdf)
 
-## Quick start (server)
+---
 
-Windows, from this folder:
+## Architecture Overview
 
 ```
+                                      ┌────────────────────────────────────────┐
+                                      │       Pulse Command Dashboard          │
+                                      │         (React + Vite + Leaflet)       │
+                                      │         Runs on Port 5173              │
+                                      └──────────────────┬─────────────────────┘
+                                                         │ REST / SSE
+                                                         ▼
+┌──────────────────────────┐  Sync / Packets  ┌────────────────────────────────────────┐
+│     Pulse Mobile App     │ ◄──────────────► │           Pulse Server                 │
+│ (React Native with Expo) │   (Ed25519 Signed│        (FastAPI + SQLite WAL)          │
+│  Runs in Expo Go (8081)  │    X25519 Sealed)│         Runs on Port 8000              │
+└────────────┬─────────────┘                  └──────────────────┬─────────────────────┘
+             │                                                   │
+             │ Phone-to-Phone Mesh                               │ Backup & Replay
+             ▼                                                   ▼
+┌──────────────────────────┐                  ┌────────────────────────────────────────┐
+│     Nearby Field Phone   │                  │     Scenarios & Chaos Simulator        │
+│ (Relays packets via QR)  │                  │       (Replay packs, Benchmarks)       │
+└──────────────────────────┘                  └────────────────────────────────────────┘
+```
+
+| Component | Technology | Path | Description |
+| :--- | :--- | :--- | :--- |
+| **Server** | Python 3.11+, FastAPI, SQLite WAL | [`server/`](./server/) | Incident scoring engine, key authentication, packet ingestion, team tracking, and Silent Zone detection. |
+| **Dashboard** | React 18, Vite, Leaflet | [`dashboard/`](./dashboard/) | Command post map, real-time case triage, dispatch suggestions, alert broadcasting, and resource tracking. |
+| **Field App** | React Native, Expo SDK 57 | [`field/`](./field/) | Citizen & rescuer mobile app. Works 100% offline; passes packets phone-to-phone via QR mesh. |
+| **Shared** | JSON Schemas, Multi-hazard profiles | [`shared/`](./shared/) | Contract specifications for flood, heat, earthquake, packets, and triage weights. |
+| **Scenario** | Python simulation tools | [`scenario/`](./scenario/) | Automated scenario replay, synthetic load generator, and chaos testing suite. |
+
+---
+
+## System Requirements
+
+- **Runtime:** Python 3.11+, Node.js 18+ (or 20+), Git.
+- **Mobile Device:** Physical Android phone or iPhone running **Expo Go** (connected to the same local Wi-Fi / subnet).
+- **Computer:** Windows, macOS, or Linux (laptop functions as the Command Post).
+
+---
+
+## Quick Start Guide
+
+### 1. Backend Server (FastAPI)
+
+```powershell
+# Navigate to repo root and activate Python virtual environment
+cd Pulse-triage
 python -m venv server\.venv
-server\.venv\Scripts\activate
+.\server\.venv\Scripts\Activate.ps1
+
+# Install requirements and start server
 pip install -r server\requirements.txt
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --app-dir server
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --app-dir server --reload
 ```
+- **API Status:** `http://localhost:8000/api/status`
+- **Interactive Swagger Docs:** `http://localhost:8000/docs`
+- **Setup QR Code:** `http://localhost:8000/api/setup-qr.png`
 
-Open http://localhost:8000. Then, in a second terminal (venv active), send example reports like a phone would:
+---
 
+### 2. Command Dashboard (React + Vite)
+
+Open a new terminal:
+```powershell
+cd Pulse-triage\dashboard
+npm install
+npm run dev
 ```
-python server\scripts\send_example.py report report_heat
+- Open **`http://localhost:5173`** in your browser.
+
+---
+
+### 3. Mobile Field App (React Native / Expo)
+
+Open a third terminal:
+```powershell
+cd Pulse-triage\field
+npm install
+npx expo start -c
 ```
+1. Open the **Expo Go** app on your phone.
+2. Scan the terminal's QR code to load the app.
 
-They appear at http://localhost:8000/api/snapshot. Tests: `cd server` then `python -m pytest`.
+---
 
-## Ground rules
+## Key Features
 
-- `shared/` is sacred. Change it only after telling the whole team; then run the server tests and the Flutter contract test.
-- Never hard-code a disaster. If code says "water" or "heat", it belongs in `shared/profiles/`.
-- Every number lives in `shared/constants.json`.
-- `main` always runs. Commit small, clear changes; tag versions that demo well (`git tag demo-v1`).
-- Never commit `server/keys/`, `.env`, databases or build folders (see `.gitignore`).
+1. **Zero-Internet Operation & Offline Mesh:**
+   - Every report is digitally signed (Ed25519) and sealed (X25519) locally on the device.
+   - When offline, reports queue safely and can hop from phone to phone using dynamic QR-code packet hand-offs until a phone reaches connection.
 
-## Status
+2. **Role-Based Onboarding & Cryptographic Trust:**
+   - **Helpers (Civilians):** Instant onboarding without setup requirements to submit emergency reports immediately.
+   - **Volunteers & Rescue Teams:** Scan the Command Post setup QR to securely bind keys (`sign_pk`, `box_pk`), unlock team dispatch jobs, and stream live GPS location.
 
-Built: shared formats, examples, profiles (common, flood, heat, earthquake), server skeleton
-(packet ingest with signatures and sealing, outbound queue, snapshot, setup QR) and the server core:
-duplicate reports merge into cases, every case has priority points with readable reasons and a
-confidence score, the scheduler rescores as time passes, and the dispatcher can verify, split and
-trust. Zones, the opt-in registry, warning coverage and Silent Zones: unconfirmed registered people
-become cases after an alert's timeout, and a quiet hard-hit zone turns red with a zone task.
-Alerts: issued from templates, updated, ended with an all-clear, signed and queued for phones,
-with a loudspeaker script. Teams: setup from the phone, pings and acks, automatic arrival,
-outcome, overdue flags; suggestions with the trade-off; assign with a signed job for the team's
-phone; shelters and supplies with burn rate and low-stock warnings.
+3. **Deterministic Multi-Hazard Triage:**
+   - Dynamic priority scoring based on hazard profiles (flood, heat, earthquake).
+   - Duplicate incident deduplication, confidence adjustments, and time-decay re-ranking.
 
-Operations: revoking a stolen phone, backups every 5 minutes with restore, and a demo reset per
-scenario pack that keeps phones working.
+4. **Silent Zone & Outreach Engine:**
+   - Identifies severely impacted regions where zero reports have been received (Silent Zones).
+   - Dispatches targeted welfare checks from the opt-in vulnerable resident registry.
 
-Intake form, paste box with the offline keyword reader, overrides with a reason, and tunable
-weights.
+---
 
-The AI reader refines free text in the background (Gemini by default, or Claude; cached, 4 s timeout) and falls back to
-keywords, with an offline banner.
+## Running Tests
 
-After an incident, `scripts/purge.py` deletes the personal data and keeps anonymous counts.
+- **Backend Tests (245 test cases):**
+  ```powershell
+  cd server
+  python -m pytest
+  ```
 
-Dashboard (C1): map with zones by coverage and Silent Zones in red, case pins, teams and places;
-ranked list; case card with the real maths, verify, override, split, suggest and assign; zone card
-with the outreach list and the welfare-check task. Built with `npm run build`, served at `/`.
-
-Dashboard (C2): alert composer with a live phone preview and the announcement script, the intake
-form built from the profiles, and the paste box.
-
-Demo city: Karachi. The map shows real streets (OpenStreetMap, or an offline `town.pmtiles`), with
-8 zones on real neighbourhoods.
-
-Scenario (D): `generate.py` builds flood, heat and earthquake packs (200 registered residents,
-teams with demo phones, places, supplies, windows, a timed story of reports, texts and replies,
-and the hidden truth); the Replay button or `replay.py` plays a story at any speed through the
-normal paths, moving the teams; `simulate.py` compares first come first served with PulseTriage's
-order (in our simulation). Zone windows and simulated text messages are on the server.
-
-Dashboard (C3): Teams and resources view (counters, team table with status changes, supplies with
-stock moves, places), weights sliders that re-rank the list, the chaos panel (duplicate, fake,
-wrong location, AI outage) and the phone setup QR.
-
-Field app (A): React Native with Expo, runs in Expo Go with no Android SDK. Setup by QR, home,
-alerts verified against the command post key and read aloud, replies, the report form from the
-profiles, welfare checks, jobs with on my way / arrived / done and position pings, and a store
-that keeps every message until the server has it. Phone-to-phone hand-off works by QR code; the
-core is tested against a server that requires signatures and sealing.
-
-Next: automatic Bluetooth relay between phones (needs a development build; see field/README.md),
-and a git remote for the team.
+- **Field App Core Crypto & Sync Tests:**
+  ```powershell
+  cd field
+  $env:PT_TEST_SERVER="http://127.0.0.1:8000"; npm test
+  ```
