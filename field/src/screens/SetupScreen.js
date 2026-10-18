@@ -31,7 +31,7 @@ const DEFAULT_FALLBACK_QR = {
 
 function checkQr(doc) {
   if (!doc || doc.v !== 1 || !Array.isArray(doc.servers) || !doc.sign_pk || !doc.box_pk) {
-    throw new Error("That is not a valid PulseTriage setup code (missing sign_pk or box_pk).");
+    throw new Error("That is not a valid Pulse setup code (missing sign_pk or box_pk).");
   }
   return doc;
 }
@@ -115,7 +115,7 @@ export default function SetupScreen() {
   }
 
   return (
-    <Screen title="PulseTriage: set up this phone">
+    <Screen title="Pulse: set up this phone">
       <Section title="Who are you?">
         {ROLES.map(([id, title, text]) => (
           <View key={id} style={{ gap: 4 }}>
@@ -165,7 +165,7 @@ export default function SetupScreen() {
                       setScanning(false);
                       finish(JSON.parse(text));
                     } catch {
-                      setError("That is not a PulseTriage setup code.");
+                      setError("That is not a Pulse setup code.");
                     }
                   }}
                 />
@@ -225,7 +225,7 @@ export default function SetupScreen() {
                     setScanning(false);
                     finish(JSON.parse(text));
                   } catch {
-                    setError("That is not a PulseTriage setup code.");
+                    setError("That is not a Pulse setup code.");
                   }
                 }}
               />

@@ -18,7 +18,7 @@ export default function HomeScreen({ go }) {
   const team = TEAM_ROLES.includes(settings.role);
 
   return (
-    <Screen title="PulseTriage" right={<Text style={{ color: "#fff" }}>{label(settings.role)}</Text>}>
+    <Screen title="Pulse" right={<Text style={{ color: "#fff" }}>{label(settings.role)}</Text>}>
       {revoked(store, settings) && (
         <Section><Text style={{ color: C.red, fontWeight: "700" }}>The command post has blocked this phone. Its reports are refused.</Text></Section>
       )}

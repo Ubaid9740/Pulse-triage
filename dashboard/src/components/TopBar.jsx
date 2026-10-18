@@ -26,7 +26,7 @@ export default function TopBar({ snap, offline, profiles, refresh, onOpen, view,
       <div className="topbar-main">
         <div className="brand">
           <span className="brand-mark"><Icon name="activity" size={18} /></span>
-          <span className="brand-text"><b>PulseTriage</b><span>Command</span></span>
+          <span className="brand-text"><b>Pulse</b><span>Command</span></span>
         </div>
 
         <label className="hazard">

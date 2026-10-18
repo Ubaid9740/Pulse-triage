@@ -27,7 +27,7 @@ export default function MeshScreen({ back }) {
   function scanned(text) {
     const wire = fromQr(text);
     if (!wire) {
-      setLog((l) => ["Not a PulseTriage packet", ...l].slice(0, 8));
+      setLog((l) => ["Not a Pulse packet", ...l].slice(0, 8));
       return;
     }
     const added = receive(store, [wire], { commandPostKey: settings.sign_pk });
@@ -59,7 +59,7 @@ export default function MeshScreen({ back }) {
       {mode === "scan" && <QrScanner onCode={scanned} />}
       {log.map((line, n) => <Text key={n} style={{ color: n ? C.muted : C.ink }}>{line}</Text>)}
       <Section title="Bluetooth relay">
-        <Muted>Automatic phone-to-phone relay over Bluetooth and Wi-Fi Direct runs in the PulseTriage development build, not in Expo Go. The protocol is the same; see field/README.md.</Muted>
+        <Muted>Automatic phone-to-phone relay over Bluetooth and Wi-Fi Direct runs in the Pulse development build, not in Expo Go. The protocol is the same; see field/README.md.</Muted>
       </Section>
     </Screen>
   );

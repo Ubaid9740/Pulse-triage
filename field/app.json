@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "PulseTriage",
+    "name": "Pulse",
     "slug": "pulsetriage-field",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -32,13 +32,13 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "PulseTriage scans setup and message QR codes."
+          "cameraPermission": "Pulse scans setup and message QR codes."
         }
       ],
       [
         "expo-location",
         {
-          "locationWhenInUsePermission": "PulseTriage adds your position to reports and team pings."
+          "locationWhenInUsePermission": "Pulse adds your position to reports and team pings."
         }
       ]
     ]

@@ -17,10 +17,10 @@ export default function SetupQR({ onClose }) {
     <Dialog title="Phone setup" onClose={onClose}>
       <div className="setup">
         <div className="qr-frame">
-          <img src={`/api/setup-qr.png?t=${stamp}`} alt="Setup QR code for the PulseTriage phone app" />
+          <img src={`/api/setup-qr.png?t=${stamp}`} alt="Setup QR code for the Pulse phone app" />
         </div>
         <div>
-          <p>Open the PulseTriage app on each phone and scan this code once, while the phone is near the command post.</p>
+          <p>Open the Pulse app on each phone and scan this code once, while the phone is near the command post.</p>
           {setup &&
           <>
               <p className="muted small-text">Server addresses in the code:</p>
