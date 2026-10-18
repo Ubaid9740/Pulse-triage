@@ -1,4 +1,4 @@
-import { caseTitle, hhmm, hoursLeft, label, pointsTier } from "../format.js";
+import { caseTitle, label, pointsTier } from "../format.js";
 import Badge from "./Badge.jsx";
 import Icon from "./Icon.jsx";
 
@@ -19,7 +19,6 @@ export default function CaseList({ cases, onSelect }) {
       <ol className="case-list">
           {cases.map((c, i) => {
           const tier = pointsTier(c.points);
-          const urgent = c.hours_left !== null && c.hours_left !== undefined && c.hours_left < 1;
           return (
             <li key={c.id}>
                 <button className={`case-row row-${tier}`} onClick={() => onSelect(c.id)}>
@@ -34,12 +33,8 @@ export default function CaseList({ cases, onSelect }) {
                     </span>
                     <span className="row-sub">
                       <span className="meta-hazard">{label(c.hazard)}</span>
-                      {c.landmark && c.zone && <span><Icon name="mapPin" size={12} />{c.zone}</span>}
+                      {c.zone && <span><Icon name="mapPin" size={12} />{c.zone}</span>}
                       <span><Icon name="users" size={12} />{c.people} {c.people === 1 ? "person" : "people"}</span>
-                      {c.hours_left !== null &&
-                    <span className={urgent ? "meta-urgent" : ""}><Icon name="clock" size={12} />{hoursLeft(c.hours_left)} left</span>
-                    }
-                      {c.window_closes_at && <span className="meta-urgent">window closes {hhmm(c.window_closes_at)}</span>}
                       {c.status !== "new" && <span className="meta-status">{label(c.status)}</span>}
                     </span>
                     {c.note && <span className="row-note">{c.note}</span>}
