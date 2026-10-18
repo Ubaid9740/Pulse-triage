@@ -33,18 +33,57 @@ Architecture & System Design: [`System Design.pdf`](./System%20Design.pdf)
 
 | Component | Technology | Path | Description |
 | :--- | :--- | :--- | :--- |
-| **Server** | Python 3.11+, FastAPI, SQLite WAL | [`server/`](./server/) | Incident scoring engine, key authentication, packet ingestion, team tracking, and Silent Zone detection. |
+| **Server** | Python 3.11+, FastAPI, SQLite WAL | [`server/`](./server/) | Incident scoring engine, device key authentication, packet ingestion, team tracking, and Silent Zone detection. |
 | **Dashboard** | React 18, Vite, Leaflet | [`dashboard/`](./dashboard/) | Command post map, real-time case triage, dispatch suggestions, alert broadcasting, and resource tracking. |
-| **Field App** | React Native, Expo SDK 57 | [`field/`](./field/) | Citizen & rescuer mobile app. Works 100% offline; passes packets phone-to-phone via QR mesh. |
+| **Field App** | React Native, Expo SDK 57 | [`field/`](./field/) | Citizen & rescuer mobile app with redesigned unified UI. Works 100% offline; relays packets phone-to-phone via QR mesh. |
 | **Shared** | JSON Schemas, Multi-hazard profiles | [`shared/`](./shared/) | Contract specifications for flood, heat, earthquake, packets, and triage weights. |
 | **Scenario** | Python simulation tools | [`scenario/`](./scenario/) | Automated scenario replay, synthetic load generator, and chaos testing suite. |
 
 ---
 
+## Implemented Features & Capabilities
+
+### 1. Security & Role-Based Onboarding
+- **Helper Quick-Start:** Civilians and neighbors can immediately tap "Start as Helper" without scanning a QR code, utilizing fallback command-post public keys so reports can be submitted instantly during a disaster.
+- **Volunteer & Rescue Team Authentication:** Volunteers and official rescue teams scan the Command Post setup QR code to securely bind signing keys (`sign_pk`) and box keys (`box_pk`), unlocking job assignments, welfare checks, and status streams.
+- **Automated Device Trust & Scoring:**
+  - When verified volunteer or rescue devices register, the server automatically flags them as `trusted = 1` in the database.
+  - Incident reports originating from trusted devices automatically start with an elevated confidence score (**0.9** vs unverified **0.5**).
+
+### 2. Mobile Field App (React Native / Expo)
+- **High-Contrast Design System:** Unified design tokens (`T`, `RADIUS`, `TONES`), outdoor-legible surfaces, and danger/warning bands matching the command dashboard.
+- **Native SVG Iconography:** Built-in vector stroke icon set without heavy third-party icon libraries.
+- **Emergency Reporting:** Simplified report form with hazard selector, affected people stepper, special needs toggles, automatic GPS coordinate tagging with accuracy estimates, and landmark notes.
+- **Cleaned Triage Feed:** Clean card design showing disaster type, location, and people count without distracting countdown timers.
+- **Offline QR Mesh Network:**
+  - Store-and-forward architecture with SQLite / AsyncStorage.
+  - Generates rotating animated QR codes of encrypted packets for device-to-device transfers without internet, cellular, or Wi-Fi.
+- **Safety & Crash Protection:** Top-level React `ErrorBoundary`, safe `SecureStore` fallbacks, and unsaved form leave guards.
+
+### 3. Command Post Server (FastAPI + SQLite)
+- **Deterministic Triage & Rescoring:**
+  - Multi-hazard weighted scoring (flood, heat, earthquake) combining vulnerability, medical needs, and time elapsed.
+  - Deduplication and report clustering: incoming reports from the same geohash location automatically merge into a single incident case with verifiable history.
+- **Silent Zone & Vulnerable Outreach:**
+  - Detects "Silent Zones" — severely impacted hazard regions from which zero reports have been received.
+  - Cross-references opt-in vulnerable registries (elderly, mobility-impaired, oxygen-dependent) to automatically generate welfare-check tasks for field teams.
+- **Cryptographic Packet Pipeline:**
+  - End-to-end Ed25519 digital signatures and X25519 sealed box encryption.
+  - Replay attack prevention and tampered packet rejection.
+- **Live Dispatcher Operations:**
+  - Interactive verification (`/verify`), case splitting (`/split`), manual priority overrides, and automated team recommendation based on distance and capabilities.
+
+### 4. Interactive Dispatch Dashboard (React + Leaflet)
+- **Live Incident Map:** Real-time visualization of active cases, severity markers, Silent Zones in red, and live rescuer team positions.
+- **Emergency Alert Broadcasts:** Alert composer with multi-language support, automated evacuation point tagging, and text-to-speech loudspeaker announcements.
+- **Resource & Stock Burn Tracking:** Monitors shelter capacity, medical supplies, fuel levels, and team availability statuses (Available, En Route, On Scene, Out of Service).
+
+---
+
 ## System Requirements
 
-- **Runtime:** Python 3.11+, Node.js 18+ (or 20+), Git.
-- **Mobile Device:** Physical Android phone or iPhone running **Expo Go** (connected to the same local Wi-Fi / subnet).
+- **Runtime:** Python 3.11+, Node.js 18+ (or 20+), Git, and PowerShell.
+- **Mobile Device:** Physical Android phone or iPhone running **Expo Go** (connected to the same Wi-Fi / subnet).
 - **Computer:** Windows, macOS, or Linux (laptop functions as the Command Post).
 
 ---
@@ -63,7 +102,7 @@ python -m venv server\.venv
 pip install -r server\requirements.txt
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --app-dir server --reload
 ```
-- **API Status:** `http://localhost:8000/api/status`
+- **API Health:** `http://localhost:8000/api/status`
 - **Interactive Swagger Docs:** `http://localhost:8000/docs`
 - **Setup QR Code:** `http://localhost:8000/api/setup-qr.png`
 
@@ -71,13 +110,13 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --app-dir server --reload
 
 ### 2. Command Dashboard (React + Vite)
 
-Open a new terminal:
+Open a second terminal:
 ```powershell
 cd Pulse-triage\dashboard
 npm install
 npm run dev
 ```
-- Open **`http://localhost:5173`** in your browser.
+- Access Dashboard: **`http://localhost:5173`**
 
 ---
 
@@ -90,39 +129,19 @@ npm install
 npx expo start -c
 ```
 1. Open the **Expo Go** app on your phone.
-2. Scan the terminal's QR code to load the app.
+2. Scan the terminal's QR code to launch **Pulse**.
 
 ---
 
-## Key Features
+## Running Verification Tests
 
-1. **Zero-Internet Operation & Offline Mesh:**
-   - Every report is digitally signed (Ed25519) and sealed (X25519) locally on the device.
-   - When offline, reports queue safely and can hop from phone to phone using dynamic QR-code packet hand-offs until a phone reaches connection.
-
-2. **Role-Based Onboarding & Cryptographic Trust:**
-   - **Helpers (Civilians):** Instant onboarding without setup requirements to submit emergency reports immediately.
-   - **Volunteers & Rescue Teams:** Scan the Command Post setup QR to securely bind keys (`sign_pk`, `box_pk`), unlock team dispatch jobs, and stream live GPS location.
-
-3. **Deterministic Multi-Hazard Triage:**
-   - Dynamic priority scoring based on hazard profiles (flood, heat, earthquake).
-   - Duplicate incident deduplication, confidence adjustments, and time-decay re-ranking.
-
-4. **Silent Zone & Outreach Engine:**
-   - Identifies severely impacted regions where zero reports have been received (Silent Zones).
-   - Dispatches targeted welfare checks from the opt-in vulnerable resident registry.
-
----
-
-## Running Tests
-
-- **Backend Tests (245 test cases):**
+- **Backend Pytest Suite (245 tests):**
   ```powershell
   cd server
   python -m pytest
   ```
 
-- **Field App Core Crypto & Sync Tests:**
+- **Field App Core Crypto & Mesh Protocol Tests:**
   ```powershell
   cd field
   $env:PT_TEST_SERVER="http://127.0.0.1:8000"; npm test
