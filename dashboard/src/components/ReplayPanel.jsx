@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { get, post } from "../api.js";
 import { label } from "../format.js";
 import Dialog from "./Dialog.jsx";
+import Icon from "./Icon.jsx";
 
 const SPEEDS = [30, 60, 90, 120, 300];
 
@@ -48,9 +49,9 @@ export default function ReplayPanel({ replay, refresh, onClose }) {
   const running = replay?.running;
   return (
     <Dialog title="Scenario replay" onClose={onClose}>
-      {!running && (
-        <>
-          <p className="muted">A made-up disaster in Karachi, streamed in as real reports, texts and replies.
+      {!running &&
+      <>
+          <p className="dialog-intro">A made-up disaster in Karachi, streamed in as real reports, texts and replies.
             {reset ? " The server is reset to the pack first: this incident's data is cleared (a backup is kept)." : ""}</p>
           <div className="row">
             <label>Pack
@@ -64,34 +65,36 @@ export default function ReplayPanel({ replay, refresh, onClose }) {
               </select>
             </label>
           </div>
-          <label className="check"><input type="checkbox" checked={reset} onChange={(e) => setReset(e.target.checked)} />
-            Reset to the pack first</label>
+          <div className="row">
+            <label className="check"><input type="checkbox" checked={reset} onChange={(e) => setReset(e.target.checked)} />
+              Reset to the pack first</label>
+          </div>
           <div className="actions">
-            <button className="primary" onClick={start} disabled={busy || !packs?.length}>{busy ? "Starting…" : "Start"}</button>
+            <button className="primary" onClick={start} disabled={busy || !packs?.length}><Icon name="play" />{busy ? "Starting…" : "Start"}</button>
             <button onClick={onClose}>Cancel</button>
           </div>
         </>
-      )}
-      {replay?.pack && (
-        <div className="replay-status">
-          <p>
+      }
+      {replay?.pack &&
+      <div className="replay-status">
+          <p className="replay-line">
             <b>{label(replay.pack)}</b> · {replay.speed}x ·{" "}
             {running ? <>scenario time <b className="clock">{replay.scenario_time}</b></> : "stopped"} ·{" "}
             {replay.done} of {replay.total} events{replay.story_done ? " (story done; teams still move)" : ""}
           </p>
-          {replay.held_replies > 0 && (
-            <p className="warn">{replay.held_replies} replies are waiting for an active alert: issue the warning.</p>
-          )}
-          {replay.cues?.length > 0 && (
-            <ul className="cues">
-              {replay.cues.map((c, i) => <li key={i} className={i === 0 ? "now" : ""}><span className="muted">{c.at}</span> {c.text}</li>)}
+          {replay.held_replies > 0 &&
+        <p className="warn">{replay.held_replies} replies are waiting for an active alert: issue the warning.</p>
+        }
+          {replay.cues?.length > 0 &&
+        <ul className="cues">
+              {replay.cues.map((c, i) => <li key={i} className={i === 0 ? "now" : ""}><span className="cue-at">{c.at}</span> {c.text}</li>)}
             </ul>
-          )}
+        }
           {replay.errors?.length > 0 && <p className="error">{replay.errors[0]}</p>}
-          {running && <div className="actions"><button onClick={stop}>Stop the replay</button></div>}
+          {running && <div className="actions"><button onClick={stop}><Icon name="stop" />Stop the replay</button></div>}
         </div>
-      )}
-      {error && <p className="error">{error}</p>}
-    </Dialog>
-  );
+      }
+      {error && <p className="error" role="alert">{error}</p>}
+    </Dialog>);
+
 }

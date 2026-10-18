@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef } from "react";
 import L from "leaflet";
-import { CircleMarker, GeoJSON, MapContainer, Marker, Polyline, Tooltip, useMap } from "react-leaflet";
-import { caseTitle, hhmm, hoursLeft, pointsColour, TEAM_COLOURS, TEAM_LETTER } from "../format.js";
+import { CircleMarker, GeoJSON, MapContainer, Marker, Pane, Polyline, Tooltip, useMap } from "react-leaflet";
+import { caseTitle, hhmm, hoursLeft, PLACE_LETTER, placeKind, pointsColour, pointsStroke, TEAM_COLOURS, TEAM_LETTER } from "../format.js";
+import MapLegend from "./MapLegend.jsx";
 
 const TILES = "/tiles/town.pmtiles";
 // Online street map: OpenStreetMap's own tiles (no key; light use with the credit shown), faded in
@@ -18,60 +19,71 @@ export default function MapView({ snap, selected, onSelect }) {
   const caseById = useMemo(() => Object.fromEntries(snap.cases.map((c) => [c.id, c])), [snap.cases]);
   const zonesDoc = useMemo(() => ({
     type: "FeatureCollection",
-    features: snap.zones.map((z) => ({ type: "Feature", properties: z, geometry: z.polygon })),
+    features: snap.zones.map((z) => ({ type: "Feature", properties: z, geometry: z.polygon }))
   }), [snap.zones]);
-  const zonesKey = snap.zones.map((z) => `${z.name}:${z.silent}:${z.coverage}:${z.hard_hit}`).join("|")
-    + (selected?.kind === "zone" ? `#${selected.name}` : "");
+  const zonesKey = snap.zones.map((z) => `${z.name}:${z.silent}:${z.coverage}:${z.hard_hit}`).join("|") + (
+  selected?.kind === "zone" ? `#${selected.name}` : "");
 
   return (
-    <MapContainer center={KARACHI} zoom={12} className="map" zoomControl={true}>
-      <BaseMap />
-      <FitOnce snap={snap} />
-      <GeoJSON key={zonesKey} data={zonesDoc} style={(f) => zoneStyle(f.properties, selected)}
-               onEachFeature={(f, layer) => {
-                 layer.on("click", () => onSelect({ kind: "zone", name: f.properties.name }));
-                 layer.bindTooltip(zoneTip(f.properties), { sticky: true, className: "zone-tip" });
-               }} />
-      {snap.shelters.filter((s) => s.lat !== null).map((s) => (
-        <CircleMarker key={`s-${s.id}`} center={[s.lat, s.lng]} radius={7}
-                      pathOptions={{ color: "#1d7a45", fillColor: "#2e9d5b", fillOpacity: 0.9, weight: 2 }}>
-          <Tooltip permanent direction="right" offset={[8, 0]} className="place-tip">
-            {s.name} {s.occupancy}/{s.capacity ?? "?"}{s.nearly_full ? " nearly full" : ""}
-          </Tooltip>
-        </CircleMarker>
-      ))}
-      {snap.teams.filter((t) => t.lat !== null).map((t) => <Team key={`t-${t.id}`} team={t} target={caseById[t.case_id]} />)}
-      {cases.map((c) => {
-        const isSelected = selected?.kind === "case" && selected.id === c.id;
-        return (
-          <CircleMarker key={`c-${c.id}`} center={[c.lat, c.lng]} radius={8 + Math.min(c.people, 10) * 1.2}
-                        eventHandlers={{ click: () => onSelect({ kind: "case", id: c.id }) }}
-                        pathOptions={{ color: isSelected ? "#111" : "#fff", weight: isSelected ? 4 : 2,
-                                       fillColor: pointsColour(c.points), fillOpacity: 0.95,
-                                       dashArray: c.window_closes_at ? "4 3" : null }}>
-            <Tooltip direction="top" offset={[0, -8]}>
-              <b>{c.points}</b> {caseTitle(c)} · {c.people} {c.people === 1 ? "person" : "people"}
-              {c.hours_left !== null && <> · {hoursLeft(c.hours_left)} left</>}
-              {c.window_closes_at && <> · window closes {hhmm(c.window_closes_at)}</>}
+    <>
+      <MapContainer center={KARACHI} zoom={12} className="map" zoomControl={true}>
+        <BaseMap />
+        <FitOnce snap={snap} />
+        <GeoJSON key={zonesKey} data={zonesDoc} style={(f) => zoneStyle(f.properties, selected)}
+        onEachFeature={(f, layer) => {
+          layer.on("click", () => onSelect({ kind: "zone", name: f.properties.name }));
+          layer.bindTooltip(zoneTip(f.properties), { sticky: true, className: "zone-tip" });
+        }} />
+        <Pane name="zone-labels" style={{ zIndex: 390, pointerEvents: "none" }}>
+          {snap.zones.map((z) => <ZoneLabel key={`zl-${z.name}`} zone={z} />)}
+        </Pane>
+        {snap.shelters.filter((s) => s.lat !== null).map((s) =>
+        <Marker key={`s-${s.id}`} position={[s.lat, s.lng]} icon={placeIcon(s)}>
+            <Tooltip permanent direction="right" offset={[10, 0]} className={`place-tip ${s.nearly_full ? "is-full" : ""}`}>
+              {s.name} <b>{s.occupancy}/{s.capacity ?? "?"}</b>{s.nearly_full ? " nearly full" : ""}
             </Tooltip>
-          </CircleMarker>
-        );
-      })}
-    </MapContainer>
-  );
+          </Marker>
+        )}
+        {snap.teams.filter((t) => t.lat !== null).map((t) => <Team key={`t-${t.id}`} team={t} target={caseById[t.case_id]} />)}
+        {cases.map((c) => {
+          const isSelected = selected?.kind === "case" && selected.id === c.id;
+          const radius = 8 + Math.min(c.people, 10) * 1.2;
+          return [
+          isSelected &&
+          <CircleMarker key={`h-${c.id}`} center={[c.lat, c.lng]} radius={radius + 7} interactive={false}
+          pathOptions={{ color: "#0F1B2D", weight: 2, opacity: 0.35, fill: false }} />,
+
+          <CircleMarker key={`c-${c.id}`} center={[c.lat, c.lng]} radius={radius}
+          eventHandlers={{ click: () => onSelect({ kind: "case", id: c.id }) }}
+          pathOptions={{ color: isSelected ? "#0F1B2D" : pointsStroke(c.points),
+            weight: isSelected ? 4 : c.window_closes_at ? 2.5 : 1.5,
+            fillColor: pointsColour(c.points), fillOpacity: 0.95,
+            dashArray: c.window_closes_at ? "4 3" : null }}>
+              <Tooltip direction="top" offset={[0, -8]} className="case-tip">
+                <b>{c.points}</b> {caseTitle(c)} · {c.people} {c.people === 1 ? "person" : "people"}
+                {c.hours_left !== null && <> · {hoursLeft(c.hours_left)} left</>}
+                {c.window_closes_at && <> · window closes {hhmm(c.window_closes_at)}</>}
+              </Tooltip>
+            </CircleMarker>];
+
+        })}
+      </MapContainer>
+      <MapLegend snap={snap} />
+    </>);
+
 }
 
 function zoneStyle(z, selected) {
   const picked = selected?.kind === "zone" && selected.name === z.name;
   if (z.silent) {
-    return { color: "#b42318", weight: picked ? 5 : 3, fillColor: "#e5484d", fillOpacity: 0.35 };
+    return { color: "#B42318", weight: picked ? 5 : 3, fillColor: "#D92D20", fillOpacity: 0.3 };
   }
   const fill = z.coverage === null ? "#9aa5b1" : coverageColour(z.coverage);
-  return { color: z.hard_hit ? "#8a4b08" : "#56606b", weight: picked ? 4 : z.hard_hit ? 2.5 : 1.5,
-           dashArray: z.hard_hit ? null : "6 4", fillColor: fill, fillOpacity: 0.18 };
+  return { color: picked ? "#0F1B2D" : z.hard_hit ? "#8a4b08" : "#56606b", weight: picked ? 4 : z.hard_hit ? 2.5 : 1.5,
+    dashArray: z.hard_hit ? null : "6 4", fillColor: fill, fillOpacity: 0.2 };
 }
 
-function coverageColour(c) {
+export function coverageColour(c) {
   // red (0) to amber to green (1)
   const r = c < 0.5 ? 220 : Math.round(220 - (c - 0.5) * 2 * 170);
   const g = c < 0.5 ? Math.round(80 + c * 2 * 100) : 180;
@@ -83,21 +95,47 @@ function zoneTip(z) {
   return `<b>${z.name}</b>${z.silent ? " · SILENT" : ""}${cov}`;
 }
 
+const esc = (s) => String(s).replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]);
+
+// A quiet name and coverage label in the middle of each zone; Silent Zones get a red tag.
+function ZoneLabel({ zone }) {
+  const center = useMemo(() => L.geoJSON(zone.polygon).getBounds().getCenter(), [zone.polygon]);
+  const cov = zone.coverage === null ? "" : `<em>${Math.round(zone.coverage * 100)}%</em>`;
+  const icon = L.divIcon({
+    className: "zone-label-wrap",
+    html: zone.silent ?
+    `<span class="zone-label is-silent"><strong>SILENT</strong>${esc(zone.name)}${cov}</span>` :
+    `<span class="zone-label${zone.hard_hit ? " is-hard" : ""}">${esc(zone.name)}${cov}</span>`,
+    iconSize: null
+  });
+  return <Marker position={center} icon={icon} interactive={false} keyboard={false} />;
+}
+
+function placeIcon(s) {
+  const kind = placeKind(s.type);
+  return L.divIcon({
+    className: "place-icon-wrap",
+    html: `<span class="place-icon place-${kind}${s.nearly_full ? " is-full" : ""}">${PLACE_LETTER[kind]}</span>`,
+    iconSize: [22, 22],
+    iconAnchor: [11, 11]
+  });
+}
+
 function Team({ team, target }) {
   const colour = team.stale ? "#9aa5b1" : TEAM_COLOURS[team.status] || "#555";
   const icon = L.divIcon({
     className: "team-icon",
     html: `<span style="background:${colour}">${TEAM_LETTER[team.type] || "?"}</span>`,
     iconSize: [26, 26],
-    iconAnchor: [13, 13],
+    iconAnchor: [13, 13]
   });
   const trail = team.trail.map((p) => [p.lat, p.lng]);
   return (
     <>
       {trail.length > 1 && <Polyline positions={trail} pathOptions={{ color: colour, weight: 2, opacity: 0.5, dashArray: "2 5" }} />}
-      {target && target.lat !== null && (
-        <Polyline positions={[[team.lat, team.lng], [target.lat, target.lng]]} pathOptions={{ color: colour, weight: 2 }} />
-      )}
+      {target && target.lat !== null &&
+      <Polyline positions={[[team.lat, team.lng], [target.lat, target.lng]]} pathOptions={{ color: colour, weight: 2 }} />
+      }
       <Marker position={[team.lat, team.lng]} icon={icon}>
         <Tooltip direction="top" offset={[0, -12]}>
           <b>{team.name}</b> · {team.status.replace("_", " ")}
@@ -106,8 +144,8 @@ function Team({ team, target }) {
           {" · as of "}{hhmm(team.ping_at)}
         </Tooltip>
       </Marker>
-    </>
-  );
+    </>);
+
 }
 
 // Fit the map to the town once, when there is something to show.
@@ -118,7 +156,7 @@ function FitOnce({ snap }) {
     if (done.current) return;
     map.invalidateSize();
     const size = map.getSize();
-    if (!size.x || !size.y) return;                       // not laid out yet: try on the next snapshot
+    if (!size.x || !size.y) return; // not laid out yet: try on the next snapshot
     const bounds = L.latLngBounds([]);
     snap.zones.forEach((z) => bounds.extend(L.geoJSON(z.polygon).getBounds()));
     snap.cases.forEach((c) => c.lat !== null && bounds.extend([c.lat, c.lng]));
@@ -137,21 +175,21 @@ function BaseMap() {
   useEffect(() => {
     let layer = null;
     let gone = false;
-    fetch(TILES, { method: "HEAD" })
-      .then(async (res) => {
-        // Missing file: 404 from the server, or the dev server's HTML fallback page.
-        const offline = res.ok && !(res.headers.get("content-type") || "").includes("html");
+    fetch(TILES, { method: "HEAD" }).
+    then(async (res) => {
+      // Missing file: 404 from the server, or the dev server's HTML fallback page.
+      const offline = res.ok && !(res.headers.get("content-type") || "").includes("html");
+      if (gone) return;
+      if (offline) {
+        const { leafletLayer } = await import("protomaps-leaflet");
         if (gone) return;
-        if (offline) {
-          const { leafletLayer } = await import("protomaps-leaflet");
-          if (gone) return;
-          layer = leafletLayer({ url: TILES, flavor: "light", lang: "en", attribution: "&copy; OpenStreetMap contributors" });
-        } else {
-          layer = L.tileLayer(ONLINE, { attribution: ONLINE_CREDIT, maxZoom: 19, className: "street-tiles" });
-        }
-        layer.addTo(map);
-      })
-      .catch(() => {});
+        layer = leafletLayer({ url: TILES, flavor: "light", lang: "en", attribution: "&copy; OpenStreetMap contributors" });
+      } else {
+        layer = L.tileLayer(ONLINE, { attribution: ONLINE_CREDIT, maxZoom: 19, className: "street-tiles" });
+      }
+      layer.addTo(map);
+    }).
+    catch(() => {});
     return () => {
       gone = true;
       if (layer) map.removeLayer(layer);

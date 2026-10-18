@@ -2,9 +2,11 @@ import { useEffect, useMemo, useState } from "react";
 import { post } from "../api.js";
 import { label } from "../format.js";
 import Dialog from "./Dialog.jsx";
+import Icon from "./Icon.jsx";
 
 const SEVERITIES = [["watch", "Watch: be ready"], ["warning", "Warning: act today"], ["emergency", "Emergency: act now"]];
-const BAND = { watch: "#e9c53b", warning: "#e8892b", emergency: "#d64545" };
+const BAND = { watch: "#F4C534", warning: "#EF7B1A", emergency: "#D92D20" };
+const BAND_INK = { watch: "#0F1B2D", warning: "#0F1B2D", emergency: "#FFFFFF" };
 
 function localInput(date) {
   const pad = (n) => String(n).padStart(2, "0");
@@ -16,11 +18,11 @@ function localInput(date) {
 // signed into the mesh, and generate the loudspeaker script.
 export default function AlertComposer({ snap, profiles, refresh, onClose }) {
   const active = snap.alerts.filter((a) => a.status === "active");
-  const [mode, setMode] = useState("new");          // "new", "update:<id>" or "clear:<id>"
+  const [mode, setMode] = useState("new"); // "new", "update:<id>" or "clear:<id>"
   const [hazard, setHazard] = useState(snap.hazard);
   const [severity, setSeverity] = useState("warning");
   const [zones, setZones] = useState(snap.zones.filter((z) => z.hard_hit).map((z) => z.name));
-  const [places, setPlaces] = useState([]);         // empty: the server picks the nearest with space
+  const [places, setPlaces] = useState([]); // empty: the server picks the nearest with space
   const [fill, setFill] = useState({});
   const [validUntil, setValidUntil] = useState(localInput(new Date(Date.now() + 12 * 3600 * 1000)));
   const [headline, setHeadline] = useState("");
@@ -54,7 +56,7 @@ export default function AlertComposer({ snap, profiles, refresh, onClose }) {
 
   // Ask the server for the filled-in payload whenever a choice changes.
   useEffect(() => {
-    if (sent || (!clearing && !zones.length)) return;
+    if (sent || !clearing && !zones.length) return;
     const missing = clearing || edited ? [] : placeholders.filter((p) => !(fill[p] || "").trim());
     if (missing.length) {
       setPreview(null);
@@ -75,7 +77,7 @@ export default function AlertComposer({ snap, profiles, refresh, onClose }) {
       } catch (e) {
         setPreview(null);
         setError(e.message);
-        if (!edited) {                          // never show text that no longer matches the choices
+        if (!edited) {// never show text that no longer matches the choices
           setHeadline("");
           setSteps(["", "", ""]);
         }
@@ -106,50 +108,53 @@ export default function AlertComposer({ snap, profiles, refresh, onClose }) {
 
   // Functional updates, so quick changes in a row never overwrite each other.
   const toggle = (setList, value) =>
-    setList((list) => (list.includes(value) ? list.filter((v) => v !== value) : [...list, value]));
+  setList((list) => list.includes(value) ? list.filter((v) => v !== value) : [...list, value]);
   const shown = preview || {};
   const shownPlaces = shown.places || [];
+  const bandSev = shown.severity || severity;
 
   return (
     <Dialog title="New alert" onClose={onClose} wide>
       <div className="composer">
         <div className="composer-form">
-          {sent ? (
-            <div className="sent">
-              <p><b>{sent.alert_id}</b> signed and queued for phones (outbound #{sent.outbound_seq}).</p>
+          {sent ?
+          <div className="sent">
+              <div className="sent-banner"><Icon name="check" size={18} />
+                <p><b>{sent.alert_id}</b> signed and queued for phones (outbound #{sent.outbound_seq}).</p>
+              </div>
               <p className="muted">It goes out to online phones at once and through the mesh to the rest.</p>
               <div className="actions">
-                <button className="primary" onClick={announce}>Generate announcement script</button>
+                <button className="primary" onClick={announce}><Icon name="megaphone" />Generate announcement script</button>
                 <button onClick={onClose}>Done</button>
               </div>
-              {scripts && scripts.map((s) => (
-                <div key={s.language} className="script">
-                  <span className="muted">{s.language} · about {s.seconds} s read aloud</span>
+              {scripts && scripts.map((s) =>
+            <div key={s.language} className="script">
+                  <span className="muted small-text">{s.language} · about {s.seconds} s read aloud</span>
                   <p>{s.text}</p>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <>
-              {active.length > 0 && (
-                <label>What to send
-                  <select value={mode} onChange={(e) => { setMode(e.target.value); setEdited(false); }}>
+            )}
+            </div> :
+
+          <>
+              {active.length > 0 &&
+            <label>What to send
+                  <select value={mode} onChange={(e) => {setMode(e.target.value);setEdited(false);}}>
                     <option value="new">A new alert</option>
                     {active.map((a) => <option key={`u${a.id}`} value={`update:${a.id}`}>Update {a.id} ({label(a.hazard)} {a.severity})</option>)}
                     {active.map((a) => <option key={`c${a.id}`} value={`clear:${a.id}`}>All-clear for {a.id}</option>)}
                   </select>
                 </label>
-              )}
-              {!clearing && (
-                <>
+            }
+              {!clearing &&
+            <>
                   <div className="row">
                     <label>Disaster
-                      <select value={hazard} onChange={(e) => { setHazard(e.target.value); setEdited(false); }}>
+                      <select value={hazard} onChange={(e) => {setHazard(e.target.value);setEdited(false);}}>
                         {hazards.map((h) => <option key={h} value={h}>{profiles?.profiles[h]?.label?.en || label(h)}</option>)}
                       </select>
                     </label>
                     <label>Severity
-                      <select value={severity} onChange={(e) => { setSeverity(e.target.value); setEdited(false); }}>
+                      <select value={severity} onChange={(e) => {setSeverity(e.target.value);setEdited(false);}}>
                         {SEVERITIES.map(([v, t]) => <option key={v} value={v}>{t}</option>)}
                       </select>
                     </label>
@@ -159,75 +164,81 @@ export default function AlertComposer({ snap, profiles, refresh, onClose }) {
                   </div>
                   <fieldset>
                     <legend>Zones</legend>
-                    {snap.zones.map((z) => (
-                      <label key={z.name} className="check">
+                    {snap.zones.map((z) =>
+                <label key={z.name} className={`check ${z.silent ? "check-silent" : ""}`}>
                         <input type="checkbox" checked={zones.includes(z.name)} onChange={() => toggle(setZones, z.name)} />
                         {z.name}{z.silent ? " (silent)" : z.hard_hit ? " (hard-hit)" : ""}
                       </label>
-                    ))}
+                )}
                     {!snap.zones.length && <span className="error">No zones loaded on the server yet.</span>}
                   </fieldset>
-                  {placeholders.length > 0 && (
-                    <div className="row">
-                      {placeholders.map((p) => (
-                        <label key={p}>{label(p)}
+                  {placeholders.length > 0 &&
+              <div className="row">
+                      {placeholders.map((p) =>
+                <label key={p}>{label(p)}
                           <input value={fill[p] || ""} placeholder={p === "start" ? "12:00" : p === "end" ? "17:00" : ""}
-                                 onChange={(e) => { const v = e.target.value; setFill((f) => ({ ...f, [p]: v })); }} />
+                  onChange={(e) => {const v = e.target.value;setFill((f) => ({ ...f, [p]: v }));}} />
                         </label>
-                      ))}
+                )}
                     </div>
-                  )}
+              }
                   <fieldset>
                     <legend>Places to go {places.length ? "" : "(automatic: nearest with space)"}</legend>
-                    {snap.shelters.map((s) => (
-                      <label key={s.id} className="check">
+                    {snap.shelters.map((s) =>
+                <label key={s.id} className="check">
                         <input type="checkbox" checked={places.includes(s.id)} onChange={() => toggle(setPlaces, s.id)} />
                         {s.name} <span className="muted">{s.space_left ?? "?"} free</span>
                       </label>
-                    ))}
+                )}
                     {!snap.shelters.length && <span className="muted">No places entered yet.</span>}
                   </fieldset>
-                  <label className="wide">Headline
-                    <input value={headline} maxLength={120} onChange={(e) => { setHeadline(e.target.value); setEdited(true); }} />
-                  </label>
-                  {steps.map((s, i) => (
-                    <label key={i} className="wide">Step {i + 1}
-                      <input value={s} maxLength={140}
-                             onChange={(e) => { const v = e.target.value; setSteps((old) => old.map((x, j) => (j === i ? v : x))); setEdited(true); }} />
+                  <div className="form-group">
+                    <p className="group-title">Message text</p>
+                    <label className="wide">Headline
+                      <input value={headline} maxLength={120} onChange={(e) => {setHeadline(e.target.value);setEdited(true);}} />
                     </label>
-                  ))}
-                  {edited && <button className="link" onClick={() => setEdited(false)}>Back to the template text</button>}
+                    {steps.map((s, i) =>
+                <label key={i} className="wide">Step {i + 1}
+                        <input value={s} maxLength={140}
+                  onChange={(e) => {const v = e.target.value;setSteps((old) => old.map((x, j) => j === i ? v : x));setEdited(true);}} />
+                      </label>
+                )}
+                    {edited && <button className="link" onClick={() => setEdited(false)}>Back to the template text</button>}
+                  </div>
                 </>
-              )}
-              {error && <p className="error">{error}</p>}
+            }
+              {error && <p className="error" role="alert">{error}</p>}
               <div className="actions">
                 <button className="primary" onClick={send} disabled={!preview}>
-                  {clearing ? "Send all-clear" : kind === "update" ? "Send update" : "Sign and send"}
+                  <Icon name="send" />{clearing ? "Send all-clear" : kind === "update" ? "Send update" : "Sign and send"}
                 </button>
                 <button onClick={onClose}>Cancel</button>
               </div>
             </>
-          )}
+          }
         </div>
 
-        <div className="phone" aria-label="Phone preview">
-          <div className="phone-band" style={{ background: shown.cancel ? "#2e9d5b" : BAND[shown.severity || severity] }}>
-            {shown.cancel ? "ALL CLEAR" : `${label(shown.hazard || hazard)} ${shown.severity || severity}`.toUpperCase()}
-          </div>
-          <div className="phone-body">
-            {!preview && error && <p className="phone-missing">{error}</p>}
-            <p className="phone-headline">{edited || !preview ? headline || "…" : shown.headline?.en}</p>
-            <ol>{(edited || !preview ? steps : shown.do_now?.en || []).filter(Boolean).map((s, i) => <li key={i}>{s}</li>)}</ol>
-            {shownPlaces.length > 0 && (
-              <div className="phone-place"><span className="muted">GO TO</span><br />
-                {shownPlaces.map((p) => <span key={p.id}>{p.name}{p.space_left !== null ? ` · space for ${p.space_left}` : ""}<br /></span>)}
-              </div>
-            )}
-            <div className="phone-buttons"><span>I'm safe</span><span className="need">I need help</span><span>I'm helping others</span></div>
-            <p className="phone-sig">Signed by the command post</p>
+        <div className="phone-col">
+          <p className="phone-caption">What phones receive</p>
+          <div className="phone" aria-label="Phone preview">
+            <div className="phone-band" style={{ background: shown.cancel ? "#157A44" : BAND[bandSev], color: shown.cancel ? "#fff" : BAND_INK[bandSev] }}>
+              {shown.cancel ? "ALL CLEAR" : `${label(shown.hazard || hazard)} ${shown.severity || severity}`.toUpperCase()}
+            </div>
+            <div className="phone-body">
+              {!preview && error && <p className="phone-missing">{error}</p>}
+              <p className="phone-headline">{edited || !preview ? headline || "…" : shown.headline?.en}</p>
+              <ol>{(edited || !preview ? steps : shown.do_now?.en || []).filter(Boolean).map((s, i) => <li key={i}>{s}</li>)}</ol>
+              {shownPlaces.length > 0 &&
+              <div className="phone-place"><span className="phone-place-label">GO TO</span>
+                  {shownPlaces.map((p) => <span key={p.id}>{p.name}{p.space_left !== null ? ` · space for ${p.space_left}` : ""}</span>)}
+                </div>
+              }
+              <div className="phone-buttons"><span>I'm safe</span><span className="need">I need help</span><span>I'm helping others</span></div>
+              <p className="phone-sig">Signed by the command post</p>
+            </div>
           </div>
         </div>
       </div>
-    </Dialog>
-  );
+    </Dialog>);
+
 }

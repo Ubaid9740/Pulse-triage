@@ -29,12 +29,14 @@ export default function PasteBox({ snap, profiles, refresh, onClose, onOpenCase 
 
   return (
     <Dialog title="Paste forwarded messages" onClose={onClose} wide>
-      {!out ? (
-        <form className="paste" onSubmit={submit}>
-          <textarea rows="12" value={text} onChange={(e) => setText(e.target.value)} autoFocus
-                    placeholder={"[12/10, 14:03] Ana: Old man alone behind the green mosque, house 14, water at his waist\n" +
-                                 "[12/10, 14:06] Bo: grandmother confused and very hot, no fan\n\n" +
-                                 "Chat exports split on their headers, otherwise on blank lines, otherwise one message per line."} />
+      {!out ?
+      <form className="paste" onSubmit={submit}>
+          <label className="wide">Messages
+            <textarea rows="12" value={text} onChange={(e) => setText(e.target.value)} autoFocus
+          placeholder={"[12/10, 14:03] Ana: Old man alone behind the green mosque, house 14, water at his waist\n" +
+          "[12/10, 14:06] Bo: grandmother confused and very hot, no fan\n\n" +
+          "Chat exports split on their headers, otherwise on blank lines, otherwise one message per line."} />
+          </label>
           <div className="row">
             <label>If a message does not say which disaster
               <select value={hazard} onChange={(e) => setHazard(e.target.value)}>
@@ -43,38 +45,44 @@ export default function PasteBox({ snap, profiles, refresh, onClose, onOpenCase 
               </select>
             </label>
           </div>
-          {error && <p className="error">{error}</p>}
+          {error && <p className="error" role="alert">{error}</p>}
           <div className="actions">
             <button type="submit" className="primary" disabled={!text.trim() || busy}>{busy ? "Reading…" : "Read the messages"}</button>
             <button type="button" onClick={onClose}>Cancel</button>
           </div>
-        </form>
-      ) : (
-        <div className="paste-result">
-          <p><b>{out.messages}</b> messages: <b>{out.reports.filter((r) => !r.duplicate).length}</b> new reports,
-            {" "}{out.reports.filter((r) => r.duplicate).length} already seen, {out.skipped.length} skipped.</p>
+        </form> :
+
+      <div className="paste-result">
+          <div className="result-summary">
+            <span><b>{out.messages}</b> messages</span>
+            <span className="rs-good"><b>{out.reports.filter((r) => !r.duplicate).length}</b> new reports</span>
+            <span><b>{out.reports.filter((r) => r.duplicate).length}</b> already seen</span>
+            <span><b>{out.skipped.length}</b> skipped</span>
+          </div>
           <ul className="paste-list">
-            {out.reports.map((r) => (
-              <li key={r.report_id}>
-                <span className="muted">{label(r.read.hazard)} · {r.read.people} {r.read.people === 1 ? "person" : "people"}
-                  {r.read.landmark ? ` · ${r.read.landmark}` : ""}{r.duplicate ? " · already seen" : ""}</span>
-                <span>{r.text}</span>
+            {out.reports.map((r) =>
+          <li key={r.report_id}>
+                <div className="paste-item">
+                  <span className="muted small-text">{label(r.read.hazard)} · {r.read.people} {r.read.people === 1 ? "person" : "people"}
+                    {r.read.landmark ? ` · ${r.read.landmark}` : ""}{r.duplicate ? " · already seen" : ""}</span>
+                  <span>{r.text}</span>
+                </div>
                 {r.case_id && <button className="small" onClick={() => onOpenCase(r.case_id)}>Case #{r.case_id}</button>}
               </li>
-            ))}
-          </ul>
-          {out.skipped.length > 0 && (
-            <>
-              <h3>Skipped (nothing to act on)</h3>
-              <ul className="paste-list">{out.skipped.map((s, i) => <li key={i} className="muted">{s.text}</li>)}</ul>
-            </>
           )}
+          </ul>
+          {out.skipped.length > 0 &&
+        <>
+              <h3>Skipped (nothing to act on)</h3>
+              <ul className="paste-list skipped">{out.skipped.map((s, i) => <li key={i} className="muted">{s.text}</li>)}</ul>
+            </>
+        }
           <div className="actions">
-            <button onClick={() => { setOut(null); setText(""); }}>Paste more</button>
-            <button onClick={onClose}>Done</button>
+            <button onClick={() => {setOut(null);setText("");}}>Paste more</button>
+            <button className="primary" onClick={onClose}>Done</button>
           </div>
         </div>
-      )}
-    </Dialog>
-  );
+      }
+    </Dialog>);
+
 }

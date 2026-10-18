@@ -16,22 +16,24 @@ export default function SetupQR({ onClose }) {
   return (
     <Dialog title="Phone setup" onClose={onClose}>
       <div className="setup">
-        <img src={`/api/setup-qr.png?t=${stamp}`} alt="Setup QR code for the PulseTriage phone app" />
+        <div className="qr-frame">
+          <img src={`/api/setup-qr.png?t=${stamp}`} alt="Setup QR code for the PulseTriage phone app" />
+        </div>
         <div>
           <p>Open the PulseTriage app on each phone and scan this code once, while the phone is near the command post.</p>
-          {setup && (
-            <>
+          {setup &&
+          <>
               <p className="muted small-text">Server addresses in the code:</p>
-              <ul className="small-text">{setup.servers.map((s) => <li key={s}><code>{s}</code></li>)}</ul>
+              <ul className="small-text code-list">{setup.servers.map((s) => <li key={s}><code>{s}</code></li>)}</ul>
               <p className="muted small-text">
                 {setup.zones.length} zones · alert key <code>{setup.sign_pk.slice(0, 10)}…</code>
               </p>
               <p className="muted small-text">If the laptop's address changes (new Wi-Fi), phones must scan again.</p>
             </>
-          )}
-          {error && <p className="error">{error}</p>}
+          }
+          {error && <p className="error" role="alert">{error}</p>}
         </div>
       </div>
-    </Dialog>
-  );
+    </Dialog>);
+
 }

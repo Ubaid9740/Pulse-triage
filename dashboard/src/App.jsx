@@ -24,17 +24,17 @@ export default function App() {
   const [offline, setOffline] = useState(false);
   const [profiles, setProfiles] = useState(null);
   const [selected, setSelected] = useState(null); // {kind: "case", id} or {kind: "zone", name}
-  const [dialog, setDialog] = useState(null);     // "alert" | "intake" | "paste" | "chaos" | "setup"
-  const [view, setView] = useState("map");        // "map" or "teams" (Teams and resources)
+  const [dialog, setDialog] = useState(null); // "alert" | "intake" | "paste" | "chaos" | "setup"
+  const [view, setView] = useState("map"); // "map" or "teams" (Teams and resources)
   const [weightsOpen, setWeightsOpen] = useState(false);
-  const [replay, setReplay] = useState(null);     // the scenario replay's status (GET /api/demo/replay)
+  const [replay, setReplay] = useState(null); // the scenario replay's status (GET /api/demo/replay)
   const busy = useRef(false);
 
   const again = useRef(false);
 
   const refresh = useCallback(async () => {
-    if (busy.current) {               // a poll is on its way: fetch once more when it lands,
-      again.current = true;           // so a command's change shows at once, not 2 s later
+    if (busy.current) {// a poll is on its way: fetch once more when it lands,
+      again.current = true; // so a command's change shows at once, not 2 s later
       return;
     }
     busy.current = true;
@@ -68,7 +68,7 @@ export default function App() {
     const timer = setInterval(pollReplay, POLL_MS);
     return () => clearInterval(timer);
   }, [pollReplay]);
-  const refreshAll = useCallback(() => { refresh(); pollReplay(); }, [refresh, pollReplay]);
+  const refreshAll = useCallback(() => {refresh();pollReplay();}, [refresh, pollReplay]);
 
   useEffect(() => {
     const onKey = (e) => e.key === "Escape" && setSelected(null);
@@ -77,46 +77,51 @@ export default function App() {
   }, []);
 
   if (!snap) {
-    return <div className="loading">{offline ? "Server not reachable. Retrying…" : "Loading…"}</div>;
+    return (
+      <div className="loading" role="status">
+        <span className={`loading-dot ${offline ? "is-offline" : ""}`} aria-hidden="true" />
+        {offline ? "Server not reachable. Retrying…" : "Loading…"}
+      </div>);
+
   }
 
   const ranked = snap.cases;
   const rankOf = (id) => ranked.findIndex((c) => c.id === id) + 1;
-  const openCase = (id) => { setDialog(null); setView("map"); setSelected({ kind: "case", id }); };
+  const openCase = (id) => {setDialog(null);setView("map");setSelected({ kind: "case", id });};
   const onOpen = (what) => {
-    if (what === "teams") setView((v) => (v === "teams" ? "map" : "teams"));
-    else if (what === "weights") { setView("map"); setSelected(null); setWeightsOpen((o) => !o); }
-    else setDialog(what);
+    if (what === "teams") setView((v) => v === "teams" ? "map" : "teams");else
+    if (what === "weights") {setView("map");setSelected(null);setWeightsOpen((o) => !o);} else
+    setDialog(what);
   };
   const close = () => setDialog(null);
 
   return (
     <div className="app">
       <TopBar snap={snap} offline={offline} profiles={profiles} refresh={refresh} onOpen={onOpen}
-              view={view} weightsOpen={weightsOpen} replay={replay} />
-      {view === "teams" ? (
-        <main className="resources-pane">
+      view={view} weightsOpen={weightsOpen} replay={replay} />
+      {view === "teams" ?
+      <main className="resources-pane">
           <TeamsPanel snap={snap} profiles={profiles} refresh={refresh} onOpenCase={openCase} />
-        </main>
-      ) : (
+        </main> :
+
       <main className="main">
-        <section className="map-pane">
+        <section className="map-pane" aria-label="Operations map">
           <MapView snap={snap} selected={selected} onSelect={setSelected} />
         </section>
         <aside className="side-pane">
-          {selected?.kind === "case" && (
-            <CaseCard caseId={selected.id} rank={rankOf(selected.id)} rev={snap.rev}
-                      onClose={() => setSelected(null)} refresh={refresh} />
-          )}
-          {selected?.kind === "zone" && (
-            <ZoneCard name={selected.name} rev={snap.rev} onClose={() => setSelected(null)}
-                      onOpenCase={(id) => setSelected({ kind: "case", id })} refresh={refresh} />
-          )}
+          {selected?.kind === "case" &&
+          <CaseCard caseId={selected.id} rank={rankOf(selected.id)} rev={snap.rev}
+          onClose={() => setSelected(null)} refresh={refresh} />
+          }
+          {selected?.kind === "zone" &&
+          <ZoneCard name={selected.name} rev={snap.rev} onClose={() => setSelected(null)}
+          onOpenCase={(id) => setSelected({ kind: "case", id })} refresh={refresh} />
+          }
           {!selected && weightsOpen && <WeightsPanel refresh={refresh} onClose={() => setWeightsOpen(false)} />}
           {!selected && <CaseList cases={ranked} onSelect={(id) => setSelected({ kind: "case", id })} />}
         </aside>
       </main>
-      )}
+      }
       <BottomStrip snap={snap} replay={replay} />
       {dialog === "alert" && <AlertComposer snap={snap} profiles={profiles} refresh={refresh} onClose={close} />}
       {dialog === "intake" && <IntakeForm snap={snap} profiles={profiles} refresh={refresh} onClose={close} onOpenCase={openCase} />}
@@ -124,6 +129,6 @@ export default function App() {
       {dialog === "chaos" && <ChaosPanel refresh={refresh} onClose={close} onOpenCase={openCase} />}
       {dialog === "setup" && <SetupQR onClose={close} />}
       {dialog === "replay" && <ReplayPanel replay={replay} refresh={refreshAll} onClose={close} />}
-    </div>
-  );
+    </div>);
+
 }

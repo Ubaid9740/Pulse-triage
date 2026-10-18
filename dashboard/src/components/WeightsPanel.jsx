@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { get, post } from "../api.js";
 import { label } from "../format.js";
+import Icon from "./Icon.jsx";
 
 const TEXT = {
   cannot_walk: "Cannot walk or leave",
@@ -9,7 +10,7 @@ const TEXT = {
   alone: "Alone",
   window: "Window closing (road floods, light fades)",
   person: "Points per person",
-  people_max: "Most points for people",
+  people_max: "Most points for people"
 };
 const MAX = 50;
 
@@ -24,7 +25,7 @@ export default function WeightsPanel({ refresh, onClose }) {
   const timer = useRef(null);
 
   useEffect(() => {
-    get("/api/settings/weights").then((w) => { setWeights(w.weights); setDefaults(w.defaults); }).catch((e) => setError(e.message));
+    get("/api/settings/weights").then((w) => {setWeights(w.weights);setDefaults(w.defaults);}).catch((e) => setError(e.message));
     return () => clearTimeout(timer.current);
   }, []);
 
@@ -53,27 +54,27 @@ export default function WeightsPanel({ refresh, onClose }) {
 
   const changed = weights && Object.keys(defaults).some((k) => weights[k] !== defaults[k]);
   return (
-    <div className="weights">
+    <section className="weights" aria-label="Scoring weights">
       <div className="weights-head">
-        <h2>Weights</h2>
-        <button className="close" onClick={onClose} aria-label="Close weights">×</button>
+        <h2><Icon name="sliders" size={15} />Weights</h2>
+        <button className="icon-btn" onClick={onClose} aria-label="Close weights"><Icon name="x" size={16} /></button>
       </div>
       <p className="muted small-text">Points each rule adds before the trust multiplier. Changes apply to every open case.</p>
       {!weights && !error && <p className="muted">Loading…</p>}
-      {weights && Object.keys(defaults).map((key) => (
-        <label key={key} className="slider">
+      {weights && Object.keys(defaults).map((key) =>
+      <label key={key} className="slider">
           <span>{TEXT[key] || label(key)}</span>
           <input type="range" min="0" max={MAX} step="1" value={weights[key]} onChange={(e) => change(key, Number(e.target.value))} />
           <b className={weights[key] !== defaults[key] ? "changed" : ""}>{weights[key]}</b>
         </label>
-      ))}
+      )}
       <div className="weights-foot">
-        <button disabled={!changed} onClick={() => { clearTimeout(timer.current); pending.current = {}; save({ reset: true }); }}>
+        <button disabled={!changed} onClick={() => {clearTimeout(timer.current);pending.current = {};save({ reset: true });}}>
           Back to defaults
         </button>
-        {note && <span className="muted small-text">{note}</span>}
+        {note && <span className="ok small-text">{note}</span>}
         {error && <span className="error">{error}</span>}
       </div>
-    </div>
-  );
+    </section>);
+
 }
