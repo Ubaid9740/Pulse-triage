@@ -14,7 +14,16 @@ import { PacketStore } from "../core/store.js";
 import { ServerLink } from "../core/sync.js";
 import { teamPing, volunteerSetup } from "../core/payloads.js";
 
-setRandom(Crypto.getRandomBytes);
+try {
+  setRandom(Crypto.getRandomBytes);
+} catch (e) {
+  console.warn("Falling back to Math.random for PRNG:", e);
+  setRandom((n) => {
+    const arr = new Uint8Array(n);
+    for (let i = 0; i < n; i++) arr[i] = Math.floor(Math.random() * 256);
+    return arr;
+  });
+}
 
 // Secure storage for the device keys; fall back safely if keystore is unavailable in dev clients.
 const SecureStore = {
