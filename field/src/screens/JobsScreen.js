@@ -18,6 +18,18 @@ export default function JobsScreen({ back }) {
   const [error, setError] = useState(null);
   const step = job ? settings.jobStatus?.[job.job_id] || "assigned" : null;
 
+  if (!settings?.sign_pk || !settings?.box_pk) {
+    return (
+      <Screen title="Jobs" onBack={back}>
+        <Section title="Verification Required">
+          <Text style={{ color: C.orange, fontWeight: "700" }}>Command Post QR Scan Required</Text>
+          <Muted>You must scan the Command Post setup QR code to receive authentic signing and encryption keys before unlocking team jobs.</Muted>
+          <Button title="Back to home" onPress={back} />
+        </Section>
+      </Screen>
+    );
+  }
+
   useEffect(() => {
     position().then(setWhere).catch(() => {});
     const t = setInterval(() => position().then(setWhere).catch(() => {}), 20000);

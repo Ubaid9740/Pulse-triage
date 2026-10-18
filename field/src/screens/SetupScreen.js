@@ -14,9 +14,24 @@ const ROLES = [
 const SKILLS = ["boat", "4x4", "nurse_doctor", "first_aid", "swimmer", "search_rescue", "other"];   // payloads/volunteer.schema.json
 const TEAM_TYPES = ["boat", "truck", "medic", "rescue", "fire", "welfare", "volunteer"];
 
+const DEFAULT_SERVERS = [
+  "http://192.168.100.72:8000",
+  "http://10.0.2.2:8000",
+  "http://127.0.0.1:8000",
+  "http://localhost:8000",
+];
+
+const DEFAULT_FALLBACK_QR = {
+  v: 1,
+  servers: DEFAULT_SERVERS,
+  sign_pk: "",
+  box_pk: "",
+  zones: [],
+};
+
 function checkQr(doc) {
   if (!doc || doc.v !== 1 || !Array.isArray(doc.servers) || !doc.sign_pk || !doc.box_pk) {
-    throw new Error("That is not a PulseTriage setup code.");
+    throw new Error("That is not a valid PulseTriage setup code (missing sign_pk or box_pk).");
   }
   return doc;
 }
@@ -28,6 +43,7 @@ export default function SetupScreen() {
   const [skills, setSkills] = useState([]);
   const [teamType, setTeamType] = useState("volunteer");
   const [scanning, setScanning] = useState(false);
+  const [showAdvanced, setShowAdvanced] = useState(false);
   const [address, setAddress] = useState("http://192.168.");
   const [error, setError] = useState(null);
   const [busy, setBusy] = useState(false);
@@ -36,7 +52,48 @@ export default function SetupScreen() {
     setBusy(true);
     setError(null);
     try {
-      await setup({ role, name: name.trim(), skills, teamType: role === "helper" ? null : teamType, qr: checkQr(qr) });
+      await setup({
+        role,
+        name: name.trim(),
+        skills: role === "helper" ? [] : skills,
+        teamType: role === "helper" ? null : teamType,
+        qr: checkQr(qr),
+      });
+    } catch (e) {
+      setError(e.message);
+      setBusy(false);
+    }
+  }
+
+  async function finishHelper() {
+    setBusy(true);
+    setError(null);
+    let chosenQr = DEFAULT_FALLBACK_QR;
+    for (const srv of DEFAULT_SERVERS) {
+      try {
+        const controller = new AbortController();
+        const tid = setTimeout(() => controller.abort(), 600);
+        const res = await fetch(`${srv}/api/setup-qr`, { signal: controller.signal });
+        clearTimeout(tid);
+        if (res.ok) {
+          const live = await res.json();
+          if (live && live.v === 1) {
+            chosenQr = { ...live, servers: [srv, ...(live.servers || []).filter((x) => x !== srv)] };
+            break;
+          }
+        }
+      } catch {
+        // Continue to fallback
+      }
+    }
+    try {
+      await setup({
+        role: "helper",
+        name: name.trim(),
+        skills: [],
+        teamType: null,
+        qr: chosenQr,
+      });
     } catch (e) {
       setError(e.message);
       setBusy(false);
@@ -45,12 +102,15 @@ export default function SetupScreen() {
 
   async function fromAddress() {
     try {
+      setBusy(true);
+      setError(null);
       const base = address.trim().replace(/\/+$/, "");
       const res = await fetch(`${base}/api/setup-qr`);
       const qr = await res.json();
       await finish({ ...qr, servers: [base, ...qr.servers.filter((x) => x !== base)] });
     } catch (e) {
       setError(`Could not reach ${address}: ${e.message}`);
+      setBusy(false);
     }
   }
 
@@ -59,45 +119,134 @@ export default function SetupScreen() {
       <Section title="Who are you?">
         {ROLES.map(([id, title, text]) => (
           <View key={id} style={{ gap: 4 }}>
-            <Chip label={title} on={role === id} onPress={() => setRole(id)} />
+            <Chip label={title} on={role === id} onPress={() => { setRole(id); setError(null); }} />
             <Muted>{text}</Muted>
           </View>
         ))}
       </Section>
+
       <Section title="Name (optional)">
-        <TextInput style={s.input} value={name} onChangeText={setName} placeholder={role === "helper" ? "Your first name" : "e.g. Boat 7"} maxLength={60} />
+        <TextInput
+          style={s.input}
+          value={name}
+          onChangeText={setName}
+          placeholder={role === "helper" ? "Your first name" : "e.g. Boat 7"}
+          maxLength={60}
+        />
       </Section>
-      {role !== "helper" && (
+
+      {role === "helper" ? (
+        <Section title="Quick Start">
+          <Muted>
+            Helpers can start reporting emergencies immediately without scanning. Default fallback command post connection is enabled.
+          </Muted>
+          <Button
+            title={busy ? "Starting…" : "Start as Helper"}
+            kind="primary"
+            big
+            onPress={finishHelper}
+            disabled={busy}
+          />
+
+          <View style={{ marginTop: 12 }}>
+            <Button
+              title={showAdvanced ? "Hide QR / Address Setup" : "Optional: Scan Command Post QR"}
+              kind="plain"
+              onPress={() => setShowAdvanced(!showAdvanced)}
+            />
+          </View>
+
+          {showAdvanced && (
+            <View style={{ marginTop: 8, gap: 8 }}>
+              {scanning ? (
+                <QrScanner
+                  onCode={(text) => {
+                    try {
+                      setScanning(false);
+                      finish(JSON.parse(text));
+                    } catch {
+                      setError("That is not a PulseTriage setup code.");
+                    }
+                  }}
+                />
+              ) : (
+                <Button title="Scan Setup QR" kind="dark" onPress={() => setScanning(true)} disabled={busy} />
+              )}
+              <Text style={{ fontWeight: "700", marginTop: 4 }}>Or type Command Post address</Text>
+              <TextInput
+                style={s.input}
+                value={address}
+                onChangeText={setAddress}
+                autoCapitalize="none"
+                keyboardType="url"
+                placeholder="http://192.168.1.20:8000"
+              />
+              <Button title={busy ? "Connecting…" : "Connect"} onPress={fromAddress} disabled={busy} />
+            </View>
+          )}
+          <Err>{error}</Err>
+        </Section>
+      ) : (
         <>
-          <Section title="Skills">
-            <Row>{SKILLS.map((k) => <Chip key={k} label={label(k)} on={skills.includes(k)}
-              onPress={() => setSkills((old) => (old.includes(k) ? old.filter((x) => x !== k) : [...old, k]))} />)}</Row>
+          <Section title="Capabilities & Skills">
+            <Muted>Select any resources or skills your team has available:</Muted>
+            <Row>
+              {SKILLS.map((k) => (
+                <Chip
+                  key={k}
+                  label={label(k)}
+                  on={skills.includes(k)}
+                  onPress={() => setSkills((old) => (old.includes(k) ? old.filter((x) => x !== k) : [...old, k]))}
+                />
+              ))}
+            </Row>
           </Section>
+
           <Section title="Team type">
-            <Row>{TEAM_TYPES.map((t) => <Chip key={t} label={label(t)} on={teamType === t} onPress={() => setTeamType(t)} />)}</Row>
+            <Row>
+              {TEAM_TYPES.map((t) => (
+                <Chip key={t} label={label(t)} on={teamType === t} onPress={() => setTeamType(t)} />
+              ))}
+            </Row>
+          </Section>
+
+          <Section title="Command Post Verification Required">
+            <View style={{ backgroundColor: "#eff6ff", borderColor: "#93c5fd", borderWidth: 1, borderRadius: 8, padding: 12, gap: 4, marginBottom: 8 }}>
+              <Text style={{ fontWeight: "800", color: "#1d4ed8" }}>Command Post QR Scan Required</Text>
+              <Muted>
+                {role === "rescue_team" ? "Rescue teams" : "Volunteers"} must scan the Command Post setup QR code to authenticate their device, receive authentic alert signing keys (sign_pk), and box keys (box_pk) to unlock team jobs and outreach.
+              </Muted>
+            </View>
+
+            {scanning ? (
+              <QrScanner
+                onCode={(text) => {
+                  try {
+                    setScanning(false);
+                    finish(JSON.parse(text));
+                  } catch {
+                    setError("That is not a PulseTriage setup code.");
+                  }
+                }}
+              />
+            ) : (
+              <Button title="Scan the setup QR" kind="primary" big onPress={() => setScanning(true)} disabled={busy} />
+            )}
+
+            <Text style={{ fontWeight: "700", marginTop: 10 }}>Or enter Command Post address</Text>
+            <TextInput
+              style={s.input}
+              value={address}
+              onChangeText={setAddress}
+              autoCapitalize="none"
+              keyboardType="url"
+              placeholder="http://192.168.1.20:8000"
+            />
+            <Button title={busy ? "Verifying…" : "Connect & Verify"} kind="dark" onPress={fromAddress} disabled={busy} />
+            <Err>{error}</Err>
           </Section>
         </>
       )}
-      <Section title="Connect to the command post">
-        <Muted>Scan the setup code on the dashboard (Phone setup). It saves the server address and the key that proves alerts are real.</Muted>
-        {scanning ? (
-          <QrScanner onCode={(text) => {
-            try {
-              setScanning(false);
-              finish(JSON.parse(text));
-            } catch {
-              setError("That is not a PulseTriage setup code.");
-            }
-          }} />
-        ) : (
-          <Button title="Scan the setup QR" kind="dark" big onPress={() => setScanning(true)} disabled={busy} />
-        )}
-        <Text style={{ fontWeight: "700", marginTop: 6 }}>Or type the laptop's address</Text>
-        <TextInput style={s.input} value={address} onChangeText={setAddress} autoCapitalize="none" keyboardType="url"
-          placeholder="http://192.168.1.20:8000" />
-        <Button title={busy ? "Setting up…" : "Connect"} onPress={fromAddress} disabled={busy} />
-        <Err>{error}</Err>
-      </Section>
     </Screen>
   );
 }

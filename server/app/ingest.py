@@ -221,6 +221,10 @@ class Ingestor:
             elif kind == "welfare_check":
                 case_id = self.coverage.record_check(conn, body, payload, created, received_at)
             elif kind == "volunteer":
+                role = payload.get("role")
+                if role in ("volunteer", "rescue_team"):
+                    conn.execute("UPDATE devices SET trusted = 1, role = ? WHERE id = ?",
+                                 (role, body["from_device"]))
                 self.teams.upsert_volunteer(conn, body, payload, created, received_at)
             elif kind == "ack":
                 case_id = self.teams.on_ack(conn, body, payload, created, received_at)

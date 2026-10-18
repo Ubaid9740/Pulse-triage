@@ -119,15 +119,28 @@ export function AppProvider({ children }) {
 
   // First launch: keys, device ID, the setup QR's servers and keys, and for volunteers and
   // rescue teams a "volunteer" packet so the command post adds them as a team.
-  const setup = useCallback(async ({ role, name, skills, teamType, qr }) => {
+  const setup = useCallback(async ({ role, name, skills = [], teamType = null, qr }) => {
     const k = newKeys();
     await SecureStore.setItemAsync(KEYS, JSON.stringify(k));
-    const next = { role, name, skills, teamType, device: deviceIdFor(k.publicKey), servers: qr.servers,
-      sign_pk: qr.sign_pk, box_pk: qr.box_pk, zones: qr.zones || [], cursor: 0, team_id: null, fuel: "full",
-      jobStatus: {} };
+    const next = {
+      role,
+      name: name || (role === "helper" ? "Helper" : role),
+      skills,
+      capabilities: skills,
+      teamType,
+      device: deviceIdFor(k.publicKey),
+      servers: qr?.servers || [],
+      sign_pk: qr?.sign_pk || "",
+      box_pk: qr?.box_pk || "",
+      zones: qr?.zones || [],
+      cursor: 0,
+      team_id: null,
+      fuel: "full",
+      jobStatus: {},
+    };
     setKeys(k);
     await saveSettings(next);
-    for (const base of qr.servers) {
+    for (const base of (qr?.servers || [])) {
       try {
         const res = await fetch(`${base}/api/profiles`);
         if (res.ok) {
@@ -143,7 +156,7 @@ export function AppProvider({ children }) {
     if (TEAM_ROLES.includes(role)) {
       const where = await position().catch(() => null);
       const wire = makeWire("volunteer", volunteerSetup({ name: name || role, role, teamType, skills,
-        lat: where?.lat ?? null, lng: where?.lng ?? null }), { device: next.device, keys: k, boxPk: qr.box_pk, urgency: 2,
+        lat: where?.lat ?? null, lng: where?.lng ?? null }), { device: next.device, keys: k, boxPk: qr?.box_pk || null, urgency: 2,
         area: geohash(where?.lat ?? null, where?.lng ?? null) });
       store.add(wire, { mine: true });
       await store.save();

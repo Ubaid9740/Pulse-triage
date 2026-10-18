@@ -27,7 +27,7 @@ class DeviceBook:
     def views(self) -> list[dict]:
         rows = self.db.all("SELECT d.*, t.id AS team_id FROM devices d LEFT JOIN teams t ON t.device_id = d.id "
                            "ORDER BY d.last_upload_at DESC, d.id")
-        return [{"id": r["id"], "team_id": r["team_id"], "trusted": bool(r["trusted"]), "revoked": bool(r["revoked"]),
+        return [{"id": r["id"], "team_id": r["team_id"], "role": r["role"], "trusted": bool(r["trusted"]), "revoked": bool(r["revoked"]),
                  "first_seen": r["first_seen"], "last_upload_at": r["last_upload_at"]} for r in rows]
 
     def revoke(self, device_id: str, revoked: bool, reason: str, by: str, now: datetime | None = None) -> dict:

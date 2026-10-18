@@ -40,10 +40,19 @@ export default function HomeScreen({ go }) {
 
       <Button big kind="primary" title="Report someone who needs help" onPress={() => go("report", { hazard: alert?.hazard, alertId: alert?.alert_id })} />
 
-      {team && (
+      {team && Boolean(settings.sign_pk && settings.box_pk) && (
         <Button title={job ? `Job ${job.job_id}: ${job.summary}` : "Jobs (none yet)"} kind={job ? "blue" : "plain"} onPress={() => go("jobs")} />
       )}
-      {settings.role !== "helper" && <Button title="I checked on someone (welfare check)" onPress={() => go("welfare")} />}
+      {settings.role !== "helper" && Boolean(settings.sign_pk && settings.box_pk) && (
+        <Button title="I checked on someone (welfare check)" onPress={() => go("welfare")} />
+      )}
+      {team && (!settings.sign_pk || !settings.box_pk) && (
+        <Section>
+          <Text style={{ color: C.orange, fontWeight: "700" }}>Command Post QR scan required</Text>
+          <Muted>Scan the Command Post setup QR to receive authentic keys and unlock Jobs and Welfare checks.</Muted>
+          <Button title="Verify Device in Settings" onPress={() => go("settings")} />
+        </Section>
+      )}
       <Button title="Mesh and QR: pass messages phone to phone" onPress={() => go("mesh")} />
 
       <Section>

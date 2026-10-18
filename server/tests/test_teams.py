@@ -85,6 +85,34 @@ def test_volunteer_packets_make_or_claim_teams(client, schemas):
     resp = client.post("/api/teams", json={"id": "boat_9", "name": "Boat 9", "type": "boat", "device_id": "dev_BOAT2"})
     assert resp.status_code == 400 and "already belongs to team boat_2" in resp.json()["detail"]
     assert client.post("/api/teams", json={"name": "Raft", "type": "raft"}).status_code == 400
+    devices = {d["id"]: d for d in client.get("/api/devices").json()["devices"]}
+    assert devices["dev_B3"]["trusted"] is True
+    assert devices["dev_B3"]["role"] == "rescue_team"
+    assert devices["dev_BOAT2"]["trusted"] is True
+
+
+def test_trusted_rescue_team_vs_unverified_helper_confidence(client):
+    """System Design 10.1: registered rescue teams start with 0.9 confidence, unverified helpers 0.5."""
+    rescue_phone = Phone(client, "dev_RESCUE_1")
+    rescue_phone.send(rescue_phone.wire("volunteer", payload={"name": "Rescue 1", "role": "rescue_team",
+                                                             "team_type": "rescue", "skills": ["search_rescue"]}))
+    rep = rescue_phone.send(rescue_phone.wire("report", payload={"hazard": "flood", "for_whom": "other", "people": 1,
+                                                                 "conditions": [], "details": {}, "lat": 0.0123, "lng": 0.0456,
+                                                                 "gps_accuracy_m": 10, "reporter_role": "rescue_team"}))
+    assert len(rep["accepted"]) == 1
+    cases_after_rescue = client.get("/api/snapshot").json()["cases"]
+    c_rescue = next(c for c in cases_after_rescue if c["lat"] == 0.0123)
+    assert c_rescue["confidence"] == 1.0  # 0.9 (start) + 0.1 (GPS bonus)
+
+    helper_phone = Phone(client, "dev_UNVERIFIED_HELPER")
+    h_rep = helper_phone.send(helper_phone.wire("report", payload={"hazard": "flood", "for_whom": "neighbour", "people": 1,
+                                                                   "conditions": [], "details": {}, "lat": 0.02, "lng": 0.05,
+                                                                   "gps_accuracy_m": 10, "reporter_role": "helper"}))
+    assert len(h_rep["accepted"]) == 1
+    cases_after_helper = client.get("/api/snapshot").json()["cases"]
+    c_helper = next(c for c in cases_after_helper if c["lat"] == 0.02)
+    assert c_helper["confidence"] == 0.6  # 0.5 (unknown_phone start) + 0.1 (GPS bonus)
+
 
 
 # ---- a job from start to finish --------------------------------------------------------------------------

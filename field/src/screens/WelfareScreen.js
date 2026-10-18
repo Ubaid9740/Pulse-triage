@@ -6,13 +6,25 @@ import { Button, C, Chip, Err, Muted, Row, Screen, Section, s } from "../shell/u
 import { welfareCheck } from "../core/payloads.js";
 
 export default function WelfareScreen({ back, go }) {
-  const { send, position } = useApp();
+  const { settings, send, position } = useApp();
   const [registryId, setRegistryId] = useState("");
   const [landmark, setLandmark] = useState("");
   const [note, setNote] = useState("");
   const [result, setResult] = useState("safe");
   const [done, setDone] = useState(false);
   const [error, setError] = useState(null);
+
+  if (!settings?.sign_pk || !settings?.box_pk) {
+    return (
+      <Screen title="Welfare check" onBack={back}>
+        <Section title="Verification Required">
+          <Text style={{ color: C.orange, fontWeight: "700" }}>Command Post QR Scan Required</Text>
+          <Muted>You must scan the Command Post setup QR code to receive authentic signing and encryption keys before unlocking welfare checks.</Muted>
+          <Button title="Back to home" onPress={back} />
+        </Section>
+      </Screen>
+    );
+  }
 
   async function submit() {
     setError(null);
