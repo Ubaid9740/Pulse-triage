@@ -96,7 +96,7 @@ export default function HomeScreen({ go }) {
       }
 
       <View style={ui.group}>
-        {tools.map((t, i) => <ListAction key={t.key} first={i === 0} {...t} />)}
+        {tools.map(({ key, ...t }, i) => <ListAction key={key} first={i === 0} {...t} />)}
       </View>
 
       <Section title="Connection" right={<Pill tone={status.online ? "success" : "warning"} icon={status.online ? "wifi" : "wifiOff"}
