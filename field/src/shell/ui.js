@@ -1,5 +1,5 @@
 // Small shared building blocks: big touch targets, high contrast, readable outdoors.
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export const C = {
   ink: "#1d2433", muted: "#5b6472", line: "#d9dee5", bg: "#f4f5f7", panel: "#ffffff",
@@ -8,10 +8,18 @@ export const C = {
 export const BAND = { watch: C.yellow, warning: C.orange, emergency: C.red };
 
 export function Screen({ title, onBack, children, right }) {
+  const isPulse = title === "Pulse" || (typeof title === "string" && title.startsWith("Pulse"));
   return (
     <View style={s.screen}>
       <View style={s.header}>
         {onBack ? <Pressable onPress={onBack} style={s.back} accessibilityLabel="Back"><Text style={s.backText}>‹</Text></Pressable> : null}
+        {isPulse && (
+          <Image
+            source={require("../../assets/pulse-mark.png")}
+            style={s.headerLogo}
+            resizeMode="contain"
+          />
+        )}
         <Text style={s.title} numberOfLines={1}>{title}</Text>
         {right}
       </View>
@@ -58,6 +66,7 @@ export const s = StyleSheet.create({
   screen: { flex: 1, backgroundColor: C.bg },
   header: { flexDirection: "row", alignItems: "center", gap: 8, paddingHorizontal: 16, paddingTop: 44, paddingBottom: 12,
     backgroundColor: C.ink },
+  headerLogo: { width: 26, height: 26, borderRadius: 6, marginRight: 2 },
   back: { paddingRight: 8 },
   backText: { color: "#fff", fontSize: 30, lineHeight: 30 },
   title: { color: "#fff", fontSize: 20, fontWeight: "700", flex: 1 },
