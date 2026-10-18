@@ -1,8 +1,5 @@
-// Pulse field app: setup, home, alert, report, welfare check, jobs, mesh and QR.
-// Navigation is a small stack in state; Android's back button pops it. A screen with unsaved input
-// can set a leave guard (setLeaveGuard) so Back asks before throwing the input away.
-import { useEffect, useRef, useState } from "react";
-import { ActivityIndicator, BackHandler, Image, Text, View } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { ActivityIndicator, BackHandler, Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { AppProvider, useApp } from "./src/shell/AppState";
 import { T } from "./src/shell/theme";
@@ -14,6 +11,41 @@ import WelfareScreen from "./src/screens/WelfareScreen";
 import JobsScreen from "./src/screens/JobsScreen";
 import MeshScreen from "./src/screens/MeshScreen";
 import SettingsScreen from "./src/screens/SettingsScreen";
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+  componentDidCatch(error, errorInfo) {
+    console.error("App render crash caught:", error, errorInfo);
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <View style={errStyles.container}>
+          <Text style={errStyles.title}>Pulse Error</Text>
+          <Text style={errStyles.subtitle}>The application encountered an error while rendering.</Text>
+          <ScrollView style={errStyles.scroll}>
+            <Text style={errStyles.error}>{String(this.state.error?.stack || this.state.error?.message || this.state.error)}</Text>
+          </ScrollView>
+        </View>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+const errStyles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: "#FFF", padding: 24, justifyContent: "center" },
+  title: { fontSize: 22, fontWeight: "800", color: "#C4231B", marginBottom: 8 },
+  subtitle: { fontSize: 15, color: "#566275", marginBottom: 16 },
+  scroll: { maxHeight: 300, backgroundColor: "#F7F9FB", padding: 12, borderRadius: 8 },
+  error: { fontSize: 13, color: "#2B3A4F", fontFamily: "monospace" },
+});
 
 const SCREENS = { home: HomeScreen, alert: AlertScreen, report: ReportScreen, welfare: WelfareScreen, jobs: JobsScreen,
   mesh: MeshScreen, settings: SettingsScreen };
@@ -59,9 +91,11 @@ function Router() {
 
 export default function App() {
   return (
-    <AppProvider>
-      <StatusBar style="dark" />
-      <Router />
-    </AppProvider>);
-
+    <ErrorBoundary>
+      <AppProvider>
+        <StatusBar style="dark" />
+        <Router />
+      </AppProvider>
+    </ErrorBoundary>
+  );
 }
