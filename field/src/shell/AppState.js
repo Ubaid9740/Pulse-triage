@@ -14,45 +14,13 @@ import { PacketStore } from "../core/store.js";
 import { ServerLink } from "../core/sync.js";
 import { teamPing, volunteerSetup } from "../core/payloads.js";
 
-try {
-  setRandom(Crypto.getRandomBytes);
-} catch (e) {
-  console.warn("Falling back to Math.random for PRNG:", e);
-  setRandom((n) => {
-    const arr = new Uint8Array(n);
-    for (let i = 0; i < n; i++) arr[i] = Math.floor(Math.random() * 256);
-    return arr;
-  });
-}
+setRandom(Crypto.getRandomBytes);
 
-// Secure storage for the device keys; fall back safely if keystore is unavailable in dev clients.
-const SecureStore = {
-  getItemAsync: async (k) => {
-    try {
-      if (Platform.OS !== "web" && (await SecureStoreNative.isAvailableAsync?.())) {
-        const val = await SecureStoreNative.getItemAsync(k);
-        if (val != null) return val;
-      }
-    } catch {}
-    return AsyncStorage.getItem(k);
-  },
-  setItemAsync: async (k, v) => {
-    try {
-      if (Platform.OS !== "web" && (await SecureStoreNative.isAvailableAsync?.())) {
-        await SecureStoreNative.setItemAsync(k, v);
-      }
-    } catch {}
-    return AsyncStorage.setItem(k, v);
-  },
-  deleteItemAsync: async (k) => {
-    try {
-      if (Platform.OS !== "web" && (await SecureStoreNative.isAvailableAsync?.())) {
-        await SecureStoreNative.deleteItemAsync(k);
-      }
-    } catch {}
-    return AsyncStorage.removeItem(k);
-  }
-};
+// Secure storage for the device keys; the web build (a development preview only) has none.
+const SecureStore = Platform.OS === "web"
+  ? { getItemAsync: (k) => AsyncStorage.getItem(k), setItemAsync: (k, v) => AsyncStorage.setItem(k, v),
+      deleteItemAsync: (k) => AsyncStorage.removeItem(k) }
+  : SecureStoreNative;
 
 const SETTINGS = "pt.settings.v1";
 const PROFILES = "pt.profiles.v1";
@@ -81,21 +49,16 @@ export function AppProvider({ children }) {
   // Load everything saved on the phone.
   useEffect(() => {
     (async () => {
-      try {
-        await store.load();
-        const saved = JSON.parse((await AsyncStorage.getItem(SETTINGS)) || "null");
-        const savedKeys = JSON.parse((await SecureStore.getItemAsync(KEYS)) || "null");
-        const savedProfiles = JSON.parse((await AsyncStorage.getItem(PROFILES)) || "null");
-        if (savedProfiles) setProfiles(savedProfiles);
-        if (saved && savedKeys) {
-          setSettings(saved);
-          setKeys(savedKeys);
-        }
-      } catch (err) {
-        console.warn("Failed to load saved state, falling back to setup:", err);
-      } finally {
-        setReady(true);
+      await store.load();
+      const saved = JSON.parse((await AsyncStorage.getItem(SETTINGS)) || "null");
+      const savedKeys = JSON.parse((await SecureStore.getItemAsync(KEYS)) || "null");
+      const savedProfiles = JSON.parse((await AsyncStorage.getItem(PROFILES)) || "null");
+      if (savedProfiles) setProfiles(savedProfiles);
+      if (saved && savedKeys) {
+        setSettings(saved);
+        setKeys(savedKeys);
       }
+      setReady(true);
     })();
     return store.onChange(() => setVersion((v) => v + 1));
   }, [store]);
