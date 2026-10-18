@@ -17,10 +17,12 @@ const SKILLS = ["boat", "4x4", "nurse_doctor", "first_aid", "swimmer", "search_r
 const TEAM_TYPES = ["boat", "truck", "medic", "rescue", "fire", "welfare", "volunteer"];
 
 const DEFAULT_SERVERS = [
-"http://192.168.100.72:8000",
-"http://10.0.2.2:8000",
-"http://127.0.0.1:8000",
-"http://localhost:8000"];
+  ...(process.env.EXPO_PUBLIC_SERVER_URL ? [process.env.EXPO_PUBLIC_SERVER_URL.replace(/\/+$/, "")] : []),
+  "http://192.168.100.72:8000",
+  "http://10.0.2.2:8000",
+  "http://127.0.0.1:8000",
+  "http://localhost:8000"
+];
 
 const DEFAULT_FALLBACK_QR = {
   v: 1,
