@@ -1,0 +1,67 @@
+{
+  "hazard": "common",
+  "label": { "en": "Any disaster" },
+  "source_note": "Rules, questions and keywords that apply to every disaster. Hours are demo defaults, not medical advice; check them with local health services.",
+  "conditions": [
+    "elderly", "child", "infant", "pregnant", "cannot_walk", "disabled", "oxygen", "dialysis", "insulin",
+    "power_dependent", "other_medicine", "injured", "bleeding", "unconscious", "alone", "no_food_water"
+  ],
+  "questions": [
+    { "id": "power_out", "ask": { "en": "Is the power out?" }, "type": "yesno" }
+  ],
+  "hours_rules": [
+    { "all": ["cond:unconscious|bleeding"], "hours": 0.5, "text": "Unconscious or heavy bleeding" },
+    { "all": ["cond:oxygen"], "hours": 3, "text": "Needs oxygen" },
+    { "all": ["cond:power_dependent", "power_out"], "hours": 3, "text": "Medical device without power" },
+    { "all": ["cond:injured"], "hours": 4, "text": "Injured" },
+    { "all": ["cond:dialysis|insulin"], "hours": 12, "text": "Needs dialysis or insulin" },
+    { "all": ["cond:no_food_water"], "hours": 12, "text": "No food or drinking water" }
+  ],
+  "needs_rules": [
+    { "all": ["cond:oxygen|bleeding|unconscious|injured"], "need": "medic" }
+  ],
+  "supply_rules": [
+    { "all": ["cond:oxygen"], "item": "oxygen_cylinder" },
+    { "all": ["cond:insulin"], "item": "insulin" },
+    { "all": ["cond:bleeding|injured"], "item": "first_aid_kit" },
+    { "all": ["cond:no_food_water"], "item": "drinking_water" }
+  ],
+  "keywords": {
+    "cond:elderly": ["elderly", "old man", "old woman", "old lady", "grandmother", "grandfather", "grandma", "grandpa", "aged"],
+    "cond:child": ["child", "children", "kid", "kids", "son", "daughter"],
+    "cond:infant": ["baby", "infant", "newborn", "toddler"],
+    "cond:pregnant": ["pregnant", "expecting a baby", "in labour", "in labor"],
+    "cond:cannot_walk": ["cant walk", "can't walk", "cannot walk", "bedridden", "wheelchair", "paralysed", "paralyzed"],
+    "cond:disabled": ["disabled", "disability", "blind", "deaf"],
+    "cond:oxygen": ["oxygen", "cylinder", "concentrator"],
+    "cond:dialysis": ["dialysis", "kidney patient"],
+    "cond:insulin": ["insulin", "diabetic", "diabetes"],
+    "cond:power_dependent": ["ventilator", "cpap", "machine needs power"],
+    "cond:injured": ["injured", "hurt", "broken leg", "broken arm", "fracture", "wound"],
+    "cond:bleeding": ["bleeding", "lot of blood"],
+    "cond:unconscious": ["unconscious", "not waking", "not responding", "unresponsive"],
+    "cond:alone": ["alone", "lives alone", "by herself", "by himself", "nobody with"],
+    "cond:no_food_water": ["no food", "no water", "nothing to eat", "no drinking water"],
+    "power_out": ["no power", "power cut", "power gone", "no electricity", "blackout"]
+  },
+  "supplies": ["drinking_water", "food_pack", "first_aid_kit", "oxygen_cylinder", "insulin", "blanket", "fuel"],
+  "all_clear": {
+    "en": {
+      "headline": "All clear for {zones}",
+      "do_now": [
+        "The danger has passed, but take care",
+        "Keep checking on neighbours who may need help",
+        "Report anyone who still needs help"
+      ]
+    }
+  },
+  "announcement": {
+    "en": {
+      "intro": "Attention {zones}: an official message from the command post.",
+      "place": "If you need to leave, go to {places}.",
+      "pass_on": "Please pass this on and check on your neighbours.",
+      "repeat": "Again: {headline}",
+      "and": "and"
+    }
+  }
+}

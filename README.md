@@ -8,7 +8,7 @@ CODE//CONNECT'26, Problem 01. Design: `System Design.pdf` and `PulseTriage-Team-
 | `shared/` | The contract: formats (JSON Schemas), examples, hazard profiles, constants | Everyone |
 | `server/` | Command server: FastAPI + SQLite on the command-post laptop | B |
 | `dashboard/` | Dispatcher dashboard: React + Vite + Leaflet | C |
-| `field/` | Field app: Flutter, Android only | A |
+| `field/` | Field app: React Native (Expo), Android first | A |
 | `scenario/` | Demo packs, replay, simulation | D |
 
 ## Quick start (server)
@@ -82,4 +82,11 @@ Dashboard (C3): Teams and resources view (counters, team table with status chang
 stock moves, places), weights sliders that re-rank the list, the chaos panel (duplicate, fake,
 wrong location, AI outage) and the phone setup QR.
 
-Next: the field app (A).
+Field app (A): React Native with Expo, runs in Expo Go with no Android SDK. Setup by QR, home,
+alerts verified against the command post key and read aloud, replies, the report form from the
+profiles, welfare checks, jobs with on my way / arrived / done and position pings, and a store
+that keeps every message until the server has it. Phone-to-phone hand-off works by QR code; the
+core is tested against a server that requires signatures and sealing.
+
+Next: automatic Bluetooth relay between phones (needs a development build; see field/README.md),
+and a git remote for the team.

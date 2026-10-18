@@ -1,0 +1,63 @@
+{
+  "hazard": "flood",
+  "label": { "en": "Flood" },
+  "source_note": "Demo defaults. Replace tips and first aid with your national disaster agency's wording before real use.",
+  "questions": [
+    { "id": "water", "ask": { "en": "How deep is the water?" }, "type": "choice",
+      "options": ["none", "ankle", "knee", "waist", "chest", "roof"] },
+    { "id": "rising", "ask": { "en": "Is the water rising?" }, "type": "yesno" },
+    { "id": "trapped", "ask": { "en": "Trapped (can't get out)?" }, "type": "yesno" }
+  ],
+  "hours_rules": [
+    { "all": ["water:chest|roof"], "hours": 1, "text": "Water at chest or roof level" },
+    { "all": ["water:waist", "rising"], "hours": 2, "text": "Water at waist and rising" },
+    { "all": ["water:knee", "rising"], "hours": 4, "text": "Water at knee and rising" },
+    { "all": ["trapped"], "hours": 6, "text": "Trapped" }
+  ],
+  "needs_rules": [
+    { "all": ["water:waist|chest|roof"], "need": "boat" },
+    { "all": ["trapped"], "need": "rescue" },
+    { "all": [], "need": "truck" }
+  ],
+  "supply_rules": [
+    { "all": ["water:chest|roof"], "item": "life_jacket" }
+  ],
+  "window": { "text": "Road floods", "source": "scenario_windows" },
+  "affected": "hazard_extent",
+  "keywords": {
+    "water:roof": ["roof", "on top of the house", "on the terrace"],
+    "water:chest": ["chest", "neck", "shoulder"],
+    "water:waist": ["waist", "hip"],
+    "water:knee": ["knee"],
+    "water:ankle": ["ankle"],
+    "rising": ["rising", "coming up", "getting higher", "increasing"],
+    "trapped": ["trapped", "stuck", "can't get out", "cant get out", "cannot get out"]
+  },
+  "supplies": ["drinking_water", "life_jacket", "fuel", "blanket", "first_aid_kit"],
+  "tips": { "en": [
+    "Move people and valuables to the highest floor",
+    "Do not walk or drive through moving water",
+    "Switch off electricity if water is coming in and it is safe to do so"
+  ] },
+  "first_aid": { "en": [
+    "Keep the person warm and dry",
+    "Do not give food or drink to someone who is unconscious"
+  ] },
+  "alert_templates": {
+    "watch": { "en": {
+      "headline": "Flood watch for {zones}",
+      "do_now": ["Move valuables and medicines upstairs",
+                 "Charge your phone and keep a torch ready",
+                 "Know who nearby may need help to leave"] } },
+    "warning": { "en": {
+      "headline": "Flood warning for {zones}",
+      "do_now": ["Move people and valuables upstairs",
+                 "Check on elderly or ill neighbours",
+                 "Do not walk or drive through floodwater"] } },
+    "emergency": { "en": {
+      "headline": "Flood emergency: {zones}. Act now.",
+      "do_now": ["Go to the highest floor or roof now",
+                 "Tap I need help if you cannot get out",
+                 "Help neighbours who cannot move"] } }
+  }
+}

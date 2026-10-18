@@ -1,0 +1,70 @@
+{
+  "hazard": "heat",
+  "label": { "en": "Heatwave" },
+  "source_note": "Demo defaults. Heat illness wording should come from your health authority before real use.",
+  "questions": [
+    { "id": "hot_inside", "ask": { "en": "Is it very hot indoors?" }, "type": "yesno" },
+    { "id": "cooling", "ask": { "en": "Fan, AC or a cool place to go?" }, "type": "yesno" },
+    { "id": "signs", "ask": { "en": "Signs of heat illness" }, "type": "multi",
+      "options": ["confused", "fainted", "hot_dry_skin", "vomiting", "dizzy", "cramps", "headache"] }
+  ],
+  "hours_rules": [
+    { "all": ["signs:confused|fainted|hot_dry_skin"], "hours": 0.5, "text": "Signs of heatstroke" },
+    { "all": ["signs:vomiting|dizzy|cramps|headache"], "hours": 2, "text": "Signs of heat exhaustion" },
+    { "all": ["cond:no_food_water"], "hours": 6, "text": "No drinking water in a heatwave" },
+    { "all": ["hot_inside", "!cooling", "cond:elderly|infant|cannot_walk|disabled|alone"], "hours": 6,
+      "text": "Very hot indoors, no cooling, high risk" },
+    { "all": ["hot_inside", "!cooling"], "hours": 12, "text": "Very hot indoors, no cooling" }
+  ],
+  "needs_rules": [
+    { "all": ["signs:confused|fainted|hot_dry_skin|vomiting|dizzy|cramps"], "need": "medic" },
+    { "all": [], "need": "welfare" }
+  ],
+  "supply_rules": [
+    { "all": ["signs:vomiting|dizzy|cramps|headache"], "item": "oral_rehydration_salts" }
+  ],
+  "window": { "text": "Hottest hours start", "source": "scenario_windows", "only_if": ["!cooling"] },
+  "affected": "alert_zones",
+  "keywords": {
+    "hot_inside": ["very hot", "too hot", "boiling", "hot inside", "unbearable heat"],
+    "!cooling": ["no fan", "no ac", "no a/c", "fan broken", "no cooler"],
+    "cooling": ["fan on", "ac on", "cool room"],
+    "signs:confused": ["confused", "talking strange", "talking strangely", "not making sense", "disoriented"],
+    "signs:fainted": ["fainted", "collapsed", "passed out"],
+    "signs:hot_dry_skin": ["hot dry skin", "burning up", "very hot skin", "not sweating"],
+    "signs:vomiting": ["vomiting", "throwing up"],
+    "signs:dizzy": ["dizzy", "dizziness"],
+    "signs:cramps": ["cramps", "cramping"],
+    "signs:headache": ["headache"]
+  },
+  "supplies": ["drinking_water", "oral_rehydration_salts", "cooling_pack", "first_aid_kit"],
+  "tips": { "en": [
+    "Stay in the coolest room and keep curtains closed during the day",
+    "Drink water regularly, even if you are not thirsty",
+    "Check on elderly, ill or lonely neighbours twice a day",
+    "Never leave children or pets in a parked car"
+  ] },
+  "first_aid": { "en": [
+    "Heatstroke is an emergency: get help now",
+    "Move the person somewhere cool and shaded",
+    "Cool them with water on the skin and fanning",
+    "Only give sips of water if they are fully awake"
+  ] },
+  "alert_templates": {
+    "watch": { "en": {
+      "headline": "Heat watch for {zones}",
+      "do_now": ["Plan to stay cool tomorrow",
+                 "Find your nearest cooling centre",
+                 "Know which neighbours live alone"] } },
+    "warning": { "en": {
+      "headline": "Extreme heat in {zones}, {start}-{end}",
+      "do_now": ["Stay in the coolest room. Drink water often.",
+                 "Check on elderly, ill or lonely neighbours twice today.",
+                 "Someone confused or fainting? Report it now."] } },
+    "emergency": { "en": {
+      "headline": "Dangerous heat emergency in {zones}",
+      "do_now": ["Go to a cooling centre if your home is hot",
+                 "Check on neighbours now",
+                 "Confusion or fainting is an emergency: tap I need help"] } }
+  }
+}

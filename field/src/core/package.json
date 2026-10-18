@@ -1,0 +1,5 @@
+{
+  "type": "module",
+  "private": true,
+  "description": "Plain JavaScript core shared by the app and the Node tests (npm test)."
+}
