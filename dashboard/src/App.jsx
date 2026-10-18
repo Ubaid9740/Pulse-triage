@@ -13,6 +13,7 @@ import TeamsPanel from "./components/TeamsPanel.jsx";
 import WeightsPanel from "./components/WeightsPanel.jsx";
 import ChaosPanel from "./components/ChaosPanel.jsx";
 import SetupQR from "./components/SetupQR.jsx";
+import ReplayPanel from "./components/ReplayPanel.jsx";
 
 const POLL_MS = 2000;
 
@@ -26,6 +27,7 @@ export default function App() {
   const [dialog, setDialog] = useState(null);     // "alert" | "intake" | "paste" | "chaos" | "setup"
   const [view, setView] = useState("map");        // "map" or "teams" (Teams and resources)
   const [weightsOpen, setWeightsOpen] = useState(false);
+  const [replay, setReplay] = useState(null);     // the scenario replay's status (GET /api/demo/replay)
   const busy = useRef(false);
 
   const again = useRef(false);
@@ -59,6 +61,15 @@ export default function App() {
     get("/api/profiles").then(setProfiles).catch(() => {});
   }, []);
 
+  // The replay's clock and cues: polled with the snapshot, separately so a slow one never blocks the other.
+  const pollReplay = useCallback(() => get("/api/demo/replay").then(setReplay).catch(() => {}), []);
+  useEffect(() => {
+    pollReplay();
+    const timer = setInterval(pollReplay, POLL_MS);
+    return () => clearInterval(timer);
+  }, [pollReplay]);
+  const refreshAll = useCallback(() => { refresh(); pollReplay(); }, [refresh, pollReplay]);
+
   useEffect(() => {
     const onKey = (e) => e.key === "Escape" && setSelected(null);
     window.addEventListener("keydown", onKey);
@@ -82,7 +93,7 @@ export default function App() {
   return (
     <div className="app">
       <TopBar snap={snap} offline={offline} profiles={profiles} refresh={refresh} onOpen={onOpen}
-              view={view} weightsOpen={weightsOpen} />
+              view={view} weightsOpen={weightsOpen} replay={replay} />
       {view === "teams" ? (
         <main className="resources-pane">
           <TeamsPanel snap={snap} profiles={profiles} refresh={refresh} onOpenCase={openCase} />
@@ -106,12 +117,13 @@ export default function App() {
         </aside>
       </main>
       )}
-      <BottomStrip snap={snap} />
+      <BottomStrip snap={snap} replay={replay} />
       {dialog === "alert" && <AlertComposer snap={snap} profiles={profiles} refresh={refresh} onClose={close} />}
       {dialog === "intake" && <IntakeForm snap={snap} profiles={profiles} refresh={refresh} onClose={close} onOpenCase={openCase} />}
       {dialog === "paste" && <PasteBox snap={snap} profiles={profiles} refresh={refresh} onClose={close} onOpenCase={openCase} />}
       {dialog === "chaos" && <ChaosPanel refresh={refresh} onClose={close} onOpenCase={openCase} />}
       {dialog === "setup" && <SetupQR onClose={close} />}
+      {dialog === "replay" && <ReplayPanel replay={replay} refresh={refreshAll} onClose={close} />}
     </div>
   );
 }

@@ -10,7 +10,7 @@ import json
 import logging
 from contextlib import asynccontextmanager
 from dataclasses import dataclass
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Any, Literal
 
 import qrcode
@@ -37,6 +37,7 @@ from .intake import Desk
 from .net import lan_ipv4_addresses
 from .profiles import Profiles
 from .reader import KeywordReader
+from .replay import Replay
 from .scheduler import Scheduler
 from .schemas import Schemas
 from .snapshot import SnapshotBuilder
@@ -175,6 +176,12 @@ class ResetRequest(ByRequest):
     pack: str = Field(min_length=1, max_length=40)
 
 
+class ReplayRequest(ByRequest):
+    pack: str = Field(min_length=1, max_length=40, pattern=r"^[a-z0-9_-]+$")
+    speed: float | None = Field(None, gt=0, description="Scenario minutes per real minute; the pack's default if not given")
+    reset: bool = Field(True, description="Reset the server to the pack first")
+
+
 class ChaosRequest(ByRequest):
     on: bool = Field(True, description="ai_down only: false ends the simulated outage")
 
@@ -201,6 +208,28 @@ class IntakeRequest(ByRequest):
 class PasteRequest(ByRequest):
     text: str = Field(min_length=1)
     hazard: HAZARDS | None = Field(None, description="Use this disaster when a message does not say")
+
+
+class SimulatedMessage(BaseModel):
+    text: str = Field(min_length=1, max_length=2000)
+    sender: str | None = Field(None, max_length=40, description="Phone number or name; each sender is one source")
+    lat: float | None = Field(None, ge=-90, le=90)
+    lng: float | None = Field(None, ge=-180, le=180)
+    accuracy_m: float | None = Field(None, ge=0)
+    hazard: HAZARDS | None = None
+
+
+class SimulateRequest(ByRequest):
+    messages: list[SimulatedMessage] = Field(min_length=1)
+    hazard: HAZARDS | None = Field(None, description="Use this disaster when a message does not say")
+
+
+class WindowRequest(ByRequest):
+    zone: str = Field(min_length=1, max_length=80)
+    closes_at: datetime | None = Field(None, description="When the zone can no longer be reached")
+    closes_in_min: float | None = Field(None, gt=0, le=7 * 24 * 60, description="Instead of closes_at")
+    text: str | None = Field(None, max_length=80, description="What closes it, e.g. 'Korangi Rd floods'")
+    clear: bool = False
 
 
 class OverrideRequest(ByRequest):
@@ -255,10 +284,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         try:
             yield
         finally:
+            replay.stop()
             ctx.scheduler.stop()
             ctx.ai.stop()
 
     chaos = Chaos(db, keys, ingestor, lambda: ctx.ai)
+    replay = Replay(settings.scenario_dir, db, keys, ingestor, ctx.desk, cases, chaos, teams, zones, supplies,
+                    lambda: ctx.ai)
 
     app = FastAPI(title="PulseTriage command server", version=__version__, lifespan=lifespan)
     app.state.ctx = ctx
@@ -357,7 +389,23 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @app.post("/api/demo/reset")
     def demo_reset(req: ResetRequest) -> dict:
+        replay.stop()
         return ctx.demo.reset(req.pack, req.by)
+
+    @app.get("/api/demo/replay")
+    def replay_status() -> dict:
+        return replay.status()
+
+    @app.post("/api/demo/replay")
+    def replay_start(req: ReplayRequest) -> dict:
+        replay.load(req.pack)                  # check the timeline before anything is reset
+        replay.stop()
+        reset = ctx.demo.reset(req.pack, req.by) if req.reset else None
+        return dict(replay.start(req.pack, req.speed, req.by), reset=reset)
+
+    @app.post("/api/demo/replay/stop")
+    def replay_stop() -> dict:
+        return replay.stop()
 
     @app.post("/api/chaos/{kind}")
     def chaos_inject(kind: Literal[CHAOS_KINDS], req: ChaosRequest | None = None) -> dict:
@@ -370,6 +418,25 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.post("/api/intake")
     def intake(req: IntakeRequest) -> dict:
         return ctx.desk.intake(req.model_dump(exclude={"by"}), req.by)
+
+    @app.post("/api/reports/simulate")
+    def simulate_reports(req: SimulateRequest) -> dict:
+        return ctx.desk.simulate([m.model_dump() for m in req.messages], req.hazard, req.by)
+
+    @app.get("/api/windows")
+    def get_windows() -> dict:
+        return cases.windows()
+
+    @app.post("/api/windows")
+    def set_window(req: WindowRequest) -> dict:
+        if req.clear:
+            return cases.set_window(req.zone, None, None, req.by)
+        closes = req.closes_at or (timeutil.now() + timedelta(minutes=req.closes_in_min)
+                                   if req.closes_in_min else None)
+        if closes is None:
+            raise ValueError("give closes_at or closes_in_min, or clear: true")
+        closes = closes.astimezone(timezone.utc) if closes.tzinfo else closes.replace(tzinfo=timezone.utc)
+        return cases.set_window(req.zone, closes, req.text, req.by)
 
     @app.post("/api/paste")
     def paste(req: PasteRequest) -> dict:

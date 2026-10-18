@@ -214,3 +214,15 @@ def test_unknown_zone_is_404(client):
     load_zones(client)
     assert client.get("/api/zones/Nowhere").status_code == 404
     assert client.post("/api/zones/Nowhere/task").status_code == 404
+
+
+def test_coverage_only_counts_once_a_warning_covers_the_zone(client):
+    load_zones(client)
+    load_registry(client, registry_csv([(f"R-{i:04d}", "Ward 4", "elderly", None, None) for i in range(12)]))
+    client.post("/api/zones/hard-hit", json={"zones": ["Ward 4"], "hard_hit": True})
+    client.app.state.ctx.zones.update()
+    ward = zones_by_name(client)["Ward 4"]
+    assert ward["hard_hit"] and not ward["unheard"]          # nobody was warned yet (it may still be quiet)
+    add_alert(client, zones=("Ward 4",))
+    client.app.state.ctx.zones.update()
+    assert zones_by_name(client)["Ward 4"]["unheard"]                          # warned, and nobody answered

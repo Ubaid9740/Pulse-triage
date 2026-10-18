@@ -1,0 +1,2590 @@
+{
+ "start": "03:10",
+ "speed": 60,
+ "events": [
+  {
+   "t": 0,
+   "kind": "cue",
+   "text": "Strong shaking across Saddar, Lyari and North Nazimabad. Towers are down in North Nazimabad: it stays quiet."
+  },
+  {
+   "t": 0.13,
+   "kind": "text",
+   "sender": "+000 555 0001",
+   "text": "my father has heart problem, chest pain after the shaking Moosa lane",
+   "lat": 24.861431,
+   "lng": 67.003159,
+   "hazard": null,
+   "truth": {
+    "situation": "S-001",
+    "severity": "serious",
+    "deadline_min": 133
+   }
+  },
+  {
+   "t": 1.17,
+   "kind": "report",
+   "device": "dev_P0003",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "disabled",
+     "cannot_walk"
+    ],
+    "details": {
+     "building": "badly_damaged"
+    },
+    "note": "wheelchair user on 4th floor, lift broken, stairs cracked the underpass near Tower",
+    "lat": 24.864142,
+    "lng": 67.025258,
+    "gps_accuracy_m": 15,
+    "landmark": "the underpass near Tower",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-002",
+    "severity": "serious",
+    "deadline_min": 290
+   }
+  },
+  {
+   "t": 2.57,
+   "kind": "report",
+   "device": "dev_P0004",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 4,
+    "conditions": [
+     "child"
+    ],
+    "details": {
+     "building": "badly_damaged"
+    },
+    "note": "cracks in walls, we r outside in the street with kids the underpass near Tower",
+    "lat": 24.857051,
+    "lng": 67.028607,
+    "gps_accuracy_m": 8,
+    "landmark": "the underpass near Tower",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-003",
+    "severity": "minor",
+    "deadline_min": 660
+   }
+  },
+  {
+   "t": 3.18,
+   "kind": "report",
+   "device": "dev_P0005",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {},
+    "note": "my father has heart problem, chest pain after the shaking Chakiwara chowk",
+    "lat": 24.87286,
+    "lng": 67.010815,
+    "gps_accuracy_m": 15,
+    "landmark": "Chakiwara chowk",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-004",
+    "severity": "serious",
+    "deadline_min": 121
+   }
+  },
+  {
+   "t": 3.5,
+   "kind": "report",
+   "device": "dev_P0006",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 5,
+    "conditions": [],
+    "details": {
+     "trapped": true,
+     "building": "collapsed"
+    },
+    "note": "5 workers trapped in factory Empress market, shouting from inside",
+    "lat": 24.84977,
+    "lng": 67.035356,
+    "gps_accuracy_m": 15,
+    "landmark": "Empress market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-005",
+    "severity": "critical",
+    "deadline_min": 280
+   }
+  },
+  {
+   "t": 6.49,
+   "kind": "report",
+   "device": "dev_P0008",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 13,
+    "conditions": [],
+    "details": {
+     "gas_or_fire": true
+    },
+    "note": "gas smell everywhere in our block Agra Taj colony 13 families outside",
+    "lat": 24.877357,
+    "lng": 67.005004,
+    "gps_accuracy_m": 12,
+    "landmark": "Agra Taj colony",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-006",
+    "severity": "serious",
+    "deadline_min": 100
+   }
+  },
+  {
+   "t": 8.52,
+   "kind": "report",
+   "device": "dev_P0009",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 9,
+    "conditions": [
+     "injured"
+    ],
+    "details": {},
+    "note": "people with broken arms and cuts in the masjid sector 1 green gate, 9 injured",
+    "lat": 24.832779,
+    "lng": 67.13079,
+    "gps_accuracy_m": 12,
+    "landmark": "sector 1 green gate",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-007",
+    "severity": "serious",
+    "deadline_min": 251
+   }
+  },
+  {
+   "t": 9.1,
+   "kind": "report",
+   "device": "dev_P0010",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 9,
+    "conditions": [],
+    "details": {
+     "gas_or_fire": true
+    },
+    "note": "gas smell everywhere in our block the railway crossing 9 families outside",
+    "lat": 24.875053,
+    "lng": 67.148934,
+    "gps_accuracy_m": 25,
+    "landmark": "the railway crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-008",
+    "severity": "serious",
+    "deadline_min": 143
+   }
+  },
+  {
+   "t": 9.86,
+   "kind": "text",
+   "sender": "+000 555 0011",
+   "text": "my father has heart problem, chest pain after the shaking Malir city market",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-009",
+    "severity": "serious",
+    "deadline_min": 116
+   }
+  },
+  {
+   "t": 10.92,
+   "kind": "report",
+   "device": "dev_P0013",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {},
+    "note": "my father has heart problem, chest pain after the shaking Baghdadi football ground",
+    "lat": 24.863822,
+    "lng": 66.995819,
+    "gps_accuracy_m": 40,
+    "landmark": "Baghdadi football ground",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-010",
+    "severity": "serious",
+    "deadline_min": 125
+   }
+  },
+  {
+   "t": 11.4,
+   "kind": "report",
+   "device": "dev_P0015",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 13,
+    "conditions": [],
+    "details": {
+     "trapped": true,
+     "building": "collapsed"
+    },
+    "note": "13 workers trapped in factory the river bank near Kalri, shouting from inside",
+    "lat": 24.862886,
+    "lng": 67.006918,
+    "gps_accuracy_m": 8,
+    "landmark": "the river bank near Kalri",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-011",
+    "severity": "critical",
+    "deadline_min": 193
+   }
+  },
+  {
+   "t": 12.72,
+   "kind": "report",
+   "device": "dev_P0016",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 4,
+    "conditions": [],
+    "details": {
+     "trapped": true,
+     "building": "collapsed"
+    },
+    "note": "building collapsed the river bank near Kalri people under it we hear voices",
+    "lat": 24.862465,
+    "lng": 66.997251,
+    "gps_accuracy_m": 8,
+    "landmark": "the river bank near Kalri",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-012",
+    "severity": "critical",
+    "deadline_min": 209
+   }
+  },
+  {
+   "t": 14.43,
+   "kind": "report",
+   "device": "dev_P0017",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 16,
+    "conditions": [],
+    "details": {},
+    "note": "aftershock again, everyone in the park Banaras chowk, need blankets",
+    "lat": 24.947423,
+    "lng": 66.995555,
+    "gps_accuracy_m": 40,
+    "landmark": "Banaras chowk",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-013",
+    "severity": "minor",
+    "deadline_min": 493
+   }
+  },
+  {
+   "t": 14.54,
+   "kind": "report",
+   "device": "dev_P0019",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "alone"
+    ],
+    "details": {
+     "trapped": true
+    },
+    "note": "old woman 88 trapped in her room, door jammed, stairs broken Kalri lane",
+    "lat": 24.875422,
+    "lng": 67.003192,
+    "gps_accuracy_m": 25,
+    "landmark": "Kalri lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-014",
+    "severity": "critical",
+    "deadline_min": 273
+   }
+  },
+  {
+   "t": 14.68,
+   "kind": "report",
+   "device": "dev_P0020",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "injured",
+     "bleeding"
+    ],
+    "details": {
+     "trapped": true
+    },
+    "note": "my brother stuck under the wall, leg bleeding Rexer lane",
+    "lat": 24.87024,
+    "lng": 66.99109,
+    "gps_accuracy_m": 15,
+    "landmark": "Rexer lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-015",
+    "severity": "critical",
+    "deadline_min": 73
+   }
+  },
+  {
+   "t": 15,
+   "kind": "cue",
+   "text": "Issue an earthquake warning (aftershocks, gas) for the three zones."
+  },
+  {
+   "t": 15.0,
+   "kind": "text",
+   "sender": "+000 555 0022",
+   "text": "building collapsed Kalri lane people under it we hear voices",
+   "lat": 24.870261,
+   "lng": 66.99473,
+   "hazard": null,
+   "truth": {
+    "situation": "S-016",
+    "severity": "critical",
+    "deadline_min": 186
+   }
+  },
+  {
+   "t": 15.6,
+   "kind": "text",
+   "sender": "+000 555 0023",
+   "text": "aftershock again, everyone in the park Kalri lane, need blankets",
+   "lat": 24.870536,
+   "lng": 66.993573,
+   "hazard": null,
+   "truth": {
+    "situation": "S-017",
+    "severity": "minor",
+    "deadline_min": 481
+   }
+  },
+  {
+   "t": 15.85,
+   "kind": "text",
+   "sender": "+000 555 0025",
+   "text": "wheelchair user on 4th floor, lift broken, stairs cracked Lea market",
+   "lat": 24.861997,
+   "lng": 67.006623,
+   "hazard": null,
+   "truth": {
+    "situation": "S-018",
+    "severity": "serious",
+    "deadline_min": 316
+   }
+  },
+  {
+   "t": 16.84,
+   "kind": "text",
+   "sender": "+000 555 0027",
+   "text": "is it safe to go back inside? the bus stop near Preedy street",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": null,
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "t": 17.04,
+   "kind": "reply",
+   "device": "dev_REG0051",
+   "registry_id": "R-0051",
+   "status": "safe",
+   "lat": 24.85779,
+   "lng": 67.035303
+  },
+  {
+   "t": 17.44,
+   "kind": "text",
+   "sender": "+000 555 0028",
+   "text": "fire started near the gas cylinder shop Regal chowk",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-019",
+    "severity": "critical",
+    "deadline_min": 58
+   }
+  },
+  {
+   "t": 18.88,
+   "kind": "text",
+   "sender": "+000 555 0030",
+   "text": "people with broken arms and cuts in the masjid Baghdadi football ground, 4 injured",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-020",
+    "severity": "serious",
+    "deadline_min": 276
+   }
+  },
+  {
+   "t": 18.99,
+   "kind": "text",
+   "sender": "+000 555 0031",
+   "text": "my brother stuck under the wall, leg bleeding the river side of Malir",
+   "lat": 24.907669,
+   "lng": 67.209607,
+   "hazard": null,
+   "truth": {
+    "situation": "S-021",
+    "severity": "critical",
+    "deadline_min": 107
+   }
+  },
+  {
+   "t": 19.21,
+   "kind": "text",
+   "sender": "+000 555 0033",
+   "text": "people with broken arms and cuts in the masjid Chakiwara chowk, 10 injured",
+   "lat": 24.875744,
+   "lng": 66.996676,
+   "hazard": null,
+   "truth": {
+    "situation": "S-022",
+    "severity": "serious",
+    "deadline_min": 230
+   }
+  },
+  {
+   "t": 19.45,
+   "kind": "reply",
+   "device": "dev_REG0052",
+   "registry_id": "R-0052",
+   "status": "need_help",
+   "lat": 24.869229,
+   "lng": 66.992778
+  },
+  {
+   "t": 19.76,
+   "kind": "reply",
+   "device": "dev_REG0169",
+   "registry_id": "R-0169",
+   "status": "helping",
+   "lat": 24.85478,
+   "lng": 67.028936
+  },
+  {
+   "t": 19.8,
+   "kind": "reply",
+   "device": "dev_REG0092",
+   "registry_id": "R-0092",
+   "status": "safe",
+   "lat": 24.856488,
+   "lng": 67.031859
+  },
+  {
+   "t": 20.06,
+   "kind": "text",
+   "sender": "+000 555 0034",
+   "text": "gas smell everywhere in our block the river bank near Kalri 20 families outside",
+   "lat": 24.858106,
+   "lng": 67.004832,
+   "hazard": null,
+   "truth": {
+    "situation": "S-023",
+    "severity": "serious",
+    "deadline_min": 139
+   }
+  },
+  {
+   "t": 20.92,
+   "kind": "report",
+   "device": "dev_P0036",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "child"
+    ],
+    "details": {
+     "building": "badly_damaged"
+    },
+    "note": "cracks in walls, we r outside in the street with kids Model colony",
+    "lat": 24.888172,
+    "lng": 67.213449,
+    "gps_accuracy_m": 12,
+    "landmark": "Model colony",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-024",
+    "severity": "minor",
+    "deadline_min": 737
+   }
+  },
+  {
+   "t": 21.03,
+   "kind": "reply",
+   "device": "dev_REG0107",
+   "registry_id": "R-0107",
+   "status": "helping",
+   "lat": 24.850199,
+   "lng": 67.038451
+  },
+  {
+   "t": 21.37,
+   "kind": "reply",
+   "device": "dev_REG0124",
+   "registry_id": "R-0124",
+   "status": "safe",
+   "lat": 24.854499,
+   "lng": 67.036423
+  },
+  {
+   "t": 21.77,
+   "kind": "reply",
+   "device": "dev_REG0087",
+   "registry_id": "R-0087",
+   "status": "safe",
+   "lat": 24.863705,
+   "lng": 66.999847
+  },
+  {
+   "t": 22.1,
+   "kind": "reply",
+   "device": "dev_REG0113",
+   "registry_id": "R-0113",
+   "status": "safe",
+   "lat": 24.869302,
+   "lng": 66.995937
+  },
+  {
+   "t": 22.34,
+   "kind": "text",
+   "sender": "+000 555 0037",
+   "text": "old woman 70 trapped in her room, door jammed, stairs broken Bohri bazaar",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-025",
+    "severity": "critical",
+    "deadline_min": 254
+   }
+  },
+  {
+   "t": 23.12,
+   "kind": "report",
+   "device": "dev_P0038",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 12,
+    "conditions": [],
+    "details": {},
+    "note": "aftershock again, everyone in the park the underpass near Tower, need blankets",
+    "lat": 24.859931,
+    "lng": 67.033253,
+    "gps_accuracy_m": 12,
+    "landmark": "the underpass near Tower",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-026",
+    "severity": "minor",
+    "deadline_min": 658
+   }
+  },
+  {
+   "t": 23.14,
+   "kind": "reply",
+   "device": "dev_REG0189",
+   "registry_id": "R-0189",
+   "status": "safe",
+   "lat": 24.872425,
+   "lng": 66.997988
+  },
+  {
+   "t": 23.86,
+   "kind": "report",
+   "device": "dev_P0039",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {},
+    "note": "my father has heart problem, chest pain after the shaking the river bank near Kalri",
+    "lat": 24.86125,
+    "lng": 66.993111,
+    "gps_accuracy_m": 25,
+    "landmark": "the river bank near Kalri",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-027",
+    "severity": "serious",
+    "deadline_min": 104
+   }
+  },
+  {
+   "t": 24.04,
+   "kind": "report",
+   "device": "dev_P0041",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 11,
+    "conditions": [],
+    "details": {
+     "gas_or_fire": true
+    },
+    "note": "gas smell everywhere in our block block 2 market 11 families outside",
+    "lat": 24.822429,
+    "lng": 67.038338,
+    "gps_accuracy_m": 8,
+    "landmark": "block 2 market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-028",
+    "severity": "serious",
+    "deadline_min": 104
+   }
+  },
+  {
+   "t": 24.43,
+   "kind": "reply",
+   "device": "dev_REG0040",
+   "registry_id": "R-0040",
+   "status": "safe",
+   "lat": 24.868353,
+   "lng": 67.003671
+  },
+  {
+   "t": 24.7,
+   "kind": "report",
+   "device": "dev_P0002",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {},
+    "note": "my father has heart problem chest pain after shaking moosa lane",
+    "lat": 24.86151,
+    "lng": 67.002151,
+    "gps_accuracy_m": 15,
+    "landmark": "Moosa lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-001",
+    "severity": "serious",
+    "deadline_min": 133
+   }
+  },
+  {
+   "t": 25.61,
+   "kind": "reply",
+   "device": "dev_REG0168",
+   "registry_id": "R-0168",
+   "status": "safe",
+   "lat": 24.864085,
+   "lng": 66.996324
+  },
+  {
+   "t": 25.69,
+   "kind": "reply",
+   "device": "dev_REG0174",
+   "registry_id": "R-0174",
+   "status": "safe",
+   "lat": 24.858204,
+   "lng": 67.033575
+  },
+  {
+   "t": 25.95,
+   "kind": "reply",
+   "device": "dev_REG0011",
+   "registry_id": "R-0011",
+   "status": "safe",
+   "lat": 24.866793,
+   "lng": 67.007202
+  },
+  {
+   "t": 25.99,
+   "kind": "reply",
+   "device": "dev_REG0061",
+   "registry_id": "R-0061",
+   "status": "safe",
+   "lat": 24.859954,
+   "lng": 66.996716
+  },
+  {
+   "t": 26.29,
+   "kind": "report",
+   "device": "dev_P0042",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {},
+    "note": "my father has heart problem, chest pain after the shaking Baghdadi football ground",
+    "lat": 24.864893,
+    "lng": 67.010656,
+    "gps_accuracy_m": 8,
+    "landmark": "Baghdadi football ground",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-029",
+    "severity": "serious",
+    "deadline_min": 140
+   }
+  },
+  {
+   "t": 26.31,
+   "kind": "reply",
+   "device": "dev_REG0032",
+   "registry_id": "R-0032",
+   "status": "safe",
+   "lat": 24.870798,
+   "lng": 67.005048
+  },
+  {
+   "t": 26.76,
+   "kind": "report",
+   "device": "dev_P0014",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {},
+    "note": "my father has heart problem, chest pain after shaking Baghdadi football ground",
+    "lat": 24.864584,
+    "lng": 66.995589,
+    "gps_accuracy_m": 15,
+    "landmark": "Baghdadi football ground",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-010",
+    "severity": "serious",
+    "deadline_min": 125
+   }
+  },
+  {
+   "t": 26.94,
+   "kind": "report",
+   "device": "dev_P0044",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 16,
+    "conditions": [],
+    "details": {
+     "gas_or_fire": true
+    },
+    "note": "gas smell everywhere in our block the underpass near Tower 16 families outside",
+    "lat": 24.859293,
+    "lng": 67.027681,
+    "gps_accuracy_m": 8,
+    "landmark": "the underpass near Tower",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-030",
+    "severity": "serious",
+    "deadline_min": 99
+   }
+  },
+  {
+   "t": 27.06,
+   "kind": "reply",
+   "device": "dev_REG0037",
+   "registry_id": "R-0037",
+   "status": "safe",
+   "lat": 24.856593,
+   "lng": 67.023043
+  },
+  {
+   "t": 27.18,
+   "kind": "reply",
+   "device": "dev_REG0048",
+   "registry_id": "R-0048",
+   "status": "safe",
+   "lat": 24.872672,
+   "lng": 66.992706
+  },
+  {
+   "t": 27.5,
+   "kind": "reply",
+   "device": "dev_REG0186",
+   "registry_id": "R-0186",
+   "status": "safe",
+   "lat": 24.857297,
+   "lng": 67.036457
+  },
+  {
+   "t": 27.92,
+   "kind": "reply",
+   "device": "dev_REG0157",
+   "registry_id": "R-0157",
+   "status": "safe",
+   "lat": 24.873122,
+   "lng": 67.001608
+  },
+  {
+   "t": 28.22,
+   "kind": "text",
+   "sender": "+000 555 0045",
+   "text": "my brother stuck under the wall, leg bleeding the bus stop near Preedy street",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-031",
+    "severity": "critical",
+    "deadline_min": 80
+   }
+  },
+  {
+   "t": 28.51,
+   "kind": "reply",
+   "device": "dev_REG0059",
+   "registry_id": "R-0059",
+   "status": "safe",
+   "lat": 24.864064,
+   "lng": 67.034944
+  },
+  {
+   "t": 28.86,
+   "kind": "text",
+   "sender": "+000 555 0046",
+   "text": "child unconscious after roof fell Rexer lane pls come",
+   "lat": 24.859394,
+   "lng": 67.009938,
+   "hazard": null,
+   "truth": {
+    "situation": "S-032",
+    "severity": "critical",
+    "deadline_min": 53
+   }
+  },
+  {
+   "t": 28.95,
+   "kind": "reply",
+   "device": "dev_REG0139",
+   "registry_id": "R-0139",
+   "status": "need_help",
+   "lat": 24.875055,
+   "lng": 66.99459
+  },
+  {
+   "t": 29.31,
+   "kind": "reply",
+   "device": "dev_REG0190",
+   "registry_id": "R-0190",
+   "status": "safe",
+   "lat": 24.859596,
+   "lng": 67.033592
+  },
+  {
+   "t": 29.37,
+   "kind": "reply",
+   "device": "dev_REG0142",
+   "registry_id": "R-0142",
+   "status": "safe",
+   "lat": 24.850423,
+   "lng": 67.02814
+  },
+  {
+   "t": 29.38,
+   "kind": "text",
+   "sender": "+000 555 0047",
+   "text": "gas smell everywhere in our block Moosa lane 14 families outside",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-033",
+    "severity": "serious",
+    "deadline_min": 141
+   }
+  },
+  {
+   "t": 29.55,
+   "kind": "reply",
+   "device": "dev_REG0065",
+   "registry_id": "R-0065",
+   "status": "safe",
+   "lat": 24.867159,
+   "lng": 67.013247
+  },
+  {
+   "t": 29.65,
+   "kind": "report",
+   "device": "dev_P0048",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "disabled",
+     "cannot_walk"
+    ],
+    "details": {
+     "building": "badly_damaged"
+    },
+    "note": "wheelchair user on 4th floor, lift broken, stairs cracked colony gate",
+    "lat": 24.869617,
+    "lng": 67.153519,
+    "gps_accuracy_m": 25,
+    "landmark": "colony gate",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-034",
+    "severity": "serious",
+    "deadline_min": 287
+   }
+  },
+  {
+   "t": 30,
+   "kind": "window",
+   "zone": "Saddar",
+   "closes_in_min": 180,
+   "text": "Rain arrives"
+  },
+  {
+   "t": 30,
+   "kind": "window",
+   "zone": "Lyari",
+   "closes_in_min": 180,
+   "text": "Rain arrives"
+  },
+  {
+   "t": 30.25,
+   "kind": "reply",
+   "device": "dev_REG0019",
+   "registry_id": "R-0019",
+   "status": "safe",
+   "lat": 24.861203,
+   "lng": 66.996341
+  },
+  {
+   "t": 31.32,
+   "kind": "text",
+   "sender": "+000 555 0049",
+   "text": "my father has heart problem, chest pain after the shaking Baghdadi football ground",
+   "lat": 24.866712,
+   "lng": 67.00338,
+   "hazard": null,
+   "truth": {
+    "situation": "S-035",
+    "severity": "serious",
+    "deadline_min": 99
+   }
+  },
+  {
+   "t": 31.36,
+   "kind": "reply",
+   "device": "dev_REG0148",
+   "registry_id": "R-0148",
+   "status": "safe",
+   "lat": 24.872268,
+   "lng": 66.991886
+  },
+  {
+   "t": 31.55,
+   "kind": "reply",
+   "device": "dev_REG0066",
+   "registry_id": "R-0066",
+   "status": "helping",
+   "lat": 24.863679,
+   "lng": 67.028141
+  },
+  {
+   "t": 31.67,
+   "kind": "reply",
+   "device": "dev_REG0112",
+   "registry_id": "R-0112",
+   "status": "safe",
+   "lat": 24.859042,
+   "lng": 67.02878
+  },
+  {
+   "t": 31.78,
+   "kind": "reply",
+   "device": "dev_REG0007",
+   "registry_id": "R-0007",
+   "status": "safe",
+   "lat": 24.871499,
+   "lng": 66.99181
+  },
+  {
+   "t": 33.34,
+   "kind": "reply",
+   "device": "dev_REG0191",
+   "registry_id": "R-0191",
+   "status": "safe",
+   "lat": 24.864936,
+   "lng": 67.013135
+  },
+  {
+   "t": 33.36,
+   "kind": "reply",
+   "device": "dev_REG0117",
+   "registry_id": "R-0117",
+   "status": "need_help",
+   "lat": 24.873332,
+   "lng": 66.99584
+  },
+  {
+   "t": 34.41,
+   "kind": "reply",
+   "device": "dev_REG0170",
+   "registry_id": "R-0170",
+   "status": "safe",
+   "lat": 24.867111,
+   "lng": 67.000607
+  },
+  {
+   "t": 35.22,
+   "kind": "text",
+   "sender": "+000 555 0032",
+   "text": "my brother stuck under the wall leg bleeding the river side of Malir Allah ke liye",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-021",
+    "severity": "critical",
+    "deadline_min": 107
+   }
+  },
+  {
+   "t": 35.82,
+   "kind": "text",
+   "sender": "+000 555 0050",
+   "text": "aftershock again, everyone in the park Lea market, need blankets",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-036",
+    "severity": "minor",
+    "deadline_min": 710
+   }
+  },
+  {
+   "t": 35.95,
+   "kind": "reply",
+   "device": "dev_REG0053",
+   "registry_id": "R-0053",
+   "status": "safe",
+   "lat": 24.854044,
+   "lng": 67.038293
+  },
+  {
+   "t": 36.12,
+   "kind": "reply",
+   "device": "dev_REG0135",
+   "registry_id": "R-0135",
+   "status": "safe",
+   "lat": 24.874931,
+   "lng": 67.011824
+  },
+  {
+   "t": 36.6,
+   "kind": "reply",
+   "device": "dev_REG0020",
+   "registry_id": "R-0020",
+   "status": "safe",
+   "lat": 24.8721,
+   "lng": 66.99774
+  },
+  {
+   "t": 37.12,
+   "kind": "reply",
+   "device": "dev_REG0123",
+   "registry_id": "R-0123",
+   "status": "safe",
+   "lat": 24.850102,
+   "lng": 67.03108
+  },
+  {
+   "t": 37.37,
+   "kind": "reply",
+   "device": "dev_REG0023",
+   "registry_id": "R-0023",
+   "status": "safe",
+   "lat": 24.861447,
+   "lng": 67.037911
+  },
+  {
+   "t": 37.79,
+   "kind": "reply",
+   "device": "dev_REG0038",
+   "registry_id": "R-0038",
+   "status": "safe",
+   "lat": 24.860494,
+   "lng": 67.028953
+  },
+  {
+   "t": 37.95,
+   "kind": "reply",
+   "device": "dev_REG0049",
+   "registry_id": "R-0049",
+   "status": "safe",
+   "lat": 24.877702,
+   "lng": 67.002673
+  },
+  {
+   "t": 38.4,
+   "kind": "text",
+   "sender": "+000 555 0052",
+   "text": "gas smell everywhere in our block block 3 19 families outside",
+   "lat": 24.88024,
+   "lng": 67.147711,
+   "hazard": null,
+   "truth": {
+    "situation": "S-037",
+    "severity": "serious",
+    "deadline_min": 118
+   }
+  },
+  {
+   "t": 39.28,
+   "kind": "reply",
+   "device": "dev_REG0054",
+   "registry_id": "R-0054",
+   "status": "safe",
+   "lat": 24.877207,
+   "lng": 66.998236
+  },
+  {
+   "t": 41.59,
+   "kind": "reply",
+   "device": "dev_REG0033",
+   "registry_id": "R-0033",
+   "status": "safe",
+   "lat": 24.859637,
+   "lng": 67.007588
+  },
+  {
+   "t": 42.09,
+   "kind": "reply",
+   "device": "dev_REG0200",
+   "registry_id": "R-0200",
+   "status": "safe",
+   "lat": 24.856837,
+   "lng": 67.027572
+  },
+  {
+   "t": 42.21,
+   "kind": "report",
+   "device": "dev_P0007",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 5,
+    "conditions": [],
+    "details": {
+     "trapped": true,
+     "building": "collapsed"
+    },
+    "note": "5 workers trapped in factory empress market shouting from inside Allah ke liye",
+    "lat": 24.849709,
+    "lng": 67.035618,
+    "gps_accuracy_m": 12,
+    "landmark": "Empress market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-005",
+    "severity": "critical",
+    "deadline_min": 280
+   }
+  },
+  {
+   "t": 44.21,
+   "kind": "reply",
+   "device": "dev_REG0050",
+   "registry_id": "R-0050",
+   "status": "safe",
+   "lat": 24.872961,
+   "lng": 66.99321
+  },
+  {
+   "t": 44.65,
+   "kind": "reply",
+   "device": "dev_REG0185",
+   "registry_id": "R-0185",
+   "status": "safe",
+   "lat": 24.855976,
+   "lng": 67.025934
+  },
+  {
+   "t": 45,
+   "kind": "chaos",
+   "what": "fake"
+  },
+  {
+   "t": 45.06,
+   "kind": "reply",
+   "device": "dev_REG0130",
+   "registry_id": "R-0130",
+   "status": "safe",
+   "lat": 24.860824,
+   "lng": 67.005752
+  },
+  {
+   "t": 45.61,
+   "kind": "reply",
+   "device": "dev_REG0099",
+   "registry_id": "R-0099",
+   "status": "safe",
+   "lat": 24.85608,
+   "lng": 67.02233
+  },
+  {
+   "t": 45.77,
+   "kind": "reply",
+   "device": "dev_REG0105",
+   "registry_id": "R-0105",
+   "status": "helping",
+   "lat": 24.855759,
+   "lng": 67.029101
+  },
+  {
+   "t": 45.85,
+   "kind": "text",
+   "sender": "+000 555 0043",
+   "text": "my father has heart problem chest pain after the shaking Baghdadi football ground",
+   "lat": 24.865826,
+   "lng": 67.010803,
+   "hazard": null,
+   "truth": {
+    "situation": "S-029",
+    "severity": "serious",
+    "deadline_min": 140
+   }
+  },
+  {
+   "t": 45.9,
+   "kind": "reply",
+   "device": "dev_REG0184",
+   "registry_id": "R-0184",
+   "status": "safe",
+   "lat": 24.871887,
+   "lng": 67.000709
+  },
+  {
+   "t": 46.05,
+   "kind": "report",
+   "device": "dev_P0018",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 16,
+    "conditions": [],
+    "details": {},
+    "note": "aftershock again, everyone in the park Banaras chowk, need blankets",
+    "lat": 24.948113,
+    "lng": 66.996193,
+    "gps_accuracy_m": 40,
+    "landmark": "Banaras chowk",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-013",
+    "severity": "minor",
+    "deadline_min": 493
+   }
+  },
+  {
+   "t": 46.53,
+   "kind": "report",
+   "device": "dev_P0024",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 13,
+    "conditions": [],
+    "details": {},
+    "note": "aftershock again, everyone in the park Kalri lane, need blankets plz",
+    "lat": 24.871015,
+    "lng": 66.993592,
+    "gps_accuracy_m": 40,
+    "landmark": "Kalri lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-017",
+    "severity": "minor",
+    "deadline_min": 481
+   }
+  },
+  {
+   "t": 47.02,
+   "kind": "reply",
+   "device": "dev_REG0147",
+   "registry_id": "R-0147",
+   "status": "safe",
+   "lat": 24.858284,
+   "lng": 66.997553
+  },
+  {
+   "t": 48.4,
+   "kind": "reply",
+   "device": "dev_REG0166",
+   "registry_id": "R-0166",
+   "status": "helping",
+   "lat": 24.862401,
+   "lng": 67.001681
+  },
+  {
+   "t": 48.4,
+   "kind": "reply",
+   "device": "dev_REG0172",
+   "registry_id": "R-0172",
+   "status": "safe",
+   "lat": 24.866911,
+   "lng": 67.002074
+  },
+  {
+   "t": 48.87,
+   "kind": "report",
+   "device": "dev_P0053",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {},
+    "note": "my father has heart problem, chest pain after the shaking Korangi crossing",
+    "lat": 24.836804,
+    "lng": 67.138075,
+    "gps_accuracy_m": 15,
+    "landmark": "Korangi crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-038",
+    "severity": "serious",
+    "deadline_min": 139
+   }
+  },
+  {
+   "t": 48.95,
+   "kind": "reply",
+   "device": "dev_REG0017",
+   "registry_id": "R-0017",
+   "status": "safe",
+   "lat": 24.85734,
+   "lng": 67.037957
+  },
+  {
+   "t": 49.32,
+   "kind": "report",
+   "device": "dev_P0040",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {},
+    "note": "my father has heart problem chest pain after shaking river bank near kalri",
+    "lat": 24.86088,
+    "lng": 66.99308,
+    "gps_accuracy_m": 12,
+    "landmark": "the river bank near Kalri",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-027",
+    "severity": "serious",
+    "deadline_min": 104
+   }
+  },
+  {
+   "t": 49.46,
+   "kind": "text",
+   "sender": "+000 555 0012",
+   "text": "Allah ke liye my father has heart problem, chest pain after shaking malir city market",
+   "lat": 24.904251,
+   "lng": 67.213287,
+   "hazard": null,
+   "truth": {
+    "situation": "S-009",
+    "severity": "serious",
+    "deadline_min": 116
+   }
+  },
+  {
+   "t": 49.76,
+   "kind": "reply",
+   "device": "dev_REG0028",
+   "registry_id": "R-0028",
+   "status": "safe",
+   "lat": 24.858339,
+   "lng": 67.036548
+  },
+  {
+   "t": 50.18,
+   "kind": "reply",
+   "device": "dev_REG0064",
+   "registry_id": "R-0064",
+   "status": "safe",
+   "lat": 24.864572,
+   "lng": 67.029484
+  },
+  {
+   "t": 50.37,
+   "kind": "reply",
+   "device": "dev_REG0067",
+   "registry_id": "R-0067",
+   "status": "safe",
+   "lat": 24.860848,
+   "lng": 67.039229
+  },
+  {
+   "t": 50.72,
+   "kind": "report",
+   "device": "dev_P0055",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "injured",
+     "bleeding"
+    ],
+    "details": {
+     "trapped": true
+    },
+    "note": "my brother stuck under the wall, leg bleeding the river bank near Kalri",
+    "lat": 24.863263,
+    "lng": 66.997342,
+    "gps_accuracy_m": 25,
+    "landmark": "the river bank near Kalri",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-039",
+    "severity": "critical",
+    "deadline_min": 80
+   }
+  },
+  {
+   "t": 51.41,
+   "kind": "reply",
+   "device": "dev_REG0167",
+   "registry_id": "R-0167",
+   "status": "safe",
+   "lat": 24.857867,
+   "lng": 67.036907
+  },
+  {
+   "t": 51.66,
+   "kind": "text",
+   "sender": "+000 555 0056",
+   "text": "fire started near the gas cylinder shop Zaibunnisa street",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-040",
+    "severity": "critical",
+    "deadline_min": 56
+   }
+  },
+  {
+   "t": 51.98,
+   "kind": "text",
+   "sender": "+000 555 0051",
+   "text": "aftershock again, everyone in the park Lea market, need blankets jaldi",
+   "lat": 24.867801,
+   "lng": 67.005277,
+   "hazard": null,
+   "truth": {
+    "situation": "S-036",
+    "severity": "minor",
+    "deadline_min": 710
+   }
+  },
+  {
+   "t": 52.24,
+   "kind": "report",
+   "device": "dev_P0057",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 5,
+    "conditions": [],
+    "details": {
+     "trapped": true,
+     "building": "collapsed"
+    },
+    "note": "5 workers trapped in factory the river bank near Kalri, shouting from inside",
+    "lat": 24.862645,
+    "lng": 66.997389,
+    "gps_accuracy_m": 25,
+    "landmark": "the river bank near Kalri",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-041",
+    "severity": "critical",
+    "deadline_min": 245
+   }
+  },
+  {
+   "t": 52.59,
+   "kind": "reply",
+   "device": "dev_REG0025",
+   "registry_id": "R-0025",
+   "status": "need_help",
+   "lat": 24.873533,
+   "lng": 67.010158
+  },
+  {
+   "t": 53.84,
+   "kind": "text",
+   "sender": "+000 555 0058",
+   "text": "cracks in walls, we r outside in the street with kids Kalri lane",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-042",
+    "severity": "minor",
+    "deadline_min": 735
+   }
+  },
+  {
+   "t": 54.56,
+   "kind": "report",
+   "device": "dev_P0026",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "disabled",
+     "cannot_walk"
+    ],
+    "details": {
+     "building": "badly_damaged"
+    },
+    "note": "wheelchair user on 4th floor, lift broken, stairs cracked lea market",
+    "lat": 24.862149,
+    "lng": 67.007474,
+    "gps_accuracy_m": 40,
+    "landmark": "Lea market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-018",
+    "severity": "serious",
+    "deadline_min": 316
+   }
+  },
+  {
+   "t": 56.0,
+   "kind": "reply",
+   "device": "dev_REG0109",
+   "registry_id": "R-0109",
+   "status": "safe",
+   "lat": 24.873993,
+   "lng": 66.993406
+  },
+  {
+   "t": 56.08,
+   "kind": "report",
+   "device": "dev_P0060",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 3,
+    "conditions": [],
+    "details": {
+     "trapped": true,
+     "building": "collapsed"
+    },
+    "note": "building collapsed Kalri lane people under it we hear voices",
+    "lat": 24.864358,
+    "lng": 67.001906,
+    "gps_accuracy_m": 8,
+    "landmark": "Kalri lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-043",
+    "severity": "critical",
+    "deadline_min": 196
+   }
+  },
+  {
+   "t": 56.6,
+   "kind": "reply",
+   "device": "dev_REG0003",
+   "registry_id": "R-0003",
+   "status": "safe",
+   "lat": 24.867677,
+   "lng": 67.004224
+  },
+  {
+   "t": 57.54,
+   "kind": "reply",
+   "device": "dev_REG0042",
+   "registry_id": "R-0042",
+   "status": "safe",
+   "lat": 24.867823,
+   "lng": 66.998231
+  },
+  {
+   "t": 57.63,
+   "kind": "text",
+   "sender": "+000 555 0061",
+   "text": "aftershock again, everyone in the park Empress market, need blankets",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-044",
+    "severity": "minor",
+    "deadline_min": 638
+   }
+  },
+  {
+   "t": 57.81,
+   "kind": "reply",
+   "device": "dev_REG0089",
+   "registry_id": "R-0089",
+   "status": "safe",
+   "lat": 24.860488,
+   "lng": 67.026319
+  },
+  {
+   "t": 58.44,
+   "kind": "text",
+   "sender": "+000 555 0035",
+   "text": "jaldi gas smell everywhere in our block the river bank near kalri 20 families outside",
+   "lat": 24.857431,
+   "lng": 67.004687,
+   "hazard": null,
+   "truth": {
+    "situation": "S-023",
+    "severity": "serious",
+    "deadline_min": 139
+   }
+  },
+  {
+   "t": 59.15,
+   "kind": "reply",
+   "device": "dev_REG0022",
+   "registry_id": "R-0022",
+   "status": "safe",
+   "lat": 24.863892,
+   "lng": 67.004483
+  },
+  {
+   "t": 59.89,
+   "kind": "text",
+   "sender": "+000 555 0062",
+   "text": "old woman 81 trapped in her room, door jammed, stairs broken the river bank near Kalri",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-045",
+    "severity": "critical",
+    "deadline_min": 199
+   }
+  },
+  {
+   "t": 60,
+   "kind": "cue",
+   "text": "Rescue teams are the scarce resource: open Suggest on a trapped case to see the trade-off."
+  },
+  {
+   "t": 61.56,
+   "kind": "report",
+   "device": "dev_P0054",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {},
+    "note": "my father has heart problem, chest pain after shaking korangi crossing urgent",
+    "lat": 24.837035,
+    "lng": 67.13837,
+    "gps_accuracy_m": 12,
+    "landmark": "Korangi crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-038",
+    "severity": "serious",
+    "deadline_min": 139
+   }
+  },
+  {
+   "t": 62.97,
+   "kind": "report",
+   "device": "dev_P0021",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "injured",
+     "bleeding"
+    ],
+    "details": {
+     "trapped": true
+    },
+    "note": "my brother stuck under wall, leg bleeding Rexer lane bhai",
+    "lat": 24.869783,
+    "lng": 66.991863,
+    "gps_accuracy_m": 40,
+    "landmark": "Rexer lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-015",
+    "severity": "critical",
+    "deadline_min": 73
+   }
+  },
+  {
+   "t": 65.23,
+   "kind": "text",
+   "sender": "+000 555 0063",
+   "text": "my brother stuck under the wall, leg bleeding Baghdadi football ground",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-046",
+    "severity": "critical",
+    "deadline_min": 73
+   }
+  },
+  {
+   "t": 65.87,
+   "kind": "report",
+   "device": "dev_P0065",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 5,
+    "conditions": [],
+    "details": {
+     "trapped": true,
+     "building": "collapsed"
+    },
+    "note": "building collapsed Lea market people under it we hear voices",
+    "lat": 24.859386,
+    "lng": 66.997667,
+    "gps_accuracy_m": 12,
+    "landmark": "Lea market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-047",
+    "severity": "critical",
+    "deadline_min": 192
+   }
+  },
+  {
+   "t": 66.61,
+   "kind": "text",
+   "sender": "+000 555 0066",
+   "text": "old woman 72 trapped in her room, door jammed, stairs broken Zaibunnisa street",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-048",
+    "severity": "critical",
+    "deadline_min": 278
+   }
+  },
+  {
+   "t": 67.14,
+   "kind": "text",
+   "sender": "+000 555 0029",
+   "text": "fire started near gas cylinder shop regal chowk urgent",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-019",
+    "severity": "critical",
+    "deadline_min": 58
+   }
+  },
+  {
+   "t": 68.37,
+   "kind": "report",
+   "device": "dev_P0067",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "oxygen",
+     "power_dependent"
+    ],
+    "details": {},
+    "note": "oxygen patient, power gone, concentrator off Agra Taj colony",
+    "lat": 24.864101,
+    "lng": 66.990754,
+    "gps_accuracy_m": 15,
+    "landmark": "Agra Taj colony",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-049",
+    "severity": "critical",
+    "deadline_min": 101
+   }
+  },
+  {
+   "t": 71.58,
+   "kind": "text",
+   "sender": "+000 555 0068",
+   "text": "my father has heart problem, chest pain after the shaking Kalri lane",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-050",
+    "severity": "serious",
+    "deadline_min": 140
+   }
+  },
+  {
+   "t": 71.62,
+   "kind": "report",
+   "device": "dev_P0069",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 4,
+    "conditions": [],
+    "details": {
+     "gas_or_fire": true
+    },
+    "note": "fire started near the gas cylinder shop Moosa lane",
+    "lat": 24.864639,
+    "lng": 67.013193,
+    "gps_accuracy_m": 8,
+    "landmark": "Moosa lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-051",
+    "severity": "critical",
+    "deadline_min": 71
+   }
+  },
+  {
+   "t": 73.86,
+   "kind": "report",
+   "device": "dev_P0070",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 10,
+    "conditions": [],
+    "details": {
+     "trapped": true,
+     "building": "collapsed"
+    },
+    "note": "building collapsed Baghdadi football ground people under it we hear voices",
+    "lat": 24.864324,
+    "lng": 67.011572,
+    "gps_accuracy_m": 15,
+    "landmark": "Baghdadi football ground",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-052",
+    "severity": "critical",
+    "deadline_min": 165
+   }
+  },
+  {
+   "t": 73.88,
+   "kind": "text",
+   "sender": "+000 555 0072",
+   "text": "11 workers trapped in factory Kalri lane, shouting from inside",
+   "lat": 24.864456,
+   "lng": 66.999478,
+   "hazard": null,
+   "truth": {
+    "situation": "S-053",
+    "severity": "critical",
+    "deadline_min": 201
+   }
+  },
+  {
+   "t": 74.49,
+   "kind": "report",
+   "device": "dev_P0073",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 4,
+    "conditions": [],
+    "details": {
+     "gas_or_fire": true
+    },
+    "note": "fire started near the gas cylinder shop sector 2 near the nullah",
+    "lat": 24.825864,
+    "lng": 67.135902,
+    "gps_accuracy_m": 25,
+    "landmark": "sector 2 near the nullah",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-054",
+    "severity": "critical",
+    "deadline_min": 59
+   }
+  },
+  {
+   "t": 77.32,
+   "kind": "text",
+   "sender": "+000 555 0074",
+   "text": "cracks in walls, we r outside in the street with kids the river bank near Kalri",
+   "lat": 24.875885,
+   "lng": 67.011213,
+   "hazard": null,
+   "truth": {
+    "situation": "S-055",
+    "severity": "minor",
+    "deadline_min": 737
+   }
+  },
+  {
+   "t": 78.19,
+   "kind": "text",
+   "sender": "+000 555 0075",
+   "text": "aftershock again, everyone in the park Bohri bazaar, need blankets",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-056",
+    "severity": "minor",
+    "deadline_min": 546
+   }
+  },
+  {
+   "t": 80.1,
+   "kind": "text",
+   "sender": "+000 555 0076",
+   "text": "my brother stuck under the wall, leg bleeding the underpass near Tower",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-057",
+    "severity": "critical",
+    "deadline_min": 84
+   }
+  },
+  {
+   "t": 81.7,
+   "kind": "report",
+   "device": "dev_P0064",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "injured",
+     "bleeding"
+    ],
+    "details": {
+     "trapped": true
+    },
+    "note": "jaldi my brother stuck under wall, leg bleeding baghdadi football ground",
+    "lat": 24.85981,
+    "lng": 67.010471,
+    "gps_accuracy_m": 15,
+    "landmark": "Baghdadi football ground",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-046",
+    "severity": "critical",
+    "deadline_min": 73
+   }
+  },
+  {
+   "t": 82.76,
+   "kind": "report",
+   "device": "dev_P0077",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {},
+    "note": "my father has heart problem, chest pain after the shaking block 3",
+    "lat": 24.885066,
+    "lng": 67.157862,
+    "gps_accuracy_m": 12,
+    "landmark": "block 3",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-058",
+    "severity": "serious",
+    "deadline_min": 130
+   }
+  },
+  {
+   "t": 83.15,
+   "kind": "text",
+   "sender": "+000 555 0079",
+   "text": "old woman 81 trapped in her room, door jammed, stairs broken block 3",
+   "lat": 24.885945,
+   "lng": 67.156984,
+   "hazard": null,
+   "truth": {
+    "situation": "S-059",
+    "severity": "critical",
+    "deadline_min": 199
+   }
+  },
+  {
+   "t": 83.34,
+   "kind": "text",
+   "sender": "+000 555 0059",
+   "text": "cracks in walls we r outside in the street w kids Kalri lane bhai",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-042",
+    "severity": "minor",
+    "deadline_min": 735
+   }
+  },
+  {
+   "t": 84.68,
+   "kind": "text",
+   "sender": "+000 555 0080",
+   "text": "people with broken arms and cuts in the masjid Empress market, 8 injured",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-060",
+    "severity": "serious",
+    "deadline_min": 283
+   }
+  },
+  {
+   "t": 85.4,
+   "kind": "report",
+   "device": "dev_P0071",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 10,
+    "conditions": [],
+    "details": {
+     "trapped": true,
+     "building": "collapsed"
+    },
+    "note": "building collapsed baghdadi football ground people under it we hear voices",
+    "lat": 24.863607,
+    "lng": 67.01177,
+    "gps_accuracy_m": 8,
+    "landmark": "Baghdadi football ground",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-052",
+    "severity": "critical",
+    "deadline_min": 165
+   }
+  },
+  {
+   "t": 86.47,
+   "kind": "report",
+   "device": "dev_P0081",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "alone"
+    ],
+    "details": {
+     "trapped": true
+    },
+    "note": "old woman 78 trapped in her room, door jammed, stairs broken Agra Taj colony",
+    "lat": 24.863653,
+    "lng": 66.997078,
+    "gps_accuracy_m": 12,
+    "landmark": "Agra Taj colony",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-061",
+    "severity": "critical",
+    "deadline_min": 205
+   }
+  },
+  {
+   "t": 86.54,
+   "kind": "report",
+   "device": "dev_P0082",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 4,
+    "conditions": [],
+    "details": {
+     "gas_or_fire": true
+    },
+    "note": "fire started near the gas cylinder shop Empress market",
+    "lat": 24.861101,
+    "lng": 67.03434,
+    "gps_accuracy_m": 8,
+    "landmark": "Empress market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-062",
+    "severity": "critical",
+    "deadline_min": 59
+   }
+  },
+  {
+   "t": 88.81,
+   "kind": "report",
+   "device": "dev_P0083",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 5,
+    "conditions": [
+     "injured"
+    ],
+    "details": {},
+    "note": "people with broken arms and cuts in the masjid Kalri lane, 5 injured",
+    "lat": 24.866589,
+    "lng": 66.99358,
+    "gps_accuracy_m": 25,
+    "landmark": "Kalri lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-063",
+    "severity": "serious",
+    "deadline_min": 229
+   }
+  },
+  {
+   "t": 89.5,
+   "kind": "report",
+   "device": "dev_P0084",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "disabled",
+     "cannot_walk"
+    ],
+    "details": {
+     "building": "badly_damaged"
+    },
+    "note": "wheelchair user on 4th floor, lift broken, stairs cracked Kalri lane",
+    "lat": 24.873834,
+    "lng": 67.009495,
+    "gps_accuracy_m": 12,
+    "landmark": "Kalri lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-064",
+    "severity": "serious",
+    "deadline_min": 329
+   }
+  },
+  {
+   "t": 92.04,
+   "kind": "text",
+   "sender": "+000 555 0078",
+   "text": "bhai my father has heart problem, chest pain after the shaking block 3",
+   "lat": 24.885502,
+   "lng": 67.158156,
+   "hazard": null,
+   "truth": {
+    "situation": "S-058",
+    "severity": "serious",
+    "deadline_min": 130
+   }
+  },
+  {
+   "t": 106.19,
+   "kind": "report",
+   "device": "dev_P0085",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 6,
+    "conditions": [
+     "child"
+    ],
+    "details": {
+     "building": "badly_damaged"
+    },
+    "note": "cracks in walls, we r outside in the street with kids Agra Taj colony",
+    "lat": 24.85965,
+    "lng": 67.007762,
+    "gps_accuracy_m": 15,
+    "landmark": "Agra Taj colony",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-065",
+    "severity": "minor",
+    "deadline_min": 646
+   }
+  },
+  {
+   "t": 107.2,
+   "kind": "report",
+   "device": "dev_P0086",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 6,
+    "conditions": [],
+    "details": {
+     "trapped": true,
+     "building": "collapsed"
+    },
+    "note": "6 workers trapped in factory Moosa lane, shouting from inside",
+    "lat": 24.867908,
+    "lng": 66.998279,
+    "gps_accuracy_m": 8,
+    "landmark": "Moosa lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-066",
+    "severity": "critical",
+    "deadline_min": 261
+   }
+  },
+  {
+   "t": 114.78,
+   "kind": "report",
+   "device": "dev_P0087",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 18,
+    "conditions": [],
+    "details": {},
+    "note": "aftershock again, everyone in the park Baghdadi football ground, need blankets",
+    "lat": 24.863517,
+    "lng": 66.99291,
+    "gps_accuracy_m": 8,
+    "landmark": "Baghdadi football ground",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-067",
+    "severity": "minor",
+    "deadline_min": 539
+   }
+  },
+  {
+   "t": 115.75,
+   "kind": "report",
+   "device": "dev_P0088",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "oxygen",
+     "power_dependent"
+    ],
+    "details": {},
+    "note": "oxygen patient, power gone, concentrator off colony gate",
+    "lat": 24.876954,
+    "lng": 67.152019,
+    "gps_accuracy_m": 40,
+    "landmark": "colony gate",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-068",
+    "severity": "critical",
+    "deadline_min": 79
+   }
+  },
+  {
+   "t": 116.11,
+   "kind": "report",
+   "device": "dev_P0089",
+   "urgency": 2,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "disabled",
+     "cannot_walk"
+    ],
+    "details": {
+     "building": "badly_damaged"
+    },
+    "note": "wheelchair user on 4th floor, lift broken, stairs cracked sector 5 school",
+    "lat": 24.821713,
+    "lng": 67.132007,
+    "gps_accuracy_m": 8,
+    "landmark": "sector 5 school",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-069",
+    "severity": "serious",
+    "deadline_min": 350
+   }
+  },
+  {
+   "t": 116.5,
+   "kind": "report",
+   "device": "dev_P0090",
+   "urgency": 3,
+   "payload": {
+    "hazard": "earthquake",
+    "for_whom": "other",
+    "people": 4,
+    "conditions": [],
+    "details": {
+     "gas_or_fire": true
+    },
+    "note": "fire started near the gas cylinder shop Lea market",
+    "lat": 24.875459,
+    "lng": 66.993496,
+    "gps_accuracy_m": 25,
+    "landmark": "Lea market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-070",
+    "severity": "critical",
+    "deadline_min": 61
+   }
+  },
+  {
+   "t": 118.29,
+   "kind": "text",
+   "sender": "+000 555 0091",
+   "text": "my brother stuck under the wall, leg bleeding Kalri lane",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-071",
+    "severity": "critical",
+    "deadline_min": 102
+   }
+  },
+  {
+   "t": 118.95,
+   "kind": "text",
+   "sender": "+000 555 0092",
+   "text": "wheelchair user on 4th floor, lift broken, stairs cracked Kalri lane",
+   "lat": 24.859659,
+   "lng": 66.997616,
+   "hazard": null,
+   "truth": {
+    "situation": "S-072",
+    "severity": "serious",
+    "deadline_min": 242
+   }
+  }
+ ]
+}

@@ -11,8 +11,8 @@ npm run build        # writes dist/; the server then serves it at http://localho
 npm run dev          # while building: http://localhost:5173, API proxied to the server on :8000
 ```
 
-To see data: with the server running, `python server/scripts/reset_demo.py --pack flood --keep-server`
-(the Karachi flood pack) then `python scenario/demo_reports.py` (15 reports from phones).
+To see data: with the server running, click **Replay** and start the flood pack (or
+`python scenario/replay.py --pack flood`).
 
 ## What is built (System Design 6, Team Brief C1, C2 and C3)
 
@@ -50,6 +50,8 @@ To see data: with the server running, `python server/scripts/reset_demo.py --pac
   unload, deliver, used, transfer) and the places' head counts.
 - **Weights** opens a slider per weight above the ranked list; each change is saved after a short
   pause, every open case is rescored and the list re-ranks. "Back to defaults" resets them.
+- **Replay**: pick a pack (flood, heat, earthquake) and a speed; the server resets to it and plays
+  its story. The top bar shows the scenario clock and the bottom strip the presenter's next cue.
 - **Chaos** (demo only): inject a duplicate, a fake report or a wrong location, or start and end
   an AI outage; each shows its badge or the banner within one refresh.
 - **Phone setup**: the setup QR code with the server addresses it carries.
@@ -63,4 +65,4 @@ with `--bbox=66.9,24.75,67.3,25.05`).
 
 ## Next
 
-- Replay (top bar) once `scenario/replay.py` exists; projector polish.
+- Projector polish.

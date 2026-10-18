@@ -70,10 +70,16 @@ Dashboard (C2): alert composer with a live phone preview and the announcement sc
 form built from the profiles, and the paste box.
 
 Demo city: Karachi. The map shows real streets (OpenStreetMap, or an offline `town.pmtiles`), with
-8 zones on real neighbourhoods and a flood pack (`scenario/packs/flood`, `scenario/demo_reports.py`).
+8 zones on real neighbourhoods.
+
+Scenario (D): `generate.py` builds flood, heat and earthquake packs (200 registered residents,
+teams with demo phones, places, supplies, windows, a timed story of reports, texts and replies,
+and the hidden truth); the Replay button or `replay.py` plays a story at any speed through the
+normal paths, moving the teams; `simulate.py` compares first come first served with PulseTriage's
+order (in our simulation). Zone windows and simulated text messages are on the server.
 
 Dashboard (C3): Teams and resources view (counters, team table with status changes, supplies with
 stock moves, places), weights sliders that re-rank the list, the chaos panel (duplicate, fake,
 wrong location, AI outage) and the phone setup QR.
 
-Next: scenario generate.py and replay.py (D), and the field app (A).
+Next: the field app (A).

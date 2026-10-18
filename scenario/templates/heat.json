@@ -1,0 +1,243 @@
+{
+ "_note": "Hand-written heatwave messages. Few people report in a heatwave: the pack relies on the registry and alert replies.",
+ "hazard": "heat",
+ "templates": [
+  {
+   "text": "my dad is very hot and talking strange, no fan, power gone since morning {place}",
+   "for_whom": "self",
+   "people": 1,
+   "conditions": [
+    "elderly"
+   ],
+   "details": {
+    "cooling": false,
+    "hot_inside": true,
+    "signs": [
+     "confused"
+    ]
+   },
+   "truth": {
+    "severity": "critical",
+    "deadline_min": 90
+   }
+  },
+  {
+   "text": "old woman {age} collapsed in the street near {place}, not answering",
+   "for_whom": "other",
+   "people": 1,
+   "conditions": [
+    "elderly",
+    "unconscious"
+   ],
+   "details": {
+    "signs": [
+     "confused"
+    ]
+   },
+   "truth": {
+    "severity": "critical",
+    "deadline_min": 30
+   }
+  },
+  {
+   "text": "no electricity 10 hours, bedridden mother {age}, house like oven {place}",
+   "for_whom": "self",
+   "people": 2,
+   "conditions": [
+    "elderly",
+    "cannot_walk"
+   ],
+   "details": {
+    "cooling": false,
+    "hot_inside": true
+   },
+   "truth": {
+    "severity": "serious",
+    "deadline_min": 180
+   }
+  },
+  {
+   "text": "labourer fainted at the construction site {place}, vomiting",
+   "for_whom": "other",
+   "people": 1,
+   "conditions": [],
+   "details": {
+    "signs": [
+     "confused",
+     "vomiting"
+    ]
+   },
+   "truth": {
+    "severity": "critical",
+    "deadline_min": 60
+   }
+  },
+  {
+   "text": "baby not drinking, very hot, crying no tears {place}",
+   "for_whom": "self",
+   "people": 2,
+   "conditions": [
+    "infant"
+   ],
+   "details": {
+    "cooling": false,
+    "hot_inside": true
+   },
+   "truth": {
+    "severity": "critical",
+    "deadline_min": 90
+   }
+  },
+  {
+   "text": "elderly neighbour alone, door locked, no answer since yesterday {place}",
+   "for_whom": "neighbour",
+   "people": 1,
+   "conditions": [
+    "elderly",
+    "alone"
+   ],
+   "details": {},
+   "truth": {
+    "severity": "critical",
+    "deadline_min": 120
+   }
+  },
+  {
+   "text": "my uncle on oxygen, power out, concentrator stopped {place}",
+   "for_whom": "self",
+   "people": 1,
+   "conditions": [
+    "oxygen",
+    "power_dependent"
+   ],
+   "details": {
+    "cooling": false,
+    "hot_inside": true
+   },
+   "truth": {
+    "severity": "critical",
+    "deadline_min": 60
+   }
+  },
+  {
+   "text": "{n} ppl in one room no fan no water {place}",
+   "for_whom": "self",
+   "people": [
+    4,
+    8
+   ],
+   "conditions": [
+    "no_food_water"
+   ],
+   "details": {
+    "cooling": false,
+    "hot_inside": true
+   },
+   "truth": {
+    "severity": "serious",
+    "deadline_min": 240
+   }
+  },
+  {
+   "text": "dizzy and headache since noon, alone at home {place}",
+   "for_whom": "self",
+   "people": 1,
+   "conditions": [
+    "alone"
+   ],
+   "details": {
+    "cooling": false,
+    "hot_inside": true
+   },
+   "truth": {
+    "severity": "serious",
+    "deadline_min": 240
+   }
+  },
+  {
+   "text": "is the cooling centre in {place} open?",
+   "for_whom": "self",
+   "people": 1,
+   "conditions": [],
+   "details": {},
+   "text_only": true,
+   "truth": {
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "text": "where can we get water bottles near {place}",
+   "for_whom": "self",
+   "people": 1,
+   "conditions": [],
+   "details": {},
+   "text_only": true,
+   "truth": {
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "text": "pregnant wife feeling faint, very hot in the flat {place}",
+   "for_whom": "self",
+   "people": 2,
+   "conditions": [
+    "pregnant"
+   ],
+   "details": {
+    "cooling": false,
+    "hot_inside": true
+   },
+   "truth": {
+    "severity": "serious",
+    "deadline_min": 180
+   }
+  },
+  {
+   "text": "dialysis patient cant travel in this heat, needs transport {place}",
+   "for_whom": "neighbour",
+   "people": 1,
+   "conditions": [
+    "dialysis"
+   ],
+   "details": {},
+   "truth": {
+    "severity": "serious",
+    "deadline_min": 300
+   }
+  },
+  {
+   "text": "old man sitting in sun at bus stop {place}, confused, skin very hot",
+   "for_whom": "other",
+   "people": 1,
+   "conditions": [
+    "elderly"
+   ],
+   "details": {
+    "signs": [
+     "confused"
+    ]
+   },
+   "truth": {
+    "severity": "critical",
+    "deadline_min": 60
+   }
+  },
+  {
+   "text": "we have fan and water, mother ok but weak {place}",
+   "for_whom": "self",
+   "people": 2,
+   "conditions": [
+    "elderly"
+   ],
+   "details": {
+    "cooling": true
+   },
+   "truth": {
+    "severity": "minor",
+    "deadline_min": 600
+   }
+  }
+ ]
+}

@@ -12,6 +12,10 @@ Paste (POST /api/paste): a batch of forwarded messages. Messages are split on ch
 ("[12/10, 14:03] Name: ..." or "12/10/26, 14:03 - Name: ..."), else on blank lines, else one per
 line. Each is read by the keyword reader; a message with nothing to act on is skipped and listed.
 Source "paste", read by keywords: confidence 0.4. The same message pasted twice is a duplicate.
+
+Simulate (POST /api/reports/simulate, the scenario replay): text messages that came in by SMS or
+through the mesh as plain text, each with its sender and, if known, a position. Read like the
+paste box; each sender counts as its own source. The same sender and text twice is a duplicate.
 """
 from __future__ import annotations
 
@@ -114,6 +118,35 @@ class Desk:
             reports.append({"text": message[:120], "report_id": result.id, "case_id": case_id,
                             "duplicate": result.status == "duplicate", "read": self._public(reading)})
         return {"messages": len(messages), "reports": reports, "skipped": skipped}
+
+    def simulate(self, messages: list[dict], hazard: str | None, by: str, now: datetime | None = None) -> dict:
+        now = now or timeutil.now()
+        if len(messages) > MAX_MESSAGES:
+            raise ValueError(f"send at most {MAX_MESSAGES} messages at a time")
+        out = []
+        for m in messages:
+            text = " ".join(m["text"].split())[:500]
+            reading = self._read(text, m.get("hazard") or hazard, now)
+            if not reading.found_anything:
+                out.append({"text": text[:120], "status": "skipped", "case_id": None})
+                continue
+            payload = {"hazard": reading.hazard, "for_whom": "other", "people": reading.people,
+                       "conditions": reading.conditions, "details": reading.details, "note": text,
+                       "lat": m.get("lat"), "lng": m.get("lng"), "reporter_role": "helper"}
+            if m.get("lat") is not None:
+                payload["gps_accuracy_m"] = m.get("accuracy_m") or 30
+            if reading.landmark:
+                payload["landmark"] = reading.landmark
+            sender = slug(m.get("sender") or "unknown") or "unknown"
+            packet_id = str(uuid.uuid5(_PASTE_NS, f"sms:{sender}:{normalise(text)}"))
+            result = self.ingestor.ingest_internal(payload, source="sms", reader="keywords",
+                                                   device=f"sms:{sender}", received_at=now, packet_id=packet_id)
+            if result.status == "accepted":
+                self.ai.enqueue(result.id, text, m.get("hazard") or hazard)
+            out.append({"text": text[:120], "status": result.status, "report_id": result.id,
+                        "case_id": result.case_id if result.status == "accepted" else self.db.scalar(
+                            "SELECT case_id FROM reports WHERE id = ?", (packet_id,))})
+        return {"messages": out}
 
     # ---- helpers ------------------------------------------------------------------------------------
     def _active(self, now: datetime) -> tuple[str | None, str]:

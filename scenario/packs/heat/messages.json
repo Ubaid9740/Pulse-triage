@@ -1,0 +1,1809 @@
+{
+ "start": "07:00",
+ "speed": 90,
+ "events": [
+  {
+   "t": 0,
+   "kind": "cue",
+   "text": "Issue a heat warning for Lyari, Saddar, Korangi and Orangi Town, 12:00-17:00, with the cooling centres. Generate the announcement."
+  },
+  {
+   "t": 4.2,
+   "kind": "reply",
+   "device": "dev_REG0074",
+   "registry_id": "R-0074",
+   "status": "safe",
+   "lat": 24.87388,
+   "lng": 66.997225
+  },
+  {
+   "t": 4.34,
+   "kind": "reply",
+   "device": "dev_REG0018",
+   "registry_id": "R-0018",
+   "status": "safe",
+   "lat": 24.863013,
+   "lng": 67.0039
+  },
+  {
+   "t": 4.38,
+   "kind": "report",
+   "device": "dev_P0001",
+   "urgency": 2,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "self",
+    "people": 2,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {
+     "cooling": true
+    },
+    "note": "we have fan and water, mother ok but weak the madrasa near the crossing",
+    "lat": 24.819515,
+    "lng": 67.134814,
+    "gps_accuracy_m": 40,
+    "landmark": "the madrasa near the crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-001",
+    "severity": "minor",
+    "deadline_min": 686
+   }
+  },
+  {
+   "t": 4.85,
+   "kind": "reply",
+   "device": "dev_REG0159",
+   "registry_id": "R-0159",
+   "status": "safe",
+   "lat": 24.870862,
+   "lng": 67.00304
+  },
+  {
+   "t": 5.79,
+   "kind": "reply",
+   "device": "dev_REG0145",
+   "registry_id": "R-0145",
+   "status": "safe",
+   "lat": 24.850024,
+   "lng": 67.032733
+  },
+  {
+   "t": 6.37,
+   "kind": "reply",
+   "device": "dev_REG0022",
+   "registry_id": "R-0022",
+   "status": "safe",
+   "lat": 24.864965,
+   "lng": 67.00805
+  },
+  {
+   "t": 6.52,
+   "kind": "reply",
+   "device": "dev_REG0055",
+   "registry_id": "R-0055",
+   "status": "safe",
+   "lat": 24.848455,
+   "lng": 67.034677
+  },
+  {
+   "t": 6.55,
+   "kind": "reply",
+   "device": "dev_REG0149",
+   "registry_id": "R-0149",
+   "status": "need_help",
+   "lat": 24.864592,
+   "lng": 67.025789
+  },
+  {
+   "t": 7.42,
+   "kind": "reply",
+   "device": "dev_REG0150",
+   "registry_id": "R-0150",
+   "status": "safe",
+   "lat": 24.956373,
+   "lng": 66.985373
+  },
+  {
+   "t": 7.5,
+   "kind": "reply",
+   "device": "dev_REG0005",
+   "registry_id": "R-0005",
+   "status": "safe",
+   "lat": 24.852291,
+   "lng": 67.034945
+  },
+  {
+   "t": 8.46,
+   "kind": "reply",
+   "device": "dev_REG0109",
+   "registry_id": "R-0109",
+   "status": "safe",
+   "lat": 24.861127,
+   "lng": 66.997256
+  },
+  {
+   "t": 8.92,
+   "kind": "reply",
+   "device": "dev_REG0113",
+   "registry_id": "R-0113",
+   "status": "safe",
+   "lat": 24.819486,
+   "lng": 67.125392
+  },
+  {
+   "t": 9.07,
+   "kind": "reply",
+   "device": "dev_REG0059",
+   "registry_id": "R-0059",
+   "status": "safe",
+   "lat": 24.865763,
+   "lng": 67.006764
+  },
+  {
+   "t": 9.4,
+   "kind": "reply",
+   "device": "dev_REG0114",
+   "registry_id": "R-0114",
+   "status": "safe",
+   "lat": 24.863968,
+   "lng": 66.992119
+  },
+  {
+   "t": 10.39,
+   "kind": "reply",
+   "device": "dev_REG0175",
+   "registry_id": "R-0175",
+   "status": "safe",
+   "lat": 24.85442,
+   "lng": 67.022989
+  },
+  {
+   "t": 10.64,
+   "kind": "reply",
+   "device": "dev_REG0062",
+   "registry_id": "R-0062",
+   "status": "safe",
+   "lat": 24.854568,
+   "lng": 67.034041
+  },
+  {
+   "t": 11.41,
+   "kind": "reply",
+   "device": "dev_REG0028",
+   "registry_id": "R-0028",
+   "status": "safe",
+   "lat": 24.959138,
+   "lng": 66.995695
+  },
+  {
+   "t": 11.56,
+   "kind": "reply",
+   "device": "dev_REG0153",
+   "registry_id": "R-0153",
+   "status": "safe",
+   "lat": 24.87295,
+   "lng": 66.992366
+  },
+  {
+   "t": 12.86,
+   "kind": "reply",
+   "device": "dev_REG0031",
+   "registry_id": "R-0031",
+   "status": "need_help",
+   "lat": 24.823245,
+   "lng": 67.12382
+  },
+  {
+   "t": 13.08,
+   "kind": "reply",
+   "device": "dev_REG0200",
+   "registry_id": "R-0200",
+   "status": "safe",
+   "lat": 24.868957,
+   "lng": 67.005718
+  },
+  {
+   "t": 14.17,
+   "kind": "reply",
+   "device": "dev_REG0063",
+   "registry_id": "R-0063",
+   "status": "need_help",
+   "lat": 24.870893,
+   "lng": 67.002409
+  },
+  {
+   "t": 14.17,
+   "kind": "reply",
+   "device": "dev_REG0157",
+   "registry_id": "R-0157",
+   "status": "safe",
+   "lat": 24.960801,
+   "lng": 66.991194
+  },
+  {
+   "t": 14.47,
+   "kind": "reply",
+   "device": "dev_REG0106",
+   "registry_id": "R-0106",
+   "status": "safe",
+   "lat": 24.869468,
+   "lng": 67.010591
+  },
+  {
+   "t": 15.03,
+   "kind": "report",
+   "device": "dev_P0002",
+   "urgency": 3,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {
+     "cooling": false,
+     "hot_inside": true,
+     "signs": [
+      "confused"
+     ]
+    },
+    "note": "my dad is very hot and talking strange, no fan, power gone since morning sector 1 green gate",
+    "lat": 24.823219,
+    "lng": 67.140385,
+    "gps_accuracy_m": 8,
+    "landmark": "sector 1 green gate",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-002",
+    "severity": "critical",
+    "deadline_min": 97
+   }
+  },
+  {
+   "t": 15.12,
+   "kind": "reply",
+   "device": "dev_REG0146",
+   "registry_id": "R-0146",
+   "status": "safe",
+   "lat": 24.860212,
+   "lng": 67.029249
+  },
+  {
+   "t": 15.15,
+   "kind": "reply",
+   "device": "dev_REG0116",
+   "registry_id": "R-0116",
+   "status": "safe",
+   "lat": 24.853213,
+   "lng": 67.028211
+  },
+  {
+   "t": 15.59,
+   "kind": "reply",
+   "device": "dev_REG0101",
+   "registry_id": "R-0101",
+   "status": "safe",
+   "lat": 24.855636,
+   "lng": 67.035085
+  },
+  {
+   "t": 16.03,
+   "kind": "reply",
+   "device": "dev_REG0167",
+   "registry_id": "R-0167",
+   "status": "safe",
+   "lat": 24.828155,
+   "lng": 67.120516
+  },
+  {
+   "t": 16.77,
+   "kind": "reply",
+   "device": "dev_REG0013",
+   "registry_id": "R-0013",
+   "status": "safe",
+   "lat": 24.871905,
+   "lng": 67.01255
+  },
+  {
+   "t": 17.03,
+   "kind": "reply",
+   "device": "dev_REG0117",
+   "registry_id": "R-0117",
+   "status": "safe",
+   "lat": 24.824283,
+   "lng": 67.125939
+  },
+  {
+   "t": 17.14,
+   "kind": "reply",
+   "device": "dev_REG0077",
+   "registry_id": "R-0077",
+   "status": "safe",
+   "lat": 24.830768,
+   "lng": 67.113974
+  },
+  {
+   "t": 17.19,
+   "kind": "reply",
+   "device": "dev_REG0024",
+   "registry_id": "R-0024",
+   "status": "safe",
+   "lat": 24.871995,
+   "lng": 66.993634
+  },
+  {
+   "t": 17.21,
+   "kind": "reply",
+   "device": "dev_REG0188",
+   "registry_id": "R-0188",
+   "status": "safe",
+   "lat": 24.843196,
+   "lng": 67.123985
+  },
+  {
+   "t": 17.87,
+   "kind": "reply",
+   "device": "dev_REG0099",
+   "registry_id": "R-0099",
+   "status": "safe",
+   "lat": 24.849411,
+   "lng": 67.03003
+  },
+  {
+   "t": 18.64,
+   "kind": "reply",
+   "device": "dev_REG0061",
+   "registry_id": "R-0061",
+   "status": "safe",
+   "lat": 24.955226,
+   "lng": 66.985056
+  },
+  {
+   "t": 18.73,
+   "kind": "reply",
+   "device": "dev_REG0045",
+   "registry_id": "R-0045",
+   "status": "safe",
+   "lat": 24.867777,
+   "lng": 67.003541
+  },
+  {
+   "t": 19.06,
+   "kind": "reply",
+   "device": "dev_REG0190",
+   "registry_id": "R-0190",
+   "status": "helping",
+   "lat": 24.831766,
+   "lng": 67.114589
+  },
+  {
+   "t": 19.15,
+   "kind": "reply",
+   "device": "dev_REG0176",
+   "registry_id": "R-0176",
+   "status": "safe",
+   "lat": 24.838129,
+   "lng": 67.116583
+  },
+  {
+   "t": 19.22,
+   "kind": "reply",
+   "device": "dev_REG0054",
+   "registry_id": "R-0054",
+   "status": "need_help",
+   "lat": 24.858472,
+   "lng": 66.996396
+  },
+  {
+   "t": 21.6,
+   "kind": "reply",
+   "device": "dev_REG0102",
+   "registry_id": "R-0102",
+   "status": "safe",
+   "lat": 24.82458,
+   "lng": 67.11928
+  },
+  {
+   "t": 21.76,
+   "kind": "reply",
+   "device": "dev_REG0053",
+   "registry_id": "R-0053",
+   "status": "helping",
+   "lat": 24.859028,
+   "lng": 67.025477
+  },
+  {
+   "t": 22.31,
+   "kind": "reply",
+   "device": "dev_REG0189",
+   "registry_id": "R-0189",
+   "status": "safe",
+   "lat": 24.870073,
+   "lng": 67.005003
+  },
+  {
+   "t": 22.4,
+   "kind": "reply",
+   "device": "dev_REG0016",
+   "registry_id": "R-0016",
+   "status": "safe",
+   "lat": 24.822028,
+   "lng": 67.122931
+  },
+  {
+   "t": 22.73,
+   "kind": "reply",
+   "device": "dev_REG0133",
+   "registry_id": "R-0133",
+   "status": "need_help",
+   "lat": 24.85345,
+   "lng": 67.03756
+  },
+  {
+   "t": 22.74,
+   "kind": "reply",
+   "device": "dev_REG0038",
+   "registry_id": "R-0038",
+   "status": "safe",
+   "lat": 24.874926,
+   "lng": 67.005351
+  },
+  {
+   "t": 23.3,
+   "kind": "reply",
+   "device": "dev_REG0166",
+   "registry_id": "R-0166",
+   "status": "safe",
+   "lat": 24.865531,
+   "lng": 67.025703
+  },
+  {
+   "t": 23.31,
+   "kind": "reply",
+   "device": "dev_REG0104",
+   "registry_id": "R-0104",
+   "status": "safe",
+   "lat": 24.862909,
+   "lng": 67.005241
+  },
+  {
+   "t": 23.5,
+   "kind": "reply",
+   "device": "dev_REG0051",
+   "registry_id": "R-0051",
+   "status": "helping",
+   "lat": 24.852109,
+   "lng": 67.021498
+  },
+  {
+   "t": 23.7,
+   "kind": "reply",
+   "device": "dev_REG0004",
+   "registry_id": "R-0004",
+   "status": "safe",
+   "lat": 24.835128,
+   "lng": 67.126496
+  },
+  {
+   "t": 25.2,
+   "kind": "reply",
+   "device": "dev_REG0037",
+   "registry_id": "R-0037",
+   "status": "safe",
+   "lat": 24.858939,
+   "lng": 67.029838
+  },
+  {
+   "t": 26.64,
+   "kind": "reply",
+   "device": "dev_REG0010",
+   "registry_id": "R-0010",
+   "status": "safe",
+   "lat": 24.854305,
+   "lng": 67.038202
+  },
+  {
+   "t": 27.59,
+   "kind": "reply",
+   "device": "dev_REG0160",
+   "registry_id": "R-0160",
+   "status": "helping",
+   "lat": 24.859195,
+   "lng": 67.034055
+  },
+  {
+   "t": 27.87,
+   "kind": "reply",
+   "device": "dev_REG0120",
+   "registry_id": "R-0120",
+   "status": "safe",
+   "lat": 24.839381,
+   "lng": 67.125814
+  },
+  {
+   "t": 27.92,
+   "kind": "reply",
+   "device": "dev_REG0070",
+   "registry_id": "R-0070",
+   "status": "safe",
+   "lat": 24.862247,
+   "lng": 67.035172
+  },
+  {
+   "t": 28.87,
+   "kind": "reply",
+   "device": "dev_REG0015",
+   "registry_id": "R-0015",
+   "status": "safe",
+   "lat": 24.877061,
+   "lng": 67.003543
+  },
+  {
+   "t": 28.93,
+   "kind": "reply",
+   "device": "dev_REG0122",
+   "registry_id": "R-0122",
+   "status": "safe",
+   "lat": 24.843781,
+   "lng": 67.117089
+  },
+  {
+   "t": 29.39,
+   "kind": "reply",
+   "device": "dev_REG0184",
+   "registry_id": "R-0184",
+   "status": "safe",
+   "lat": 24.860912,
+   "lng": 67.012371
+  },
+  {
+   "t": 29.58,
+   "kind": "reply",
+   "device": "dev_REG0049",
+   "registry_id": "R-0049",
+   "status": "safe",
+   "lat": 24.84018,
+   "lng": 67.128631
+  },
+  {
+   "t": 29.82,
+   "kind": "reply",
+   "device": "dev_REG0187",
+   "registry_id": "R-0187",
+   "status": "safe",
+   "lat": 24.8379,
+   "lng": 67.119249
+  },
+  {
+   "t": 29.99,
+   "kind": "reply",
+   "device": "dev_REG0006",
+   "registry_id": "R-0006",
+   "status": "safe",
+   "lat": 24.874416,
+   "lng": 67.010033
+  },
+  {
+   "t": 31.81,
+   "kind": "reply",
+   "device": "dev_REG0066",
+   "registry_id": "R-0066",
+   "status": "safe",
+   "lat": 24.832038,
+   "lng": 67.124576
+  },
+  {
+   "t": 31.88,
+   "kind": "reply",
+   "device": "dev_REG0026",
+   "registry_id": "R-0026",
+   "status": "safe",
+   "lat": 24.864129,
+   "lng": 67.023621
+  },
+  {
+   "t": 31.91,
+   "kind": "reply",
+   "device": "dev_REG0168",
+   "registry_id": "R-0168",
+   "status": "safe",
+   "lat": 24.86516,
+   "lng": 67.00619
+  },
+  {
+   "t": 31.94,
+   "kind": "reply",
+   "device": "dev_REG0132",
+   "registry_id": "R-0132",
+   "status": "safe",
+   "lat": 24.865736,
+   "lng": 67.007823
+  },
+  {
+   "t": 31.97,
+   "kind": "reply",
+   "device": "dev_REG0009",
+   "registry_id": "R-0009",
+   "status": "safe",
+   "lat": 24.870296,
+   "lng": 66.996387
+  },
+  {
+   "t": 32.2,
+   "kind": "reply",
+   "device": "dev_REG0181",
+   "registry_id": "R-0181",
+   "status": "helping",
+   "lat": 24.952477,
+   "lng": 66.987255
+  },
+  {
+   "t": 33.49,
+   "kind": "reply",
+   "device": "dev_REG0072",
+   "registry_id": "R-0072",
+   "status": "safe",
+   "lat": 24.864191,
+   "lng": 67.031893
+  },
+  {
+   "t": 33.97,
+   "kind": "reply",
+   "device": "dev_REG0019",
+   "registry_id": "R-0019",
+   "status": "safe",
+   "lat": 24.861333,
+   "lng": 66.99409
+  },
+  {
+   "t": 34.19,
+   "kind": "text",
+   "sender": "+000 555 0004",
+   "text": "no electricity 10 hours, bedridden mother 80, house like oven Korangi crossing",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-003",
+    "severity": "serious",
+    "deadline_min": 209
+   }
+  },
+  {
+   "t": 34.65,
+   "kind": "reply",
+   "device": "dev_REG0197",
+   "registry_id": "R-0197",
+   "status": "safe",
+   "lat": 24.824611,
+   "lng": 67.130591
+  },
+  {
+   "t": 35.23,
+   "kind": "reply",
+   "device": "dev_REG0081",
+   "registry_id": "R-0081",
+   "status": "safe",
+   "lat": 24.872966,
+   "lng": 67.008352
+  },
+  {
+   "t": 36.0,
+   "kind": "reply",
+   "device": "dev_REG0172",
+   "registry_id": "R-0172",
+   "status": "safe",
+   "lat": 24.830945,
+   "lng": 67.129587
+  },
+  {
+   "t": 37.78,
+   "kind": "reply",
+   "device": "dev_REG0046",
+   "registry_id": "R-0046",
+   "status": "safe",
+   "lat": 24.851396,
+   "lng": 67.026178
+  },
+  {
+   "t": 38.57,
+   "kind": "reply",
+   "device": "dev_REG0169",
+   "registry_id": "R-0169",
+   "status": "helping",
+   "lat": 24.8743,
+   "lng": 67.005589
+  },
+  {
+   "t": 38.63,
+   "kind": "report",
+   "device": "dev_P0005",
+   "urgency": 2,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "self",
+    "people": 7,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "cooling": false,
+     "hot_inside": true
+    },
+    "note": "7 ppl in one room no fan no water sector 5 school",
+    "lat": 24.837694,
+    "lng": 67.135563,
+    "gps_accuracy_m": 25,
+    "landmark": "sector 5 school",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-004",
+    "severity": "serious",
+    "deadline_min": 255
+   }
+  },
+  {
+   "t": 38.91,
+   "kind": "reply",
+   "device": "dev_REG0003",
+   "registry_id": "R-0003",
+   "status": "safe",
+   "lat": 24.823229,
+   "lng": 67.116685
+  },
+  {
+   "t": 38.95,
+   "kind": "reply",
+   "device": "dev_REG0131",
+   "registry_id": "R-0131",
+   "status": "safe",
+   "lat": 24.867006,
+   "lng": 67.002562
+  },
+  {
+   "t": 39.0,
+   "kind": "reply",
+   "device": "dev_REG0050",
+   "registry_id": "R-0050",
+   "status": "safe",
+   "lat": 24.823794,
+   "lng": 67.133278
+  },
+  {
+   "t": 39.45,
+   "kind": "reply",
+   "device": "dev_REG0044",
+   "registry_id": "R-0044",
+   "status": "safe",
+   "lat": 24.962714,
+   "lng": 66.989817
+  },
+  {
+   "t": 40.53,
+   "kind": "reply",
+   "device": "dev_REG0002",
+   "registry_id": "R-0002",
+   "status": "safe",
+   "lat": 24.952367,
+   "lng": 67.005492
+  },
+  {
+   "t": 40.7,
+   "kind": "reply",
+   "device": "dev_REG0030",
+   "registry_id": "R-0030",
+   "status": "need_help",
+   "lat": 24.873562,
+   "lng": 67.004108
+  },
+  {
+   "t": 41.2,
+   "kind": "reply",
+   "device": "dev_REG0100",
+   "registry_id": "R-0100",
+   "status": "safe",
+   "lat": 24.865373,
+   "lng": 67.01242
+  },
+  {
+   "t": 42.21,
+   "kind": "reply",
+   "device": "dev_REG0064",
+   "registry_id": "R-0064",
+   "status": "safe",
+   "lat": 24.873573,
+   "lng": 67.012526
+  },
+  {
+   "t": 42.22,
+   "kind": "reply",
+   "device": "dev_REG0068",
+   "registry_id": "R-0068",
+   "status": "safe",
+   "lat": 24.866036,
+   "lng": 67.030351
+  },
+  {
+   "t": 42.78,
+   "kind": "reply",
+   "device": "dev_REG0152",
+   "registry_id": "R-0152",
+   "status": "safe",
+   "lat": 24.871596,
+   "lng": 67.003389
+  },
+  {
+   "t": 43.23,
+   "kind": "reply",
+   "device": "dev_REG0048",
+   "registry_id": "R-0048",
+   "status": "safe",
+   "lat": 24.860459,
+   "lng": 67.005214
+  },
+  {
+   "t": 43.25,
+   "kind": "reply",
+   "device": "dev_REG0094",
+   "registry_id": "R-0094",
+   "status": "need_help",
+   "lat": 24.838665,
+   "lng": 67.1314
+  },
+  {
+   "t": 43.55,
+   "kind": "reply",
+   "device": "dev_REG0008",
+   "registry_id": "R-0008",
+   "status": "helping",
+   "lat": 24.832173,
+   "lng": 67.121596
+  },
+  {
+   "t": 43.63,
+   "kind": "reply",
+   "device": "dev_REG0180",
+   "registry_id": "R-0180",
+   "status": "safe",
+   "lat": 24.833656,
+   "lng": 67.138023
+  },
+  {
+   "t": 43.97,
+   "kind": "reply",
+   "device": "dev_REG0174",
+   "registry_id": "R-0174",
+   "status": "helping",
+   "lat": 24.858096,
+   "lng": 67.00901
+  },
+  {
+   "t": 44.44,
+   "kind": "reply",
+   "device": "dev_REG0143",
+   "registry_id": "R-0143",
+   "status": "safe",
+   "lat": 24.839216,
+   "lng": 67.136516
+  },
+  {
+   "t": 44.86,
+   "kind": "report",
+   "device": "dev_P0006",
+   "urgency": 3,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "alone"
+    ],
+    "details": {},
+    "note": "elderly neighbour alone, door locked, no answer since yesterday sector 4 market",
+    "lat": 24.844053,
+    "lng": 67.122773,
+    "gps_accuracy_m": 40,
+    "landmark": "sector 4 market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-005",
+    "severity": "critical",
+    "deadline_min": 133
+   }
+  },
+  {
+   "t": 45.09,
+   "kind": "reply",
+   "device": "dev_REG0121",
+   "registry_id": "R-0121",
+   "status": "safe",
+   "lat": 24.824638,
+   "lng": 67.125338
+  },
+  {
+   "t": 46.13,
+   "kind": "reply",
+   "device": "dev_REG0056",
+   "registry_id": "R-0056",
+   "status": "safe",
+   "lat": 24.851094,
+   "lng": 67.033796
+  },
+  {
+   "t": 46.25,
+   "kind": "reply",
+   "device": "dev_REG0198",
+   "registry_id": "R-0198",
+   "status": "helping",
+   "lat": 24.82367,
+   "lng": 67.114811
+  },
+  {
+   "t": 46.69,
+   "kind": "reply",
+   "device": "dev_REG0020",
+   "registry_id": "R-0020",
+   "status": "safe",
+   "lat": 24.82966,
+   "lng": 67.132183
+  },
+  {
+   "t": 46.77,
+   "kind": "reply",
+   "device": "dev_REG0096",
+   "registry_id": "R-0096",
+   "status": "safe",
+   "lat": 24.965264,
+   "lng": 66.995964
+  },
+  {
+   "t": 54.6,
+   "kind": "text",
+   "sender": "+000 555 0007",
+   "text": "elderly neighbour alone, door locked, no answer since yesterday Malir halt",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-006",
+    "severity": "critical",
+    "deadline_min": 98
+   }
+  },
+  {
+   "t": 60.49,
+   "kind": "text",
+   "sender": "+000 555 0003",
+   "text": "plz my dad is very hot and talking strange no fan power gone since morning sector 1 green gate",
+   "lat": 24.822657,
+   "lng": 67.140371,
+   "hazard": null,
+   "truth": {
+    "situation": "S-002",
+    "severity": "critical",
+    "deadline_min": 97
+   }
+  },
+  {
+   "t": 73.62,
+   "kind": "text",
+   "sender": "+000 555 0008",
+   "text": "elderly neighbour alone, door locked, no answer since yesterday Chakiwara chowk",
+   "lat": 24.87129,
+   "lng": 67.006083,
+   "hazard": null,
+   "truth": {
+    "situation": "S-007",
+    "severity": "critical",
+    "deadline_min": 123
+   }
+  },
+  {
+   "t": 75.93,
+   "kind": "report",
+   "device": "dev_P0009",
+   "urgency": 2,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "alone"
+    ],
+    "details": {
+     "cooling": false,
+     "hot_inside": true
+    },
+    "note": "dizzy and headache since noon, alone at home Korangi crossing",
+    "lat": 24.842891,
+    "lng": 67.129944,
+    "gps_accuracy_m": 40,
+    "landmark": "Korangi crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-008",
+    "severity": "serious",
+    "deadline_min": 202
+   }
+  },
+  {
+   "t": 82.38,
+   "kind": "text",
+   "sender": "+000 555 0010",
+   "text": "elderly neighbour alone, door locked, no answer since yesterday sector 4 market",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-009",
+    "severity": "critical",
+    "deadline_min": 122
+   }
+  },
+  {
+   "t": 86.68,
+   "kind": "text",
+   "sender": "+000 555 0011",
+   "text": "old woman 68 collapsed in the street near the nullah in sector 5, not answering",
+   "lat": 24.94353,
+   "lng": 67.001693,
+   "hazard": null,
+   "truth": {
+    "situation": "S-010",
+    "severity": "critical",
+    "deadline_min": 36
+   }
+  },
+  {
+   "t": 92.01,
+   "kind": "report",
+   "device": "dev_P0012",
+   "urgency": 3,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {
+     "cooling": false,
+     "hot_inside": true,
+     "signs": [
+      "confused"
+     ]
+    },
+    "note": "my dad is very hot and talking strange, no fan, power gone since morning Qasba colony",
+    "lat": 24.950188,
+    "lng": 66.989376,
+    "gps_accuracy_m": 40,
+    "landmark": "Qasba colony",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-011",
+    "severity": "critical",
+    "deadline_min": 94
+   }
+  },
+  {
+   "t": 117.07,
+   "kind": "text",
+   "sender": "+000 555 0013",
+   "text": "where can we get water bottles near Lea market",
+   "lat": 24.871368,
+   "lng": 66.991366,
+   "hazard": null,
+   "truth": {
+    "situation": null,
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "t": 135,
+   "kind": "cue",
+   "text": "Registered people who never answered become welfare-check cases. Orangi Town's coverage stays under 25%: a Silent Zone."
+  },
+  {
+   "t": 137.07,
+   "kind": "report",
+   "device": "dev_P0014",
+   "urgency": 3,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "other",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "unconscious"
+    ],
+    "details": {
+     "signs": [
+      "confused"
+     ]
+    },
+    "note": "old woman 69 collapsed in the street near Chakiwara chowk, not answering",
+    "lat": 24.871527,
+    "lng": 67.009125,
+    "gps_accuracy_m": 12,
+    "landmark": "Chakiwara chowk",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-012",
+    "severity": "critical",
+    "deadline_min": 28
+   }
+  },
+  {
+   "t": 147.32,
+   "kind": "report",
+   "device": "dev_P0015",
+   "urgency": 3,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "other",
+    "people": 1,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {
+     "signs": [
+      "confused"
+     ]
+    },
+    "note": "old man sitting in sun at bus stop the madrasa near the crossing, confused, skin very hot",
+    "lat": 24.837118,
+    "lng": 67.131077,
+    "gps_accuracy_m": 25,
+    "landmark": "the madrasa near the crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-013",
+    "severity": "critical",
+    "deadline_min": 65
+   }
+  },
+  {
+   "t": 152.1,
+   "kind": "report",
+   "device": "dev_P0016",
+   "urgency": 3,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "self",
+    "people": 2,
+    "conditions": [
+     "infant"
+    ],
+    "details": {
+     "cooling": false,
+     "hot_inside": true
+    },
+    "note": "baby not drinking, very hot, crying no tears sector 1 green gate",
+    "lat": 24.822581,
+    "lng": 67.140138,
+    "gps_accuracy_m": 8,
+    "landmark": "sector 1 green gate",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-014",
+    "severity": "critical",
+    "deadline_min": 104
+   }
+  },
+  {
+   "t": 154.23,
+   "kind": "text",
+   "sender": "+000 555 0017",
+   "text": "old woman 71 collapsed in the street near Korangi causeway, not answering",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-015",
+    "severity": "critical",
+    "deadline_min": 33
+   }
+  },
+  {
+   "t": 155.19,
+   "kind": "report",
+   "device": "dev_P0019",
+   "urgency": 2,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "alone"
+    ],
+    "details": {
+     "cooling": false,
+     "hot_inside": true
+    },
+    "note": "dizzy and headache since noon, alone at home the park in block 5",
+    "lat": 24.82671,
+    "lng": 67.036523,
+    "gps_accuracy_m": 12,
+    "landmark": "the park in block 5",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-016",
+    "severity": "serious",
+    "deadline_min": 277
+   }
+  },
+  {
+   "t": 157.0,
+   "kind": "text",
+   "sender": "+000 555 0020",
+   "text": "dizzy and headache since noon, alone at home Banaras chowk",
+   "lat": 24.940654,
+   "lng": 66.992601,
+   "hazard": null,
+   "truth": {
+    "situation": "S-017",
+    "severity": "serious",
+    "deadline_min": 277
+   }
+  },
+  {
+   "t": 160.77,
+   "kind": "text",
+   "sender": "+000 555 0021",
+   "text": "my dad is very hot and talking strange, no fan, power gone since morning Malir city market",
+   "lat": 24.907972,
+   "lng": 67.202236,
+   "hazard": null,
+   "truth": {
+    "situation": "S-018",
+    "severity": "critical",
+    "deadline_min": 73
+   }
+  },
+  {
+   "t": 169.36,
+   "kind": "report",
+   "device": "dev_P0022",
+   "urgency": 3,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "other",
+    "people": 1,
+    "conditions": [],
+    "details": {
+     "signs": [
+      "confused",
+      "vomiting"
+     ]
+    },
+    "note": "labourer fainted at the construction site Banaras chowk, vomiting",
+    "lat": 24.962432,
+    "lng": 66.995204,
+    "gps_accuracy_m": 8,
+    "landmark": "Banaras chowk",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-019",
+    "severity": "critical",
+    "deadline_min": 60
+   }
+  },
+  {
+   "t": 176.73,
+   "kind": "report",
+   "device": "dev_P0023",
+   "urgency": 2,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "dialysis"
+    ],
+    "details": {},
+    "note": "dialysis patient cant travel in this heat, needs transport the underpass near Tower",
+    "lat": 24.851206,
+    "lng": 67.022867,
+    "gps_accuracy_m": 8,
+    "landmark": "the underpass near Tower",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-020",
+    "severity": "serious",
+    "deadline_min": 244
+   }
+  },
+  {
+   "t": 179.71,
+   "kind": "text",
+   "sender": "+000 555 0018",
+   "text": "old woman 71 collapsed in street near Korangi causeway not answering urgent",
+   "lat": 24.841429,
+   "lng": 67.116234,
+   "hazard": null,
+   "truth": {
+    "situation": "S-015",
+    "severity": "critical",
+    "deadline_min": 33
+   }
+  },
+  {
+   "t": 193.21,
+   "kind": "report",
+   "device": "dev_P0024",
+   "urgency": 2,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "self",
+    "people": 2,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {
+     "cooling": true
+    },
+    "note": "we have fan and water, mother ok but weak block 5 mosque",
+    "lat": 24.885692,
+    "lng": 67.167642,
+    "gps_accuracy_m": 40,
+    "landmark": "block 5 mosque",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-021",
+    "severity": "minor",
+    "deadline_min": 706
+   }
+  },
+  {
+   "t": 195,
+   "kind": "report",
+   "device": "dev_VOLUNTEER1",
+   "urgency": 3,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "other",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "alone"
+    ],
+    "details": {
+     "cooling": false,
+     "hot_inside": true,
+     "signs": [
+      "confused",
+      "hot_dry_skin"
+     ]
+    },
+    "note": "Elderly woman alone, hot dry skin, confused, no fan",
+    "lat": 24.862359,
+    "lng": 66.992543,
+    "gps_accuracy_m": 10,
+    "landmark": "Agra Taj colony",
+    "reporter_role": "volunteer",
+    "contact": ""
+   },
+   "truth": {
+    "situation": null,
+    "severity": "critical",
+    "deadline_min": 60
+   }
+  },
+  {
+   "t": 214.81,
+   "kind": "text",
+   "sender": "+000 555 0025",
+   "text": "5 ppl in one room no fan no water Kalri lane",
+   "lat": 24.867249,
+   "lng": 66.994835,
+   "hazard": null,
+   "truth": {
+    "situation": "S-022",
+    "severity": "serious",
+    "deadline_min": 266
+   }
+  },
+  {
+   "t": 218.1,
+   "kind": "report",
+   "device": "dev_P0026",
+   "urgency": 2,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "self",
+    "people": 8,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "cooling": false,
+     "hot_inside": true
+    },
+    "note": "8 ppl in one room no fan no water the underpass near Tower",
+    "lat": 24.863311,
+    "lng": 67.037149,
+    "gps_accuracy_m": 15,
+    "landmark": "the underpass near Tower",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-023",
+    "severity": "serious",
+    "deadline_min": 249
+   }
+  },
+  {
+   "t": 223.29,
+   "kind": "report",
+   "device": "dev_P0027",
+   "urgency": 2,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "alone"
+    ],
+    "details": {
+     "cooling": false,
+     "hot_inside": true
+    },
+    "note": "dizzy and headache since noon, alone at home Lea market",
+    "lat": 24.877078,
+    "lng": 66.995909,
+    "gps_accuracy_m": 25,
+    "landmark": "Lea market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-024",
+    "severity": "serious",
+    "deadline_min": 196
+   }
+  },
+  {
+   "t": 224.04,
+   "kind": "text",
+   "sender": "+000 555 0028",
+   "text": "baby not drinking, very hot, crying no tears Korangi causeway",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-025",
+    "severity": "critical",
+    "deadline_min": 105
+   }
+  },
+  {
+   "t": 224.71,
+   "kind": "report",
+   "device": "dev_P0029",
+   "urgency": 2,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "alone"
+    ],
+    "details": {
+     "cooling": false,
+     "hot_inside": true
+    },
+    "note": "dizzy and headache since noon, alone at home the hospital road",
+    "lat": 24.945628,
+    "lng": 67.033795,
+    "gps_accuracy_m": 40,
+    "landmark": "the hospital road",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-026",
+    "severity": "serious",
+    "deadline_min": 220
+   }
+  },
+  {
+   "t": 240,
+   "kind": "window",
+   "zone": "Lyari",
+   "closes_in_min": 60,
+   "text": "Hottest hours start"
+  },
+  {
+   "t": 240,
+   "kind": "window",
+   "zone": "Korangi",
+   "closes_in_min": 60,
+   "text": "Hottest hours start"
+  },
+  {
+   "t": 240,
+   "kind": "window",
+   "zone": "Orangi Town",
+   "closes_in_min": 60,
+   "text": "Hottest hours start"
+  },
+  {
+   "t": 259.82,
+   "kind": "text",
+   "sender": "+000 555 0030",
+   "text": "old man sitting in sun at bus stop sector 11, confused, skin very hot",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-027",
+    "severity": "critical",
+    "deadline_min": 64
+   }
+  },
+  {
+   "t": 260.57,
+   "kind": "text",
+   "sender": "+000 555 0031",
+   "text": "old woman 81 collapsed in the street near the madrasa near the crossing, not answering",
+   "lat": 24.840182,
+   "lng": 67.124802,
+   "hazard": null,
+   "truth": {
+    "situation": "S-028",
+    "severity": "critical",
+    "deadline_min": 32
+   }
+  },
+  {
+   "t": 270,
+   "kind": "place",
+   "id": "c_korangi",
+   "occupancy": 93
+  },
+  {
+   "t": 271,
+   "kind": "cue",
+   "text": "Cooling centre in Korangi nearly full: update the alert with the next centre."
+  },
+  {
+   "t": 274.51,
+   "kind": "text",
+   "sender": "+000 555 0032",
+   "text": "dialysis patient cant travel in this heat, needs transport block 5 mosque",
+   "lat": 24.881567,
+   "lng": 67.158542,
+   "hazard": null,
+   "truth": {
+    "situation": "S-029",
+    "severity": "serious",
+    "deadline_min": 358
+   }
+  },
+  {
+   "t": 275.24,
+   "kind": "report",
+   "device": "dev_P0033",
+   "urgency": 2,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "alone"
+    ],
+    "details": {
+     "cooling": false,
+     "hot_inside": true
+    },
+    "note": "dizzy and headache since noon, alone at home the madrasa near the crossing",
+    "lat": 24.821905,
+    "lng": 67.139287,
+    "gps_accuracy_m": 12,
+    "landmark": "the madrasa near the crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-030",
+    "severity": "serious",
+    "deadline_min": 224
+   }
+  },
+  {
+   "t": 288.16,
+   "kind": "report",
+   "device": "dev_P0035",
+   "urgency": 3,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {
+     "cooling": false,
+     "hot_inside": true,
+     "signs": [
+      "confused"
+     ]
+    },
+    "note": "my dad is very hot and talking strange, no fan, power gone since morning the bus stop near Preedy street",
+    "lat": 24.852356,
+    "lng": 67.02624,
+    "gps_accuracy_m": 12,
+    "landmark": "the bus stop near Preedy street",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-031",
+    "severity": "critical",
+    "deadline_min": 89
+   }
+  },
+  {
+   "t": 289.41,
+   "kind": "text",
+   "sender": "+000 555 0034",
+   "text": "dizzy and headache since noon alone at home the madrasa near the crossing bhai",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-030",
+    "severity": "serious",
+    "deadline_min": 224
+   }
+  },
+  {
+   "t": 290.15,
+   "kind": "report",
+   "device": "dev_P0036",
+   "urgency": 2,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "dialysis"
+    ],
+    "details": {},
+    "note": "dialysis patient cant travel in this heat, needs transport Empress market",
+    "lat": 24.850984,
+    "lng": 67.028852,
+    "gps_accuracy_m": 12,
+    "landmark": "Empress market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-032",
+    "severity": "serious",
+    "deadline_min": 273
+   }
+  },
+  {
+   "t": 291.53,
+   "kind": "report",
+   "device": "dev_P0037",
+   "urgency": 3,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "alone"
+    ],
+    "details": {},
+    "note": "elderly neighbour alone, door locked, no answer since yesterday Teen Talwar",
+    "lat": 24.827981,
+    "lng": 67.029117,
+    "gps_accuracy_m": 8,
+    "landmark": "Teen Talwar",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-033",
+    "severity": "critical",
+    "deadline_min": 110
+   }
+  },
+  {
+   "t": 294.82,
+   "kind": "report",
+   "device": "dev_P0038",
+   "urgency": 3,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "self",
+    "people": 2,
+    "conditions": [
+     "infant"
+    ],
+    "details": {
+     "cooling": false,
+     "hot_inside": true
+    },
+    "note": "baby not drinking, very hot, crying no tears sector 2 near the nullah",
+    "lat": 24.831161,
+    "lng": 67.121867,
+    "gps_accuracy_m": 12,
+    "landmark": "sector 2 near the nullah",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-034",
+    "severity": "critical",
+    "deadline_min": 78
+   }
+  },
+  {
+   "t": 295.69,
+   "kind": "report",
+   "device": "dev_P0039",
+   "urgency": 2,
+   "payload": {
+    "hazard": "heat",
+    "for_whom": "self",
+    "people": 2,
+    "conditions": [
+     "pregnant"
+    ],
+    "details": {
+     "cooling": false,
+     "hot_inside": true
+    },
+    "note": "pregnant wife feeling faint, very hot in the flat block L park",
+    "lat": 24.948166,
+    "lng": 67.029562,
+    "gps_accuracy_m": 40,
+    "landmark": "block L park",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-035",
+    "severity": "serious",
+    "deadline_min": 153
+   }
+  }
+ ]
+}

@@ -1,5 +1,16 @@
 {
-  "_note": "Karachi monsoon flood: the Lyari and Malir rivers overflow. Shah Faisal is hard-hit but quiet, so it turns into a Silent Zone.",
-  "hazard": "flood",
-  "hard_hit": ["Lyari", "Korangi", "Shah Faisal"]
+ "_note": "Karachi flood demo pack, made by scenario/generate.py (seed 7). All data is made up.",
+ "hazard": "flood",
+ "hard_hit": [
+  "Lyari",
+  "Korangi"
+ ],
+ "start": "14:00",
+ "speed": 60,
+ "alert_zones": [
+  "Lyari",
+  "Korangi",
+  "Shah Faisal"
+ ],
+ "seed": 7
 }

@@ -1,0 +1,224 @@
+{
+ "_note": "Hand-written earthquake messages: people trapped, gas, damaged buildings. Search-and-rescue teams are scarce.",
+ "hazard": "earthquake",
+ "templates": [
+  {
+   "text": "building collapsed {place} people under it we hear voices",
+   "for_whom": "other",
+   "people": [
+    3,
+    10
+   ],
+   "conditions": [],
+   "details": {
+    "trapped": true,
+    "building": "collapsed"
+   },
+   "truth": {
+    "severity": "critical",
+    "deadline_min": 180
+   }
+  },
+  {
+   "text": "my brother stuck under the wall, leg bleeding {place}",
+   "for_whom": "self",
+   "people": 1,
+   "conditions": [
+    "injured",
+    "bleeding"
+   ],
+   "details": {
+    "trapped": true
+   },
+   "truth": {
+    "severity": "critical",
+    "deadline_min": 90
+   }
+  },
+  {
+   "text": "gas smell everywhere in our block {place} {n} families outside",
+   "for_whom": "other",
+   "people": [
+    6,
+    20
+   ],
+   "conditions": [],
+   "details": {
+    "gas_or_fire": true
+   },
+   "truth": {
+    "severity": "serious",
+    "deadline_min": 120
+   }
+  },
+  {
+   "text": "cracks in walls, we r outside in the street with kids {place}",
+   "for_whom": "self",
+   "people": [
+    3,
+    7
+   ],
+   "conditions": [
+    "child"
+   ],
+   "details": {
+    "building": "badly_damaged"
+   },
+   "truth": {
+    "severity": "minor",
+    "deadline_min": 720
+   }
+  },
+  {
+   "text": "old woman {age} trapped in her room, door jammed, stairs broken {place}",
+   "for_whom": "neighbour",
+   "people": 1,
+   "conditions": [
+    "elderly",
+    "alone"
+   ],
+   "details": {
+    "trapped": true
+   },
+   "truth": {
+    "severity": "critical",
+    "deadline_min": 240
+   }
+  },
+  {
+   "text": "child unconscious after roof fell {place} pls come",
+   "for_whom": "self",
+   "people": 1,
+   "conditions": [
+    "child",
+    "unconscious",
+    "injured"
+   ],
+   "details": {
+    "building": "collapsed"
+   },
+   "truth": {
+    "severity": "critical",
+    "deadline_min": 45
+   }
+  },
+  {
+   "text": "{n} workers trapped in factory {place}, shouting from inside",
+   "for_whom": "other",
+   "people": [
+    5,
+    15
+   ],
+   "conditions": [],
+   "details": {
+    "trapped": true,
+    "building": "collapsed"
+   },
+   "truth": {
+    "severity": "critical",
+    "deadline_min": 240
+   }
+  },
+  {
+   "text": "my father has heart problem, chest pain after the shaking {place}",
+   "for_whom": "self",
+   "people": 1,
+   "conditions": [
+    "elderly"
+   ],
+   "details": {},
+   "truth": {
+    "severity": "serious",
+    "deadline_min": 120
+   }
+  },
+  {
+   "text": "fire started near the gas cylinder shop {place}",
+   "for_whom": "other",
+   "people": [
+    2,
+    6
+   ],
+   "conditions": [],
+   "details": {
+    "gas_or_fire": true
+   },
+   "truth": {
+    "severity": "critical",
+    "deadline_min": 60
+   }
+  },
+  {
+   "text": "oxygen patient, power gone, concentrator off {place}",
+   "for_whom": "self",
+   "people": 1,
+   "conditions": [
+    "oxygen",
+    "power_dependent"
+   ],
+   "details": {},
+   "truth": {
+    "severity": "critical",
+    "deadline_min": 90
+   }
+  },
+  {
+   "text": "people with broken arms and cuts in the masjid {place}, {n} injured",
+   "for_whom": "other",
+   "people": [
+    4,
+    10
+   ],
+   "conditions": [
+    "injured"
+   ],
+   "details": {},
+   "truth": {
+    "severity": "serious",
+    "deadline_min": 240
+   }
+  },
+  {
+   "text": "wheelchair user on 4th floor, lift broken, stairs cracked {place}",
+   "for_whom": "neighbour",
+   "people": 1,
+   "conditions": [
+    "disabled",
+    "cannot_walk"
+   ],
+   "details": {
+    "building": "badly_damaged"
+   },
+   "truth": {
+    "severity": "serious",
+    "deadline_min": 300
+   }
+  },
+  {
+   "text": "is it safe to go back inside? {place}",
+   "for_whom": "self",
+   "people": 1,
+   "conditions": [],
+   "details": {},
+   "text_only": true,
+   "truth": {
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "text": "aftershock again, everyone in the park {place}, need blankets",
+   "for_whom": "self",
+   "people": [
+    10,
+    30
+   ],
+   "conditions": [],
+   "details": {},
+   "truth": {
+    "severity": "minor",
+    "deadline_min": 600
+   }
+  }
+ ]
+}

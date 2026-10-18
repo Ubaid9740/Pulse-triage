@@ -1,0 +1,2 @@
+# For scenario/simulate.py (install into the server venv). generate.py and replay.py need nothing extra.
+matplotlib>=3.8

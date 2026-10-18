@@ -255,6 +255,7 @@ class CaseBook:
                 reports = self._reports(conn, "r.case_id = ?", (case_id,))
             state = self._state(case, reports)
             state.landmark_twin = self._landmark_twin(conn, case)
+            state.window_closes_at, state.window_text = self._window(conn, case)
             result = scoring.score(state, now, self.rules(conn))
         override = json.loads(case["override"]) if case["override"] else None
         if override and override.get("points") is not None:
@@ -262,10 +263,50 @@ class CaseBook:
                                    "points": override["points"], "kind": "override"})
             result.points = override["points"]
             result.badges.append("override")
+        if case["source"] != "zone_task":
+            closes = state.window_closes_at
+            conn.execute("UPDATE cases SET window_closes_at = ? WHERE id = ?",
+                         (timeutil.iso(closes) if closes else None, case_id))
         conn.execute("UPDATE cases SET points = ?, reasons = ?, confidence = ?, badges = ? WHERE id = ?",
                      (result.points, json.dumps(result.reasons), result.confidence, json.dumps(result.badges),
                       case_id))
         return result
+
+    # ---- windows: the time after which a zone can no longer be reached (System Design 9.1) -----------
+    def _window(self, conn: sqlite3.Connection, case: dict) -> tuple[datetime | None, str | None]:
+        """The case's zone window, if one is set and the profile's window applies to this case."""
+        window = (setting(conn, "windows") or {}).get(case["zone"] or "")
+        if not window:
+            return None, None
+        text = self.profiles.window_text(case["hazard"], json.loads(case["details"] or "{}"),
+                                         json.loads(case["conditions"] or "[]"))
+        if text is None:
+            return None, None
+        return timeutil.parse(window["closes_at"]), window.get("text") or text
+
+    def windows(self) -> dict:
+        with self.db.read() as conn:
+            return {"windows": setting(conn, "windows") or {}}
+
+    def set_window(self, zone: str, closes_at: datetime | None, text: str | None, by: str,
+                   now: datetime | None = None) -> dict:
+        """Set (or with closes_at None, clear) when a zone's window closes, e.g. "Korangi Rd floods" at 17:00.
+        Every open case is rescored, so cases in the zone gain the window points."""
+        now = now or timeutil.now()
+        with self.db.write() as conn:
+            if not conn.execute("SELECT 1 FROM zones WHERE name = ?", (zone,)).fetchone():
+                raise NotFound(f"unknown zone {zone}")
+            windows = dict(setting(conn, "windows") or {})
+            if closes_at is None:
+                windows.pop(zone, None)
+            else:
+                windows[zone] = {"closes_at": timeutil.iso(closes_at), "text": text}
+            conn.execute("INSERT INTO settings(key, value) VALUES('windows', ?) "
+                         "ON CONFLICT(key) DO UPDATE SET value = excluded.value", (json.dumps(windows),))
+            self.audit(conn, now, by, "window", f"zone:{zone}",
+                       f"{text or 'window'} at {timeutil.iso(closes_at)}" if closes_at else "cleared")
+        self.rescore_all(now)
+        return {"windows": windows}
 
     def rescore_all(self, now: datetime | None = None) -> int:
         """Hours left shrink and confidence decays with time, so the scheduler calls this."""

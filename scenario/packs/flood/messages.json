@@ -1,0 +1,5319 @@
+{
+ "start": "14:00",
+ "speed": 60,
+ "events": [
+  {
+   "t": 0,
+   "kind": "cue",
+   "text": "River rising: Lyari and Korangi are hard-hit. The map fills, the list ranks."
+  },
+  {
+   "t": 2.87,
+   "kind": "text",
+   "sender": "+000 555 0001",
+   "text": "we r 8 ppl on roof baby with us water still rising sector 2 near the nullah",
+   "lat": 24.824791,
+   "lng": 67.118404,
+   "hazard": null,
+   "truth": {
+    "situation": "S-001",
+    "severity": "critical",
+    "deadline_min": 59
+   }
+  },
+  {
+   "t": 3.86,
+   "kind": "report",
+   "device": "dev_P0002",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "disabled",
+     "alone"
+    ],
+    "details": {
+     "water": "waist"
+    },
+    "note": "blind man alone in flat 2 sector 4 market, stairs under water",
+    "lat": 24.831681,
+    "lng": 67.136544,
+    "gps_accuracy_m": 8,
+    "landmark": "sector 4 market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-002",
+    "severity": "serious",
+    "deadline_min": 206
+   }
+  },
+  {
+   "t": 4.25,
+   "kind": "text",
+   "sender": "+000 555 0003",
+   "text": "water in house ankle level we r ok for now Agra Taj colony",
+   "lat": 24.875332,
+   "lng": 67.006575,
+   "hazard": null,
+   "truth": {
+    "situation": "S-003",
+    "severity": "minor",
+    "deadline_min": 577
+   }
+  },
+  {
+   "t": 5.62,
+   "kind": "report",
+   "device": "dev_P0004",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 4,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {
+     "water": "knee",
+     "rising": true
+    },
+    "note": "water upto knee, rising slowly, 4 ppl incl old mother Lea market",
+    "lat": 24.864895,
+    "lng": 67.008829,
+    "gps_accuracy_m": 15,
+    "landmark": "Lea market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-004",
+    "severity": "serious",
+    "deadline_min": 241
+   }
+  },
+  {
+   "t": 7.4,
+   "kind": "report",
+   "device": "dev_P0005",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "insulin"
+    ],
+    "details": {
+     "water": "ankle"
+    },
+    "note": "insulin finished, diabetic grandmother, shops closed Korangi crossing",
+    "lat": 24.837859,
+    "lng": 67.123021,
+    "gps_accuracy_m": 12,
+    "landmark": "Korangi crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-005",
+    "severity": "serious",
+    "deadline_min": 481
+   }
+  },
+  {
+   "t": 8,
+   "kind": "cue",
+   "text": "Issue a flood warning for Lyari, Korangi and Shah Faisal (New alert). Replies start."
+  },
+  {
+   "t": 8.24,
+   "kind": "text",
+   "sender": "+000 555 0006",
+   "text": "we moved to the roof, 4 of us, dont have drinking water Rexer lane",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-006",
+    "severity": "serious",
+    "deadline_min": 168
+   }
+  },
+  {
+   "t": 10.45,
+   "kind": "report",
+   "device": "dev_P0007",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "insulin"
+    ],
+    "details": {
+     "water": "ankle"
+    },
+    "note": "insulin finished, diabetic grandmother, shops closed Moosa lane",
+    "lat": 24.875565,
+    "lng": 67.005282,
+    "gps_accuracy_m": 12,
+    "landmark": "Moosa lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-007",
+    "severity": "serious",
+    "deadline_min": 476
+   }
+  },
+  {
+   "t": 10.45,
+   "kind": "report",
+   "device": "dev_P0008",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "other",
+    "people": 1,
+    "conditions": [
+     "unconscious"
+    ],
+    "details": {
+     "water": "waist"
+    },
+    "note": "unconscious man in water block 5 mosque come fast",
+    "lat": 24.871329,
+    "lng": 67.165684,
+    "gps_accuracy_m": 12,
+    "landmark": "block 5 mosque",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-008",
+    "severity": "critical",
+    "deadline_min": 25
+   }
+  },
+  {
+   "t": 10.51,
+   "kind": "report",
+   "device": "dev_P0009",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 4,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "chest",
+     "trapped": true
+    },
+    "note": "we moved to the roof, 4 of us, dont have drinking water Lea market",
+    "lat": 24.869326,
+    "lng": 67.007711,
+    "gps_accuracy_m": 25,
+    "landmark": "Lea market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-009",
+    "severity": "serious",
+    "deadline_min": 149
+   }
+  },
+  {
+   "t": 12.38,
+   "kind": "report",
+   "device": "dev_P0011",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "insulin"
+    ],
+    "details": {
+     "water": "ankle"
+    },
+    "note": "insulin finished, diabetic grandmother, shops closed sector 5 school",
+    "lat": 24.836688,
+    "lng": 67.14026,
+    "gps_accuracy_m": 12,
+    "landmark": "sector 5 school",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-010",
+    "severity": "serious",
+    "deadline_min": 446
+   }
+  },
+  {
+   "t": 12.41,
+   "kind": "reply",
+   "device": "dev_REG0027",
+   "registry_id": "R-0027",
+   "status": "helping",
+   "lat": 24.819669,
+   "lng": 67.131022
+  },
+  {
+   "t": 12.57,
+   "kind": "reply",
+   "device": "dev_REG0137",
+   "registry_id": "R-0137",
+   "status": "safe",
+   "lat": 24.828916,
+   "lng": 67.128579
+  },
+  {
+   "t": 12.81,
+   "kind": "reply",
+   "device": "dev_REG0128",
+   "registry_id": "R-0128",
+   "status": "safe",
+   "lat": 24.833094,
+   "lng": 67.119385
+  },
+  {
+   "t": 13.48,
+   "kind": "reply",
+   "device": "dev_REG0032",
+   "registry_id": "R-0032",
+   "status": "safe",
+   "lat": 24.828429,
+   "lng": 67.122933
+  },
+  {
+   "t": 14.41,
+   "kind": "text",
+   "sender": "+000 555 0012",
+   "text": "anyone know if K-Electric will restore power today",
+   "lat": 24.871994,
+   "lng": 67.000128,
+   "hazard": null,
+   "truth": {
+    "situation": null,
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "t": 14.41,
+   "kind": "report",
+   "device": "dev_P0013",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "disabled",
+     "alone"
+    ],
+    "details": {
+     "water": "waist"
+    },
+    "note": "blind man alone in flat 2 sector 2 near the nullah, stairs under water",
+    "lat": 24.830263,
+    "lng": 67.118853,
+    "gps_accuracy_m": 8,
+    "landmark": "sector 2 near the nullah",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-011",
+    "severity": "serious",
+    "deadline_min": 176
+   }
+  },
+  {
+   "t": 14.79,
+   "kind": "reply",
+   "device": "dev_REG0019",
+   "registry_id": "R-0019",
+   "status": "need_help",
+   "lat": 24.842273,
+   "lng": 67.118741
+  },
+  {
+   "t": 14.92,
+   "kind": "reply",
+   "device": "dev_REG0112",
+   "registry_id": "R-0112",
+   "status": "safe",
+   "lat": 24.829907,
+   "lng": 67.12645
+  },
+  {
+   "t": 15.17,
+   "kind": "reply",
+   "device": "dev_REG0181",
+   "registry_id": "R-0181",
+   "status": "safe",
+   "lat": 24.868266,
+   "lng": 66.99479
+  },
+  {
+   "t": 15.7,
+   "kind": "reply",
+   "device": "dev_REG0158",
+   "registry_id": "R-0158",
+   "status": "need_help",
+   "lat": 24.874539,
+   "lng": 67.004993
+  },
+  {
+   "t": 15.76,
+   "kind": "reply",
+   "device": "dev_REG0193",
+   "registry_id": "R-0193",
+   "status": "safe",
+   "lat": 24.85819,
+   "lng": 67.002814
+  },
+  {
+   "t": 15.79,
+   "kind": "text",
+   "sender": "+000 555 0014",
+   "text": "is the shelter at the school open? Kalri lane",
+   "lat": 24.868162,
+   "lng": 66.99787,
+   "hazard": null,
+   "truth": {
+    "situation": null,
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "t": 16.38,
+   "kind": "reply",
+   "device": "dev_REG0172",
+   "registry_id": "R-0172",
+   "status": "safe",
+   "lat": 24.829256,
+   "lng": 67.130207
+  },
+  {
+   "t": 16.59,
+   "kind": "reply",
+   "device": "dev_REG0080",
+   "registry_id": "R-0080",
+   "status": "safe",
+   "lat": 24.83485,
+   "lng": 67.118244
+  },
+  {
+   "t": 17.37,
+   "kind": "report",
+   "device": "dev_P0015",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "alone"
+    ],
+    "details": {},
+    "note": "pls check on house 9 the river bank near Kalri, old lady lives alone, no answer on phone",
+    "lat": 24.858652,
+    "lng": 67.008061,
+    "gps_accuracy_m": 12,
+    "landmark": "the river bank near Kalri",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-012",
+    "severity": "serious",
+    "deadline_min": 217
+   }
+  },
+  {
+   "t": 17.81,
+   "kind": "reply",
+   "device": "dev_REG0115",
+   "registry_id": "R-0115",
+   "status": "safe",
+   "lat": 24.861995,
+   "lng": 67.001042
+  },
+  {
+   "t": 18.12,
+   "kind": "report",
+   "device": "dev_P0016",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 4,
+    "conditions": [
+     "child"
+    ],
+    "details": {
+     "water": "knee",
+     "rising": true
+    },
+    "note": "water knee deep and coming up, 4 of us with kids, Agra Taj colony",
+    "lat": 24.859929,
+    "lng": 67.006868,
+    "gps_accuracy_m": 15,
+    "landmark": "Agra Taj colony",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-013",
+    "severity": "serious",
+    "deadline_min": 269
+   }
+  },
+  {
+   "t": 18.15,
+   "kind": "report",
+   "device": "dev_P0018",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "infant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "infant with fever, water everywhere, cant go out sector 1 green gate",
+    "lat": 24.833933,
+    "lng": 67.119719,
+    "gps_accuracy_m": 25,
+    "landmark": "sector 1 green gate",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-014",
+    "severity": "serious",
+    "deadline_min": 351
+   }
+  },
+  {
+   "t": 18.44,
+   "kind": "reply",
+   "device": "dev_REG0129",
+   "registry_id": "R-0129",
+   "status": "safe",
+   "lat": 24.880737,
+   "lng": 67.163588
+  },
+  {
+   "t": 18.89,
+   "kind": "reply",
+   "device": "dev_REG0062",
+   "registry_id": "R-0062",
+   "status": "safe",
+   "lat": 24.824192,
+   "lng": 67.12305
+  },
+  {
+   "t": 19.08,
+   "kind": "reply",
+   "device": "dev_REG0037",
+   "registry_id": "R-0037",
+   "status": "safe",
+   "lat": 24.87549,
+   "lng": 67.002125
+  },
+  {
+   "t": 20.01,
+   "kind": "report",
+   "device": "dev_P0020",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "pregnant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "pregnant woman pains started cant reach hospital road flooded sector 1 green gate",
+    "lat": 24.823944,
+    "lng": 67.134569,
+    "gps_accuracy_m": 8,
+    "landmark": "sector 1 green gate",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-015",
+    "severity": "critical",
+    "deadline_min": 136
+   }
+  },
+  {
+   "t": 20.13,
+   "kind": "reply",
+   "device": "dev_REG0186",
+   "registry_id": "R-0186",
+   "status": "safe",
+   "lat": 24.831672,
+   "lng": 67.126069
+  },
+  {
+   "t": 20.43,
+   "kind": "report",
+   "device": "dev_P0021",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 7,
+    "conditions": [],
+    "details": {
+     "water": "waist",
+     "rising": true
+    },
+    "note": "water rising fast near nullah block 3, family of 7",
+    "lat": 24.881729,
+    "lng": 67.147835,
+    "gps_accuracy_m": 8,
+    "landmark": "block 3",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-016",
+    "severity": "serious",
+    "deadline_min": 215
+   }
+  },
+  {
+   "t": 20.9,
+   "kind": "reply",
+   "device": "dev_REG0113",
+   "registry_id": "R-0113",
+   "status": "safe",
+   "lat": 24.864974,
+   "lng": 67.005459
+  },
+  {
+   "t": 21.03,
+   "kind": "reply",
+   "device": "dev_REG0102",
+   "registry_id": "R-0102",
+   "status": "need_help",
+   "lat": 24.860629,
+   "lng": 67.007091
+  },
+  {
+   "t": 21.05,
+   "kind": "reply",
+   "device": "dev_REG0191",
+   "registry_id": "R-0191",
+   "status": "safe",
+   "lat": 24.834352,
+   "lng": 67.13615
+  },
+  {
+   "t": 21.91,
+   "kind": "text",
+   "sender": "+000 555 0017",
+   "text": "water knee deep and coming up, 4 of us with kids, agra taj colony jaldi",
+   "lat": 24.859523,
+   "lng": 67.006498,
+   "hazard": null,
+   "truth": {
+    "situation": "S-013",
+    "severity": "serious",
+    "deadline_min": 269
+   }
+  },
+  {
+   "t": 22.07,
+   "kind": "report",
+   "device": "dev_P0022",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 2,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {
+     "water": "roof",
+     "trapped": true
+    },
+    "note": "elderly couple on roof since 2 hrs, cold, Chakiwara chowk",
+    "lat": 24.858135,
+    "lng": 67.010046,
+    "gps_accuracy_m": 8,
+    "landmark": "Chakiwara chowk",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-017",
+    "severity": "critical",
+    "deadline_min": 98
+   }
+  },
+  {
+   "t": 23.06,
+   "kind": "text",
+   "sender": "+000 555 0023",
+   "text": "wheelchair lady alone on ground floor water coming in sector 4 market",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-018",
+    "severity": "critical",
+    "deadline_min": 117
+   }
+  },
+  {
+   "t": 23.49,
+   "kind": "reply",
+   "device": "dev_REG0151",
+   "registry_id": "R-0151",
+   "status": "safe",
+   "lat": 24.838791,
+   "lng": 67.114053
+  },
+  {
+   "t": 23.7,
+   "kind": "reply",
+   "device": "dev_REG0146",
+   "registry_id": "R-0146",
+   "status": "safe",
+   "lat": 24.884318,
+   "lng": 67.160576
+  },
+  {
+   "t": 24.26,
+   "kind": "reply",
+   "device": "dev_REG0057",
+   "registry_id": "R-0057",
+   "status": "safe",
+   "lat": 24.839755,
+   "lng": 67.116721
+  },
+  {
+   "t": 24.86,
+   "kind": "report",
+   "device": "dev_P0024",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 2,
+    "conditions": [],
+    "details": {
+     "water": "ankle"
+    },
+    "note": "water in house ankle level we r ok for now the railway crossing",
+    "lat": 24.873942,
+    "lng": 67.157124,
+    "gps_accuracy_m": 25,
+    "landmark": "the railway crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-019",
+    "severity": "minor",
+    "deadline_min": 765
+   }
+  },
+  {
+   "t": 25.14,
+   "kind": "report",
+   "device": "dev_P0025",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 2,
+    "conditions": [],
+    "details": {
+     "water": "waist",
+     "trapped": true
+    },
+    "note": "trapped in house door wont open water outside Moosa lane pls send boat",
+    "lat": 24.859496,
+    "lng": 66.99451,
+    "gps_accuracy_m": 15,
+    "landmark": "Moosa lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-020",
+    "severity": "critical",
+    "deadline_min": 172
+   }
+  },
+  {
+   "t": 25.66,
+   "kind": "reply",
+   "device": "dev_REG0183",
+   "registry_id": "R-0183",
+   "status": "safe",
+   "lat": 24.86361,
+   "lng": 67.008199
+  },
+  {
+   "t": 26.11,
+   "kind": "report",
+   "device": "dev_P0026",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 9,
+    "conditions": [],
+    "details": {
+     "water": "waist",
+     "rising": true
+    },
+    "note": "water rising fast near nullah Lea market, family of 9",
+    "lat": 24.865226,
+    "lng": 67.002711,
+    "gps_accuracy_m": 40,
+    "landmark": "Lea market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-021",
+    "severity": "serious",
+    "deadline_min": 157
+   }
+  },
+  {
+   "t": 26.39,
+   "kind": "reply",
+   "device": "dev_REG0036",
+   "registry_id": "R-0036",
+   "status": "safe",
+   "lat": 24.842071,
+   "lng": 67.13915
+  },
+  {
+   "t": 26.61,
+   "kind": "reply",
+   "device": "dev_REG0120",
+   "registry_id": "R-0120",
+   "status": "safe",
+   "lat": 24.8598,
+   "lng": 67.00321
+  },
+  {
+   "t": 26.71,
+   "kind": "reply",
+   "device": "dev_REG0060",
+   "registry_id": "R-0060",
+   "status": "safe",
+   "lat": 24.862562,
+   "lng": 67.01008
+  },
+  {
+   "t": 26.74,
+   "kind": "report",
+   "device": "dev_P0028",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 5,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "chest",
+     "trapped": true
+    },
+    "note": "we moved to the roof, 5 of us, dont have drinking water Korangi crossing",
+    "lat": 24.844019,
+    "lng": 67.12547,
+    "gps_accuracy_m": 25,
+    "landmark": "Korangi crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-022",
+    "severity": "serious",
+    "deadline_min": 163
+   }
+  },
+  {
+   "t": 26.89,
+   "kind": "report",
+   "device": "dev_P0029",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "dialysis"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "my father on dialysis missed session yesterday, road closed, sector 2 near the nullah jaldi",
+    "lat": 24.820298,
+    "lng": 67.122455,
+    "gps_accuracy_m": 25,
+    "landmark": "sector 2 near the nullah",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-023",
+    "severity": "serious",
+    "deadline_min": 312
+   }
+  },
+  {
+   "t": 27.62,
+   "kind": "reply",
+   "device": "dev_REG0101",
+   "registry_id": "R-0101",
+   "status": "safe",
+   "lat": 24.866305,
+   "lng": 67.005982
+  },
+  {
+   "t": 28.01,
+   "kind": "reply",
+   "device": "dev_REG0171",
+   "registry_id": "R-0171",
+   "status": "safe",
+   "lat": 24.864856,
+   "lng": 67.003953
+  },
+  {
+   "t": 28.28,
+   "kind": "reply",
+   "device": "dev_REG0041",
+   "registry_id": "R-0041",
+   "status": "safe",
+   "lat": 24.833304,
+   "lng": 67.127883
+  },
+  {
+   "t": 28.49,
+   "kind": "reply",
+   "device": "dev_REG0136",
+   "registry_id": "R-0136",
+   "status": "safe",
+   "lat": 24.865826,
+   "lng": 66.997833
+  },
+  {
+   "t": 30.02,
+   "kind": "text",
+   "sender": "+000 555 0030",
+   "text": "8 children stuck in madrasa upstairs teacher with them sector 1 green gate",
+   "lat": 24.824922,
+   "lng": 67.127661,
+   "hazard": null,
+   "truth": {
+    "situation": "S-024",
+    "severity": "serious",
+    "deadline_min": 265
+   }
+  },
+  {
+   "t": 30.05,
+   "kind": "text",
+   "sender": "+000 555 0019",
+   "text": "infant w fever, water everywhere, cant go out sector 1 green gate bhai",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-014",
+    "severity": "serious",
+    "deadline_min": 351
+   }
+  },
+  {
+   "t": 30.42,
+   "kind": "report",
+   "device": "dev_P0031",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "no food no water since morning, 3 ppl, Rexer lane",
+    "lat": 24.871926,
+    "lng": 67.006662,
+    "gps_accuracy_m": 8,
+    "landmark": "Rexer lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-025",
+    "severity": "serious",
+    "deadline_min": 520
+   }
+  },
+  {
+   "t": 30.52,
+   "kind": "report",
+   "device": "dev_P0032",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "disabled",
+     "alone"
+    ],
+    "details": {
+     "water": "waist"
+    },
+    "note": "blind man alone in flat 2 Korangi causeway, stairs under water",
+    "lat": 24.827675,
+    "lng": 67.128448,
+    "gps_accuracy_m": 40,
+    "landmark": "Korangi causeway",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-026",
+    "severity": "serious",
+    "deadline_min": 200
+   }
+  },
+  {
+   "t": 30.56,
+   "kind": "text",
+   "sender": "+000 555 0033",
+   "text": "old uncle alone 1st floor, water at his chest, he cant swim. the madrasa near the crossing",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-027",
+    "severity": "critical",
+    "deadline_min": 51
+   }
+  },
+  {
+   "t": 31.09,
+   "kind": "report",
+   "device": "dev_P0034",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 6,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "no food no water since morning, 6 ppl, the railway crossing",
+    "lat": 24.880326,
+    "lng": 67.14768,
+    "gps_accuracy_m": 40,
+    "landmark": "the railway crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-028",
+    "severity": "serious",
+    "deadline_min": 485
+   }
+  },
+  {
+   "t": 31.14,
+   "kind": "report",
+   "device": "dev_P0035",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "other",
+    "people": 11,
+    "conditions": [
+     "child"
+    ],
+    "details": {
+     "water": "waist"
+    },
+    "note": "11 children stuck in madrasa upstairs teacher with them Lea market",
+    "lat": 24.861823,
+    "lng": 67.010472,
+    "gps_accuracy_m": 40,
+    "landmark": "Lea market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-029",
+    "severity": "serious",
+    "deadline_min": 254
+   }
+  },
+  {
+   "t": 31.33,
+   "kind": "report",
+   "device": "dev_P0036",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "no food no water since morning, 3 ppl, sector 2 near the nullah",
+    "lat": 24.832611,
+    "lng": 67.129735,
+    "gps_accuracy_m": 40,
+    "landmark": "sector 2 near the nullah",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-030",
+    "severity": "serious",
+    "deadline_min": 495
+   }
+  },
+  {
+   "t": 31.66,
+   "kind": "reply",
+   "device": "dev_REG0006",
+   "registry_id": "R-0006",
+   "status": "safe",
+   "lat": 24.869697,
+   "lng": 67.006533
+  },
+  {
+   "t": 31.68,
+   "kind": "report",
+   "device": "dev_P0037",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "pregnant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "pregnant woman pains started cant reach hospital road flooded sector 4 market",
+    "lat": 24.841736,
+    "lng": 67.137413,
+    "gps_accuracy_m": 12,
+    "landmark": "sector 4 market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-031",
+    "severity": "critical",
+    "deadline_min": 99
+   }
+  },
+  {
+   "t": 32.31,
+   "kind": "text",
+   "sender": "+000 555 0039",
+   "text": "bus stuck in underpass ppl on top of bus block 5 mosque",
+   "lat": 24.877998,
+   "lng": 67.154784,
+   "hazard": null,
+   "truth": {
+    "situation": "S-032",
+    "severity": "critical",
+    "deadline_min": 81
+   }
+  },
+  {
+   "t": 32.31,
+   "kind": "text",
+   "sender": "+000 555 0040",
+   "text": "we moved to the roof, 6 of us, dont have drinking water Agra Taj colony",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-033",
+    "severity": "serious",
+    "deadline_min": 209
+   }
+  },
+  {
+   "t": 32.48,
+   "kind": "text",
+   "sender": "+000 555 0042",
+   "text": "water knee deep and coming up, 3 of us with kids, Lea market",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-034",
+    "severity": "serious",
+    "deadline_min": 235
+   }
+  },
+  {
+   "t": 32.87,
+   "kind": "text",
+   "sender": "+000 555 0043",
+   "text": "water knee deep and coming up, 7 of us with kids, the madrasa near the crossing",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-035",
+    "severity": "serious",
+    "deadline_min": 270
+   }
+  },
+  {
+   "t": 33.01,
+   "kind": "report",
+   "device": "dev_P0045",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "other",
+    "people": 1,
+    "conditions": [
+     "injured",
+     "bleeding"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "man hurt leg wall fell, bleeding, Rexer lane",
+    "lat": 24.868474,
+    "lng": 66.99176,
+    "gps_accuracy_m": 12,
+    "landmark": "Rexer lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-036",
+    "severity": "critical",
+    "deadline_min": 80
+   }
+  },
+  {
+   "t": 33.02,
+   "kind": "reply",
+   "device": "dev_REG0076",
+   "registry_id": "R-0076",
+   "status": "safe",
+   "lat": 24.833463,
+   "lng": 67.12994
+  },
+  {
+   "t": 33.07,
+   "kind": "report",
+   "device": "dev_P0046",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "disabled",
+     "alone"
+    ],
+    "details": {
+     "water": "waist"
+    },
+    "note": "blind man alone in flat 2 sector 1 green gate, stairs under water",
+    "lat": 24.841193,
+    "lng": 67.130616,
+    "gps_accuracy_m": 40,
+    "landmark": "sector 1 green gate",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-037",
+    "severity": "serious",
+    "deadline_min": 159
+   }
+  },
+  {
+   "t": 33.31,
+   "kind": "text",
+   "sender": "+000 555 0047",
+   "text": "infant with fever, water everywhere, cant go out Chakiwara chowk",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-038",
+    "severity": "serious",
+    "deadline_min": 421
+   }
+  },
+  {
+   "t": 33.43,
+   "kind": "report",
+   "device": "dev_P0049",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 4,
+    "conditions": [],
+    "details": {
+     "water": "waist",
+     "rising": true
+    },
+    "note": "water rising fast near nullah Rexer lane, family of 4",
+    "lat": 24.860343,
+    "lng": 66.996483,
+    "gps_accuracy_m": 25,
+    "landmark": "Rexer lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-039",
+    "severity": "serious",
+    "deadline_min": 155
+   }
+  },
+  {
+   "t": 33.48,
+   "kind": "text",
+   "sender": "+000 555 0050",
+   "text": "we moved to the roof, 5 of us, dont have drinking water the madrasa near the crossing",
+   "lat": 24.839289,
+   "lng": 67.132519,
+   "hazard": null,
+   "truth": {
+    "situation": "S-040",
+    "severity": "serious",
+    "deadline_min": 172
+   }
+  },
+  {
+   "t": 33.93,
+   "kind": "report",
+   "device": "dev_P0052",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "other",
+    "people": 9,
+    "conditions": [
+     "child"
+    ],
+    "details": {
+     "water": "waist"
+    },
+    "note": "9 children stuck in madrasa upstairs teacher with them sector 4 market",
+    "lat": 24.829176,
+    "lng": 67.122815,
+    "gps_accuracy_m": 8,
+    "landmark": "sector 4 market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-041",
+    "severity": "serious",
+    "deadline_min": 240
+   }
+  },
+  {
+   "t": 34.17,
+   "kind": "text",
+   "sender": "+000 555 0053",
+   "text": "water in house ankle level we r ok for now the river bank near Kalri",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-042",
+    "severity": "minor",
+    "deadline_min": 808
+   }
+  },
+  {
+   "t": 34.27,
+   "kind": "report",
+   "device": "dev_P0054",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 4,
+    "conditions": [],
+    "details": {
+     "water": "ankle"
+    },
+    "note": "water in house ankle level we r ok for now Rexer lane",
+    "lat": 24.868772,
+    "lng": 66.998428,
+    "gps_accuracy_m": 8,
+    "landmark": "Rexer lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-043",
+    "severity": "minor",
+    "deadline_min": 610
+   }
+  },
+  {
+   "t": 34.4,
+   "kind": "reply",
+   "device": "dev_REG0114",
+   "registry_id": "R-0114",
+   "status": "safe",
+   "lat": 24.861819,
+   "lng": 67.010447
+  },
+  {
+   "t": 34.51,
+   "kind": "report",
+   "device": "dev_P0055",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 2,
+    "conditions": [
+     "child",
+     "power_dependent"
+    ],
+    "details": {
+     "water": "ankle"
+    },
+    "note": "bhai light gone, my son on breathing machine, battery 1 hour Rexer lane",
+    "lat": 24.865038,
+    "lng": 67.013033,
+    "gps_accuracy_m": 25,
+    "landmark": "Rexer lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-044",
+    "severity": "critical",
+    "deadline_min": 53
+   }
+  },
+  {
+   "t": 34.82,
+   "kind": "reply",
+   "device": "dev_REG0073",
+   "registry_id": "R-0073",
+   "status": "safe",
+   "lat": 24.843796,
+   "lng": 67.136809
+  },
+  {
+   "t": 35.38,
+   "kind": "text",
+   "sender": "+000 555 0056",
+   "text": "we r 5 ppl on roof baby with us water still rising sector 2 near the nullah",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-045",
+    "severity": "critical",
+    "deadline_min": 67
+   }
+  },
+  {
+   "t": 35.39,
+   "kind": "text",
+   "sender": "+000 555 0057",
+   "text": "bus stuck in underpass ppl on top of bus Korangi causeway",
+   "lat": 24.825636,
+   "lng": 67.135754,
+   "hazard": null,
+   "truth": {
+    "situation": "S-046",
+    "severity": "critical",
+    "deadline_min": 91
+   }
+  },
+  {
+   "t": 35.75,
+   "kind": "report",
+   "device": "dev_P0059",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "cannot_walk"
+    ],
+    "details": {
+     "water": "waist",
+     "rising": true
+    },
+    "note": "my grandfather 76 bedridden, water reached the bed Agra Taj colony",
+    "lat": 24.866538,
+    "lng": 66.993315,
+    "gps_accuracy_m": 12,
+    "landmark": "Agra Taj colony",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-047",
+    "severity": "critical",
+    "deadline_min": 101
+   }
+  },
+  {
+   "t": 35.98,
+   "kind": "report",
+   "device": "dev_P0060",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [],
+    "details": {
+     "water": "waist",
+     "trapped": true
+    },
+    "note": "trapped in house door wont open water outside the madrasa near the crossing pls send boat",
+    "lat": 24.842358,
+    "lng": 67.126962,
+    "gps_accuracy_m": 25,
+    "landmark": "the madrasa near the crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-048",
+    "severity": "critical",
+    "deadline_min": 125
+   }
+  },
+  {
+   "t": 36.32,
+   "kind": "text",
+   "sender": "+000 555 0061",
+   "text": "is the shelter at the school open? the river bank near Kalri",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": null,
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "t": 36.41,
+   "kind": "report",
+   "device": "dev_P0010",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 4,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "chest",
+     "trapped": true
+    },
+    "note": "we moved to the roof, 4 of us, dont have drinking water lea market Allah ke liye",
+    "lat": 24.86903,
+    "lng": 67.007098,
+    "gps_accuracy_m": 15,
+    "landmark": "Lea market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-009",
+    "severity": "serious",
+    "deadline_min": 149
+   }
+  },
+  {
+   "t": 36.44,
+   "kind": "text",
+   "sender": "+000 555 0062",
+   "text": "trapped in house door wont open water outside Kalri lane pls send boat",
+   "lat": 24.864233,
+   "lng": 66.993264,
+   "hazard": null,
+   "truth": {
+    "situation": "S-049",
+    "severity": "critical",
+    "deadline_min": 176
+   }
+  },
+  {
+   "t": 36.48,
+   "kind": "reply",
+   "device": "dev_REG0053",
+   "registry_id": "R-0053",
+   "status": "safe",
+   "lat": 24.867674,
+   "lng": 66.990409
+  },
+  {
+   "t": 36.94,
+   "kind": "reply",
+   "device": "dev_REG0189",
+   "registry_id": "R-0189",
+   "status": "safe",
+   "lat": 24.862332,
+   "lng": 67.005022
+  },
+  {
+   "t": 37.01,
+   "kind": "text",
+   "sender": "+000 555 0063",
+   "text": "bhai light gone, my son on breathing machine, battery 1 hour Chakiwara chowk",
+   "lat": 24.858776,
+   "lng": 67.009503,
+   "hazard": null,
+   "truth": {
+    "situation": "S-050",
+    "severity": "critical",
+    "deadline_min": 72
+   }
+  },
+  {
+   "t": 37.07,
+   "kind": "reply",
+   "device": "dev_REG0197",
+   "registry_id": "R-0197",
+   "status": "safe",
+   "lat": 24.87419,
+   "lng": 67.010539
+  },
+  {
+   "t": 37.63,
+   "kind": "reply",
+   "device": "dev_REG0023",
+   "registry_id": "R-0023",
+   "status": "safe",
+   "lat": 24.871185,
+   "lng": 67.002406
+  },
+  {
+   "t": 37.7,
+   "kind": "report",
+   "device": "dev_P0064",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 2,
+    "conditions": [
+     "child",
+     "power_dependent"
+    ],
+    "details": {
+     "water": "ankle"
+    },
+    "note": "bhai light gone, my son on breathing machine, battery 1 hour Chakiwara chowk",
+    "lat": 24.873205,
+    "lng": 67.012813,
+    "gps_accuracy_m": 40,
+    "landmark": "Chakiwara chowk",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-051",
+    "severity": "critical",
+    "deadline_min": 49
+   }
+  },
+  {
+   "t": 37.91,
+   "kind": "report",
+   "device": "dev_P0065",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "dialysis"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "my father on dialysis missed session yesterday, road closed, Chakiwara chowk jaldi",
+    "lat": 24.869845,
+    "lng": 66.990208,
+    "gps_accuracy_m": 12,
+    "landmark": "Chakiwara chowk",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-052",
+    "severity": "serious",
+    "deadline_min": 295
+   }
+  },
+  {
+   "t": 38.0,
+   "kind": "text",
+   "sender": "+000 555 0066",
+   "text": "no food no water since morning, 4 ppl, block 2 market",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-053",
+    "severity": "serious",
+    "deadline_min": 408
+   }
+  },
+  {
+   "t": 38.1,
+   "kind": "text",
+   "sender": "+000 555 0067",
+   "text": "my grandfather 83 bedridden, water reached the bed colony gate",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-054",
+    "severity": "critical",
+    "deadline_min": 89
+   }
+  },
+  {
+   "t": 38.3,
+   "kind": "text",
+   "sender": "+000 555 0068",
+   "text": "infant with fever, water everywhere, cant go out Baghdadi football ground",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-055",
+    "severity": "serious",
+    "deadline_min": 364
+   }
+  },
+  {
+   "t": 38.44,
+   "kind": "text",
+   "sender": "+000 555 0070",
+   "text": "bhai light gone, my son on breathing machine, battery 1 hour block 5 mosque",
+   "lat": 24.872793,
+   "lng": 67.16077,
+   "hazard": null,
+   "truth": {
+    "situation": "S-056",
+    "severity": "critical",
+    "deadline_min": 59
+   }
+  },
+  {
+   "t": 38.57,
+   "kind": "reply",
+   "device": "dev_REG0045",
+   "registry_id": "R-0045",
+   "status": "safe",
+   "lat": 24.873055,
+   "lng": 67.166949
+  },
+  {
+   "t": 38.61,
+   "kind": "reply",
+   "device": "dev_REG0162",
+   "registry_id": "R-0162",
+   "status": "safe",
+   "lat": 24.82344,
+   "lng": 67.132584
+  },
+  {
+   "t": 38.62,
+   "kind": "reply",
+   "device": "dev_REG0078",
+   "registry_id": "R-0078",
+   "status": "safe",
+   "lat": 24.834543,
+   "lng": 67.123073
+  },
+  {
+   "t": 38.65,
+   "kind": "text",
+   "sender": "+000 555 0071",
+   "text": "my grandfather 73 bedridden, water reached the bed Moosa lane",
+   "lat": 24.864181,
+   "lng": 66.996094,
+   "hazard": null,
+   "truth": {
+    "situation": "S-057",
+    "severity": "critical",
+    "deadline_min": 104
+   }
+  },
+  {
+   "t": 38.72,
+   "kind": "text",
+   "sender": "+000 555 0072",
+   "text": "water rising fast near nullah Regal chowk, family of 5",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-058",
+    "severity": "serious",
+    "deadline_min": 205
+   }
+  },
+  {
+   "t": 39.01,
+   "kind": "report",
+   "device": "dev_P0074",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "other",
+    "people": 19,
+    "conditions": [],
+    "details": {
+     "water": "chest",
+     "trapped": true
+    },
+    "note": "bus stuck in underpass ppl on top of bus colony gate",
+    "lat": 24.87899,
+    "lng": 67.157526,
+    "gps_accuracy_m": 8,
+    "landmark": "colony gate",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-059",
+    "severity": "critical",
+    "deadline_min": 102
+   }
+  },
+  {
+   "t": 39.15,
+   "kind": "text",
+   "sender": "+000 555 0075",
+   "text": "blind man alone in flat 2 Kalri lane, stairs under water",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-060",
+    "severity": "serious",
+    "deadline_min": 213
+   }
+  },
+  {
+   "t": 39.53,
+   "kind": "report",
+   "device": "dev_P0076",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "other",
+    "people": 1,
+    "conditions": [
+     "injured",
+     "bleeding"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "man hurt leg wall fell, bleeding, Lea market",
+    "lat": 24.877889,
+    "lng": 66.997438,
+    "gps_accuracy_m": 15,
+    "landmark": "Lea market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-061",
+    "severity": "critical",
+    "deadline_min": 93
+   }
+  },
+  {
+   "t": 39.67,
+   "kind": "text",
+   "sender": "+000 555 0077",
+   "text": "10 children stuck in madrasa upstairs teacher with them Chakiwara chowk",
+   "lat": 24.865956,
+   "lng": 66.994908,
+   "hazard": null,
+   "truth": {
+    "situation": "S-062",
+    "severity": "serious",
+    "deadline_min": 252
+   }
+  },
+  {
+   "t": 39.86,
+   "kind": "reply",
+   "device": "dev_REG0046",
+   "registry_id": "R-0046",
+   "status": "safe",
+   "lat": 24.825235,
+   "lng": 67.122243
+  },
+  {
+   "t": 39.88,
+   "kind": "reply",
+   "device": "dev_REG0165",
+   "registry_id": "R-0165",
+   "status": "need_help",
+   "lat": 24.82985,
+   "lng": 67.130976
+  },
+  {
+   "t": 39.94,
+   "kind": "report",
+   "device": "dev_P0078",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "disabled",
+     "cannot_walk",
+     "alone"
+    ],
+    "details": {
+     "water": "knee",
+     "rising": true
+    },
+    "note": "wheelchair lady alone on ground floor water coming in Lea market",
+    "lat": 24.866831,
+    "lng": 67.004202,
+    "gps_accuracy_m": 40,
+    "landmark": "Lea market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-063",
+    "severity": "critical",
+    "deadline_min": 126
+   }
+  },
+  {
+   "t": 40.46,
+   "kind": "reply",
+   "device": "dev_REG0072",
+   "registry_id": "R-0072",
+   "status": "safe",
+   "lat": 24.833746,
+   "lng": 67.122861
+  },
+  {
+   "t": 40.48,
+   "kind": "reply",
+   "device": "dev_REG0071",
+   "registry_id": "R-0071",
+   "status": "safe",
+   "lat": 24.877133,
+   "lng": 67.159067
+  },
+  {
+   "t": 41.07,
+   "kind": "text",
+   "sender": "+000 555 0079",
+   "text": "12 children stuck in madrasa upstairs teacher with them sector 2 near the nullah",
+   "lat": 24.829003,
+   "lng": 67.126261,
+   "hazard": null,
+   "truth": {
+    "situation": "S-064",
+    "severity": "serious",
+    "deadline_min": 226
+   }
+  },
+  {
+   "t": 41.25,
+   "kind": "reply",
+   "device": "dev_REG0173",
+   "registry_id": "R-0173",
+   "status": "safe",
+   "lat": 24.871135,
+   "lng": 66.996481
+  },
+  {
+   "t": 41.44,
+   "kind": "report",
+   "device": "dev_P0080",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 6,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "chest",
+     "trapped": true
+    },
+    "note": "we moved to the roof, 6 of us, dont have drinking water Moosa lane",
+    "lat": 24.867931,
+    "lng": 66.996416,
+    "gps_accuracy_m": 25,
+    "landmark": "Moosa lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-065",
+    "severity": "serious",
+    "deadline_min": 191
+   }
+  },
+  {
+   "t": 41.52,
+   "kind": "text",
+   "sender": "+000 555 0081",
+   "text": "we moved to the roof, 6 of us, dont have drinking water Korangi crossing",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-066",
+    "severity": "serious",
+    "deadline_min": 195
+   }
+  },
+  {
+   "t": 41.59,
+   "kind": "text",
+   "sender": "+000 555 0082",
+   "text": "elderly couple on roof since 2 hrs, cold, sector 2 near the nullah",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-067",
+    "severity": "critical",
+    "deadline_min": 95
+   }
+  },
+  {
+   "t": 41.8,
+   "kind": "report",
+   "device": "dev_P0083",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "other",
+    "people": 25,
+    "conditions": [],
+    "details": {
+     "water": "chest",
+     "trapped": true
+    },
+    "note": "bus stuck in underpass ppl on top of bus Agra Taj colony",
+    "lat": 24.864844,
+    "lng": 66.996343,
+    "gps_accuracy_m": 40,
+    "landmark": "Agra Taj colony",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-068",
+    "severity": "critical",
+    "deadline_min": 94
+   }
+  },
+  {
+   "t": 42.25,
+   "kind": "text",
+   "sender": "+000 555 0084",
+   "text": "pregnant woman pains started cant reach hospital road flooded sector 1 green gate",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-069",
+    "severity": "critical",
+    "deadline_min": 141
+   }
+  },
+  {
+   "t": 42.61,
+   "kind": "text",
+   "sender": "+000 555 0086",
+   "text": "8 children stuck in madrasa upstairs teacher with them Korangi causeway",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-070",
+    "severity": "serious",
+    "deadline_min": 212
+   }
+  },
+  {
+   "t": 42.63,
+   "kind": "report",
+   "device": "dev_P0088",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "cannot_walk"
+    ],
+    "details": {
+     "water": "waist",
+     "rising": true
+    },
+    "note": "my grandfather 68 bedridden, water reached the bed Lea market",
+    "lat": 24.861942,
+    "lng": 66.991618,
+    "gps_accuracy_m": 8,
+    "landmark": "Lea market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-071",
+    "severity": "critical",
+    "deadline_min": 84
+   }
+  },
+  {
+   "t": 42.76,
+   "kind": "report",
+   "device": "dev_P0089",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 5,
+    "conditions": [],
+    "details": {
+     "water": "waist",
+     "trapped": true
+    },
+    "note": "trapped in house door wont open water outside sector 1 green gate pls send boat",
+    "lat": 24.821464,
+    "lng": 67.13189,
+    "gps_accuracy_m": 12,
+    "landmark": "sector 1 green gate",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-072",
+    "severity": "critical",
+    "deadline_min": 142
+   }
+  },
+  {
+   "t": 42.86,
+   "kind": "report",
+   "device": "dev_P0091",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 2,
+    "conditions": [
+     "elderly",
+     "cannot_walk",
+     "oxygen"
+    ],
+    "details": {
+     "water": "waist",
+     "rising": true
+    },
+    "note": "pls help water till waist my mother 80 cant walk oxygen cylinder only 2 hr left Korangi causeway",
+    "lat": 24.839827,
+    "lng": 67.13115,
+    "gps_accuracy_m": 12,
+    "landmark": "Korangi causeway",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-073",
+    "severity": "critical",
+    "deadline_min": 116
+   }
+  },
+  {
+   "t": 43.11,
+   "kind": "reply",
+   "device": "dev_REG0079",
+   "registry_id": "R-0079",
+   "status": "safe",
+   "lat": 24.834442,
+   "lng": 67.12722
+  },
+  {
+   "t": 43.41,
+   "kind": "text",
+   "sender": "+000 555 0093",
+   "text": "my father on dialysis missed session yesterday, road closed, the river bank near Kalri jaldi",
+   "lat": 24.868019,
+   "lng": 66.994011,
+   "hazard": null,
+   "truth": {
+    "situation": "S-074",
+    "severity": "serious",
+    "deadline_min": 360
+   }
+  },
+  {
+   "t": 43.46,
+   "kind": "report",
+   "device": "dev_P0044",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 7,
+    "conditions": [
+     "child"
+    ],
+    "details": {
+     "water": "knee",
+     "rising": true
+    },
+    "note": "water knee deep and coming up, 7 of us with kids, the madrasa near the crossing urgent",
+    "lat": 24.831884,
+    "lng": 67.124753,
+    "gps_accuracy_m": 25,
+    "landmark": "the madrasa near the crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-035",
+    "severity": "serious",
+    "deadline_min": 270
+   }
+  },
+  {
+   "t": 43.52,
+   "kind": "reply",
+   "device": "dev_REG0095",
+   "registry_id": "R-0095",
+   "status": "safe",
+   "lat": 24.885347,
+   "lng": 67.152188
+  },
+  {
+   "t": 44.06,
+   "kind": "report",
+   "device": "dev_P0094",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 4,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "chest",
+     "trapped": true
+    },
+    "note": "we moved to the roof, 4 of us, dont have drinking water Malir city market",
+    "lat": 24.898588,
+    "lng": 67.193732,
+    "gps_accuracy_m": 25,
+    "landmark": "Malir city market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-075",
+    "severity": "serious",
+    "deadline_min": 191
+   }
+  },
+  {
+   "t": 44.12,
+   "kind": "report",
+   "device": "dev_P0095",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 7,
+    "conditions": [
+     "child"
+    ],
+    "details": {
+     "water": "knee",
+     "rising": true
+    },
+    "note": "water knee deep and coming up, 7 of us with kids, Korangi causeway",
+    "lat": 24.842187,
+    "lng": 67.119625,
+    "gps_accuracy_m": 40,
+    "landmark": "Korangi causeway",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-076",
+    "severity": "serious",
+    "deadline_min": 253
+   }
+  },
+  {
+   "t": 44.25,
+   "kind": "reply",
+   "device": "dev_REG0033",
+   "registry_id": "R-0033",
+   "status": "helping",
+   "lat": 24.838783,
+   "lng": 67.135277
+  },
+  {
+   "t": 44.28,
+   "kind": "text",
+   "sender": "+000 555 0096",
+   "text": "insulin finished, diabetic grandmother, shops closed Korangi causeway",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-077",
+    "severity": "serious",
+    "deadline_min": 509
+   }
+  },
+  {
+   "t": 44.65,
+   "kind": "reply",
+   "device": "dev_REG0177",
+   "registry_id": "R-0177",
+   "status": "safe",
+   "lat": 24.869894,
+   "lng": 67.002691
+  },
+  {
+   "t": 44.72,
+   "kind": "reply",
+   "device": "dev_REG0021",
+   "registry_id": "R-0021",
+   "status": "safe",
+   "lat": 24.87231,
+   "lng": 66.99148
+  },
+  {
+   "t": 44.79,
+   "kind": "reply",
+   "device": "dev_REG0096",
+   "registry_id": "R-0096",
+   "status": "safe",
+   "lat": 24.876741,
+   "lng": 66.996056
+  },
+  {
+   "t": 44.95,
+   "kind": "text",
+   "sender": "+000 555 0097",
+   "text": "elderly couple on roof since 2 hrs, cold, block L park",
+   "lat": 24.931122,
+   "lng": 67.039071,
+   "hazard": null,
+   "truth": {
+    "situation": "S-078",
+    "severity": "critical",
+    "deadline_min": 92
+   }
+  },
+  {
+   "t": 45.1,
+   "kind": "reply",
+   "device": "dev_REG0198",
+   "registry_id": "R-0198",
+   "status": "safe",
+   "lat": 24.825851,
+   "lng": 67.127113
+  },
+  {
+   "t": 45.24,
+   "kind": "report",
+   "device": "dev_P0098",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "disabled",
+     "alone"
+    ],
+    "details": {
+     "water": "waist"
+    },
+    "note": "blind man alone in flat 2 block 3, stairs under water",
+    "lat": 24.868636,
+    "lng": 67.150732,
+    "gps_accuracy_m": 25,
+    "landmark": "block 3",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-079",
+    "severity": "serious",
+    "deadline_min": 205
+   }
+  },
+  {
+   "t": 46.55,
+   "kind": "text",
+   "sender": "+000 555 0099",
+   "text": "bus stuck in underpass ppl on top of bus sector 2 near the nullah",
+   "lat": 24.822535,
+   "lng": 67.120768,
+   "hazard": null,
+   "truth": {
+    "situation": "S-080",
+    "severity": "critical",
+    "deadline_min": 88
+   }
+  },
+  {
+   "t": 46.72,
+   "kind": "reply",
+   "device": "dev_REG0116",
+   "registry_id": "R-0116",
+   "status": "safe",
+   "lat": 24.86379,
+   "lng": 67.006252
+  },
+  {
+   "t": 46.9,
+   "kind": "text",
+   "sender": "+000 555 0048",
+   "text": "infant w fever, water everywhere, cant go out chakiwara chowk",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-038",
+    "severity": "serious",
+    "deadline_min": 421
+   }
+  },
+  {
+   "t": 46.91,
+   "kind": "text",
+   "sender": "+000 555 0101",
+   "text": "water knee deep and coming up, 3 of us with kids, Korangi causeway",
+   "lat": 24.834788,
+   "lng": 67.115554,
+   "hazard": null,
+   "truth": {
+    "situation": "S-081",
+    "severity": "serious",
+    "deadline_min": 214
+   }
+  },
+  {
+   "t": 47.56,
+   "kind": "reply",
+   "device": "dev_REG0166",
+   "registry_id": "R-0166",
+   "status": "helping",
+   "lat": 24.8707,
+   "lng": 66.995725
+  },
+  {
+   "t": 47.95,
+   "kind": "reply",
+   "device": "dev_REG0039",
+   "registry_id": "R-0039",
+   "status": "helping",
+   "lat": 24.828349,
+   "lng": 67.142406
+  },
+  {
+   "t": 48.07,
+   "kind": "text",
+   "sender": "+000 555 0102",
+   "text": "praying for everyone in Korangi crossing, stay safe",
+   "lat": 24.832489,
+   "lng": 67.141596,
+   "hazard": null,
+   "truth": {
+    "situation": null,
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "t": 48.12,
+   "kind": "report",
+   "device": "dev_P0103",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "child"
+    ],
+    "details": {
+     "water": "knee",
+     "rising": true
+    },
+    "note": "water knee deep and coming up, 3 of us with kids, Moosa lane",
+    "lat": 24.863133,
+    "lng": 66.993981,
+    "gps_accuracy_m": 15,
+    "landmark": "Moosa lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-082",
+    "severity": "serious",
+    "deadline_min": 264
+   }
+  },
+  {
+   "t": 48.68,
+   "kind": "report",
+   "device": "dev_P0104",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "disabled",
+     "alone"
+    ],
+    "details": {
+     "water": "waist"
+    },
+    "note": "blind man alone in flat 2 Baghdadi football ground, stairs under water",
+    "lat": 24.871215,
+    "lng": 66.990747,
+    "gps_accuracy_m": 8,
+    "landmark": "Baghdadi football ground",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-083",
+    "severity": "serious",
+    "deadline_min": 183
+   }
+  },
+  {
+   "t": 48.99,
+   "kind": "report",
+   "device": "dev_P0105",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "insulin"
+    ],
+    "details": {
+     "water": "ankle"
+    },
+    "note": "insulin finished, diabetic grandmother, shops closed block L park",
+    "lat": 24.950603,
+    "lng": 67.039686,
+    "gps_accuracy_m": 25,
+    "landmark": "block L park",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-084",
+    "severity": "serious",
+    "deadline_min": 445
+   }
+  },
+  {
+   "t": 49.24,
+   "kind": "reply",
+   "device": "dev_REG0068",
+   "registry_id": "R-0068",
+   "status": "safe",
+   "lat": 24.858278,
+   "lng": 67.009535
+  },
+  {
+   "t": 49.32,
+   "kind": "text",
+   "sender": "+000 555 0106",
+   "text": "water rising fast near nullah Hyderi market, family of 8",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-085",
+    "severity": "serious",
+    "deadline_min": 170
+   }
+  },
+  {
+   "t": 49.67,
+   "kind": "report",
+   "device": "dev_P0051",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 5,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "chest",
+     "trapped": true
+    },
+    "note": "we moved to roof, 5 of us, dont have drinking water madrasa near crossing",
+    "lat": 24.839432,
+    "lng": 67.132246,
+    "gps_accuracy_m": 12,
+    "landmark": "the madrasa near the crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-040",
+    "severity": "serious",
+    "deadline_min": 172
+   }
+  },
+  {
+   "t": 49.71,
+   "kind": "reply",
+   "device": "dev_REG0020",
+   "registry_id": "R-0020",
+   "status": "safe",
+   "lat": 24.835073,
+   "lng": 67.12324
+  },
+  {
+   "t": 49.75,
+   "kind": "text",
+   "sender": "+000 555 0107",
+   "text": "we r 8 ppl on roof baby with us water still rising sector 1 green gate",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-086",
+    "severity": "critical",
+    "deadline_min": 49
+   }
+  },
+  {
+   "t": 50.04,
+   "kind": "text",
+   "sender": "+000 555 0108",
+   "text": "my grandfather 76 bedridden, water reached the bed Lea market",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-087",
+    "severity": "critical",
+    "deadline_min": 81
+   }
+  },
+  {
+   "t": 50.15,
+   "kind": "report",
+   "device": "dev_P0109",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "alone"
+    ],
+    "details": {},
+    "note": "pls check on house 9 the madrasa near the crossing, old lady lives alone, no answer on phone",
+    "lat": 24.829271,
+    "lng": 67.1291,
+    "gps_accuracy_m": 25,
+    "landmark": "the madrasa near the crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-088",
+    "severity": "serious",
+    "deadline_min": 220
+   }
+  },
+  {
+   "t": 50.19,
+   "kind": "reply",
+   "device": "dev_REG0178",
+   "registry_id": "R-0178",
+   "status": "safe",
+   "lat": 24.867358,
+   "lng": 66.999048
+  },
+  {
+   "t": 50.26,
+   "kind": "report",
+   "device": "dev_P0110",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "other",
+    "people": 13,
+    "conditions": [
+     "child"
+    ],
+    "details": {
+     "water": "waist"
+    },
+    "note": "13 children stuck in madrasa upstairs teacher with them sector 2 near the nullah",
+    "lat": 24.842026,
+    "lng": 67.121118,
+    "gps_accuracy_m": 25,
+    "landmark": "sector 2 near the nullah",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-089",
+    "severity": "serious",
+    "deadline_min": 240
+   }
+  },
+  {
+   "t": 50.27,
+   "kind": "report",
+   "device": "dev_P0111",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "disabled",
+     "alone"
+    ],
+    "details": {
+     "water": "waist"
+    },
+    "note": "blind man alone in flat 2 the river bank near Kalri, stairs under water",
+    "lat": 24.859653,
+    "lng": 67.000972,
+    "gps_accuracy_m": 40,
+    "landmark": "the river bank near Kalri",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-090",
+    "severity": "serious",
+    "deadline_min": 149
+   }
+  },
+  {
+   "t": 50.4,
+   "kind": "text",
+   "sender": "+000 555 0113",
+   "text": "pls help water till waist my mother 83 cant walk oxygen cylinder only 2 hr left Korangi causeway",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-091",
+    "severity": "critical",
+    "deadline_min": 113
+   }
+  },
+  {
+   "t": 50.51,
+   "kind": "text",
+   "sender": "+000 555 0114",
+   "text": "praying for everyone in Korangi crossing, stay safe",
+   "lat": 24.843841,
+   "lng": 67.118083,
+   "hazard": null,
+   "truth": {
+    "situation": null,
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "t": 50.57,
+   "kind": "report",
+   "device": "dev_P0115",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 2,
+    "conditions": [],
+    "details": {
+     "water": "waist",
+     "trapped": true
+    },
+    "note": "trapped in house door wont open water outside Korangi causeway pls send boat",
+    "lat": 24.838918,
+    "lng": 67.118358,
+    "gps_accuracy_m": 40,
+    "landmark": "Korangi causeway",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-092",
+    "severity": "critical",
+    "deadline_min": 154
+   }
+  },
+  {
+   "t": 50.73,
+   "kind": "reply",
+   "device": "dev_REG0098",
+   "registry_id": "R-0098",
+   "status": "need_help",
+   "lat": 24.871878,
+   "lng": 66.991322
+  },
+  {
+   "t": 50.84,
+   "kind": "text",
+   "sender": "+000 555 0117",
+   "text": "insulin finished, diabetic grandmother, shops closed the river bank near Kalri",
+   "lat": 24.872396,
+   "lng": 67.007816,
+   "hazard": null,
+   "truth": {
+    "situation": "S-093",
+    "severity": "serious",
+    "deadline_min": 466
+   }
+  },
+  {
+   "t": 51.18,
+   "kind": "text",
+   "sender": "+000 555 0118",
+   "text": "my father on dialysis missed session yesterday, road closed, block 5 mosque jaldi",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-094",
+    "severity": "serious",
+    "deadline_min": 366
+   }
+  },
+  {
+   "t": 51.28,
+   "kind": "text",
+   "sender": "+000 555 0119",
+   "text": "no food no water since morning, 6 ppl, block 3",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-095",
+    "severity": "serious",
+    "deadline_min": 419
+   }
+  },
+  {
+   "t": 51.46,
+   "kind": "report",
+   "device": "dev_P0120",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "alone"
+    ],
+    "details": {
+     "water": "chest",
+     "rising": true
+    },
+    "note": "old uncle alone 1st floor, water at his chest, he cant swim. Chakiwara chowk",
+    "lat": 24.871353,
+    "lng": 67.002377,
+    "gps_accuracy_m": 8,
+    "landmark": "Chakiwara chowk",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-096",
+    "severity": "critical",
+    "deadline_min": 61
+   }
+  },
+  {
+   "t": 51.5,
+   "kind": "report",
+   "device": "dev_P0069",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "infant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "jaldi infant w fever, water everywhere, cant go out baghdadi football ground",
+    "lat": 24.86398,
+    "lng": 67.000628,
+    "gps_accuracy_m": 40,
+    "landmark": "Baghdadi football ground",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-055",
+    "severity": "serious",
+    "deadline_min": 364
+   }
+  },
+  {
+   "t": 51.8,
+   "kind": "text",
+   "sender": "+000 555 0121",
+   "text": "bus stuck in underpass ppl on top of bus sector 5 school",
+   "lat": 24.831371,
+   "lng": 67.117111,
+   "hazard": null,
+   "truth": {
+    "situation": "S-097",
+    "severity": "critical",
+    "deadline_min": 106
+   }
+  },
+  {
+   "t": 51.94,
+   "kind": "text",
+   "sender": "+000 555 0122",
+   "text": "water knee deep and coming up, 3 of us with kids, Chakiwara chowk",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-098",
+    "severity": "serious",
+    "deadline_min": 230
+   }
+  },
+  {
+   "t": 52.01,
+   "kind": "reply",
+   "device": "dev_REG0175",
+   "registry_id": "R-0175",
+   "status": "safe",
+   "lat": 24.86415,
+   "lng": 66.994844
+  },
+  {
+   "t": 52.17,
+   "kind": "text",
+   "sender": "+000 555 0124",
+   "text": "old uncle alone 1st floor, water at his chest, he cant swim. block 5 mosque",
+   "lat": 24.879937,
+   "lng": 67.163246,
+   "hazard": null,
+   "truth": {
+    "situation": "S-099",
+    "severity": "critical",
+    "deadline_min": 63
+   }
+  },
+  {
+   "t": 52.18,
+   "kind": "report",
+   "device": "dev_P0125",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "alone"
+    ],
+    "details": {
+     "water": "chest",
+     "rising": true
+    },
+    "note": "old uncle alone 1st floor, water at his chest, he cant swim. Kalri lane",
+    "lat": 24.859211,
+    "lng": 66.995823,
+    "gps_accuracy_m": 40,
+    "landmark": "Kalri lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-100",
+    "severity": "critical",
+    "deadline_min": 61
+   }
+  },
+  {
+   "t": 52.41,
+   "kind": "report",
+   "device": "dev_P0127",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {
+     "water": "knee",
+     "rising": true
+    },
+    "note": "water upto knee, rising slowly, 3 ppl incl old mother Agra Taj colony",
+    "lat": 24.87314,
+    "lng": 67.01213,
+    "gps_accuracy_m": 15,
+    "landmark": "Agra Taj colony",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-101",
+    "severity": "serious",
+    "deadline_min": 267
+   }
+  },
+  {
+   "t": 52.53,
+   "kind": "report",
+   "device": "dev_P0129",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "alone"
+    ],
+    "details": {
+     "water": "chest",
+     "rising": true
+    },
+    "note": "old uncle alone 1st floor, water at his chest, he cant swim. Baghdadi football ground",
+    "lat": 24.8731,
+    "lng": 67.000011,
+    "gps_accuracy_m": 40,
+    "landmark": "Baghdadi football ground",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-102",
+    "severity": "critical",
+    "deadline_min": 56
+   }
+  },
+  {
+   "t": 52.61,
+   "kind": "report",
+   "device": "dev_P0130",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 7,
+    "conditions": [
+     "child"
+    ],
+    "details": {
+     "water": "knee",
+     "rising": true
+    },
+    "note": "water knee deep and coming up, 7 of us with kids, sector 2 near the nullah",
+    "lat": 24.830463,
+    "lng": 67.132487,
+    "gps_accuracy_m": 12,
+    "landmark": "sector 2 near the nullah",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-103",
+    "severity": "serious",
+    "deadline_min": 231
+   }
+  },
+  {
+   "t": 52.96,
+   "kind": "reply",
+   "device": "dev_REG0031",
+   "registry_id": "R-0031",
+   "status": "safe",
+   "lat": 24.869764,
+   "lng": 66.999221
+  },
+  {
+   "t": 53.01,
+   "kind": "reply",
+   "device": "dev_REG0179",
+   "registry_id": "R-0179",
+   "status": "safe",
+   "lat": 24.823866,
+   "lng": 67.129902
+  },
+  {
+   "t": 53.52,
+   "kind": "report",
+   "device": "dev_P0132",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "other",
+    "people": 1,
+    "conditions": [
+     "injured",
+     "bleeding"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "man hurt leg wall fell, bleeding, Chakiwara chowk",
+    "lat": 24.858939,
+    "lng": 67.004971,
+    "gps_accuracy_m": 12,
+    "landmark": "Chakiwara chowk",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-104",
+    "severity": "critical",
+    "deadline_min": 95
+   }
+  },
+  {
+   "t": 53.75,
+   "kind": "report",
+   "device": "dev_P0133",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "infant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "infant with fever, water everywhere, cant go out the river bank near Kalri",
+    "lat": 24.86593,
+    "lng": 66.990719,
+    "gps_accuracy_m": 15,
+    "landmark": "the river bank near Kalri",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-105",
+    "severity": "serious",
+    "deadline_min": 370
+   }
+  },
+  {
+   "t": 53.86,
+   "kind": "text",
+   "sender": "+000 555 0135",
+   "text": "bus stuck in underpass ppl on top of bus sector 1 green gate",
+   "lat": 24.825647,
+   "lng": 67.138026,
+   "hazard": null,
+   "truth": {
+    "situation": "S-106",
+    "severity": "critical",
+    "deadline_min": 100
+   }
+  },
+  {
+   "t": 54.12,
+   "kind": "report",
+   "device": "dev_P0137",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "disabled",
+     "alone"
+    ],
+    "details": {
+     "water": "waist"
+    },
+    "note": "blind man alone in flat 2 Model colony, stairs under water",
+    "lat": 24.898419,
+    "lng": 67.193275,
+    "gps_accuracy_m": 15,
+    "landmark": "Model colony",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-107",
+    "severity": "serious",
+    "deadline_min": 182
+   }
+  },
+  {
+   "t": 54.29,
+   "kind": "text",
+   "sender": "+000 555 0138",
+   "text": "pls check on house 9 sector 1 green gate, old lady lives alone, no answer on phone",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-108",
+    "severity": "serious",
+    "deadline_min": 284
+   }
+  },
+  {
+   "t": 54.3,
+   "kind": "reply",
+   "device": "dev_REG0107",
+   "registry_id": "R-0107",
+   "status": "safe",
+   "lat": 24.865223,
+   "lng": 67.004303
+  },
+  {
+   "t": 54.46,
+   "kind": "text",
+   "sender": "+000 555 0139",
+   "text": "is the shelter at the school open? sector 5 school",
+   "lat": 24.828661,
+   "lng": 67.129623,
+   "hazard": null,
+   "truth": {
+    "situation": null,
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "t": 54.73,
+   "kind": "reply",
+   "device": "dev_REG0200",
+   "registry_id": "R-0200",
+   "status": "helping",
+   "lat": 24.875932,
+   "lng": 66.995274
+  },
+  {
+   "t": 54.87,
+   "kind": "reply",
+   "device": "dev_REG0192",
+   "registry_id": "R-0192",
+   "status": "safe",
+   "lat": 24.870243,
+   "lng": 67.010808
+  },
+  {
+   "t": 54.99,
+   "kind": "report",
+   "device": "dev_P0140",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "disabled",
+     "cannot_walk",
+     "alone"
+    ],
+    "details": {
+     "water": "knee",
+     "rising": true
+    },
+    "note": "wheelchair lady alone on ground floor water coming in the river bank near Kalri",
+    "lat": 24.87411,
+    "lng": 66.992372,
+    "gps_accuracy_m": 15,
+    "landmark": "the river bank near Kalri",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-109",
+    "severity": "critical",
+    "deadline_min": 111
+   }
+  },
+  {
+   "t": 55.08,
+   "kind": "text",
+   "sender": "+000 555 0142",
+   "text": "insulin finished, diabetic grandmother, shops closed Baghdadi football ground",
+   "lat": 24.872559,
+   "lng": 66.996417,
+   "hazard": null,
+   "truth": {
+    "situation": "S-110",
+    "severity": "serious",
+    "deadline_min": 564
+   }
+  },
+  {
+   "t": 55.23,
+   "kind": "text",
+   "sender": "+000 555 0144",
+   "text": "anyone know if K-Electric will restore power today",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": null,
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "t": 55.27,
+   "kind": "text",
+   "sender": "+000 555 0145",
+   "text": "blind man alone in flat 2 Agra Taj colony, stairs under water",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-111",
+    "severity": "serious",
+    "deadline_min": 206
+   }
+  },
+  {
+   "t": 55.31,
+   "kind": "report",
+   "device": "dev_P0146",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "dialysis"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "my father on dialysis missed session yesterday, road closed, Moosa lane jaldi",
+    "lat": 24.863075,
+    "lng": 67.00313,
+    "gps_accuracy_m": 8,
+    "landmark": "Moosa lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-112",
+    "severity": "serious",
+    "deadline_min": 368
+   }
+  },
+  {
+   "t": 55.54,
+   "kind": "text",
+   "sender": "+000 555 0147",
+   "text": "insulin finished, diabetic grandmother, shops closed Korangi causeway",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-113",
+    "severity": "serious",
+    "deadline_min": 497
+   }
+  },
+  {
+   "t": 55.61,
+   "kind": "report",
+   "device": "dev_P0148",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "infant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "infant with fever, water everywhere, cant go out block 3",
+    "lat": 24.872259,
+    "lng": 67.159199,
+    "gps_accuracy_m": 8,
+    "landmark": "block 3",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-114",
+    "severity": "serious",
+    "deadline_min": 326
+   }
+  },
+  {
+   "t": 55.65,
+   "kind": "text",
+   "sender": "+000 555 0149",
+   "text": "elderly couple on roof since 2 hrs, cold, Korangi crossing",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-115",
+    "severity": "critical",
+    "deadline_min": 99
+   }
+  },
+  {
+   "t": 55.94,
+   "kind": "text",
+   "sender": "+000 555 0027",
+   "text": "urgent water rising fast near nullah Lea market, family of 9",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-021",
+    "severity": "serious",
+    "deadline_min": 157
+   }
+  },
+  {
+   "t": 56.03,
+   "kind": "text",
+   "sender": "+000 555 0116",
+   "text": "trapped in house door wont open water outside korangi causeway pls send boat jaldi",
+   "lat": 24.83929,
+   "lng": 67.118436,
+   "hazard": null,
+   "truth": {
+    "situation": "S-092",
+    "severity": "critical",
+    "deadline_min": 154
+   }
+  },
+  {
+   "t": 56.56,
+   "kind": "text",
+   "sender": "+000 555 0150",
+   "text": "pls help water till waist my mother 69 cant walk oxygen cylinder only 2 hr left Agra Taj colony",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-116",
+    "severity": "critical",
+    "deadline_min": 121
+   }
+  },
+  {
+   "t": 56.56,
+   "kind": "report",
+   "device": "dev_P0151",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "dialysis"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "my father on dialysis missed session yesterday, road closed, Agra Taj colony jaldi",
+    "lat": 24.861147,
+    "lng": 67.00883,
+    "gps_accuracy_m": 15,
+    "landmark": "Agra Taj colony",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-117",
+    "severity": "serious",
+    "deadline_min": 419
+   }
+  },
+  {
+   "t": 56.63,
+   "kind": "report",
+   "device": "dev_P0152",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "dialysis"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "my father on dialysis missed session yesterday, road closed, sector 1 green gate jaldi",
+    "lat": 24.825315,
+    "lng": 67.116867,
+    "gps_accuracy_m": 25,
+    "landmark": "sector 1 green gate",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-118",
+    "severity": "serious",
+    "deadline_min": 411
+   }
+  },
+  {
+   "t": 56.74,
+   "kind": "report",
+   "device": "dev_P0153",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 4,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {
+     "water": "knee",
+     "rising": true
+    },
+    "note": "water upto knee, rising slowly, 4 ppl incl old mother Kalri lane",
+    "lat": 24.864799,
+    "lng": 67.003913,
+    "gps_accuracy_m": 15,
+    "landmark": "Kalri lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-119",
+    "severity": "serious",
+    "deadline_min": 202
+   }
+  },
+  {
+   "t": 56.76,
+   "kind": "text",
+   "sender": "+000 555 0154",
+   "text": "bhai light gone, my son on breathing machine, battery 1 hour Korangi causeway",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-120",
+    "severity": "critical",
+    "deadline_min": 69
+   }
+  },
+  {
+   "t": 57.96,
+   "kind": "report",
+   "device": "dev_P0156",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 2,
+    "conditions": [
+     "elderly",
+     "cannot_walk",
+     "oxygen"
+    ],
+    "details": {
+     "water": "waist",
+     "rising": true
+    },
+    "note": "pls help water till waist my mother 78 cant walk oxygen cylinder only 2 hr left sector 11",
+    "lat": 24.949589,
+    "lng": 66.97763,
+    "gps_accuracy_m": 8,
+    "landmark": "sector 11",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-121",
+    "severity": "critical",
+    "deadline_min": 118
+   }
+  },
+  {
+   "t": 58.15,
+   "kind": "report",
+   "device": "dev_P0038",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "pregnant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "pregnant woman pains started cant reach hospital road flooded sector 4 market Allah ke liye",
+    "lat": 24.842423,
+    "lng": 67.137229,
+    "gps_accuracy_m": 40,
+    "landmark": "sector 4 market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-031",
+    "severity": "critical",
+    "deadline_min": 99
+   }
+  },
+  {
+   "t": 58.41,
+   "kind": "text",
+   "sender": "+000 555 0157",
+   "text": "bhai light gone, my son on breathing machine, battery 1 hour sector 4 market",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-122",
+    "severity": "critical",
+    "deadline_min": 72
+   }
+  },
+  {
+   "t": 58.59,
+   "kind": "report",
+   "device": "dev_P0158",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "other",
+    "people": 8,
+    "conditions": [
+     "child"
+    ],
+    "details": {
+     "water": "waist"
+    },
+    "note": "8 children stuck in madrasa upstairs teacher with them Baghdadi football ground",
+    "lat": 24.86526,
+    "lng": 67.001086,
+    "gps_accuracy_m": 12,
+    "landmark": "Baghdadi football ground",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-123",
+    "severity": "serious",
+    "deadline_min": 217
+   }
+  },
+  {
+   "t": 58.86,
+   "kind": "report",
+   "device": "dev_P0159",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "other",
+    "people": 22,
+    "conditions": [],
+    "details": {
+     "water": "chest",
+     "trapped": true
+    },
+    "note": "bus stuck in underpass ppl on top of bus Do Talwar",
+    "lat": 24.821408,
+    "lng": 67.020417,
+    "gps_accuracy_m": 15,
+    "landmark": "Do Talwar",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-124",
+    "severity": "critical",
+    "deadline_min": 94
+   }
+  },
+  {
+   "t": 59.18,
+   "kind": "report",
+   "device": "dev_P0161",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 5,
+    "conditions": [
+     "infant"
+    ],
+    "details": {
+     "water": "roof",
+     "rising": true,
+     "trapped": true
+    },
+    "note": "we r 5 ppl on roof baby with us water still rising the madrasa near the crossing",
+    "lat": 24.836721,
+    "lng": 67.1291,
+    "gps_accuracy_m": 25,
+    "landmark": "the madrasa near the crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-125",
+    "severity": "critical",
+    "deadline_min": 52
+   }
+  },
+  {
+   "t": 59.23,
+   "kind": "report",
+   "device": "dev_P0163",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "infant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "infant with fever, water everywhere, cant go out Baghdadi football ground",
+    "lat": 24.862316,
+    "lng": 66.991462,
+    "gps_accuracy_m": 25,
+    "landmark": "Baghdadi football ground",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-126",
+    "severity": "serious",
+    "deadline_min": 372
+   }
+  },
+  {
+   "t": 59.56,
+   "kind": "report",
+   "device": "dev_P0164",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "infant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "infant with fever, water everywhere, cant go out Korangi crossing",
+    "lat": 24.822272,
+    "lng": 67.130074,
+    "gps_accuracy_m": 8,
+    "landmark": "Korangi crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-127",
+    "severity": "serious",
+    "deadline_min": 364
+   }
+  },
+  {
+   "t": 59.86,
+   "kind": "text",
+   "sender": "+000 555 0165",
+   "text": "bhai light gone, my son on breathing machine, battery 1 hour Banaras chowk",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-128",
+    "severity": "critical",
+    "deadline_min": 65
+   }
+  },
+  {
+   "t": 60,
+   "kind": "cue",
+   "text": "Phone towers fail in Shah Faisal: no messages or replies from there."
+  },
+  {
+   "t": 60,
+   "kind": "hard_hit",
+   "zones": [
+    "Shah Faisal"
+   ]
+  },
+  {
+   "t": 62.38,
+   "kind": "report",
+   "device": "dev_P0085",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "pregnant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "pregnant woman pains started cant reach hospital road flooded sector 1 green gate urgent",
+    "lat": 24.839004,
+    "lng": 67.114044,
+    "gps_accuracy_m": 12,
+    "landmark": "sector 1 green gate",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-069",
+    "severity": "critical",
+    "deadline_min": 141
+   }
+  },
+  {
+   "t": 65.03,
+   "kind": "report",
+   "device": "dev_P0100",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "other",
+    "people": 20,
+    "conditions": [],
+    "details": {
+     "water": "chest",
+     "trapped": true
+    },
+    "note": "plz bus stuck in underpass ppl on top of bus sector 2 near nullah",
+    "lat": 24.822014,
+    "lng": 67.120978,
+    "gps_accuracy_m": 12,
+    "landmark": "sector 2 near the nullah",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-080",
+    "severity": "critical",
+    "deadline_min": 88
+   }
+  },
+  {
+   "t": 65.93,
+   "kind": "report",
+   "device": "dev_P0126",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "alone"
+    ],
+    "details": {
+     "water": "chest",
+     "rising": true
+    },
+    "note": "old uncle alone 1st floor, water at his chest, he cant swim. Kalri lane plz",
+    "lat": 24.859544,
+    "lng": 66.99611,
+    "gps_accuracy_m": 15,
+    "landmark": "Kalri lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-100",
+    "severity": "critical",
+    "deadline_min": 61
+   }
+  },
+  {
+   "t": 66.83,
+   "kind": "text",
+   "sender": "+000 555 0166",
+   "text": "blind man alone in flat 2 Korangi causeway, stairs under water",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-129",
+    "severity": "serious",
+    "deadline_min": 146
+   }
+  },
+  {
+   "t": 66.93,
+   "kind": "report",
+   "device": "dev_P0041",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 6,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "chest",
+     "trapped": true
+    },
+    "note": "we moved to roof, 6 of us, dont have drinking water agra taj colony urgent",
+    "lat": 24.875325,
+    "lng": 67.004682,
+    "gps_accuracy_m": 12,
+    "landmark": "Agra Taj colony",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-033",
+    "severity": "serious",
+    "deadline_min": 209
+   }
+  },
+  {
+   "t": 67.61,
+   "kind": "report",
+   "device": "dev_P0167",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "pregnant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "pregnant woman pains started cant reach hospital road flooded Lea market",
+    "lat": 24.871227,
+    "lng": 67.010361,
+    "gps_accuracy_m": 15,
+    "landmark": "Lea market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-130",
+    "severity": "critical",
+    "deadline_min": 142
+   }
+  },
+  {
+   "t": 68.41,
+   "kind": "text",
+   "sender": "+000 555 0168",
+   "text": "old uncle alone 1st floor, water at his chest, he cant swim. Baghdadi football ground",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-131",
+    "severity": "critical",
+    "deadline_min": 56
+   }
+  },
+  {
+   "t": 68.44,
+   "kind": "report",
+   "device": "dev_P0087",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "other",
+    "people": 8,
+    "conditions": [
+     "child"
+    ],
+    "details": {
+     "water": "waist"
+    },
+    "note": "8 children stuck in madrasa upstairs teacher w them Korangi causeway plz",
+    "lat": 24.827819,
+    "lng": 67.135988,
+    "gps_accuracy_m": 8,
+    "landmark": "Korangi causeway",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-070",
+    "severity": "serious",
+    "deadline_min": 212
+   }
+  },
+  {
+   "t": 68.7,
+   "kind": "report",
+   "device": "dev_P0169",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "cannot_walk"
+    ],
+    "details": {
+     "water": "waist",
+     "rising": true
+    },
+    "note": "my grandfather 72 bedridden, water reached the bed sector 2 near the nullah",
+    "lat": 24.825692,
+    "lng": 67.13484,
+    "gps_accuracy_m": 40,
+    "landmark": "sector 2 near the nullah",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-132",
+    "severity": "critical",
+    "deadline_min": 98
+   }
+  },
+  {
+   "t": 68.85,
+   "kind": "report",
+   "device": "dev_P0058",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "other",
+    "people": 24,
+    "conditions": [],
+    "details": {
+     "water": "chest",
+     "trapped": true
+    },
+    "note": "bus stuck in underpass ppl on top of bus korangi causeway",
+    "lat": 24.826603,
+    "lng": 67.13535,
+    "gps_accuracy_m": 25,
+    "landmark": "Korangi causeway",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-046",
+    "severity": "critical",
+    "deadline_min": 91
+   }
+  },
+  {
+   "t": 72.82,
+   "kind": "report",
+   "device": "dev_P0170",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 4,
+    "conditions": [],
+    "details": {
+     "water": "waist",
+     "rising": true
+    },
+    "note": "water rising fast near nullah Baghdadi football ground, family of 4",
+    "lat": 24.862903,
+    "lng": 66.991885,
+    "gps_accuracy_m": 25,
+    "landmark": "Baghdadi football ground",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-133",
+    "severity": "serious",
+    "deadline_min": 192
+   }
+  },
+  {
+   "t": 73.12,
+   "kind": "text",
+   "sender": "+000 555 0172",
+   "text": "is the shelter at the school open? sector 4 market",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": null,
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "t": 74.91,
+   "kind": "text",
+   "sender": "+000 555 0112",
+   "text": "blind man alone in flat 2 river bank near kalri, stairs under water bhai",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-090",
+    "severity": "serious",
+    "deadline_min": 149
+   }
+  },
+  {
+   "t": 75,
+   "kind": "window",
+   "zone": "Korangi",
+   "closes_in_min": 105,
+   "text": "Korangi causeway floods"
+  },
+  {
+   "t": 77.51,
+   "kind": "report",
+   "device": "dev_P0090",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 5,
+    "conditions": [],
+    "details": {
+     "water": "waist",
+     "trapped": true
+    },
+    "note": "trapped in house door wont open water outside sector 1 green gate pls send boat urgent",
+    "lat": 24.821276,
+    "lng": 67.131628,
+    "gps_accuracy_m": 8,
+    "landmark": "sector 1 green gate",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-072",
+    "severity": "critical",
+    "deadline_min": 142
+   }
+  },
+  {
+   "t": 78.01,
+   "kind": "text",
+   "sender": "+000 555 0123",
+   "text": "water knee deep and coming up 3 of us w kids chakiwara chowk",
+   "lat": 24.870504,
+   "lng": 67.004976,
+   "hazard": null,
+   "truth": {
+    "situation": "S-098",
+    "severity": "serious",
+    "deadline_min": 230
+   }
+  },
+  {
+   "t": 78.34,
+   "kind": "text",
+   "sender": "+000 555 0173",
+   "text": "water rising fast near nullah sector 5 school, family of 6",
+   "lat": 24.82235,
+   "lng": 67.124545,
+   "hazard": null,
+   "truth": {
+    "situation": "S-134",
+    "severity": "serious",
+    "deadline_min": 160
+   }
+  },
+  {
+   "t": 79.66,
+   "kind": "text",
+   "sender": "+000 555 0171",
+   "text": "water rising fast near nullah baghdadi football ground, family of 4 bhai",
+   "lat": 24.862691,
+   "lng": 66.9927,
+   "hazard": null,
+   "truth": {
+    "situation": "S-133",
+    "severity": "serious",
+    "deadline_min": 192
+   }
+  },
+  {
+   "t": 80.54,
+   "kind": "report",
+   "device": "dev_P0073",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 5,
+    "conditions": [],
+    "details": {
+     "water": "waist",
+     "rising": true
+    },
+    "note": "water rising fast near nullah regal chowk, family of 5",
+    "lat": 24.860604,
+    "lng": 67.021827,
+    "gps_accuracy_m": 25,
+    "landmark": "Regal chowk",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-058",
+    "severity": "serious",
+    "deadline_min": 205
+   }
+  },
+  {
+   "t": 86.17,
+   "kind": "report",
+   "device": "dev_P0131",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 7,
+    "conditions": [
+     "child"
+    ],
+    "details": {
+     "water": "knee",
+     "rising": true
+    },
+    "note": "water knee deep and coming up, 7 of us w kids, sector 2 near nullah",
+    "lat": 24.831001,
+    "lng": 67.131881,
+    "gps_accuracy_m": 40,
+    "landmark": "sector 2 near the nullah",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-103",
+    "severity": "serious",
+    "deadline_min": 231
+   }
+  },
+  {
+   "t": 86.3,
+   "kind": "text",
+   "sender": "+000 555 0174",
+   "text": "water rising fast near nullah sector 5 school family of 6",
+   "lat": 24.822217,
+   "lng": 67.123724,
+   "hazard": null,
+   "truth": {
+    "situation": "S-134",
+    "severity": "serious",
+    "deadline_min": 160
+   }
+  },
+  {
+   "t": 86.64,
+   "kind": "text",
+   "sender": "+000 555 0155",
+   "text": "bhai light gone, my son on breathing machine, battery 1 hour korangi causeway bhai",
+   "lat": 24.829235,
+   "lng": 67.126239,
+   "hazard": null,
+   "truth": {
+    "situation": "S-120",
+    "severity": "critical",
+    "deadline_min": 69
+   }
+  },
+  {
+   "t": 87.28,
+   "kind": "text",
+   "sender": "+000 555 0128",
+   "text": "water upto knee, rising slowly, 3 ppl incl old mother Agra Taj colony",
+   "lat": 24.87305,
+   "lng": 67.011578,
+   "hazard": null,
+   "truth": {
+    "situation": "S-101",
+    "severity": "serious",
+    "deadline_min": 267
+   }
+  },
+  {
+   "t": 87.52,
+   "kind": "report",
+   "device": "dev_P0092",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 2,
+    "conditions": [
+     "elderly",
+     "cannot_walk",
+     "oxygen"
+    ],
+    "details": {
+     "water": "waist",
+     "rising": true
+    },
+    "note": "pls help water till waist my mother 80 cant walk oxygen cylinder only 2 hr left korangi causeway jaldi",
+    "lat": 24.840132,
+    "lng": 67.13068,
+    "gps_accuracy_m": 40,
+    "landmark": "Korangi causeway",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-073",
+    "severity": "critical",
+    "deadline_min": 116
+   }
+  },
+  {
+   "t": 89.82,
+   "kind": "report",
+   "device": "dev_P0134",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "infant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "infant with fever, water everywhere, cant go out the river bank near kalri Allah ke liye",
+    "lat": 24.866738,
+    "lng": 66.991045,
+    "gps_accuracy_m": 25,
+    "landmark": "the river bank near Kalri",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-105",
+    "severity": "serious",
+    "deadline_min": 370
+   }
+  },
+  {
+   "t": 90,
+   "kind": "chaos",
+   "what": "fake"
+  },
+  {
+   "t": 90.1,
+   "kind": "report",
+   "device": "dev_P0175",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "alone"
+    ],
+    "details": {},
+    "note": "pls check on house 9 Malir halt, old lady lives alone, no answer on phone",
+    "lat": 24.906623,
+    "lng": 67.199095,
+    "gps_accuracy_m": 12,
+    "landmark": "Malir halt",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-135",
+    "severity": "serious",
+    "deadline_min": 253
+   }
+  },
+  {
+   "t": 91.65,
+   "kind": "text",
+   "sender": "+000 555 0176",
+   "text": "anyone know if K-Electric will restore power today",
+   "lat": 24.909138,
+   "lng": 67.209666,
+   "hazard": null,
+   "truth": {
+    "situation": null,
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "t": 92.13,
+   "kind": "text",
+   "sender": "+000 555 0136",
+   "text": "bus stuck in underpass ppl on top of bus sector 1 green gate",
+   "lat": 24.825615,
+   "lng": 67.138321,
+   "hazard": null,
+   "truth": {
+    "situation": "S-106",
+    "severity": "critical",
+    "deadline_min": 100
+   }
+  },
+  {
+   "t": 93.62,
+   "kind": "text",
+   "sender": "+000 555 0141",
+   "text": "wheelchair lady alone on ground floor water coming in the river bank near Kalri urgent",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-109",
+    "severity": "critical",
+    "deadline_min": 111
+   }
+  },
+  {
+   "t": 95.56,
+   "kind": "text",
+   "sender": "+000 555 0177",
+   "text": "is the shelter at the school open? Korangi causeway",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": null,
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "t": 95.66,
+   "kind": "report",
+   "device": "dev_P0178",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "alone"
+    ],
+    "details": {
+     "water": "chest",
+     "rising": true
+    },
+    "note": "old uncle alone 1st floor, water at his chest, he cant swim. Chakiwara chowk",
+    "lat": 24.858246,
+    "lng": 66.99986,
+    "gps_accuracy_m": 15,
+    "landmark": "Chakiwara chowk",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-136",
+    "severity": "critical",
+    "deadline_min": 64
+   }
+  },
+  {
+   "t": 96.47,
+   "kind": "text",
+   "sender": "+000 555 0180",
+   "text": "wheelchair lady alone on ground floor water coming in the madrasa near the crossing",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-137",
+    "severity": "critical",
+    "deadline_min": 124
+   }
+  },
+  {
+   "t": 102.59,
+   "kind": "text",
+   "sender": "+000 555 0182",
+   "text": "my father on dialysis missed session yesterday, road closed, Chakiwara chowk jaldi",
+   "lat": 24.872204,
+   "lng": 66.994087,
+   "hazard": null,
+   "truth": {
+    "situation": "S-138",
+    "severity": "serious",
+    "deadline_min": 367
+   }
+  },
+  {
+   "t": 102.72,
+   "kind": "text",
+   "sender": "+000 555 0143",
+   "text": "bhai insulin finished diabetic grandmother shops closed Baghdadi football ground",
+   "lat": 24.872509,
+   "lng": 66.995774,
+   "hazard": null,
+   "truth": {
+    "situation": "S-110",
+    "severity": "serious",
+    "deadline_min": 564
+   }
+  },
+  {
+   "t": 103.02,
+   "kind": "text",
+   "sender": "+000 555 0162",
+   "text": "we r 5 ppl on roof baby w us water still rising the madrasa near the crossing",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-125",
+    "severity": "critical",
+    "deadline_min": 52
+   }
+  },
+  {
+   "t": 104.55,
+   "kind": "report",
+   "device": "dev_P0183",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "insulin"
+    ],
+    "details": {
+     "water": "ankle"
+    },
+    "note": "insulin finished, diabetic grandmother, shops closed the nullah in sector 5",
+    "lat": 24.952986,
+    "lng": 66.976403,
+    "gps_accuracy_m": 8,
+    "landmark": "the nullah in sector 5",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-139",
+    "severity": "serious",
+    "deadline_min": 457
+   }
+  },
+  {
+   "t": 104.95,
+   "kind": "report",
+   "device": "dev_P0184",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "pregnant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "pregnant woman pains started cant reach hospital road flooded the madrasa near the crossing",
+    "lat": 24.832927,
+    "lng": 67.134577,
+    "gps_accuracy_m": 12,
+    "landmark": "the madrasa near the crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-140",
+    "severity": "critical",
+    "deadline_min": 127
+   }
+  },
+  {
+   "t": 105,
+   "kind": "chaos",
+   "what": "wrong_location"
+  },
+  {
+   "t": 107.23,
+   "kind": "report",
+   "device": "dev_P0160",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "other",
+    "people": 22,
+    "conditions": [],
+    "details": {
+     "water": "chest",
+     "trapped": true
+    },
+    "note": "bus stuck in underpass ppl on top of bus do talwar bhai",
+    "lat": 24.821801,
+    "lng": 67.021406,
+    "gps_accuracy_m": 15,
+    "landmark": "Do Talwar",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-124",
+    "severity": "critical",
+    "deadline_min": 94
+   }
+  },
+  {
+   "t": 109.65,
+   "kind": "text",
+   "sender": "+000 555 0185",
+   "text": "bus stuck in underpass ppl on top of bus sector 2 near the nullah",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-141",
+    "severity": "critical",
+    "deadline_min": 75
+   }
+  },
+  {
+   "t": 110,
+   "kind": "team_stop",
+   "team": "boat_3"
+  },
+  {
+   "t": 111.91,
+   "kind": "report",
+   "device": "dev_P0186",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 6,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "no food no water since morning, 6 ppl, the river bank near Kalri",
+    "lat": 24.864985,
+    "lng": 67.008734,
+    "gps_accuracy_m": 25,
+    "landmark": "the river bank near Kalri",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-142",
+    "severity": "serious",
+    "deadline_min": 553
+   }
+  },
+  {
+   "t": 118.27,
+   "kind": "report",
+   "device": "dev_P0187",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 9,
+    "conditions": [],
+    "details": {
+     "water": "waist",
+     "rising": true
+    },
+    "note": "water rising fast near nullah Model colony, family of 9",
+    "lat": 24.900387,
+    "lng": 67.210823,
+    "gps_accuracy_m": 12,
+    "landmark": "Model colony",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-143",
+    "severity": "serious",
+    "deadline_min": 151
+   }
+  },
+  {
+   "t": 120,
+   "kind": "ai_down"
+  },
+  {
+   "t": 123.48,
+   "kind": "report",
+   "device": "dev_P0188",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "insulin"
+    ],
+    "details": {
+     "water": "ankle"
+    },
+    "note": "insulin finished, diabetic grandmother, shops closed Kalri lane",
+    "lat": 24.863323,
+    "lng": 67.010897,
+    "gps_accuracy_m": 15,
+    "landmark": "Kalri lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-144",
+    "severity": "serious",
+    "deadline_min": 420
+   }
+  },
+  {
+   "t": 124.21,
+   "kind": "report",
+   "device": "dev_P0189",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 6,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "chest",
+     "trapped": true
+    },
+    "note": "we moved to the roof, 6 of us, dont have drinking water sector 4 market",
+    "lat": 24.821299,
+    "lng": 67.130942,
+    "gps_accuracy_m": 8,
+    "landmark": "sector 4 market",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-145",
+    "severity": "serious",
+    "deadline_min": 183
+   }
+  },
+  {
+   "t": 124.95,
+   "kind": "text",
+   "sender": "+000 555 0190",
+   "text": "anyone know if K-Electric will restore power today",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": null,
+    "severity": "none",
+    "deadline_min": null
+   }
+  },
+  {
+   "t": 125.64,
+   "kind": "report",
+   "device": "dev_P0191",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "infant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "infant with fever, water everywhere, cant go out Moosa lane",
+    "lat": 24.868398,
+    "lng": 66.99641,
+    "gps_accuracy_m": 12,
+    "landmark": "Moosa lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-146",
+    "severity": "serious",
+    "deadline_min": 302
+   }
+  },
+  {
+   "t": 125.74,
+   "kind": "report",
+   "device": "dev_P0192",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 1,
+    "conditions": [
+     "dialysis"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "my father on dialysis missed session yesterday, road closed, Kalri lane jaldi",
+    "lat": 24.861038,
+    "lng": 67.001805,
+    "gps_accuracy_m": 40,
+    "landmark": "Kalri lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-147",
+    "severity": "serious",
+    "deadline_min": 360
+   }
+  },
+  {
+   "t": 127.71,
+   "kind": "report",
+   "device": "dev_P0193",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "infant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "infant with fever, water everywhere, cant go out Baghdadi football ground",
+    "lat": 24.865731,
+    "lng": 66.999841,
+    "gps_accuracy_m": 12,
+    "landmark": "Baghdadi football ground",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-148",
+    "severity": "serious",
+    "deadline_min": 379
+   }
+  },
+  {
+   "t": 128.85,
+   "kind": "report",
+   "device": "dev_P0194",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 4,
+    "conditions": [
+     "child"
+    ],
+    "details": {
+     "water": "knee",
+     "rising": true
+    },
+    "note": "water knee deep and coming up, 4 of us with kids, sector 2 near the nullah",
+    "lat": 24.825864,
+    "lng": 67.13106,
+    "gps_accuracy_m": 8,
+    "landmark": "sector 2 near the nullah",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-149",
+    "severity": "serious",
+    "deadline_min": 280
+   }
+  },
+  {
+   "t": 130,
+   "kind": "cue",
+   "text": "Live: Phone A in Shah Faisal sends a report through the mesh to Phone C."
+  },
+  {
+   "t": 130.88,
+   "kind": "report",
+   "device": "dev_P0195",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "no food no water since morning, 3 ppl, the madrasa near the crossing",
+    "lat": 24.824143,
+    "lng": 67.131982,
+    "gps_accuracy_m": 15,
+    "landmark": "the madrasa near the crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-150",
+    "severity": "serious",
+    "deadline_min": 471
+   }
+  },
+  {
+   "t": 134.25,
+   "kind": "text",
+   "sender": "+000 555 0197",
+   "text": "my father on dialysis missed session yesterday, road closed, Lea market jaldi",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-151",
+    "severity": "serious",
+    "deadline_min": 351
+   }
+  },
+  {
+   "t": 135.86,
+   "kind": "report",
+   "device": "dev_P0198",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 8,
+    "conditions": [],
+    "details": {
+     "water": "waist",
+     "rising": true
+    },
+    "note": "water rising fast near nullah sector 1 green gate, family of 8",
+    "lat": 24.820986,
+    "lng": 67.126033,
+    "gps_accuracy_m": 12,
+    "landmark": "sector 1 green gate",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-152",
+    "severity": "serious",
+    "deadline_min": 167
+   }
+  },
+  {
+   "t": 136.79,
+   "kind": "text",
+   "sender": "+000 555 0199",
+   "text": "elderly couple on roof since 2 hrs, cold, Korangi crossing",
+   "lat": 24.835884,
+   "lng": 67.1137,
+   "hazard": null,
+   "truth": {
+    "situation": "S-153",
+    "severity": "critical",
+    "deadline_min": 73
+   }
+  },
+  {
+   "t": 139.04,
+   "kind": "report",
+   "device": "dev_P0201",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 2,
+    "conditions": [],
+    "details": {
+     "water": "ankle"
+    },
+    "note": "water in house ankle level we r ok for now the hospital road",
+    "lat": 24.940806,
+    "lng": 67.050278,
+    "gps_accuracy_m": 8,
+    "landmark": "the hospital road",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-154",
+    "severity": "minor",
+    "deadline_min": 627
+   }
+  },
+  {
+   "t": 140,
+   "kind": "cue",
+   "text": "Assign Boat 2 to the top case: its icon moves, 'on scene' within 100 m, then done."
+  },
+  {
+   "t": 140.06,
+   "kind": "text",
+   "sender": "+000 555 0179",
+   "text": "old uncle alone 1st floor water at his chest he cant swim. chakiwara chowk Allah ke liye",
+   "lat": null,
+   "lng": null,
+   "hazard": null,
+   "truth": {
+    "situation": "S-136",
+    "severity": "critical",
+    "deadline_min": 64
+   }
+  },
+  {
+   "t": 143.45,
+   "kind": "text",
+   "sender": "+000 555 0181",
+   "text": "wheelchair lady alone on ground floor water coming in madrasa near crossing",
+   "lat": 24.832542,
+   "lng": 67.122909,
+   "hazard": null,
+   "truth": {
+    "situation": "S-137",
+    "severity": "critical",
+    "deadline_min": 124
+   }
+  },
+  {
+   "t": 144.31,
+   "kind": "report",
+   "device": "dev_P0202",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 5,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "chest",
+     "trapped": true
+    },
+    "note": "we moved to the roof, 5 of us, dont have drinking water Korangi crossing",
+    "lat": 24.82212,
+    "lng": 67.135802,
+    "gps_accuracy_m": 15,
+    "landmark": "Korangi crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-155",
+    "severity": "serious",
+    "deadline_min": 194
+   }
+  },
+  {
+   "t": 145,
+   "kind": "supply",
+   "item": "oxygen_cylinder",
+   "qty": 5,
+   "move": "used"
+  },
+  {
+   "t": 145.22,
+   "kind": "report",
+   "device": "dev_P0196",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "no food no water since morning, 3 ppl, madrasa near crossing plz",
+    "lat": 24.823345,
+    "lng": 67.132152,
+    "gps_accuracy_m": 15,
+    "landmark": "the madrasa near the crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-150",
+    "severity": "serious",
+    "deadline_min": 471
+   }
+  },
+  {
+   "t": 145.88,
+   "kind": "report",
+   "device": "dev_P0203",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "infant"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "infant with fever, water everywhere, cant go out sector 1 green gate",
+    "lat": 24.835113,
+    "lng": 67.137403,
+    "gps_accuracy_m": 15,
+    "landmark": "sector 1 green gate",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-156",
+    "severity": "serious",
+    "deadline_min": 318
+   }
+  },
+  {
+   "t": 146.4,
+   "kind": "report",
+   "device": "dev_P0204",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 1,
+    "conditions": [
+     "elderly",
+     "alone"
+    ],
+    "details": {},
+    "note": "pls check on house 9 sector 11, old lady lives alone, no answer on phone",
+    "lat": 24.94524,
+    "lng": 66.98453,
+    "gps_accuracy_m": 25,
+    "landmark": "sector 11",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-157",
+    "severity": "serious",
+    "deadline_min": 194
+   }
+  },
+  {
+   "t": 146.89,
+   "kind": "report",
+   "device": "dev_P0205",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 5,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "no food no water since morning, 5 ppl, Kalri lane",
+    "lat": 24.871605,
+    "lng": 66.996089,
+    "gps_accuracy_m": 25,
+    "landmark": "Kalri lane",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-158",
+    "severity": "serious",
+    "deadline_min": 481
+   }
+  },
+  {
+   "t": 148.9,
+   "kind": "report",
+   "device": "dev_P0206",
+   "urgency": 2,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "self",
+    "people": 3,
+    "conditions": [
+     "no_food_water"
+    ],
+    "details": {
+     "water": "knee"
+    },
+    "note": "no food no water since morning, 3 ppl, the madrasa near the crossing",
+    "lat": 24.833891,
+    "lng": 67.113859,
+    "gps_accuracy_m": 8,
+    "landmark": "the madrasa near the crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-159",
+    "severity": "serious",
+    "deadline_min": 545
+   }
+  },
+  {
+   "t": 149.01,
+   "kind": "report",
+   "device": "dev_P0200",
+   "urgency": 3,
+   "payload": {
+    "hazard": "flood",
+    "for_whom": "neighbour",
+    "people": 2,
+    "conditions": [
+     "elderly"
+    ],
+    "details": {
+     "water": "roof",
+     "trapped": true
+    },
+    "note": "elderly couple on roof since 2 hrs cold korangi crossing",
+    "lat": 24.836446,
+    "lng": 67.11338,
+    "gps_accuracy_m": 12,
+    "landmark": "Korangi crossing",
+    "reporter_role": "helper",
+    "contact": ""
+   },
+   "truth": {
+    "situation": "S-153",
+    "severity": "critical",
+    "deadline_min": 73
+   }
+  }
+ ]
+}

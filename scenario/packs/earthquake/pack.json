@@ -1,0 +1,17 @@
+{
+ "_note": "Karachi earthquake demo pack, made by scenario/generate.py (seed 7). All data is made up.",
+ "hazard": "earthquake",
+ "hard_hit": [
+  "Saddar",
+  "Lyari",
+  "North Nazimabad"
+ ],
+ "start": "03:10",
+ "speed": 60,
+ "alert_zones": [
+  "Saddar",
+  "Lyari",
+  "North Nazimabad"
+ ],
+ "seed": 7
+}

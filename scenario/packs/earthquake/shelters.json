@@ -1,0 +1,37 @@
+[
+ {
+  "id": "s_kashmir_road",
+  "name": "Sports complex, Kashmir Road",
+  "type": "shelter",
+  "lat": 24.8775,
+  "lng": 67.0605,
+  "capacity": 400,
+  "occupancy": 60
+ },
+ {
+  "id": "s_clifton",
+  "name": "Community centre, Clifton",
+  "type": "shelter",
+  "lat": 24.815,
+  "lng": 67.026,
+  "capacity": 150,
+  "occupancy": 20
+ },
+ {
+  "id": "s_park_camp",
+  "name": "Tent camp, block 5 park",
+  "type": "shelter",
+  "lat": 24.82,
+  "lng": 67.032,
+  "capacity": 300,
+  "occupancy": 0
+ },
+ {
+  "id": "h_central",
+  "name": "Central hospital, Saddar",
+  "type": "hospital",
+  "lat": 24.8525,
+  "lng": 67.044,
+  "occupancy": 0
+ }
+]

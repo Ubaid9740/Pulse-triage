@@ -1,8 +1,87 @@
 [
-  {"id": "boat_1", "name": "Boat 1", "type": "boat", "lat": 24.8640, "lng": 67.0120, "fuel": "full"},
-  {"id": "boat_2", "name": "Boat 2", "type": "boat", "lat": 24.8420, "lng": 67.1150, "fuel": "half"},
-  {"id": "truck_1", "name": "Truck 1", "type": "truck", "lat": 24.8600, "lng": 67.0420, "fuel": "full"},
-  {"id": "medic_1", "name": "Medic 1", "type": "medic", "lat": 24.8525, "lng": 67.0440},
-  {"id": "rescue_1", "name": "Rescue 1", "type": "rescue", "lat": 24.8830, "lng": 67.1420},
-  {"id": "welfare_1", "name": "Welfare 1", "type": "welfare", "lat": 24.9400, "lng": 67.0400}
+ {
+  "id": "boat_1",
+  "name": "Boat 1",
+  "type": "boat",
+  "lat": 24.866352,
+  "lng": 67.001098,
+  "device_id": "dev_BOAT1",
+  "fuel": "full"
+ },
+ {
+  "id": "boat_2",
+  "name": "Boat 2",
+  "type": "boat",
+  "lat": 24.858236,
+  "lng": 67.034496,
+  "device_id": "dev_BOAT2",
+  "fuel": "half"
+ },
+ {
+  "id": "boat_3",
+  "name": "Boat 3",
+  "type": "boat",
+  "lat": 24.832042,
+  "lng": 67.130427,
+  "device_id": "dev_BOAT3",
+  "fuel": "full"
+ },
+ {
+  "id": "truck_1",
+  "name": "Truck 1",
+  "type": "truck",
+  "lat": 24.855814,
+  "lng": 67.032684,
+  "device_id": "dev_TRUCK1",
+  "fuel": "full"
+ },
+ {
+  "id": "truck_2",
+  "name": "Truck 2",
+  "type": "truck",
+  "lat": 24.895414,
+  "lng": 67.209632,
+  "device_id": "dev_TRUCK2",
+  "fuel": "low"
+ },
+ {
+  "id": "medic_1",
+  "name": "Medic 1",
+  "type": "medic",
+  "lat": 24.854322,
+  "lng": 67.026285,
+  "device_id": "dev_MEDIC1"
+ },
+ {
+  "id": "medic_2",
+  "name": "Medic 2",
+  "type": "medic",
+  "lat": 24.942414,
+  "lng": 67.045391,
+  "device_id": "dev_MEDIC2"
+ },
+ {
+  "id": "rescue_1",
+  "name": "Rescue 1",
+  "type": "rescue",
+  "lat": 24.876847,
+  "lng": 67.160506,
+  "device_id": "dev_RESCUE1"
+ },
+ {
+  "id": "welfare_1",
+  "name": "Welfare 1",
+  "type": "welfare",
+  "lat": 24.942857,
+  "lng": 67.039061,
+  "device_id": "dev_WELFARE1"
+ },
+ {
+  "id": "welfare_2",
+  "name": "Welfare 2",
+  "type": "welfare",
+  "lat": 24.815216,
+  "lng": 67.035207,
+  "device_id": "dev_WELFARE2"
+ }
 ]

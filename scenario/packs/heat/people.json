@@ -1,0 +1,1813 @@
+[
+ {
+  "id": "S-001",
+  "zone": "Korangi",
+  "lat": 24.819515,
+  "lng": 67.134814,
+  "people": 2,
+  "severity": "minor",
+  "deadline_min": 686,
+  "starts_at": 4.38,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "cooling": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-002",
+  "zone": "Korangi",
+  "lat": 24.823219,
+  "lng": 67.140385,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 97,
+  "starts_at": 15.03,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true,
+   "signs": [
+    "confused"
+   ]
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-003",
+  "zone": "Korangi",
+  "lat": 24.836193,
+  "lng": 67.118575,
+  "people": 2,
+  "severity": "serious",
+  "deadline_min": 209,
+  "starts_at": 34.19,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-004",
+  "zone": "Korangi",
+  "lat": 24.837694,
+  "lng": 67.135563,
+  "people": 7,
+  "severity": "serious",
+  "deadline_min": 255,
+  "starts_at": 38.63,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-005",
+  "zone": "Korangi",
+  "lat": 24.844053,
+  "lng": 67.122773,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 133,
+  "starts_at": 44.86,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-006",
+  "zone": "Malir",
+  "lat": 24.895253,
+  "lng": 67.200911,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 98,
+  "starts_at": 54.6,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-007",
+  "zone": "Lyari",
+  "lat": 24.87129,
+  "lng": 67.006083,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 123,
+  "starts_at": 73.62,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-008",
+  "zone": "Korangi",
+  "lat": 24.842891,
+  "lng": 67.129944,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 202,
+  "starts_at": 75.93,
+  "conditions": [
+   "alone"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-009",
+  "zone": "Korangi",
+  "lat": 24.834052,
+  "lng": 67.137059,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 122,
+  "starts_at": 82.38,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-010",
+  "zone": "Orangi Town",
+  "lat": 24.94353,
+  "lng": 67.001693,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 36,
+  "starts_at": 86.68,
+  "conditions": [
+   "elderly",
+   "unconscious"
+  ],
+  "details": {
+   "signs": [
+    "confused"
+   ]
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-011",
+  "zone": "Orangi Town",
+  "lat": 24.950188,
+  "lng": 66.989376,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 94,
+  "starts_at": 92.01,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true,
+   "signs": [
+    "confused"
+   ]
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-012",
+  "zone": "Lyari",
+  "lat": 24.871527,
+  "lng": 67.009125,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 28,
+  "starts_at": 137.07,
+  "conditions": [
+   "elderly",
+   "unconscious"
+  ],
+  "details": {
+   "signs": [
+    "confused"
+   ]
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-013",
+  "zone": "Korangi",
+  "lat": 24.837118,
+  "lng": 67.131077,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 65,
+  "starts_at": 147.32,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "signs": [
+    "confused"
+   ]
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-014",
+  "zone": "Korangi",
+  "lat": 24.822581,
+  "lng": 67.140138,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 104,
+  "starts_at": 152.1,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-015",
+  "zone": "Korangi",
+  "lat": 24.841559,
+  "lng": 67.116061,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 33,
+  "starts_at": 154.23,
+  "conditions": [
+   "elderly",
+   "unconscious"
+  ],
+  "details": {
+   "signs": [
+    "confused"
+   ]
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-016",
+  "zone": "Clifton",
+  "lat": 24.82671,
+  "lng": 67.036523,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 277,
+  "starts_at": 155.19,
+  "conditions": [
+   "alone"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-017",
+  "zone": "Orangi Town",
+  "lat": 24.940654,
+  "lng": 66.992601,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 277,
+  "starts_at": 157.0,
+  "conditions": [
+   "alone"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-018",
+  "zone": "Malir",
+  "lat": 24.907972,
+  "lng": 67.202236,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 73,
+  "starts_at": 160.77,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true,
+   "signs": [
+    "confused"
+   ]
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-019",
+  "zone": "Orangi Town",
+  "lat": 24.962432,
+  "lng": 66.995204,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 60,
+  "starts_at": 169.36,
+  "conditions": [],
+  "details": {
+   "signs": [
+    "confused",
+    "vomiting"
+   ]
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-020",
+  "zone": "Saddar",
+  "lat": 24.851206,
+  "lng": 67.022867,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 244,
+  "starts_at": 176.73,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-021",
+  "zone": "Shah Faisal",
+  "lat": 24.885692,
+  "lng": 67.167642,
+  "people": 2,
+  "severity": "minor",
+  "deadline_min": 706,
+  "starts_at": 193.21,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "cooling": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-022",
+  "zone": "Lyari",
+  "lat": 24.867249,
+  "lng": 66.994835,
+  "people": 5,
+  "severity": "serious",
+  "deadline_min": 266,
+  "starts_at": 214.81,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-023",
+  "zone": "Saddar",
+  "lat": 24.863311,
+  "lng": 67.037149,
+  "people": 8,
+  "severity": "serious",
+  "deadline_min": 249,
+  "starts_at": 218.1,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-024",
+  "zone": "Lyari",
+  "lat": 24.877078,
+  "lng": 66.995909,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 196,
+  "starts_at": 223.29,
+  "conditions": [
+   "alone"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-025",
+  "zone": "Korangi",
+  "lat": 24.824389,
+  "lng": 67.128462,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 105,
+  "starts_at": 224.04,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-026",
+  "zone": "North Nazimabad",
+  "lat": 24.945628,
+  "lng": 67.033795,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 220,
+  "starts_at": 224.71,
+  "conditions": [
+   "alone"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-027",
+  "zone": "Orangi Town",
+  "lat": 24.944342,
+  "lng": 66.994247,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 64,
+  "starts_at": 259.82,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "signs": [
+    "confused"
+   ]
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-028",
+  "zone": "Korangi",
+  "lat": 24.840182,
+  "lng": 67.124802,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 32,
+  "starts_at": 260.57,
+  "conditions": [
+   "elderly",
+   "unconscious"
+  ],
+  "details": {
+   "signs": [
+    "confused"
+   ]
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-029",
+  "zone": "Shah Faisal",
+  "lat": 24.881567,
+  "lng": 67.158542,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 358,
+  "starts_at": 274.51,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-030",
+  "zone": "Korangi",
+  "lat": 24.821905,
+  "lng": 67.139287,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 224,
+  "starts_at": 275.24,
+  "conditions": [
+   "alone"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-031",
+  "zone": "Saddar",
+  "lat": 24.852356,
+  "lng": 67.02624,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 89,
+  "starts_at": 288.16,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true,
+   "signs": [
+    "confused"
+   ]
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-032",
+  "zone": "Saddar",
+  "lat": 24.850984,
+  "lng": 67.028852,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 273,
+  "starts_at": 290.15,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-033",
+  "zone": "Clifton",
+  "lat": 24.827981,
+  "lng": 67.029117,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 110,
+  "starts_at": 291.53,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-034",
+  "zone": "Korangi",
+  "lat": 24.831161,
+  "lng": 67.121867,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 78,
+  "starts_at": 294.82,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-035",
+  "zone": "North Nazimabad",
+  "lat": 24.948166,
+  "lng": 67.029562,
+  "people": 2,
+  "severity": "serious",
+  "deadline_min": 153,
+  "starts_at": 295.69,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {
+   "cooling": false,
+   "hot_inside": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-R-0001",
+  "zone": "Orangi Town",
+  "lat": 24.963238,
+  "lng": 66.983948,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 210,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0001",
+  "reported": false
+ },
+ {
+  "id": "S-R-0007",
+  "zone": "Lyari",
+  "lat": 24.863157,
+  "lng": 66.998882,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 238,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0007",
+  "reported": false
+ },
+ {
+  "id": "S-R-0012",
+  "zone": "Orangi Town",
+  "lat": 24.943407,
+  "lng": 67.003125,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 215,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0012",
+  "reported": false
+ },
+ {
+  "id": "S-R-0017",
+  "zone": "Orangi Town",
+  "lat": 24.95936,
+  "lng": 66.981592,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 284,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0017",
+  "reported": false
+ },
+ {
+  "id": "S-R-0023",
+  "zone": "Orangi Town",
+  "lat": 24.950975,
+  "lng": 66.979514,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 341,
+  "starts_at": 2,
+  "conditions": [
+   "disabled"
+  ],
+  "details": {},
+  "registry_id": "R-0023",
+  "reported": false
+ },
+ {
+  "id": "S-R-0025",
+  "zone": "Orangi Town",
+  "lat": 24.948373,
+  "lng": 67.006033,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 414,
+  "starts_at": 2,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {},
+  "registry_id": "R-0025",
+  "reported": false
+ },
+ {
+  "id": "S-R-0027",
+  "zone": "Orangi Town",
+  "lat": 24.952197,
+  "lng": 67.002261,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 285,
+  "starts_at": 2,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0027",
+  "reported": false
+ },
+ {
+  "id": "S-R-0030",
+  "zone": "Lyari",
+  "lat": 24.873562,
+  "lng": 67.004108,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 233,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0030",
+  "reported": true
+ },
+ {
+  "id": "S-R-0031",
+  "zone": "Korangi",
+  "lat": 24.823245,
+  "lng": 67.12382,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 271,
+  "starts_at": 2,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0031",
+  "reported": true
+ },
+ {
+  "id": "S-R-0033",
+  "zone": "Orangi Town",
+  "lat": 24.957951,
+  "lng": 67.002327,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 240,
+  "starts_at": 2,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0033",
+  "reported": false
+ },
+ {
+  "id": "S-R-0039",
+  "zone": "Lyari",
+  "lat": 24.875254,
+  "lng": 67.011299,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 252,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0039",
+  "reported": false
+ },
+ {
+  "id": "S-R-0040",
+  "zone": "Orangi Town",
+  "lat": 24.961129,
+  "lng": 66.98776,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 211,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0040",
+  "reported": false
+ },
+ {
+  "id": "S-R-0041",
+  "zone": "Orangi Town",
+  "lat": 24.963843,
+  "lng": 66.986612,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 273,
+  "starts_at": 2,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0041",
+  "reported": false
+ },
+ {
+  "id": "S-R-0042",
+  "zone": "Orangi Town",
+  "lat": 24.944737,
+  "lng": 66.993781,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 464,
+  "starts_at": 2,
+  "conditions": [
+   "insulin",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0042",
+  "reported": false
+ },
+ {
+  "id": "S-R-0043",
+  "zone": "Orangi Town",
+  "lat": 24.950759,
+  "lng": 66.983873,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 264,
+  "starts_at": 2,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": "R-0043",
+  "reported": false
+ },
+ {
+  "id": "S-R-0052",
+  "zone": "Orangi Town",
+  "lat": 24.962635,
+  "lng": 66.997222,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 280,
+  "starts_at": 2,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0052",
+  "reported": false
+ },
+ {
+  "id": "S-R-0054",
+  "zone": "Lyari",
+  "lat": 24.858472,
+  "lng": 66.996396,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 247,
+  "starts_at": 2,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": "R-0054",
+  "reported": true
+ },
+ {
+  "id": "S-R-0057",
+  "zone": "Lyari",
+  "lat": 24.870495,
+  "lng": 67.004828,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 435,
+  "starts_at": 2,
+  "conditions": [
+   "disabled"
+  ],
+  "details": {},
+  "registry_id": "R-0057",
+  "reported": false
+ },
+ {
+  "id": "S-R-0058",
+  "zone": "Orangi Town",
+  "lat": 24.951588,
+  "lng": 66.995309,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 288,
+  "starts_at": 2,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0058",
+  "reported": false
+ },
+ {
+  "id": "S-R-0063",
+  "zone": "Lyari",
+  "lat": 24.870893,
+  "lng": 67.002409,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 237,
+  "starts_at": 2,
+  "conditions": [
+   "oxygen",
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0063",
+  "reported": true
+ },
+ {
+  "id": "S-R-0065",
+  "zone": "Orangi Town",
+  "lat": 24.953475,
+  "lng": 67.001042,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 199,
+  "starts_at": 2,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0065",
+  "reported": false
+ },
+ {
+  "id": "S-R-0069",
+  "zone": "Korangi",
+  "lat": 24.831934,
+  "lng": 67.140481,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 274,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0069",
+  "reported": false
+ },
+ {
+  "id": "S-R-0071",
+  "zone": "Orangi Town",
+  "lat": 24.956134,
+  "lng": 66.991715,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 203,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0071",
+  "reported": false
+ },
+ {
+  "id": "S-R-0073",
+  "zone": "Orangi Town",
+  "lat": 24.960977,
+  "lng": 66.996912,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 286,
+  "starts_at": 2,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0073",
+  "reported": false
+ },
+ {
+  "id": "S-R-0079",
+  "zone": "Orangi Town",
+  "lat": 24.963328,
+  "lng": 66.99873,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 257,
+  "starts_at": 2,
+  "conditions": [
+   "oxygen",
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0079",
+  "reported": false
+ },
+ {
+  "id": "S-R-0080",
+  "zone": "Lyari",
+  "lat": 24.864963,
+  "lng": 66.993975,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 274,
+  "starts_at": 2,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0080",
+  "reported": false
+ },
+ {
+  "id": "S-R-0082",
+  "zone": "Orangi Town",
+  "lat": 24.958425,
+  "lng": 67.001017,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 249,
+  "starts_at": 2,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0082",
+  "reported": false
+ },
+ {
+  "id": "S-R-0085",
+  "zone": "Orangi Town",
+  "lat": 24.954405,
+  "lng": 66.983122,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 407,
+  "starts_at": 2,
+  "conditions": [
+   "insulin",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0085",
+  "reported": false
+ },
+ {
+  "id": "S-R-0086",
+  "zone": "Orangi Town",
+  "lat": 24.940166,
+  "lng": 66.997849,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 246,
+  "starts_at": 2,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0086",
+  "reported": false
+ },
+ {
+  "id": "S-R-0087",
+  "zone": "Orangi Town",
+  "lat": 24.938865,
+  "lng": 66.995342,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 197,
+  "starts_at": 2,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0087",
+  "reported": false
+ },
+ {
+  "id": "S-R-0088",
+  "zone": "Orangi Town",
+  "lat": 24.950516,
+  "lng": 67.004739,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 348,
+  "starts_at": 2,
+  "conditions": [
+   "disabled"
+  ],
+  "details": {},
+  "registry_id": "R-0088",
+  "reported": false
+ },
+ {
+  "id": "S-R-0089",
+  "zone": "Orangi Town",
+  "lat": 24.944898,
+  "lng": 66.989568,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 417,
+  "starts_at": 2,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {},
+  "registry_id": "R-0089",
+  "reported": false
+ },
+ {
+  "id": "S-R-0091",
+  "zone": "Lyari",
+  "lat": 24.876403,
+  "lng": 67.001111,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 490,
+  "starts_at": 2,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {},
+  "registry_id": "R-0091",
+  "reported": false
+ },
+ {
+  "id": "S-R-0094",
+  "zone": "Korangi",
+  "lat": 24.838665,
+  "lng": 67.1314,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 341,
+  "starts_at": 2,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {},
+  "registry_id": "R-0094",
+  "reported": true
+ },
+ {
+  "id": "S-R-0095",
+  "zone": "Orangi Town",
+  "lat": 24.964213,
+  "lng": 66.987289,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 263,
+  "starts_at": 2,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0095",
+  "reported": false
+ },
+ {
+  "id": "S-R-0097",
+  "zone": "Orangi Town",
+  "lat": 24.940396,
+  "lng": 66.994244,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 283,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0097",
+  "reported": false
+ },
+ {
+  "id": "S-R-0098",
+  "zone": "Orangi Town",
+  "lat": 24.946404,
+  "lng": 66.990236,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 424,
+  "starts_at": 2,
+  "conditions": [
+   "insulin",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0098",
+  "reported": false
+ },
+ {
+  "id": "S-R-0103",
+  "zone": "Korangi",
+  "lat": 24.840569,
+  "lng": 67.127446,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 228,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0103",
+  "reported": false
+ },
+ {
+  "id": "S-R-0107",
+  "zone": "Orangi Town",
+  "lat": 24.943911,
+  "lng": 66.995522,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 259,
+  "starts_at": 2,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0107",
+  "reported": false
+ },
+ {
+  "id": "S-R-0108",
+  "zone": "Orangi Town",
+  "lat": 24.944852,
+  "lng": 66.990803,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 266,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0108",
+  "reported": false
+ },
+ {
+  "id": "S-R-0110",
+  "zone": "Orangi Town",
+  "lat": 24.954919,
+  "lng": 66.978334,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 236,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0110",
+  "reported": false
+ },
+ {
+  "id": "S-R-0115",
+  "zone": "Orangi Town",
+  "lat": 24.963385,
+  "lng": 66.995444,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 233,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0115",
+  "reported": false
+ },
+ {
+  "id": "S-R-0118",
+  "zone": "Orangi Town",
+  "lat": 24.947316,
+  "lng": 66.992223,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 251,
+  "starts_at": 2,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": "R-0118",
+  "reported": false
+ },
+ {
+  "id": "S-R-0119",
+  "zone": "Saddar",
+  "lat": 24.863925,
+  "lng": 67.03664,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 236,
+  "starts_at": 2,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0119",
+  "reported": false
+ },
+ {
+  "id": "S-R-0124",
+  "zone": "Orangi Town",
+  "lat": 24.957221,
+  "lng": 66.993126,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 343,
+  "starts_at": 2,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {},
+  "registry_id": "R-0124",
+  "reported": false
+ },
+ {
+  "id": "S-R-0125",
+  "zone": "Orangi Town",
+  "lat": 24.954016,
+  "lng": 67.005801,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 223,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0125",
+  "reported": false
+ },
+ {
+  "id": "S-R-0130",
+  "zone": "Lyari",
+  "lat": 24.871883,
+  "lng": 67.010305,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 203,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0130",
+  "reported": false
+ },
+ {
+  "id": "S-R-0133",
+  "zone": "Saddar",
+  "lat": 24.85345,
+  "lng": 67.03756,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 276,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0133",
+  "reported": true
+ },
+ {
+  "id": "S-R-0134",
+  "zone": "Orangi Town",
+  "lat": 24.962089,
+  "lng": 66.999766,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 260,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0134",
+  "reported": false
+ },
+ {
+  "id": "S-R-0140",
+  "zone": "Korangi",
+  "lat": 24.830589,
+  "lng": 67.135197,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 272,
+  "starts_at": 2,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0140",
+  "reported": false
+ },
+ {
+  "id": "S-R-0142",
+  "zone": "Orangi Town",
+  "lat": 24.96482,
+  "lng": 66.977582,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 220,
+  "starts_at": 2,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0142",
+  "reported": false
+ },
+ {
+  "id": "S-R-0144",
+  "zone": "Orangi Town",
+  "lat": 24.941803,
+  "lng": 66.997185,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 273,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0144",
+  "reported": false
+ },
+ {
+  "id": "S-R-0147",
+  "zone": "Orangi Town",
+  "lat": 24.941286,
+  "lng": 66.999922,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 272,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0147",
+  "reported": false
+ },
+ {
+  "id": "S-R-0149",
+  "zone": "Saddar",
+  "lat": 24.864592,
+  "lng": 67.025789,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 457,
+  "starts_at": 2,
+  "conditions": [
+   "insulin",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0149",
+  "reported": true
+ },
+ {
+  "id": "S-R-0155",
+  "zone": "Lyari",
+  "lat": 24.861858,
+  "lng": 67.000301,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 260,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0155",
+  "reported": false
+ },
+ {
+  "id": "S-R-0156",
+  "zone": "Orangi Town",
+  "lat": 24.942527,
+  "lng": 66.997699,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 203,
+  "starts_at": 2,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0156",
+  "reported": false
+ },
+ {
+  "id": "S-R-0161",
+  "zone": "Lyari",
+  "lat": 24.859955,
+  "lng": 67.004182,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 235,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0161",
+  "reported": false
+ },
+ {
+  "id": "S-R-0163",
+  "zone": "Saddar",
+  "lat": 24.861185,
+  "lng": 67.037052,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 227,
+  "starts_at": 2,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0163",
+  "reported": false
+ },
+ {
+  "id": "S-R-0164",
+  "zone": "Orangi Town",
+  "lat": 24.964115,
+  "lng": 67.000505,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 192,
+  "starts_at": 2,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0164",
+  "reported": false
+ },
+ {
+  "id": "S-R-0165",
+  "zone": "Orangi Town",
+  "lat": 24.954506,
+  "lng": 66.978274,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 209,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0165",
+  "reported": false
+ },
+ {
+  "id": "S-R-0173",
+  "zone": "Orangi Town",
+  "lat": 24.946939,
+  "lng": 66.985192,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 259,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0173",
+  "reported": false
+ },
+ {
+  "id": "S-R-0177",
+  "zone": "Orangi Town",
+  "lat": 24.963763,
+  "lng": 66.996339,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 242,
+  "starts_at": 2,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0177",
+  "reported": false
+ },
+ {
+  "id": "S-R-0178",
+  "zone": "Orangi Town",
+  "lat": 24.96042,
+  "lng": 66.979245,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 448,
+  "starts_at": 2,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {},
+  "registry_id": "R-0178",
+  "reported": false
+ },
+ {
+  "id": "S-R-0183",
+  "zone": "Orangi Town",
+  "lat": 24.957278,
+  "lng": 66.995241,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 220,
+  "starts_at": 2,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0183",
+  "reported": false
+ },
+ {
+  "id": "S-R-0186",
+  "zone": "Korangi",
+  "lat": 24.831919,
+  "lng": 67.132403,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 283,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0186",
+  "reported": false
+ },
+ {
+  "id": "S-R-0192",
+  "zone": "Lyari",
+  "lat": 24.862165,
+  "lng": 67.012271,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 267,
+  "starts_at": 2,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0192",
+  "reported": false
+ },
+ {
+  "id": "S-R-0195",
+  "zone": "Korangi",
+  "lat": 24.839843,
+  "lng": 67.120934,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 242,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0195",
+  "reported": false
+ },
+ {
+  "id": "S-R-0199",
+  "zone": "Orangi Town",
+  "lat": 24.95335,
+  "lng": 66.993371,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 260,
+  "starts_at": 2,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0199",
+  "reported": false
+ }
+]

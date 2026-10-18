@@ -1,0 +1,20 @@
+[
+ {
+  "t": 240,
+  "zone": "Lyari",
+  "closes_in_min": 60,
+  "text": "Hottest hours start"
+ },
+ {
+  "t": 240,
+  "zone": "Korangi",
+  "closes_in_min": 60,
+  "text": "Hottest hours start"
+ },
+ {
+  "t": 240,
+  "zone": "Orangi Town",
+  "closes_in_min": 60,
+  "text": "Hottest hours start"
+ }
+]

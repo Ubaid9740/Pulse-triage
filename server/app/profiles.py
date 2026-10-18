@@ -103,6 +103,14 @@ class Profiles:
                 best = (float(rule["hours"]), rule["text"])
         return best
 
+    def window_text(self, hazard: str, details: dict, conditions: list[str] | set[str]) -> str | None:
+        """The profile's window ("Road floods") if it applies to this case; None if it has none or
+        its only_if tokens do not match (heat: only people without cooling)."""
+        window = self.get(hazard).get("window")
+        if not window or not rule_matches(window.get("only_if", []), details, set(conditions)):
+            return None
+        return window["text"]
+
     def needs(self, hazard: str, details: dict, conditions: list[str] | set[str]) -> list[str]:
         """Union of needs from matching rules. A profile's default rule (empty token list)
         applies only when no other rule in that profile matched."""

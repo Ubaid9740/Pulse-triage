@@ -1,0 +1,2283 @@
+[
+ {
+  "id": "S-001",
+  "zone": "Lyari",
+  "lat": 24.861431,
+  "lng": 67.003159,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 133,
+  "starts_at": 0.13,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-002",
+  "zone": "Saddar",
+  "lat": 24.864142,
+  "lng": 67.025258,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 290,
+  "starts_at": 1.17,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {
+   "building": "badly_damaged"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-003",
+  "zone": "Saddar",
+  "lat": 24.857051,
+  "lng": 67.028607,
+  "people": 4,
+  "severity": "minor",
+  "deadline_min": 660,
+  "starts_at": 2.57,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "building": "badly_damaged"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-004",
+  "zone": "Lyari",
+  "lat": 24.87286,
+  "lng": 67.010815,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 121,
+  "starts_at": 3.18,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-005",
+  "zone": "Saddar",
+  "lat": 24.84977,
+  "lng": 67.035356,
+  "people": 5,
+  "severity": "critical",
+  "deadline_min": 280,
+  "starts_at": 3.5,
+  "conditions": [],
+  "details": {
+   "trapped": true,
+   "building": "collapsed"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-006",
+  "zone": "Lyari",
+  "lat": 24.877357,
+  "lng": 67.005004,
+  "people": 13,
+  "severity": "serious",
+  "deadline_min": 100,
+  "starts_at": 6.49,
+  "conditions": [],
+  "details": {
+   "gas_or_fire": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-007",
+  "zone": "Korangi",
+  "lat": 24.832779,
+  "lng": 67.13079,
+  "people": 9,
+  "severity": "serious",
+  "deadline_min": 251,
+  "starts_at": 8.52,
+  "conditions": [
+   "injured"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-008",
+  "zone": "Shah Faisal",
+  "lat": 24.875053,
+  "lng": 67.148934,
+  "people": 9,
+  "severity": "serious",
+  "deadline_min": 143,
+  "starts_at": 9.1,
+  "conditions": [],
+  "details": {
+   "gas_or_fire": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-009",
+  "zone": "Malir",
+  "lat": 24.903401,
+  "lng": 67.213141,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 116,
+  "starts_at": 9.86,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-010",
+  "zone": "Lyari",
+  "lat": 24.863822,
+  "lng": 66.995819,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 125,
+  "starts_at": 10.92,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-011",
+  "zone": "Lyari",
+  "lat": 24.862886,
+  "lng": 67.006918,
+  "people": 13,
+  "severity": "critical",
+  "deadline_min": 193,
+  "starts_at": 11.4,
+  "conditions": [],
+  "details": {
+   "trapped": true,
+   "building": "collapsed"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-012",
+  "zone": "Lyari",
+  "lat": 24.862465,
+  "lng": 66.997251,
+  "people": 4,
+  "severity": "critical",
+  "deadline_min": 209,
+  "starts_at": 12.72,
+  "conditions": [],
+  "details": {
+   "trapped": true,
+   "building": "collapsed"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-013",
+  "zone": "Orangi Town",
+  "lat": 24.947423,
+  "lng": 66.995555,
+  "people": 16,
+  "severity": "minor",
+  "deadline_min": 493,
+  "starts_at": 14.43,
+  "conditions": [],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-014",
+  "zone": "Lyari",
+  "lat": 24.875422,
+  "lng": 67.003192,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 273,
+  "starts_at": 14.54,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-015",
+  "zone": "Lyari",
+  "lat": 24.87024,
+  "lng": 66.99109,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 73,
+  "starts_at": 14.68,
+  "conditions": [
+   "injured",
+   "bleeding"
+  ],
+  "details": {
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-016",
+  "zone": "Lyari",
+  "lat": 24.870261,
+  "lng": 66.99473,
+  "people": 5,
+  "severity": "critical",
+  "deadline_min": 186,
+  "starts_at": 15.0,
+  "conditions": [],
+  "details": {
+   "trapped": true,
+   "building": "collapsed"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-017",
+  "zone": "Lyari",
+  "lat": 24.870536,
+  "lng": 66.993573,
+  "people": 13,
+  "severity": "minor",
+  "deadline_min": 481,
+  "starts_at": 15.6,
+  "conditions": [],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-018",
+  "zone": "Lyari",
+  "lat": 24.861997,
+  "lng": 67.006623,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 316,
+  "starts_at": 15.85,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {
+   "building": "badly_damaged"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-019",
+  "zone": "Saddar",
+  "lat": 24.86012,
+  "lng": 67.03267,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 58,
+  "starts_at": 17.44,
+  "conditions": [],
+  "details": {
+   "gas_or_fire": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-020",
+  "zone": "Lyari",
+  "lat": 24.862786,
+  "lng": 67.006171,
+  "people": 4,
+  "severity": "serious",
+  "deadline_min": 276,
+  "starts_at": 18.88,
+  "conditions": [
+   "injured"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-021",
+  "zone": "Malir",
+  "lat": 24.907669,
+  "lng": 67.209607,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 107,
+  "starts_at": 18.99,
+  "conditions": [
+   "injured",
+   "bleeding"
+  ],
+  "details": {
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-022",
+  "zone": "Lyari",
+  "lat": 24.875744,
+  "lng": 66.996676,
+  "people": 10,
+  "severity": "serious",
+  "deadline_min": 230,
+  "starts_at": 19.21,
+  "conditions": [
+   "injured"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-023",
+  "zone": "Lyari",
+  "lat": 24.858106,
+  "lng": 67.004832,
+  "people": 20,
+  "severity": "serious",
+  "deadline_min": 139,
+  "starts_at": 20.06,
+  "conditions": [],
+  "details": {
+   "gas_or_fire": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-024",
+  "zone": "Malir",
+  "lat": 24.888172,
+  "lng": 67.213449,
+  "people": 3,
+  "severity": "minor",
+  "deadline_min": 737,
+  "starts_at": 20.92,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "building": "badly_damaged"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-025",
+  "zone": "Saddar",
+  "lat": 24.851558,
+  "lng": 67.021662,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 254,
+  "starts_at": 22.34,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-026",
+  "zone": "Saddar",
+  "lat": 24.859931,
+  "lng": 67.033253,
+  "people": 12,
+  "severity": "minor",
+  "deadline_min": 658,
+  "starts_at": 23.12,
+  "conditions": [],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-027",
+  "zone": "Lyari",
+  "lat": 24.86125,
+  "lng": 66.993111,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 104,
+  "starts_at": 23.86,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-028",
+  "zone": "Clifton",
+  "lat": 24.822429,
+  "lng": 67.038338,
+  "people": 11,
+  "severity": "serious",
+  "deadline_min": 104,
+  "starts_at": 24.04,
+  "conditions": [],
+  "details": {
+   "gas_or_fire": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-029",
+  "zone": "Lyari",
+  "lat": 24.864893,
+  "lng": 67.010656,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 140,
+  "starts_at": 26.29,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-030",
+  "zone": "Saddar",
+  "lat": 24.859293,
+  "lng": 67.027681,
+  "people": 16,
+  "severity": "serious",
+  "deadline_min": 99,
+  "starts_at": 26.94,
+  "conditions": [],
+  "details": {
+   "gas_or_fire": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-031",
+  "zone": "Saddar",
+  "lat": 24.866407,
+  "lng": 67.031061,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 80,
+  "starts_at": 28.22,
+  "conditions": [
+   "injured",
+   "bleeding"
+  ],
+  "details": {
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-032",
+  "zone": "Lyari",
+  "lat": 24.859394,
+  "lng": 67.009938,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 53,
+  "starts_at": 28.86,
+  "conditions": [
+   "child",
+   "unconscious",
+   "injured"
+  ],
+  "details": {
+   "building": "collapsed"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-033",
+  "zone": "Lyari",
+  "lat": 24.877713,
+  "lng": 66.997639,
+  "people": 14,
+  "severity": "serious",
+  "deadline_min": 141,
+  "starts_at": 29.38,
+  "conditions": [],
+  "details": {
+   "gas_or_fire": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-034",
+  "zone": "Shah Faisal",
+  "lat": 24.869617,
+  "lng": 67.153519,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 287,
+  "starts_at": 29.65,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {
+   "building": "badly_damaged"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-035",
+  "zone": "Lyari",
+  "lat": 24.866712,
+  "lng": 67.00338,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 99,
+  "starts_at": 31.32,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-036",
+  "zone": "Lyari",
+  "lat": 24.868328,
+  "lng": 67.005064,
+  "people": 30,
+  "severity": "minor",
+  "deadline_min": 710,
+  "starts_at": 35.82,
+  "conditions": [],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-037",
+  "zone": "Shah Faisal",
+  "lat": 24.88024,
+  "lng": 67.147711,
+  "people": 19,
+  "severity": "serious",
+  "deadline_min": 118,
+  "starts_at": 38.4,
+  "conditions": [],
+  "details": {
+   "gas_or_fire": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-038",
+  "zone": "Korangi",
+  "lat": 24.836804,
+  "lng": 67.138075,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 139,
+  "starts_at": 48.87,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-039",
+  "zone": "Lyari",
+  "lat": 24.863263,
+  "lng": 66.997342,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 80,
+  "starts_at": 50.72,
+  "conditions": [
+   "injured",
+   "bleeding"
+  ],
+  "details": {
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-040",
+  "zone": "Saddar",
+  "lat": 24.866152,
+  "lng": 67.028173,
+  "people": 4,
+  "severity": "critical",
+  "deadline_min": 56,
+  "starts_at": 51.66,
+  "conditions": [],
+  "details": {
+   "gas_or_fire": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-041",
+  "zone": "Lyari",
+  "lat": 24.862645,
+  "lng": 66.997389,
+  "people": 5,
+  "severity": "critical",
+  "deadline_min": 245,
+  "starts_at": 52.24,
+  "conditions": [],
+  "details": {
+   "trapped": true,
+   "building": "collapsed"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-042",
+  "zone": "Lyari",
+  "lat": 24.867683,
+  "lng": 66.995161,
+  "people": 4,
+  "severity": "minor",
+  "deadline_min": 735,
+  "starts_at": 53.84,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "building": "badly_damaged"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-043",
+  "zone": "Lyari",
+  "lat": 24.864358,
+  "lng": 67.001906,
+  "people": 3,
+  "severity": "critical",
+  "deadline_min": 196,
+  "starts_at": 56.08,
+  "conditions": [],
+  "details": {
+   "trapped": true,
+   "building": "collapsed"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-044",
+  "zone": "Saddar",
+  "lat": 24.849856,
+  "lng": 67.031553,
+  "people": 26,
+  "severity": "minor",
+  "deadline_min": 638,
+  "starts_at": 57.63,
+  "conditions": [],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-045",
+  "zone": "Lyari",
+  "lat": 24.863055,
+  "lng": 66.998409,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 199,
+  "starts_at": 59.89,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-046",
+  "zone": "Lyari",
+  "lat": 24.860191,
+  "lng": 67.010912,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 73,
+  "starts_at": 65.23,
+  "conditions": [
+   "injured",
+   "bleeding"
+  ],
+  "details": {
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-047",
+  "zone": "Lyari",
+  "lat": 24.859386,
+  "lng": 66.997667,
+  "people": 5,
+  "severity": "critical",
+  "deadline_min": 192,
+  "starts_at": 65.87,
+  "conditions": [],
+  "details": {
+   "trapped": true,
+   "building": "collapsed"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-048",
+  "zone": "Saddar",
+  "lat": 24.851457,
+  "lng": 67.029721,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 278,
+  "starts_at": 66.61,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-049",
+  "zone": "Lyari",
+  "lat": 24.864101,
+  "lng": 66.990754,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 101,
+  "starts_at": 68.37,
+  "conditions": [
+   "oxygen",
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-050",
+  "zone": "Lyari",
+  "lat": 24.866001,
+  "lng": 66.999446,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 140,
+  "starts_at": 71.58,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-051",
+  "zone": "Lyari",
+  "lat": 24.864639,
+  "lng": 67.013193,
+  "people": 4,
+  "severity": "critical",
+  "deadline_min": 71,
+  "starts_at": 71.62,
+  "conditions": [],
+  "details": {
+   "gas_or_fire": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-052",
+  "zone": "Lyari",
+  "lat": 24.864324,
+  "lng": 67.011572,
+  "people": 10,
+  "severity": "critical",
+  "deadline_min": 165,
+  "starts_at": 73.86,
+  "conditions": [],
+  "details": {
+   "trapped": true,
+   "building": "collapsed"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-053",
+  "zone": "Lyari",
+  "lat": 24.864456,
+  "lng": 66.999478,
+  "people": 11,
+  "severity": "critical",
+  "deadline_min": 201,
+  "starts_at": 73.88,
+  "conditions": [],
+  "details": {
+   "trapped": true,
+   "building": "collapsed"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-054",
+  "zone": "Korangi",
+  "lat": 24.825864,
+  "lng": 67.135902,
+  "people": 4,
+  "severity": "critical",
+  "deadline_min": 59,
+  "starts_at": 74.49,
+  "conditions": [],
+  "details": {
+   "gas_or_fire": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-055",
+  "zone": "Lyari",
+  "lat": 24.875885,
+  "lng": 67.011213,
+  "people": 4,
+  "severity": "minor",
+  "deadline_min": 737,
+  "starts_at": 77.32,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "building": "badly_damaged"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-056",
+  "zone": "Saddar",
+  "lat": 24.855085,
+  "lng": 67.031081,
+  "people": 15,
+  "severity": "minor",
+  "deadline_min": 546,
+  "starts_at": 78.19,
+  "conditions": [],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-057",
+  "zone": "Saddar",
+  "lat": 24.863101,
+  "lng": 67.025892,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 84,
+  "starts_at": 80.1,
+  "conditions": [
+   "injured",
+   "bleeding"
+  ],
+  "details": {
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-058",
+  "zone": "Shah Faisal",
+  "lat": 24.885066,
+  "lng": 67.157862,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 130,
+  "starts_at": 82.76,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-059",
+  "zone": "Shah Faisal",
+  "lat": 24.885945,
+  "lng": 67.156984,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 199,
+  "starts_at": 83.15,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-060",
+  "zone": "Saddar",
+  "lat": 24.848904,
+  "lng": 67.032756,
+  "people": 8,
+  "severity": "serious",
+  "deadline_min": 283,
+  "starts_at": 84.68,
+  "conditions": [
+   "injured"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-061",
+  "zone": "Lyari",
+  "lat": 24.863653,
+  "lng": 66.997078,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 205,
+  "starts_at": 86.47,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-062",
+  "zone": "Saddar",
+  "lat": 24.861101,
+  "lng": 67.03434,
+  "people": 4,
+  "severity": "critical",
+  "deadline_min": 59,
+  "starts_at": 86.54,
+  "conditions": [],
+  "details": {
+   "gas_or_fire": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-063",
+  "zone": "Lyari",
+  "lat": 24.866589,
+  "lng": 66.99358,
+  "people": 5,
+  "severity": "serious",
+  "deadline_min": 229,
+  "starts_at": 88.81,
+  "conditions": [
+   "injured"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-064",
+  "zone": "Lyari",
+  "lat": 24.873834,
+  "lng": 67.009495,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 329,
+  "starts_at": 89.5,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {
+   "building": "badly_damaged"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-065",
+  "zone": "Lyari",
+  "lat": 24.85965,
+  "lng": 67.007762,
+  "people": 6,
+  "severity": "minor",
+  "deadline_min": 646,
+  "starts_at": 106.19,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "building": "badly_damaged"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-066",
+  "zone": "Lyari",
+  "lat": 24.867908,
+  "lng": 66.998279,
+  "people": 6,
+  "severity": "critical",
+  "deadline_min": 261,
+  "starts_at": 107.2,
+  "conditions": [],
+  "details": {
+   "trapped": true,
+   "building": "collapsed"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-067",
+  "zone": "Lyari",
+  "lat": 24.863517,
+  "lng": 66.99291,
+  "people": 18,
+  "severity": "minor",
+  "deadline_min": 539,
+  "starts_at": 114.78,
+  "conditions": [],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-068",
+  "zone": "Shah Faisal",
+  "lat": 24.876954,
+  "lng": 67.152019,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 79,
+  "starts_at": 115.75,
+  "conditions": [
+   "oxygen",
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-069",
+  "zone": "Korangi",
+  "lat": 24.821713,
+  "lng": 67.132007,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 350,
+  "starts_at": 116.11,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {
+   "building": "badly_damaged"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-070",
+  "zone": "Lyari",
+  "lat": 24.875459,
+  "lng": 66.993496,
+  "people": 4,
+  "severity": "critical",
+  "deadline_min": 61,
+  "starts_at": 116.5,
+  "conditions": [],
+  "details": {
+   "gas_or_fire": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-071",
+  "zone": "Lyari",
+  "lat": 24.877062,
+  "lng": 67.006234,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 102,
+  "starts_at": 118.29,
+  "conditions": [
+   "injured",
+   "bleeding"
+  ],
+  "details": {
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-072",
+  "zone": "Lyari",
+  "lat": 24.859659,
+  "lng": 66.997616,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 242,
+  "starts_at": 118.95,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {
+   "building": "badly_damaged"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-R-0001",
+  "zone": "Lyari",
+  "lat": 24.871062,
+  "lng": 67.002782,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 351,
+  "starts_at": 15,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0001",
+  "reported": false
+ },
+ {
+  "id": "S-R-0002",
+  "zone": "Saddar",
+  "lat": 24.861198,
+  "lng": 67.039174,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 253,
+  "starts_at": 15,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0002",
+  "reported": false
+ },
+ {
+  "id": "S-R-0004",
+  "zone": "Saddar",
+  "lat": 24.856717,
+  "lng": 67.025763,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 282,
+  "starts_at": 15,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0004",
+  "reported": false
+ },
+ {
+  "id": "S-R-0008",
+  "zone": "North Nazimabad",
+  "lat": 24.939256,
+  "lng": 67.044138,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 830,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0008",
+  "reported": false
+ },
+ {
+  "id": "S-R-0009",
+  "zone": "Lyari",
+  "lat": 24.860015,
+  "lng": 66.99783,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 334,
+  "starts_at": 15,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": "R-0009",
+  "reported": false
+ },
+ {
+  "id": "S-R-0012",
+  "zone": "North Nazimabad",
+  "lat": 24.93477,
+  "lng": 67.050721,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 345,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0012",
+  "reported": false
+ },
+ {
+  "id": "S-R-0015",
+  "zone": "Saddar",
+  "lat": 24.857356,
+  "lng": 67.029332,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 307,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0015",
+  "reported": false
+ },
+ {
+  "id": "S-R-0025",
+  "zone": "Lyari",
+  "lat": 24.873533,
+  "lng": 67.010158,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 820,
+  "starts_at": 15,
+  "conditions": [
+   "infant"
+  ],
+  "details": {},
+  "registry_id": "R-0025",
+  "reported": true
+ },
+ {
+  "id": "S-R-0027",
+  "zone": "North Nazimabad",
+  "lat": 24.937069,
+  "lng": 67.047938,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 662,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0027",
+  "reported": false
+ },
+ {
+  "id": "S-R-0029",
+  "zone": "North Nazimabad",
+  "lat": 24.941598,
+  "lng": 67.045683,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 628,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0029",
+  "reported": false
+ },
+ {
+  "id": "S-R-0030",
+  "zone": "North Nazimabad",
+  "lat": 24.9489,
+  "lng": 67.039138,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 596,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0030",
+  "reported": false
+ },
+ {
+  "id": "S-R-0034",
+  "zone": "Lyari",
+  "lat": 24.86247,
+  "lng": 67.001826,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 664,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0034",
+  "reported": false
+ },
+ {
+  "id": "S-R-0035",
+  "zone": "North Nazimabad",
+  "lat": 24.933645,
+  "lng": 67.036322,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 762,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0035",
+  "reported": false
+ },
+ {
+  "id": "S-R-0039",
+  "zone": "North Nazimabad",
+  "lat": 24.942649,
+  "lng": 67.050487,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 297,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0039",
+  "reported": false
+ },
+ {
+  "id": "S-R-0044",
+  "zone": "North Nazimabad",
+  "lat": 24.936145,
+  "lng": 67.042856,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 625,
+  "starts_at": 15,
+  "conditions": [
+   "insulin",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0044",
+  "reported": false
+ },
+ {
+  "id": "S-R-0045",
+  "zone": "North Nazimabad",
+  "lat": 24.945041,
+  "lng": 67.050095,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 250,
+  "starts_at": 15,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": "R-0045",
+  "reported": false
+ },
+ {
+  "id": "S-R-0052",
+  "zone": "Lyari",
+  "lat": 24.869229,
+  "lng": 66.992778,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 352,
+  "starts_at": 15,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0052",
+  "reported": true
+ },
+ {
+  "id": "S-R-0055",
+  "zone": "North Nazimabad",
+  "lat": 24.944146,
+  "lng": 67.040856,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 249,
+  "starts_at": 15,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0055",
+  "reported": false
+ },
+ {
+  "id": "S-R-0056",
+  "zone": "North Nazimabad",
+  "lat": 24.951441,
+  "lng": 67.038134,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 683,
+  "starts_at": 15,
+  "conditions": [
+   "disabled"
+  ],
+  "details": {},
+  "registry_id": "R-0056",
+  "reported": false
+ },
+ {
+  "id": "S-R-0071",
+  "zone": "North Nazimabad",
+  "lat": 24.949938,
+  "lng": 67.031936,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 250,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0071",
+  "reported": false
+ },
+ {
+  "id": "S-R-0076",
+  "zone": "Saddar",
+  "lat": 24.860868,
+  "lng": 67.03172,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 311,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0076",
+  "reported": false
+ },
+ {
+  "id": "S-R-0077",
+  "zone": "North Nazimabad",
+  "lat": 24.932526,
+  "lng": 67.046725,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 242,
+  "starts_at": 15,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": "R-0077",
+  "reported": false
+ },
+ {
+  "id": "S-R-0078",
+  "zone": "Lyari",
+  "lat": 24.863974,
+  "lng": 66.997659,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 330,
+  "starts_at": 15,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0078",
+  "reported": false
+ },
+ {
+  "id": "S-R-0081",
+  "zone": "North Nazimabad",
+  "lat": 24.941167,
+  "lng": 67.049796,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 345,
+  "starts_at": 15,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": "R-0081",
+  "reported": false
+ },
+ {
+  "id": "S-R-0083",
+  "zone": "Lyari",
+  "lat": 24.86828,
+  "lng": 66.99029,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 630,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0083",
+  "reported": false
+ },
+ {
+  "id": "S-R-0085",
+  "zone": "Lyari",
+  "lat": 24.86512,
+  "lng": 66.996407,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 726,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0085",
+  "reported": false
+ },
+ {
+  "id": "S-R-0090",
+  "zone": "North Nazimabad",
+  "lat": 24.945329,
+  "lng": 67.037965,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 610,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0090",
+  "reported": false
+ },
+ {
+  "id": "S-R-0098",
+  "zone": "North Nazimabad",
+  "lat": 24.9367,
+  "lng": 67.047142,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 292,
+  "starts_at": 15,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0098",
+  "reported": false
+ },
+ {
+  "id": "S-R-0102",
+  "zone": "Saddar",
+  "lat": 24.849907,
+  "lng": 67.029776,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 594,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0102",
+  "reported": false
+ },
+ {
+  "id": "S-R-0104",
+  "zone": "Lyari",
+  "lat": 24.869663,
+  "lng": 67.005154,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 340,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0104",
+  "reported": false
+ },
+ {
+  "id": "S-R-0108",
+  "zone": "Lyari",
+  "lat": 24.871845,
+  "lng": 67.004303,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 351,
+  "starts_at": 15,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0108",
+  "reported": false
+ },
+ {
+  "id": "S-R-0114",
+  "zone": "North Nazimabad",
+  "lat": 24.945344,
+  "lng": 67.040346,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 657,
+  "starts_at": 15,
+  "conditions": [
+   "disabled"
+  ],
+  "details": {},
+  "registry_id": "R-0114",
+  "reported": false
+ },
+ {
+  "id": "S-R-0116",
+  "zone": "North Nazimabad",
+  "lat": 24.946818,
+  "lng": 67.041856,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 321,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0116",
+  "reported": false
+ },
+ {
+  "id": "S-R-0117",
+  "zone": "Lyari",
+  "lat": 24.873332,
+  "lng": 66.99584,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 338,
+  "starts_at": 15,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": "R-0117",
+  "reported": true
+ },
+ {
+  "id": "S-R-0126",
+  "zone": "Saddar",
+  "lat": 24.859496,
+  "lng": 67.035825,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 359,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0126",
+  "reported": false
+ },
+ {
+  "id": "S-R-0127",
+  "zone": "North Nazimabad",
+  "lat": 24.930059,
+  "lng": 67.045283,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 305,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0127",
+  "reported": false
+ },
+ {
+  "id": "S-R-0128",
+  "zone": "North Nazimabad",
+  "lat": 24.939555,
+  "lng": 67.041653,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 268,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0128",
+  "reported": false
+ },
+ {
+  "id": "S-R-0133",
+  "zone": "North Nazimabad",
+  "lat": 24.948414,
+  "lng": 67.042241,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 628,
+  "starts_at": 15,
+  "conditions": [
+   "disabled"
+  ],
+  "details": {},
+  "registry_id": "R-0133",
+  "reported": false
+ },
+ {
+  "id": "S-R-0134",
+  "zone": "Saddar",
+  "lat": 24.863184,
+  "lng": 67.038419,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 327,
+  "starts_at": 15,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0134",
+  "reported": false
+ },
+ {
+  "id": "S-R-0137",
+  "zone": "North Nazimabad",
+  "lat": 24.941222,
+  "lng": 67.039275,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 310,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0137",
+  "reported": false
+ },
+ {
+  "id": "S-R-0138",
+  "zone": "Lyari",
+  "lat": 24.862723,
+  "lng": 66.992204,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 650,
+  "starts_at": 15,
+  "conditions": [
+   "insulin",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0138",
+  "reported": false
+ },
+ {
+  "id": "S-R-0139",
+  "zone": "Lyari",
+  "lat": 24.875055,
+  "lng": 66.99459,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 759,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0139",
+  "reported": true
+ },
+ {
+  "id": "S-R-0140",
+  "zone": "North Nazimabad",
+  "lat": 24.934672,
+  "lng": 67.049204,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 301,
+  "starts_at": 15,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0140",
+  "reported": false
+ },
+ {
+  "id": "S-R-0141",
+  "zone": "Saddar",
+  "lat": 24.866486,
+  "lng": 67.027812,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 275,
+  "starts_at": 15,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": "R-0141",
+  "reported": false
+ },
+ {
+  "id": "S-R-0144",
+  "zone": "Lyari",
+  "lat": 24.870656,
+  "lng": 67.012966,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 612,
+  "starts_at": 15,
+  "conditions": [
+   "insulin",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0144",
+  "reported": false
+ },
+ {
+  "id": "S-R-0145",
+  "zone": "North Nazimabad",
+  "lat": 24.941359,
+  "lng": 67.031519,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 828,
+  "starts_at": 15,
+  "conditions": [
+   "insulin",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0145",
+  "reported": false
+ },
+ {
+  "id": "S-R-0146",
+  "zone": "North Nazimabad",
+  "lat": 24.938361,
+  "lng": 67.0489,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 254,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0146",
+  "reported": false
+ },
+ {
+  "id": "S-R-0151",
+  "zone": "North Nazimabad",
+  "lat": 24.937246,
+  "lng": 67.034041,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 318,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0151",
+  "reported": false
+ },
+ {
+  "id": "S-R-0153",
+  "zone": "Lyari",
+  "lat": 24.861891,
+  "lng": 67.000543,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 277,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0153",
+  "reported": false
+ },
+ {
+  "id": "S-R-0154",
+  "zone": "Lyari",
+  "lat": 24.873634,
+  "lng": 66.994114,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 657,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0154",
+  "reported": false
+ },
+ {
+  "id": "S-R-0155",
+  "zone": "Lyari",
+  "lat": 24.872053,
+  "lng": 67.004852,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 338,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0155",
+  "reported": false
+ },
+ {
+  "id": "S-R-0156",
+  "zone": "Lyari",
+  "lat": 24.866784,
+  "lng": 66.998412,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 286,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0156",
+  "reported": false
+ },
+ {
+  "id": "S-R-0158",
+  "zone": "North Nazimabad",
+  "lat": 24.951461,
+  "lng": 67.031796,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 264,
+  "starts_at": 15,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0158",
+  "reported": false
+ },
+ {
+  "id": "S-R-0171",
+  "zone": "North Nazimabad",
+  "lat": 24.949489,
+  "lng": 67.051102,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 789,
+  "starts_at": 15,
+  "conditions": [
+   "disabled"
+  ],
+  "details": {},
+  "registry_id": "R-0171",
+  "reported": false
+ },
+ {
+  "id": "S-R-0173",
+  "zone": "North Nazimabad",
+  "lat": 24.947956,
+  "lng": 67.040455,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 241,
+  "starts_at": 15,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": "R-0173",
+  "reported": false
+ },
+ {
+  "id": "S-R-0176",
+  "zone": "Lyari",
+  "lat": 24.863858,
+  "lng": 67.000132,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 241,
+  "starts_at": 15,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0176",
+  "reported": false
+ },
+ {
+  "id": "S-R-0178",
+  "zone": "North Nazimabad",
+  "lat": 24.93883,
+  "lng": 67.030705,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 279,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0178",
+  "reported": false
+ },
+ {
+  "id": "S-R-0180",
+  "zone": "North Nazimabad",
+  "lat": 24.948391,
+  "lng": 67.045183,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 323,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0180",
+  "reported": false
+ },
+ {
+  "id": "S-R-0192",
+  "zone": "North Nazimabad",
+  "lat": 24.936584,
+  "lng": 67.046863,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 259,
+  "starts_at": 15,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": "R-0192",
+  "reported": false
+ },
+ {
+  "id": "S-R-0193",
+  "zone": "North Nazimabad",
+  "lat": 24.932289,
+  "lng": 67.039254,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 293,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0193",
+  "reported": false
+ },
+ {
+  "id": "S-R-0194",
+  "zone": "North Nazimabad",
+  "lat": 24.941725,
+  "lng": 67.038,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 860,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0194",
+  "reported": false
+ },
+ {
+  "id": "S-R-0195",
+  "zone": "North Nazimabad",
+  "lat": 24.952783,
+  "lng": 67.039265,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 324,
+  "starts_at": 15,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0195",
+  "reported": false
+ },
+ {
+  "id": "S-R-0198",
+  "zone": "Saddar",
+  "lat": 24.849477,
+  "lng": 67.037297,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 278,
+  "starts_at": 15,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0198",
+  "reported": false
+ }
+]

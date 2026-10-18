@@ -1,0 +1,4218 @@
+[
+ {
+  "id": "S-001",
+  "zone": "Korangi",
+  "lat": 24.824791,
+  "lng": 67.118404,
+  "people": 8,
+  "severity": "critical",
+  "deadline_min": 59,
+  "starts_at": 2.87,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "water": "roof",
+   "rising": true,
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-002",
+  "zone": "Korangi",
+  "lat": 24.831681,
+  "lng": 67.136544,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 206,
+  "starts_at": 3.86,
+  "conditions": [
+   "disabled",
+   "alone"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-003",
+  "zone": "Lyari",
+  "lat": 24.875332,
+  "lng": 67.006575,
+  "people": 2,
+  "severity": "minor",
+  "deadline_min": 577,
+  "starts_at": 4.25,
+  "conditions": [],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-004",
+  "zone": "Lyari",
+  "lat": 24.864895,
+  "lng": 67.008829,
+  "people": 4,
+  "severity": "serious",
+  "deadline_min": 241,
+  "starts_at": 5.62,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-005",
+  "zone": "Korangi",
+  "lat": 24.837859,
+  "lng": 67.123021,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 481,
+  "starts_at": 7.4,
+  "conditions": [
+   "elderly",
+   "insulin"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-006",
+  "zone": "Lyari",
+  "lat": 24.876205,
+  "lng": 66.996173,
+  "people": 4,
+  "severity": "serious",
+  "deadline_min": 168,
+  "starts_at": 8.24,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-007",
+  "zone": "Lyari",
+  "lat": 24.875565,
+  "lng": 67.005282,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 476,
+  "starts_at": 10.45,
+  "conditions": [
+   "elderly",
+   "insulin"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-008",
+  "zone": "Shah Faisal",
+  "lat": 24.871329,
+  "lng": 67.165684,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 25,
+  "starts_at": 10.45,
+  "conditions": [
+   "unconscious"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-009",
+  "zone": "Lyari",
+  "lat": 24.869326,
+  "lng": 67.007711,
+  "people": 4,
+  "severity": "serious",
+  "deadline_min": 149,
+  "starts_at": 10.51,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-010",
+  "zone": "Korangi",
+  "lat": 24.836688,
+  "lng": 67.14026,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 446,
+  "starts_at": 12.38,
+  "conditions": [
+   "elderly",
+   "insulin"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-011",
+  "zone": "Korangi",
+  "lat": 24.830263,
+  "lng": 67.118853,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 176,
+  "starts_at": 14.41,
+  "conditions": [
+   "disabled",
+   "alone"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-012",
+  "zone": "Lyari",
+  "lat": 24.858652,
+  "lng": 67.008061,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 217,
+  "starts_at": 17.37,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-013",
+  "zone": "Lyari",
+  "lat": 24.859929,
+  "lng": 67.006868,
+  "people": 4,
+  "severity": "serious",
+  "deadline_min": 269,
+  "starts_at": 18.12,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-014",
+  "zone": "Korangi",
+  "lat": 24.833933,
+  "lng": 67.119719,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 351,
+  "starts_at": 18.15,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-015",
+  "zone": "Korangi",
+  "lat": 24.823944,
+  "lng": 67.134569,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 136,
+  "starts_at": 20.01,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-016",
+  "zone": "Shah Faisal",
+  "lat": 24.881729,
+  "lng": 67.147835,
+  "people": 7,
+  "severity": "serious",
+  "deadline_min": 215,
+  "starts_at": 20.43,
+  "conditions": [],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-017",
+  "zone": "Lyari",
+  "lat": 24.858135,
+  "lng": 67.010046,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 98,
+  "starts_at": 22.07,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "water": "roof",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-018",
+  "zone": "Korangi",
+  "lat": 24.821032,
+  "lng": 67.134441,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 117,
+  "starts_at": 23.06,
+  "conditions": [
+   "disabled",
+   "cannot_walk",
+   "alone"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-019",
+  "zone": "Shah Faisal",
+  "lat": 24.873942,
+  "lng": 67.157124,
+  "people": 2,
+  "severity": "minor",
+  "deadline_min": 765,
+  "starts_at": 24.86,
+  "conditions": [],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-020",
+  "zone": "Lyari",
+  "lat": 24.859496,
+  "lng": 66.99451,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 172,
+  "starts_at": 25.14,
+  "conditions": [],
+  "details": {
+   "water": "waist",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-021",
+  "zone": "Lyari",
+  "lat": 24.865226,
+  "lng": 67.002711,
+  "people": 9,
+  "severity": "serious",
+  "deadline_min": 157,
+  "starts_at": 26.11,
+  "conditions": [],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-022",
+  "zone": "Korangi",
+  "lat": 24.844019,
+  "lng": 67.12547,
+  "people": 5,
+  "severity": "serious",
+  "deadline_min": 163,
+  "starts_at": 26.74,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-023",
+  "zone": "Korangi",
+  "lat": 24.820298,
+  "lng": 67.122455,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 312,
+  "starts_at": 26.89,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-024",
+  "zone": "Korangi",
+  "lat": 24.824922,
+  "lng": 67.127661,
+  "people": 8,
+  "severity": "serious",
+  "deadline_min": 265,
+  "starts_at": 30.02,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-025",
+  "zone": "Lyari",
+  "lat": 24.871926,
+  "lng": 67.006662,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 520,
+  "starts_at": 30.42,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-026",
+  "zone": "Korangi",
+  "lat": 24.827675,
+  "lng": 67.128448,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 200,
+  "starts_at": 30.52,
+  "conditions": [
+   "disabled",
+   "alone"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-027",
+  "zone": "Korangi",
+  "lat": 24.830272,
+  "lng": 67.140066,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 51,
+  "starts_at": 30.56,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {
+   "water": "chest",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-028",
+  "zone": "Shah Faisal",
+  "lat": 24.880326,
+  "lng": 67.14768,
+  "people": 6,
+  "severity": "serious",
+  "deadline_min": 485,
+  "starts_at": 31.09,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-029",
+  "zone": "Lyari",
+  "lat": 24.861823,
+  "lng": 67.010472,
+  "people": 11,
+  "severity": "serious",
+  "deadline_min": 254,
+  "starts_at": 31.14,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-030",
+  "zone": "Korangi",
+  "lat": 24.832611,
+  "lng": 67.129735,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 495,
+  "starts_at": 31.33,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-031",
+  "zone": "Korangi",
+  "lat": 24.841736,
+  "lng": 67.137413,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 99,
+  "starts_at": 31.68,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-032",
+  "zone": "Shah Faisal",
+  "lat": 24.877998,
+  "lng": 67.154784,
+  "people": 18,
+  "severity": "critical",
+  "deadline_min": 81,
+  "starts_at": 32.31,
+  "conditions": [],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-033",
+  "zone": "Lyari",
+  "lat": 24.875214,
+  "lng": 67.004907,
+  "people": 6,
+  "severity": "serious",
+  "deadline_min": 209,
+  "starts_at": 32.31,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-034",
+  "zone": "Lyari",
+  "lat": 24.87235,
+  "lng": 66.992236,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 235,
+  "starts_at": 32.48,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-035",
+  "zone": "Korangi",
+  "lat": 24.832068,
+  "lng": 67.125565,
+  "people": 7,
+  "severity": "serious",
+  "deadline_min": 270,
+  "starts_at": 32.87,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-036",
+  "zone": "Lyari",
+  "lat": 24.868474,
+  "lng": 66.99176,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 80,
+  "starts_at": 33.01,
+  "conditions": [
+   "injured",
+   "bleeding"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-037",
+  "zone": "Korangi",
+  "lat": 24.841193,
+  "lng": 67.130616,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 159,
+  "starts_at": 33.07,
+  "conditions": [
+   "disabled",
+   "alone"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-038",
+  "zone": "Lyari",
+  "lat": 24.86054,
+  "lng": 66.997345,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 421,
+  "starts_at": 33.31,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-039",
+  "zone": "Lyari",
+  "lat": 24.860343,
+  "lng": 66.996483,
+  "people": 4,
+  "severity": "serious",
+  "deadline_min": 155,
+  "starts_at": 33.43,
+  "conditions": [],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-040",
+  "zone": "Korangi",
+  "lat": 24.839289,
+  "lng": 67.132519,
+  "people": 5,
+  "severity": "serious",
+  "deadline_min": 172,
+  "starts_at": 33.48,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-041",
+  "zone": "Korangi",
+  "lat": 24.829176,
+  "lng": 67.122815,
+  "people": 9,
+  "severity": "serious",
+  "deadline_min": 240,
+  "starts_at": 33.93,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-042",
+  "zone": "Lyari",
+  "lat": 24.860416,
+  "lng": 67.009824,
+  "people": 5,
+  "severity": "minor",
+  "deadline_min": 808,
+  "starts_at": 34.17,
+  "conditions": [],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-043",
+  "zone": "Lyari",
+  "lat": 24.868772,
+  "lng": 66.998428,
+  "people": 4,
+  "severity": "minor",
+  "deadline_min": 610,
+  "starts_at": 34.27,
+  "conditions": [],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-044",
+  "zone": "Lyari",
+  "lat": 24.865038,
+  "lng": 67.013033,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 53,
+  "starts_at": 34.51,
+  "conditions": [
+   "child",
+   "power_dependent"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-045",
+  "zone": "Korangi",
+  "lat": 24.839333,
+  "lng": 67.118846,
+  "people": 5,
+  "severity": "critical",
+  "deadline_min": 67,
+  "starts_at": 35.38,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "water": "roof",
+   "rising": true,
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-046",
+  "zone": "Korangi",
+  "lat": 24.825636,
+  "lng": 67.135754,
+  "people": 24,
+  "severity": "critical",
+  "deadline_min": 91,
+  "starts_at": 35.39,
+  "conditions": [],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-047",
+  "zone": "Lyari",
+  "lat": 24.866538,
+  "lng": 66.993315,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 101,
+  "starts_at": 35.75,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-048",
+  "zone": "Korangi",
+  "lat": 24.842358,
+  "lng": 67.126962,
+  "people": 3,
+  "severity": "critical",
+  "deadline_min": 125,
+  "starts_at": 35.98,
+  "conditions": [],
+  "details": {
+   "water": "waist",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-049",
+  "zone": "Lyari",
+  "lat": 24.864233,
+  "lng": 66.993264,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 176,
+  "starts_at": 36.44,
+  "conditions": [],
+  "details": {
+   "water": "waist",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-050",
+  "zone": "Lyari",
+  "lat": 24.858776,
+  "lng": 67.009503,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 72,
+  "starts_at": 37.01,
+  "conditions": [
+   "child",
+   "power_dependent"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-051",
+  "zone": "Lyari",
+  "lat": 24.873205,
+  "lng": 67.012813,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 49,
+  "starts_at": 37.7,
+  "conditions": [
+   "child",
+   "power_dependent"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-052",
+  "zone": "Lyari",
+  "lat": 24.869845,
+  "lng": 66.990208,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 295,
+  "starts_at": 37.91,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-053",
+  "zone": "Clifton",
+  "lat": 24.823446,
+  "lng": 67.025301,
+  "people": 4,
+  "severity": "serious",
+  "deadline_min": 408,
+  "starts_at": 38.0,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-054",
+  "zone": "Shah Faisal",
+  "lat": 24.874826,
+  "lng": 67.146661,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 89,
+  "starts_at": 38.1,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-055",
+  "zone": "Lyari",
+  "lat": 24.863889,
+  "lng": 67.001004,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 364,
+  "starts_at": 38.3,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-056",
+  "zone": "Shah Faisal",
+  "lat": 24.872793,
+  "lng": 67.16077,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 59,
+  "starts_at": 38.44,
+  "conditions": [
+   "child",
+   "power_dependent"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-057",
+  "zone": "Lyari",
+  "lat": 24.864181,
+  "lng": 66.996094,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 104,
+  "starts_at": 38.65,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-058",
+  "zone": "Saddar",
+  "lat": 24.861528,
+  "lng": 67.022107,
+  "people": 5,
+  "severity": "serious",
+  "deadline_min": 205,
+  "starts_at": 38.72,
+  "conditions": [],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-059",
+  "zone": "Shah Faisal",
+  "lat": 24.87899,
+  "lng": 67.157526,
+  "people": 19,
+  "severity": "critical",
+  "deadline_min": 102,
+  "starts_at": 39.01,
+  "conditions": [],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-060",
+  "zone": "Lyari",
+  "lat": 24.864001,
+  "lng": 67.005232,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 213,
+  "starts_at": 39.15,
+  "conditions": [
+   "disabled",
+   "alone"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-061",
+  "zone": "Lyari",
+  "lat": 24.877889,
+  "lng": 66.997438,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 93,
+  "starts_at": 39.53,
+  "conditions": [
+   "injured",
+   "bleeding"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-062",
+  "zone": "Lyari",
+  "lat": 24.865956,
+  "lng": 66.994908,
+  "people": 10,
+  "severity": "serious",
+  "deadline_min": 252,
+  "starts_at": 39.67,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-063",
+  "zone": "Lyari",
+  "lat": 24.866831,
+  "lng": 67.004202,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 126,
+  "starts_at": 39.94,
+  "conditions": [
+   "disabled",
+   "cannot_walk",
+   "alone"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-064",
+  "zone": "Korangi",
+  "lat": 24.829003,
+  "lng": 67.126261,
+  "people": 12,
+  "severity": "serious",
+  "deadline_min": 226,
+  "starts_at": 41.07,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-065",
+  "zone": "Lyari",
+  "lat": 24.867931,
+  "lng": 66.996416,
+  "people": 6,
+  "severity": "serious",
+  "deadline_min": 191,
+  "starts_at": 41.44,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-066",
+  "zone": "Korangi",
+  "lat": 24.842656,
+  "lng": 67.13792,
+  "people": 6,
+  "severity": "serious",
+  "deadline_min": 195,
+  "starts_at": 41.52,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-067",
+  "zone": "Korangi",
+  "lat": 24.828754,
+  "lng": 67.130793,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 95,
+  "starts_at": 41.59,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "water": "roof",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-068",
+  "zone": "Lyari",
+  "lat": 24.864844,
+  "lng": 66.996343,
+  "people": 25,
+  "severity": "critical",
+  "deadline_min": 94,
+  "starts_at": 41.8,
+  "conditions": [],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-069",
+  "zone": "Korangi",
+  "lat": 24.838119,
+  "lng": 67.114113,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 141,
+  "starts_at": 42.25,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-070",
+  "zone": "Korangi",
+  "lat": 24.827404,
+  "lng": 67.134899,
+  "people": 8,
+  "severity": "serious",
+  "deadline_min": 212,
+  "starts_at": 42.61,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-071",
+  "zone": "Lyari",
+  "lat": 24.861942,
+  "lng": 66.991618,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 84,
+  "starts_at": 42.63,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-072",
+  "zone": "Korangi",
+  "lat": 24.821464,
+  "lng": 67.13189,
+  "people": 5,
+  "severity": "critical",
+  "deadline_min": 142,
+  "starts_at": 42.76,
+  "conditions": [],
+  "details": {
+   "water": "waist",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-073",
+  "zone": "Korangi",
+  "lat": 24.839827,
+  "lng": 67.13115,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 116,
+  "starts_at": 42.86,
+  "conditions": [
+   "elderly",
+   "cannot_walk",
+   "oxygen"
+  ],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-074",
+  "zone": "Lyari",
+  "lat": 24.868019,
+  "lng": 66.994011,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 360,
+  "starts_at": 43.41,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-075",
+  "zone": "Malir",
+  "lat": 24.898588,
+  "lng": 67.193732,
+  "people": 4,
+  "severity": "serious",
+  "deadline_min": 191,
+  "starts_at": 44.06,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-076",
+  "zone": "Korangi",
+  "lat": 24.842187,
+  "lng": 67.119625,
+  "people": 7,
+  "severity": "serious",
+  "deadline_min": 253,
+  "starts_at": 44.12,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-077",
+  "zone": "Korangi",
+  "lat": 24.83945,
+  "lng": 67.142305,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 509,
+  "starts_at": 44.28,
+  "conditions": [
+   "elderly",
+   "insulin"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-078",
+  "zone": "North Nazimabad",
+  "lat": 24.931122,
+  "lng": 67.039071,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 92,
+  "starts_at": 44.95,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "water": "roof",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-079",
+  "zone": "Shah Faisal",
+  "lat": 24.868636,
+  "lng": 67.150732,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 205,
+  "starts_at": 45.24,
+  "conditions": [
+   "disabled",
+   "alone"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-080",
+  "zone": "Korangi",
+  "lat": 24.822535,
+  "lng": 67.120768,
+  "people": 20,
+  "severity": "critical",
+  "deadline_min": 88,
+  "starts_at": 46.55,
+  "conditions": [],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-081",
+  "zone": "Korangi",
+  "lat": 24.834788,
+  "lng": 67.115554,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 214,
+  "starts_at": 46.91,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-082",
+  "zone": "Lyari",
+  "lat": 24.863133,
+  "lng": 66.993981,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 264,
+  "starts_at": 48.12,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-083",
+  "zone": "Lyari",
+  "lat": 24.871215,
+  "lng": 66.990747,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 183,
+  "starts_at": 48.68,
+  "conditions": [
+   "disabled",
+   "alone"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-084",
+  "zone": "North Nazimabad",
+  "lat": 24.950603,
+  "lng": 67.039686,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 445,
+  "starts_at": 48.99,
+  "conditions": [
+   "elderly",
+   "insulin"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-085",
+  "zone": "North Nazimabad",
+  "lat": 24.941773,
+  "lng": 67.037342,
+  "people": 8,
+  "severity": "serious",
+  "deadline_min": 170,
+  "starts_at": 49.32,
+  "conditions": [],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-086",
+  "zone": "Korangi",
+  "lat": 24.840053,
+  "lng": 67.114443,
+  "people": 8,
+  "severity": "critical",
+  "deadline_min": 49,
+  "starts_at": 49.75,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "water": "roof",
+   "rising": true,
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-087",
+  "zone": "Lyari",
+  "lat": 24.862082,
+  "lng": 67.010836,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 81,
+  "starts_at": 50.04,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-088",
+  "zone": "Korangi",
+  "lat": 24.829271,
+  "lng": 67.1291,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 220,
+  "starts_at": 50.15,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-089",
+  "zone": "Korangi",
+  "lat": 24.842026,
+  "lng": 67.121118,
+  "people": 13,
+  "severity": "serious",
+  "deadline_min": 240,
+  "starts_at": 50.26,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-090",
+  "zone": "Lyari",
+  "lat": 24.859653,
+  "lng": 67.000972,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 149,
+  "starts_at": 50.27,
+  "conditions": [
+   "disabled",
+   "alone"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-091",
+  "zone": "Korangi",
+  "lat": 24.827254,
+  "lng": 67.135555,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 113,
+  "starts_at": 50.4,
+  "conditions": [
+   "elderly",
+   "cannot_walk",
+   "oxygen"
+  ],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-092",
+  "zone": "Korangi",
+  "lat": 24.838918,
+  "lng": 67.118358,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 154,
+  "starts_at": 50.57,
+  "conditions": [],
+  "details": {
+   "water": "waist",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-093",
+  "zone": "Lyari",
+  "lat": 24.872396,
+  "lng": 67.007816,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 466,
+  "starts_at": 50.84,
+  "conditions": [
+   "elderly",
+   "insulin"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-094",
+  "zone": "Shah Faisal",
+  "lat": 24.867041,
+  "lng": 67.15012,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 366,
+  "starts_at": 51.18,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-095",
+  "zone": "Shah Faisal",
+  "lat": 24.883125,
+  "lng": 67.15553,
+  "people": 6,
+  "severity": "serious",
+  "deadline_min": 419,
+  "starts_at": 51.28,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-096",
+  "zone": "Lyari",
+  "lat": 24.871353,
+  "lng": 67.002377,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 61,
+  "starts_at": 51.46,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {
+   "water": "chest",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-097",
+  "zone": "Korangi",
+  "lat": 24.831371,
+  "lng": 67.117111,
+  "people": 18,
+  "severity": "critical",
+  "deadline_min": 106,
+  "starts_at": 51.8,
+  "conditions": [],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-098",
+  "zone": "Lyari",
+  "lat": 24.870862,
+  "lng": 67.004997,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 230,
+  "starts_at": 51.94,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-099",
+  "zone": "Shah Faisal",
+  "lat": 24.879937,
+  "lng": 67.163246,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 63,
+  "starts_at": 52.17,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {
+   "water": "chest",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-100",
+  "zone": "Lyari",
+  "lat": 24.859211,
+  "lng": 66.995823,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 61,
+  "starts_at": 52.18,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {
+   "water": "chest",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-101",
+  "zone": "Lyari",
+  "lat": 24.87314,
+  "lng": 67.01213,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 267,
+  "starts_at": 52.41,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-102",
+  "zone": "Lyari",
+  "lat": 24.8731,
+  "lng": 67.000011,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 56,
+  "starts_at": 52.53,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {
+   "water": "chest",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-103",
+  "zone": "Korangi",
+  "lat": 24.830463,
+  "lng": 67.132487,
+  "people": 7,
+  "severity": "serious",
+  "deadline_min": 231,
+  "starts_at": 52.61,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-104",
+  "zone": "Lyari",
+  "lat": 24.858939,
+  "lng": 67.004971,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 95,
+  "starts_at": 53.52,
+  "conditions": [
+   "injured",
+   "bleeding"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-105",
+  "zone": "Lyari",
+  "lat": 24.86593,
+  "lng": 66.990719,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 370,
+  "starts_at": 53.75,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-106",
+  "zone": "Korangi",
+  "lat": 24.825647,
+  "lng": 67.138026,
+  "people": 18,
+  "severity": "critical",
+  "deadline_min": 100,
+  "starts_at": 53.86,
+  "conditions": [],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-107",
+  "zone": "Malir",
+  "lat": 24.898419,
+  "lng": 67.193275,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 182,
+  "starts_at": 54.12,
+  "conditions": [
+   "disabled",
+   "alone"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-108",
+  "zone": "Korangi",
+  "lat": 24.825126,
+  "lng": 67.119195,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 284,
+  "starts_at": 54.29,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-109",
+  "zone": "Lyari",
+  "lat": 24.87411,
+  "lng": 66.992372,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 111,
+  "starts_at": 54.99,
+  "conditions": [
+   "disabled",
+   "cannot_walk",
+   "alone"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-110",
+  "zone": "Lyari",
+  "lat": 24.872559,
+  "lng": 66.996417,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 564,
+  "starts_at": 55.08,
+  "conditions": [
+   "elderly",
+   "insulin"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-111",
+  "zone": "Lyari",
+  "lat": 24.877284,
+  "lng": 67.007336,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 206,
+  "starts_at": 55.27,
+  "conditions": [
+   "disabled",
+   "alone"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-112",
+  "zone": "Lyari",
+  "lat": 24.863075,
+  "lng": 67.00313,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 368,
+  "starts_at": 55.31,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-113",
+  "zone": "Korangi",
+  "lat": 24.84145,
+  "lng": 67.116704,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 497,
+  "starts_at": 55.54,
+  "conditions": [
+   "elderly",
+   "insulin"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-114",
+  "zone": "Shah Faisal",
+  "lat": 24.872259,
+  "lng": 67.159199,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 326,
+  "starts_at": 55.61,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-115",
+  "zone": "Korangi",
+  "lat": 24.834918,
+  "lng": 67.125844,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 99,
+  "starts_at": 55.65,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "water": "roof",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-116",
+  "zone": "Lyari",
+  "lat": 24.864651,
+  "lng": 66.990506,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 121,
+  "starts_at": 56.56,
+  "conditions": [
+   "elderly",
+   "cannot_walk",
+   "oxygen"
+  ],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-117",
+  "zone": "Lyari",
+  "lat": 24.861147,
+  "lng": 67.00883,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 419,
+  "starts_at": 56.56,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-118",
+  "zone": "Korangi",
+  "lat": 24.825315,
+  "lng": 67.116867,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 411,
+  "starts_at": 56.63,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-119",
+  "zone": "Lyari",
+  "lat": 24.864799,
+  "lng": 67.003913,
+  "people": 4,
+  "severity": "serious",
+  "deadline_min": 202,
+  "starts_at": 56.74,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-120",
+  "zone": "Korangi",
+  "lat": 24.829491,
+  "lng": 67.125275,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 69,
+  "starts_at": 56.76,
+  "conditions": [
+   "child",
+   "power_dependent"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-121",
+  "zone": "Orangi Town",
+  "lat": 24.949589,
+  "lng": 66.97763,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 118,
+  "starts_at": 57.96,
+  "conditions": [
+   "elderly",
+   "cannot_walk",
+   "oxygen"
+  ],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-122",
+  "zone": "Korangi",
+  "lat": 24.837752,
+  "lng": 67.124189,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 72,
+  "starts_at": 58.41,
+  "conditions": [
+   "child",
+   "power_dependent"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-123",
+  "zone": "Lyari",
+  "lat": 24.86526,
+  "lng": 67.001086,
+  "people": 8,
+  "severity": "serious",
+  "deadline_min": 217,
+  "starts_at": 58.59,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-124",
+  "zone": "Clifton",
+  "lat": 24.821408,
+  "lng": 67.020417,
+  "people": 22,
+  "severity": "critical",
+  "deadline_min": 94,
+  "starts_at": 58.86,
+  "conditions": [],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-125",
+  "zone": "Korangi",
+  "lat": 24.836721,
+  "lng": 67.1291,
+  "people": 5,
+  "severity": "critical",
+  "deadline_min": 52,
+  "starts_at": 59.18,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "water": "roof",
+   "rising": true,
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-126",
+  "zone": "Lyari",
+  "lat": 24.862316,
+  "lng": 66.991462,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 372,
+  "starts_at": 59.23,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-127",
+  "zone": "Korangi",
+  "lat": 24.822272,
+  "lng": 67.130074,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 364,
+  "starts_at": 59.56,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-128",
+  "zone": "Orangi Town",
+  "lat": 24.957005,
+  "lng": 66.990586,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 65,
+  "starts_at": 59.86,
+  "conditions": [
+   "child",
+   "power_dependent"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-129",
+  "zone": "Korangi",
+  "lat": 24.820539,
+  "lng": 67.135319,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 146,
+  "starts_at": 66.83,
+  "conditions": [
+   "disabled",
+   "alone"
+  ],
+  "details": {
+   "water": "waist"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-130",
+  "zone": "Lyari",
+  "lat": 24.871227,
+  "lng": 67.010361,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 142,
+  "starts_at": 67.61,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-131",
+  "zone": "Lyari",
+  "lat": 24.867569,
+  "lng": 67.005735,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 56,
+  "starts_at": 68.41,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {
+   "water": "chest",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-132",
+  "zone": "Korangi",
+  "lat": 24.825692,
+  "lng": 67.13484,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 98,
+  "starts_at": 68.7,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-133",
+  "zone": "Lyari",
+  "lat": 24.862903,
+  "lng": 66.991885,
+  "people": 4,
+  "severity": "serious",
+  "deadline_min": 192,
+  "starts_at": 72.82,
+  "conditions": [],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-134",
+  "zone": "Korangi",
+  "lat": 24.82235,
+  "lng": 67.124545,
+  "people": 6,
+  "severity": "serious",
+  "deadline_min": 160,
+  "starts_at": 78.34,
+  "conditions": [],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-135",
+  "zone": "Malir",
+  "lat": 24.906623,
+  "lng": 67.199095,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 253,
+  "starts_at": 90.1,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-136",
+  "zone": "Lyari",
+  "lat": 24.858246,
+  "lng": 66.99986,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 64,
+  "starts_at": 95.66,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {
+   "water": "chest",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-137",
+  "zone": "Korangi",
+  "lat": 24.832374,
+  "lng": 67.123462,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 124,
+  "starts_at": 96.47,
+  "conditions": [
+   "disabled",
+   "cannot_walk",
+   "alone"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-138",
+  "zone": "Lyari",
+  "lat": 24.872204,
+  "lng": 66.994087,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 367,
+  "starts_at": 102.59,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-139",
+  "zone": "Orangi Town",
+  "lat": 24.952986,
+  "lng": 66.976403,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 457,
+  "starts_at": 104.55,
+  "conditions": [
+   "elderly",
+   "insulin"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-140",
+  "zone": "Korangi",
+  "lat": 24.832927,
+  "lng": 67.134577,
+  "people": 1,
+  "severity": "critical",
+  "deadline_min": 127,
+  "starts_at": 104.95,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-141",
+  "zone": "Korangi",
+  "lat": 24.837256,
+  "lng": 67.129145,
+  "people": 18,
+  "severity": "critical",
+  "deadline_min": 75,
+  "starts_at": 109.65,
+  "conditions": [],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-142",
+  "zone": "Lyari",
+  "lat": 24.864985,
+  "lng": 67.008734,
+  "people": 6,
+  "severity": "serious",
+  "deadline_min": 553,
+  "starts_at": 111.91,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-143",
+  "zone": "Malir",
+  "lat": 24.900387,
+  "lng": 67.210823,
+  "people": 9,
+  "severity": "serious",
+  "deadline_min": 151,
+  "starts_at": 118.27,
+  "conditions": [],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-144",
+  "zone": "Lyari",
+  "lat": 24.863323,
+  "lng": 67.010897,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 420,
+  "starts_at": 123.48,
+  "conditions": [
+   "elderly",
+   "insulin"
+  ],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-145",
+  "zone": "Korangi",
+  "lat": 24.821299,
+  "lng": 67.130942,
+  "people": 6,
+  "severity": "serious",
+  "deadline_min": 183,
+  "starts_at": 124.21,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-146",
+  "zone": "Lyari",
+  "lat": 24.868398,
+  "lng": 66.99641,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 302,
+  "starts_at": 125.64,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-147",
+  "zone": "Lyari",
+  "lat": 24.861038,
+  "lng": 67.001805,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 360,
+  "starts_at": 125.74,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-148",
+  "zone": "Lyari",
+  "lat": 24.865731,
+  "lng": 66.999841,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 379,
+  "starts_at": 127.71,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-149",
+  "zone": "Korangi",
+  "lat": 24.825864,
+  "lng": 67.13106,
+  "people": 4,
+  "severity": "serious",
+  "deadline_min": 280,
+  "starts_at": 128.85,
+  "conditions": [
+   "child"
+  ],
+  "details": {
+   "water": "knee",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-150",
+  "zone": "Korangi",
+  "lat": 24.824143,
+  "lng": 67.131982,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 471,
+  "starts_at": 130.88,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-151",
+  "zone": "Lyari",
+  "lat": 24.876473,
+  "lng": 66.995561,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 351,
+  "starts_at": 134.25,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-152",
+  "zone": "Korangi",
+  "lat": 24.820986,
+  "lng": 67.126033,
+  "people": 8,
+  "severity": "serious",
+  "deadline_min": 167,
+  "starts_at": 135.86,
+  "conditions": [],
+  "details": {
+   "water": "waist",
+   "rising": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-153",
+  "zone": "Korangi",
+  "lat": 24.835884,
+  "lng": 67.1137,
+  "people": 2,
+  "severity": "critical",
+  "deadline_min": 73,
+  "starts_at": 136.79,
+  "conditions": [
+   "elderly"
+  ],
+  "details": {
+   "water": "roof",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-154",
+  "zone": "North Nazimabad",
+  "lat": 24.940806,
+  "lng": 67.050278,
+  "people": 2,
+  "severity": "minor",
+  "deadline_min": 627,
+  "starts_at": 139.04,
+  "conditions": [],
+  "details": {
+   "water": "ankle"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-155",
+  "zone": "Korangi",
+  "lat": 24.82212,
+  "lng": 67.135802,
+  "people": 5,
+  "severity": "serious",
+  "deadline_min": 194,
+  "starts_at": 144.31,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "chest",
+   "trapped": true
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-156",
+  "zone": "Korangi",
+  "lat": 24.835113,
+  "lng": 67.137403,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 318,
+  "starts_at": 145.88,
+  "conditions": [
+   "infant"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-157",
+  "zone": "Orangi Town",
+  "lat": 24.94524,
+  "lng": 66.98453,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 194,
+  "starts_at": 146.4,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-158",
+  "zone": "Lyari",
+  "lat": 24.871605,
+  "lng": 66.996089,
+  "people": 5,
+  "severity": "serious",
+  "deadline_min": 481,
+  "starts_at": 146.89,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-159",
+  "zone": "Korangi",
+  "lat": 24.833891,
+  "lng": 67.113859,
+  "people": 3,
+  "severity": "serious",
+  "deadline_min": 545,
+  "starts_at": 148.9,
+  "conditions": [
+   "no_food_water"
+  ],
+  "details": {
+   "water": "knee"
+  },
+  "registry_id": null,
+  "reported": true
+ },
+ {
+  "id": "S-R-0001",
+  "zone": "Lyari",
+  "lat": 24.869353,
+  "lng": 67.011489,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 309,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0001",
+  "reported": false
+ },
+ {
+  "id": "S-R-0004",
+  "zone": "Shah Faisal",
+  "lat": 24.86922,
+  "lng": 67.164643,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 652,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0004",
+  "reported": false
+ },
+ {
+  "id": "S-R-0007",
+  "zone": "Shah Faisal",
+  "lat": 24.877524,
+  "lng": 67.154902,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 324,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0007",
+  "reported": false
+ },
+ {
+  "id": "S-R-0009",
+  "zone": "Shah Faisal",
+  "lat": 24.875284,
+  "lng": 67.15136,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 300,
+  "starts_at": 10,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": "R-0009",
+  "reported": false
+ },
+ {
+  "id": "S-R-0010",
+  "zone": "Shah Faisal",
+  "lat": 24.871995,
+  "lng": 67.156451,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 669,
+  "starts_at": 10,
+  "conditions": [
+   "insulin",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0010",
+  "reported": false
+ },
+ {
+  "id": "S-R-0013",
+  "zone": "Shah Faisal",
+  "lat": 24.872979,
+  "lng": 67.166984,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 252,
+  "starts_at": 10,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0013",
+  "reported": false
+ },
+ {
+  "id": "S-R-0015",
+  "zone": "Shah Faisal",
+  "lat": 24.878855,
+  "lng": 67.160129,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 293,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0015",
+  "reported": false
+ },
+ {
+  "id": "S-R-0016",
+  "zone": "Shah Faisal",
+  "lat": 24.876806,
+  "lng": 67.16008,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 252,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0016",
+  "reported": false
+ },
+ {
+  "id": "S-R-0017",
+  "zone": "Shah Faisal",
+  "lat": 24.881653,
+  "lng": 67.155378,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 660,
+  "starts_at": 10,
+  "conditions": [
+   "disabled"
+  ],
+  "details": {},
+  "registry_id": "R-0017",
+  "reported": false
+ },
+ {
+  "id": "S-R-0019",
+  "zone": "Korangi",
+  "lat": 24.842273,
+  "lng": 67.118741,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 296,
+  "starts_at": 10,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0019",
+  "reported": true
+ },
+ {
+  "id": "S-R-0022",
+  "zone": "Shah Faisal",
+  "lat": 24.881671,
+  "lng": 67.162106,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 301,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0022",
+  "reported": false
+ },
+ {
+  "id": "S-R-0024",
+  "zone": "Korangi",
+  "lat": 24.840966,
+  "lng": 67.130682,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 736,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0024",
+  "reported": false
+ },
+ {
+  "id": "S-R-0026",
+  "zone": "Shah Faisal",
+  "lat": 24.867741,
+  "lng": 67.157879,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 308,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0026",
+  "reported": false
+ },
+ {
+  "id": "S-R-0028",
+  "zone": "Shah Faisal",
+  "lat": 24.8772,
+  "lng": 67.153168,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 832,
+  "starts_at": 10,
+  "conditions": [
+   "insulin",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0028",
+  "reported": false
+ },
+ {
+  "id": "S-R-0029",
+  "zone": "Korangi",
+  "lat": 24.832625,
+  "lng": 67.118976,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 749,
+  "starts_at": 10,
+  "conditions": [
+   "insulin",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0029",
+  "reported": false
+ },
+ {
+  "id": "S-R-0030",
+  "zone": "Lyari",
+  "lat": 24.861799,
+  "lng": 66.990732,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 771,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0030",
+  "reported": false
+ },
+ {
+  "id": "S-R-0034",
+  "zone": "Shah Faisal",
+  "lat": 24.885972,
+  "lng": 67.157649,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 356,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0034",
+  "reported": false
+ },
+ {
+  "id": "S-R-0038",
+  "zone": "Shah Faisal",
+  "lat": 24.876321,
+  "lng": 67.147231,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 862,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0038",
+  "reported": false
+ },
+ {
+  "id": "S-R-0040",
+  "zone": "Lyari",
+  "lat": 24.860864,
+  "lng": 67.002519,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 251,
+  "starts_at": 10,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0040",
+  "reported": false
+ },
+ {
+  "id": "S-R-0042",
+  "zone": "Shah Faisal",
+  "lat": 24.878741,
+  "lng": 67.155225,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 352,
+  "starts_at": 10,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0042",
+  "reported": false
+ },
+ {
+  "id": "S-R-0044",
+  "zone": "Lyari",
+  "lat": 24.877048,
+  "lng": 67.002893,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 303,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0044",
+  "reported": false
+ },
+ {
+  "id": "S-R-0047",
+  "zone": "Shah Faisal",
+  "lat": 24.881535,
+  "lng": 67.156021,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 356,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0047",
+  "reported": false
+ },
+ {
+  "id": "S-R-0050",
+  "zone": "Shah Faisal",
+  "lat": 24.867215,
+  "lng": 67.159377,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 602,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0050",
+  "reported": false
+ },
+ {
+  "id": "S-R-0055",
+  "zone": "Shah Faisal",
+  "lat": 24.882246,
+  "lng": 67.164362,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 614,
+  "starts_at": 10,
+  "conditions": [
+   "disabled"
+  ],
+  "details": {},
+  "registry_id": "R-0055",
+  "reported": false
+ },
+ {
+  "id": "S-R-0056",
+  "zone": "Shah Faisal",
+  "lat": 24.878279,
+  "lng": 67.158043,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 577,
+  "starts_at": 10,
+  "conditions": [
+   "disabled"
+  ],
+  "details": {},
+  "registry_id": "R-0056",
+  "reported": false
+ },
+ {
+  "id": "S-R-0058",
+  "zone": "Shah Faisal",
+  "lat": 24.882747,
+  "lng": 67.167761,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 863,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0058",
+  "reported": false
+ },
+ {
+  "id": "S-R-0063",
+  "zone": "Lyari",
+  "lat": 24.874677,
+  "lng": 67.005867,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 311,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0063",
+  "reported": false
+ },
+ {
+  "id": "S-R-0064",
+  "zone": "Shah Faisal",
+  "lat": 24.868366,
+  "lng": 67.166592,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 755,
+  "starts_at": 10,
+  "conditions": [
+   "insulin",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0064",
+  "reported": false
+ },
+ {
+  "id": "S-R-0065",
+  "zone": "Shah Faisal",
+  "lat": 24.877154,
+  "lng": 67.15225,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 358,
+  "starts_at": 10,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0065",
+  "reported": false
+ },
+ {
+  "id": "S-R-0066",
+  "zone": "Shah Faisal",
+  "lat": 24.874304,
+  "lng": 67.164527,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 281,
+  "starts_at": 10,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0066",
+  "reported": false
+ },
+ {
+  "id": "S-R-0069",
+  "zone": "Shah Faisal",
+  "lat": 24.8761,
+  "lng": 67.150085,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 292,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0069",
+  "reported": false
+ },
+ {
+  "id": "S-R-0070",
+  "zone": "Korangi",
+  "lat": 24.834966,
+  "lng": 67.130191,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 262,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0070",
+  "reported": false
+ },
+ {
+  "id": "S-R-0074",
+  "zone": "Shah Faisal",
+  "lat": 24.882268,
+  "lng": 67.151301,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 750,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0074",
+  "reported": false
+ },
+ {
+  "id": "S-R-0082",
+  "zone": "Shah Faisal",
+  "lat": 24.870555,
+  "lng": 67.16901,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 806,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0082",
+  "reported": false
+ },
+ {
+  "id": "S-R-0085",
+  "zone": "Shah Faisal",
+  "lat": 24.868354,
+  "lng": 67.167452,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 790,
+  "starts_at": 10,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {},
+  "registry_id": "R-0085",
+  "reported": false
+ },
+ {
+  "id": "S-R-0086",
+  "zone": "Shah Faisal",
+  "lat": 24.880325,
+  "lng": 67.148971,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 269,
+  "starts_at": 10,
+  "conditions": [
+   "oxygen",
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0086",
+  "reported": false
+ },
+ {
+  "id": "S-R-0087",
+  "zone": "Lyari",
+  "lat": 24.87342,
+  "lng": 66.995929,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 335,
+  "starts_at": 10,
+  "conditions": [
+   "oxygen",
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0087",
+  "reported": false
+ },
+ {
+  "id": "S-R-0091",
+  "zone": "Lyari",
+  "lat": 24.86687,
+  "lng": 66.999531,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 646,
+  "starts_at": 10,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {},
+  "registry_id": "R-0091",
+  "reported": false
+ },
+ {
+  "id": "S-R-0097",
+  "zone": "Shah Faisal",
+  "lat": 24.879029,
+  "lng": 67.157502,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 650,
+  "starts_at": 10,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {},
+  "registry_id": "R-0097",
+  "reported": false
+ },
+ {
+  "id": "S-R-0098",
+  "zone": "Lyari",
+  "lat": 24.871878,
+  "lng": 66.991322,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 359,
+  "starts_at": 10,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0098",
+  "reported": true
+ },
+ {
+  "id": "S-R-0100",
+  "zone": "Shah Faisal",
+  "lat": 24.873673,
+  "lng": 67.161824,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 331,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0100",
+  "reported": false
+ },
+ {
+  "id": "S-R-0102",
+  "zone": "Lyari",
+  "lat": 24.860629,
+  "lng": 67.007091,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 790,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0102",
+  "reported": true
+ },
+ {
+  "id": "S-R-0103",
+  "zone": "Lyari",
+  "lat": 24.862369,
+  "lng": 66.992417,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 706,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0103",
+  "reported": false
+ },
+ {
+  "id": "S-R-0104",
+  "zone": "Shah Faisal",
+  "lat": 24.869493,
+  "lng": 67.14837,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 274,
+  "starts_at": 10,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0104",
+  "reported": false
+ },
+ {
+  "id": "S-R-0105",
+  "zone": "Shah Faisal",
+  "lat": 24.879641,
+  "lng": 67.152249,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 842,
+  "starts_at": 10,
+  "conditions": [
+   "disabled"
+  ],
+  "details": {},
+  "registry_id": "R-0105",
+  "reported": false
+ },
+ {
+  "id": "S-R-0106",
+  "zone": "Shah Faisal",
+  "lat": 24.871901,
+  "lng": 67.145231,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 808,
+  "starts_at": 10,
+  "conditions": [
+   "insulin",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0106",
+  "reported": false
+ },
+ {
+  "id": "S-R-0109",
+  "zone": "Lyari",
+  "lat": 24.874817,
+  "lng": 67.008547,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 831,
+  "starts_at": 10,
+  "conditions": [
+   "disabled"
+  ],
+  "details": {},
+  "registry_id": "R-0109",
+  "reported": false
+ },
+ {
+  "id": "S-R-0117",
+  "zone": "Shah Faisal",
+  "lat": 24.883505,
+  "lng": 67.153776,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 279,
+  "starts_at": 10,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0117",
+  "reported": false
+ },
+ {
+  "id": "S-R-0121",
+  "zone": "Shah Faisal",
+  "lat": 24.881642,
+  "lng": 67.151812,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 290,
+  "starts_at": 10,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0121",
+  "reported": false
+ },
+ {
+  "id": "S-R-0122",
+  "zone": "Shah Faisal",
+  "lat": 24.87048,
+  "lng": 67.15464,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 340,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0122",
+  "reported": false
+ },
+ {
+  "id": "S-R-0124",
+  "zone": "Shah Faisal",
+  "lat": 24.881782,
+  "lng": 67.158979,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 279,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0124",
+  "reported": false
+ },
+ {
+  "id": "S-R-0125",
+  "zone": "Shah Faisal",
+  "lat": 24.867197,
+  "lng": 67.160283,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 707,
+  "starts_at": 10,
+  "conditions": [
+   "disabled"
+  ],
+  "details": {},
+  "registry_id": "R-0125",
+  "reported": false
+ },
+ {
+  "id": "S-R-0127",
+  "zone": "Shah Faisal",
+  "lat": 24.872337,
+  "lng": 67.150086,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 269,
+  "starts_at": 10,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": "R-0127",
+  "reported": false
+ },
+ {
+  "id": "S-R-0131",
+  "zone": "Shah Faisal",
+  "lat": 24.885656,
+  "lng": 67.166302,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 352,
+  "starts_at": 10,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": "R-0131",
+  "reported": false
+ },
+ {
+  "id": "S-R-0133",
+  "zone": "Shah Faisal",
+  "lat": 24.886952,
+  "lng": 67.161561,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 319,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0133",
+  "reported": false
+ },
+ {
+  "id": "S-R-0140",
+  "zone": "Lyari",
+  "lat": 24.865104,
+  "lng": 67.008028,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 281,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0140",
+  "reported": false
+ },
+ {
+  "id": "S-R-0141",
+  "zone": "Shah Faisal",
+  "lat": 24.883842,
+  "lng": 67.168462,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 301,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0141",
+  "reported": false
+ },
+ {
+  "id": "S-R-0142",
+  "zone": "Shah Faisal",
+  "lat": 24.877674,
+  "lng": 67.155345,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 274,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0142",
+  "reported": false
+ },
+ {
+  "id": "S-R-0143",
+  "zone": "Shah Faisal",
+  "lat": 24.885251,
+  "lng": 67.165928,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 254,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0143",
+  "reported": false
+ },
+ {
+  "id": "S-R-0145",
+  "zone": "Shah Faisal",
+  "lat": 24.868518,
+  "lng": 67.148924,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 344,
+  "starts_at": 10,
+  "conditions": [
+   "oxygen",
+   "elderly"
+  ],
+  "details": {},
+  "registry_id": "R-0145",
+  "reported": false
+ },
+ {
+  "id": "S-R-0148",
+  "zone": "Lyari",
+  "lat": 24.865856,
+  "lng": 67.011331,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 330,
+  "starts_at": 10,
+  "conditions": [
+   "dialysis"
+  ],
+  "details": {},
+  "registry_id": "R-0148",
+  "reported": false
+ },
+ {
+  "id": "S-R-0150",
+  "zone": "Shah Faisal",
+  "lat": 24.874062,
+  "lng": 67.146476,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 280,
+  "starts_at": 10,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0150",
+  "reported": false
+ },
+ {
+  "id": "S-R-0154",
+  "zone": "Shah Faisal",
+  "lat": 24.867738,
+  "lng": 67.159448,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 584,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0154",
+  "reported": false
+ },
+ {
+  "id": "S-R-0155",
+  "zone": "Shah Faisal",
+  "lat": 24.88413,
+  "lng": 67.150935,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 329,
+  "starts_at": 10,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0155",
+  "reported": false
+ },
+ {
+  "id": "S-R-0158",
+  "zone": "Lyari",
+  "lat": 24.874539,
+  "lng": 67.004993,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 339,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0158",
+  "reported": true
+ },
+ {
+  "id": "S-R-0161",
+  "zone": "Lyari",
+  "lat": 24.869544,
+  "lng": 67.009085,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 774,
+  "starts_at": 10,
+  "conditions": [
+   "disabled"
+  ],
+  "details": {},
+  "registry_id": "R-0161",
+  "reported": false
+ },
+ {
+  "id": "S-R-0165",
+  "zone": "Korangi",
+  "lat": 24.82985,
+  "lng": 67.130976,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 681,
+  "starts_at": 10,
+  "conditions": [
+   "disabled"
+  ],
+  "details": {},
+  "registry_id": "R-0165",
+  "reported": true
+ },
+ {
+  "id": "S-R-0167",
+  "zone": "Shah Faisal",
+  "lat": 24.880103,
+  "lng": 67.166476,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 800,
+  "starts_at": 10,
+  "conditions": [
+   "pregnant"
+  ],
+  "details": {},
+  "registry_id": "R-0167",
+  "reported": false
+ },
+ {
+  "id": "S-R-0168",
+  "zone": "Shah Faisal",
+  "lat": 24.87399,
+  "lng": 67.146574,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 746,
+  "starts_at": 10,
+  "conditions": [
+   "infant"
+  ],
+  "details": {},
+  "registry_id": "R-0168",
+  "reported": false
+ },
+ {
+  "id": "S-R-0170",
+  "zone": "Shah Faisal",
+  "lat": 24.88543,
+  "lng": 67.156549,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 850,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0170",
+  "reported": false
+ },
+ {
+  "id": "S-R-0174",
+  "zone": "Shah Faisal",
+  "lat": 24.872037,
+  "lng": 67.160021,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 297,
+  "starts_at": 10,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0174",
+  "reported": false
+ },
+ {
+  "id": "S-R-0176",
+  "zone": "Shah Faisal",
+  "lat": 24.873101,
+  "lng": 67.145862,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 683,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0176",
+  "reported": false
+ },
+ {
+  "id": "S-R-0184",
+  "zone": "Shah Faisal",
+  "lat": 24.877399,
+  "lng": 67.168741,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 255,
+  "starts_at": 10,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0184",
+  "reported": false
+ },
+ {
+  "id": "S-R-0187",
+  "zone": "Shah Faisal",
+  "lat": 24.884993,
+  "lng": 67.165486,
+  "people": 1,
+  "severity": "minor",
+  "deadline_min": 747,
+  "starts_at": 10,
+  "conditions": [
+   "elderly",
+   "alone"
+  ],
+  "details": {},
+  "registry_id": "R-0187",
+  "reported": false
+ },
+ {
+  "id": "S-R-0194",
+  "zone": "Shah Faisal",
+  "lat": 24.8769,
+  "lng": 67.168386,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 287,
+  "starts_at": 10,
+  "conditions": [
+   "disabled",
+   "cannot_walk"
+  ],
+  "details": {},
+  "registry_id": "R-0194",
+  "reported": false
+ },
+ {
+  "id": "S-R-0195",
+  "zone": "Shah Faisal",
+  "lat": 24.885687,
+  "lng": 67.161293,
+  "people": 1,
+  "severity": "serious",
+  "deadline_min": 266,
+  "starts_at": 10,
+  "conditions": [
+   "power_dependent"
+  ],
+  "details": {},
+  "registry_id": "R-0195",
+  "reported": false
+ }
+]

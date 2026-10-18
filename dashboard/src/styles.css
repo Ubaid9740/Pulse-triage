@@ -239,3 +239,12 @@ button.small { padding: 3px 10px; border-radius: 6px; border: 1px solid #b9c1cc;
   .setup { grid-template-columns: 1fr; }
   .slider { grid-template-columns: 1fr 1.5fr 2.5em; }
 }
+
+/* replay */
+.replay-status { margin-top: 10px; }
+.replay-status .clock { font-variant-numeric: tabular-nums; }
+.cues { list-style: none; padding: 0; margin: 8px 0; max-height: 220px; overflow-y: auto; font-size: 0.92rem; }
+.cues li { padding: 5px 8px; border-bottom: 1px solid var(--line); }
+.cues li.now { background: #fff1d6; font-weight: 600; border-radius: 6px; }
+.cue-now { background: #fff1d6; color: #6b4200; border-radius: 6px; padding: 2px 8px; font-weight: 600; max-width: 60%;
+           overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

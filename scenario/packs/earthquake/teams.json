@@ -1,0 +1,85 @@
+[
+ {
+  "id": "rescue_1",
+  "name": "Rescue 1",
+  "type": "rescue",
+  "lat": 24.859171,
+  "lng": 67.033931,
+  "device_id": "dev_RESCUE1"
+ },
+ {
+  "id": "rescue_2",
+  "name": "Rescue 2",
+  "type": "rescue",
+  "lat": 24.819436,
+  "lng": 67.033192,
+  "device_id": "dev_RESCUE2"
+ },
+ {
+  "id": "rescue_3",
+  "name": "Rescue 3",
+  "type": "rescue",
+  "lat": 24.897879,
+  "lng": 67.205504,
+  "device_id": "dev_RESCUE3"
+ },
+ {
+  "id": "fire_1",
+  "name": "Fire 1",
+  "type": "fire",
+  "lat": 24.852598,
+  "lng": 67.033519,
+  "device_id": "dev_FIRE1",
+  "fuel": "full"
+ },
+ {
+  "id": "medic_1",
+  "name": "Medic 1",
+  "type": "medic",
+  "lat": 24.858683,
+  "lng": 67.035432,
+  "device_id": "dev_MEDIC1"
+ },
+ {
+  "id": "medic_2",
+  "name": "Medic 2",
+  "type": "medic",
+  "lat": 24.817593,
+  "lng": 67.033296,
+  "device_id": "dev_MEDIC2"
+ },
+ {
+  "id": "truck_1",
+  "name": "Truck 1",
+  "type": "truck",
+  "lat": 24.834035,
+  "lng": 67.132721,
+  "device_id": "dev_TRUCK1",
+  "fuel": "full"
+ },
+ {
+  "id": "truck_2",
+  "name": "Truck 2",
+  "type": "truck",
+  "lat": 24.89265,
+  "lng": 67.205171,
+  "device_id": "dev_TRUCK2",
+  "fuel": "half"
+ },
+ {
+  "id": "welfare_1",
+  "name": "Welfare 1",
+  "type": "welfare",
+  "lat": 24.813196,
+  "lng": 67.032153,
+  "device_id": "dev_WELFARE1"
+ },
+ {
+  "id": "welfare_2",
+  "name": "Welfare 2",
+  "type": "welfare",
+  "lat": 24.948982,
+  "lng": 66.991717,
+  "device_id": "dev_WELFARE2"
+ }
+]

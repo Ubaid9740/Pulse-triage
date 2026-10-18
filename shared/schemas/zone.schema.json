@@ -15,7 +15,7 @@
     "silent": { "type": "boolean", "description": "Hard-hit and (quiet or unheard)." },
     "silent_since": { "type": ["string", "null"] },
     "quiet": { "type": "boolean", "description": "Fewer than a quarter of the expected reports." },
-    "unheard": { "type": "boolean", "description": "Warning coverage under 25% of 10 or more registered people." },
+    "unheard": { "type": "boolean", "description": "An active alert covers the zone and fewer than 25% of its 10 or more registered people confirmed." },
     "expected": { "type": ["number", "null"], "description": "Expected reports; null when not hard-hit." },
     "actual": { "type": "integer", "minimum": 0, "description": "Reports placed in the zone (not the server's own)." },
     "rate": { "type": ["number", "null"], "description": "Reports per 100 people used for 'expected'." },

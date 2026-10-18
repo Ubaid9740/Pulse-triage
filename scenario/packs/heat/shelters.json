@@ -1,0 +1,46 @@
+[
+ {
+  "id": "c_saddar",
+  "name": "Cooling centre, Saddar",
+  "type": "cooling_centre",
+  "lat": 24.856,
+  "lng": 67.03,
+  "capacity": 150,
+  "occupancy": 20
+ },
+ {
+  "id": "c_orangi",
+  "name": "Cooling centre, Orangi Town",
+  "type": "cooling_centre",
+  "lat": 24.948,
+  "lng": 66.995,
+  "capacity": 120,
+  "occupancy": 10
+ },
+ {
+  "id": "c_korangi",
+  "name": "Cooling centre, Korangi",
+  "type": "cooling_centre",
+  "lat": 24.835,
+  "lng": 67.125,
+  "capacity": 100,
+  "occupancy": 30
+ },
+ {
+  "id": "s_kashmir_road",
+  "name": "Sports complex, Kashmir Road",
+  "type": "shelter",
+  "lat": 24.8775,
+  "lng": 67.0605,
+  "capacity": 400,
+  "occupancy": 0
+ },
+ {
+  "id": "h_central",
+  "name": "Central hospital, Saddar",
+  "type": "hospital",
+  "lat": 24.8525,
+  "lng": 67.044,
+  "occupancy": 0
+ }
+]

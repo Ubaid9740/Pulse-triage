@@ -1,12 +1,16 @@
 import { hhmm, label } from "../format.js";
 
-// The active alert, its replies and the warning coverage of its zones.
-export default function BottomStrip({ snap }) {
+// The active alert, its replies and the warning coverage of its zones; during a replay, the
+// scenario clock and the latest cue for the presenter.
+export default function BottomStrip({ snap, replay }) {
   const alert = snap.alerts.find((a) => a.status === "active") || snap.alerts[0];
-  if (!alert) return <footer className="bottom">No active alert</footer>;
+  const cue = replay?.running && replay.cues?.[0];
+  const cueBox = cue && <span className="cue-now"><b>{replay.scenario_time}</b> {cue.text}</span>;
+  if (!alert) return <footer className="bottom">{cueBox}No active alert</footer>;
   const cov = alert.coverage;
   return (
     <footer className="bottom">
+      {cueBox}
       <b>{alert.cancel ? "ALL CLEAR" : `${label(alert.hazard)} ${alert.severity}`.toUpperCase()}</b>
       <span>{alert.zones.join(", ")}</span>
       <span>issued {hhmm(alert.issued_at)}</span>

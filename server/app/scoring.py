@@ -45,6 +45,7 @@ class CaseState:
     verified: bool = False
     has_location: bool = True
     window_closes_at: datetime | None = None
+    window_text: str | None = None                    # "Bridge Rd floods": what closes the window
     landmark_twin: tuple[int, float] | None = None   # (case ID, metres): an earlier case, same landmark, far away
 
 
@@ -185,7 +186,8 @@ def score(case: CaseState, now: datetime, constants: dict) -> Score:
     if case.window_closes_at is not None:
         until = hours_between(now, case.window_closes_at)
         if 0 <= until <= p["window_hours"]:
-            reasons.append({"text": f"Window closes in about {format_hours(until)}", "points": w["window"],
+            reasons.append({"text": f"{case.window_text or 'Window closes'} in about {format_hours(until)}",
+                            "points": w["window"],
                             "kind": "window"})
 
     people_points = min(w["person"] * case.people, w["people_max"])

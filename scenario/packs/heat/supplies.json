@@ -1,0 +1,39 @@
+[
+ {
+  "item": "drinking_water",
+  "qty": 3000,
+  "warn_at": 600,
+  "unit": "L"
+ },
+ {
+  "item": "oral_rehydration_salts",
+  "qty": 400,
+  "warn_at": 80
+ },
+ {
+  "item": "cooling_pack",
+  "qty": 150,
+  "warn_at": 30
+ },
+ {
+  "item": "first_aid_kit",
+  "qty": 60,
+  "warn_at": 15
+ },
+ {
+  "item": "oxygen_cylinder",
+  "qty": 8,
+  "warn_at": 5
+ },
+ {
+  "item": "insulin",
+  "qty": 40,
+  "warn_at": 10
+ },
+ {
+  "item": "fuel",
+  "qty": 300,
+  "warn_at": 80,
+  "unit": "L"
+ }
+]

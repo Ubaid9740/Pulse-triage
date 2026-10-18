@@ -71,6 +71,9 @@ python -m pytest
 | `GET /api/devices` | Phones heard from, with trust, revocation and team |
 | `POST /api/devices/{id}/revoke` `{"revoked", "reason", "by"}` | Refuse a phone (e.g. stolen) and send phones the signed list; `revoked: false` restores it |
 | `GET /api/demo/packs`, `POST /api/demo/reset` `{"pack"}` | Demo packs in `scenario/packs/`; reset a running server to one |
+| `POST /api/demo/replay` `{"pack", "speed", "reset"}`, `GET`, `POST /api/demo/replay/stop` | Play a pack's story (`scenario/packs/<pack>/messages.json`); its clock, cues and errors |
+| `POST /api/reports/simulate` `{"messages": [{"text", "sender", "lat", "lng"}], "hazard"}` | Text messages (SMS or mesh text): read like the paste box, located, one source per sender |
+| `GET /api/windows`, `POST /api/windows` `{"zone", "closes_at" or "closes_in_min", "text", "clear"}` | When a zone can no longer be reached ("Korangi causeway floods"); its cases gain the window points |
 | `POST /api/chaos/{kind}` `{"on"}` | Demo only: `duplicate`, `fake`, `wrong_location` (real signed reports from a new phone) or `ai_down` (`on: false` ends it) |
 | `GET /docs` | Interactive API docs |
 
@@ -166,6 +169,23 @@ a server answers on `PT_PORT`.
 A revoked phone's packets are refused at once. Each revoke packet carries the full list
 (`replace_key` "revoke"), so phones keep only the newest and stop relaying for those phones.
 
+## Windows
+
+A window is the time after which a zone can no longer be reached: a road floods, the hottest hours
+start, night falls. `POST /api/windows` sets one per zone (the dispatcher or the replay). Cases in
+that zone gain the window points (20) in the last 3 hours before it closes, with the reason
+"Korangi causeway floods in about 1.5 h", if the profile's window applies to them (heat: only
+people without cooling). The dashboard draws their pins dashed.
+
+## Scenario replay
+
+`POST /api/demo/replay` resets the server to a pack (unless `reset: false`) and plays its story in a
+background thread (`app/replay.py`, event kinds in `scenario/README.md`): app reports as signed,
+sealed packets from each demo phone, texts through `/api/reports/simulate`, alert replies once an
+alert is active, windows, chaos and so on, all through the normal code paths. Scenario teams with a
+phone move on their own once assigned. `GET /api/demo/replay` gives the scenario clock, the cues
+and any errors. A demo reset stops a running replay.
+
 ## Chaos panel
 
 `POST /api/chaos/{kind}` (`app/chaos.py`) puts the problems of a real incident into the live one,
@@ -202,7 +222,8 @@ A zone is hard-hit when it is marked (`POST /api/zones/hard-hit`, by the dispatc
 or, for heat (`"affected": "alert_zones"`), when an active heat alert covers it. A hard-hit zone is
 Silent when it has under a quarter of the reports expected for its size (at least 8 expected;
 the rate is the median reports per 100 people of the other hard-hit zones), or when under 25% of
-its registered vulnerable people (at least 10) have confirmed. Ward 4 example: 2,000 people at a
+its registered vulnerable people (at least 10) have confirmed since a warning covered it (before
+any warning there is no coverage to measure). Ward 4 example: 2,000 people at a
 median 1.2 per 100 = 24 expected, 2 received, 9 of 41 confirmed: Silent.
 
 A registered person is confirmed by an alert reply, a welfare check, or a report that names them
@@ -276,7 +297,7 @@ team checks every 30 s · `outbound.py` the queue to phones · `snapshot.py` the
 snapshot · `packets.py` packet and geohash helpers · `devtools.py` phone-side packet builder
 (reference for the app).
 
-`chaos.py` the chaos panel's problems · `reader.py` keyword reader · `ai_reader.py` the AI reader · `ai_backends.py` Gemini and Claude · `intake.py` intake form and paste box · `devices.py` the phones and revoking · `backups.py` database copies and restore · `demo.py` the
+`chaos.py` the chaos panel's problems · `replay.py` the scenario replay · `reader.py` keyword reader · `ai_reader.py` the AI reader · `ai_backends.py` Gemini and Claude · `intake.py` intake form and paste box · `devices.py` the phones and revoking · `backups.py` database copies and restore · `demo.py` the
 reset per pack · `purge.py` data retention and the after-action counts.
 
 The server steps of System Design 14.5 (B1 to B7) are built. Every server part of System Design 14.5 and 10.4 is built.

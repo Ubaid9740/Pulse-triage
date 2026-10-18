@@ -1,0 +1,14 @@
+{
+ "_note": "Karachi heat demo pack, made by scenario/generate.py (seed 7). All data is made up.",
+ "hazard": "heat",
+ "hard_hit": [],
+ "start": "07:00",
+ "speed": 90,
+ "alert_zones": [
+  "Lyari",
+  "Saddar",
+  "Korangi",
+  "Orangi Town"
+ ],
+ "seed": 7
+}

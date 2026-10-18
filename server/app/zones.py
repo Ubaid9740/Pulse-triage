@@ -8,7 +8,7 @@ For every hard-hit zone:
   rate      median reports per 100 people across the other hard-hit zones (default if none)
   expected  population / 100 x rate
   quiet     expected >= silent.min_expected and actual / expected < silent.ratio
-  unheard   registered >= silent.min_registered and confirmed / registered < silent.coverage
+  unheard   an alert covers it, registered >= silent.min_registered and confirmed / registered < silent.coverage
   silent    quiet or unheard
 Actual counts the reports placed in the zone, not cases the server made itself.
 """
@@ -126,6 +126,7 @@ class ZoneCount:
     actual: int
     registered: int
     confirmed: int
+    warned: bool = True          # an active alert covers the zone: before a warning there is no coverage
 
 
 @dataclass
@@ -157,7 +158,8 @@ def find_silent(zones: list[ZoneCount], rules: dict) -> dict[str, Silence]:
         expected = z.population / 100 * rate
         ratio = z.actual / expected if expected else None
         quiet = expected >= rules["min_expected"] and ratio < rules["ratio"]
-        unheard = z.registered >= rules["min_registered"] and z.confirmed / z.registered < rules["coverage"]
+        unheard = (z.warned and z.registered >= rules["min_registered"]
+                   and z.confirmed / z.registered < rules["coverage"])
         out[z.name] = Silence(z.name, True, rate, expected, ratio, coverage, quiet, unheard)
     return out
 
@@ -274,13 +276,14 @@ class ZoneBook:
                     if a["hazard"] == hazard:
                         for name in a["zones"]:
                             by_alert[name] = min(by_alert.get(name, a["issued_at"]), a["issued_at"])
+            warned = self.coverage.window_starts(alerts)
             counts, since = [], {}
             for z in zones:
                 times = [t for t in (z["marked_at"], by_alert.get(z["name"])) if t]
                 since[z["name"]] = min(times) if times else None
                 registered, confirmed = people.get(z["name"], (0, 0))
                 counts.append(ZoneCount(z["name"], z["population"] or 0, bool(times), actual.get(z["name"], 0),
-                                        registered, confirmed))
+                                        registered, confirmed, z["name"] in warned))
             found = find_silent(counts, self.rules)
             changes = []
             for z, c in zip(zones, counts):

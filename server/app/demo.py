@@ -7,7 +7,8 @@ A pack is a folder scenario/packs/<name>/:
   shelters.json   [POST /api/shelters bodies]
   teams.json      [POST /api/teams bodies]
   supplies.json   [{"item", "qty", "place" (command_post, shelter:<id> or team:<id>; default command_post), "warn_at", "unit"}]
-Other files (people.json, messages.json, windows.json) are for generate.py and replay.py.
+Other files (people.json, messages.json, windows.json) are written by generate.py; the replay
+plays messages.json (POST /api/demo/replay).
 
 A reset ends the incident on this server and starts the pack's. Cleared: reports, cases, alerts,
 replies, zones, registry, teams, jobs, places, supplies and the audit log. Kept: the command post

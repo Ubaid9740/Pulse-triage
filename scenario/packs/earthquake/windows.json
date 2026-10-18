@@ -1,0 +1,14 @@
+[
+ {
+  "t": 30,
+  "zone": "Saddar",
+  "closes_in_min": 180,
+  "text": "Rain arrives"
+ },
+ {
+  "t": 30,
+  "zone": "Lyari",
+  "closes_in_min": 180,
+  "text": "Rain arrives"
+ }
+]

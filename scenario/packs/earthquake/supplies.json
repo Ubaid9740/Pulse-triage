@@ -1,0 +1,44 @@
+[
+ {
+  "item": "drinking_water",
+  "qty": 2000,
+  "warn_at": 400,
+  "unit": "L"
+ },
+ {
+  "item": "food_pack",
+  "qty": 500,
+  "warn_at": 100
+ },
+ {
+  "item": "first_aid_kit",
+  "qty": 80,
+  "warn_at": 20
+ },
+ {
+  "item": "oxygen_cylinder",
+  "qty": 8,
+  "warn_at": 5
+ },
+ {
+  "item": "blanket",
+  "qty": 800,
+  "warn_at": 150
+ },
+ {
+  "item": "tarpaulin",
+  "qty": 200,
+  "warn_at": 40
+ },
+ {
+  "item": "torch",
+  "qty": 100,
+  "warn_at": 20
+ },
+ {
+  "item": "fuel",
+  "qty": 300,
+  "warn_at": 80,
+  "unit": "L"
+ }
+]
